@@ -56,7 +56,7 @@ class NavigationViewController: UIViewController, UITableViewDelegate, Calculati
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        articleTableView.rowHeight = 100
+        articleTableView.rowHeight = 220
         
         navigation.calculationDelegate = self
         
@@ -206,7 +206,7 @@ extension NavigationViewController: UITableViewDataSource{
         
         cell.delegate = self
         
-        cell.clearBackgroundView.backgroundColor = UIColor.clear
+//        cell.clearBackgroundView.backgroundColor = UIColor.clear
         cell.backgroundColor = UIColor.clear
         cell.backgroundImageView.backgroundColor = UIColor.white
         cell.backgroundImageView.alpha = 0.7
@@ -216,7 +216,12 @@ extension NavigationViewController: UITableViewDataSource{
         
         
         cell.articleImageView.image = article.getImage()
-        cell.articleInfoOutlet.text = article.getInfo()
+        
+        if article.getInfo() != "" {
+            cell.articleInfoOutlet.text = article.getInfo()
+        }else {
+            cell.articleInfoOutlet.text = "Keine Informationen zu diesem Produkt."
+        }
         cell.articleNameOutlet.text = article.getName()
         cell.articlePriceOutlet.text = article.getPrice()
         cell.articleNodeNumber = article.getNode()
