@@ -19,6 +19,8 @@ class RoutingViewController: UIViewController, ImageTransfer {
     var nodesInRoute = [Int]()
     var pixelCoordinatesInRoute = [CGPoint]()
     
+    var recursiveCounter = 0
+    
     override func viewWillAppear(_ animated: Bool) {
         navigationArrowImage.isHidden = true
     }
@@ -28,6 +30,8 @@ class RoutingViewController: UIViewController, ImageTransfer {
         
        navigation.delegate = self
        navigation.drawImage(nodes: nodesInRoute)
+        
+        moveNavigationArrow()
     }
     
     func receiveImage(image: UIImage) {
@@ -42,6 +46,26 @@ class RoutingViewController: UIViewController, ImageTransfer {
 
     override func viewDidAppear(_ animated: Bool) {
         navigationArrowImage.isHidden = false
+    }
+    
+    func moveNavigationArrow(){
+        
+        let startingPoint = CGPoint(x: routeImageView.center.x - routeImageView.frame.size.width/2, y: routeImageView.center.y - routeImageView.frame.size.height/2)
+        
+        if recursiveCounter < pixelCoordinatesInRoute.count {
+            
+             navigationArrowImage.center = CGPoint(x: startingPoint.x + pixelCoordinatesInRoute[recursiveCounter].x/3, y: startingPoint.y + pixelCoordinatesInRoute[recursiveCounter].y/3)
+            
+            let timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: false) { (timer) in
+                
+                self.recursiveCounter += 1
+                self.moveNavigationArrow()
+            }
+        }else{
+            recursiveCounter = 0
+            moveNavigationArrow()
+        }
+        
     }
     
 }

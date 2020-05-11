@@ -81,21 +81,6 @@ class NavigationViewController: UIViewController, UITableViewDelegate, Calculati
         // Live auf Änderungen im TextField reagiern
         searchTextField.addTarget(self, action: #selector(NavigationViewController.textFieldDidChange), for: UIControl.Event.editingChanged)
         
-        //NavigationBar Bild hinzufügen und ausrichten
-        let titleImage = UIImage(named: "Needigator_transparent")
-        let titleImageView = UIImageView(image: titleImage )
-        
-        let bannerWidth = navigationController?.navigationBar.frame.size.width
-        let bannerHeight = navigationController?.navigationBar.frame.size.height
-        
-        let bannerX = bannerWidth! / 2 - (titleImage?.size.width)! / 2
-        let bannerY = bannerHeight! / 2 - (titleImage?.size.height)! / 2
-        
-        titleImageView.frame = CGRect(x: bannerX, y: bannerY, width: bannerWidth!, height: bannerHeight!)
-        
-        titleImageView.contentMode = .scaleAspectFit
-        navigationItem.titleView = titleImageView
-        
         articleTableView.reloadData()
 
         //Button Form einstellung
@@ -217,10 +202,10 @@ extension NavigationViewController: UITableViewDataSource{
         
         cell.articleImageView.image = article.getImage()
         
-        if article.getInfo() != "" {
+        if article.getInfo() != " " {
             cell.articleInfoOutlet.text = article.getInfo()
         }else {
-            cell.articleInfoOutlet.text = "Keine Informationen zu diesem Produkt."
+            cell.articleInfoOutlet.text = "Keine Produktinformation"
         }
         cell.articleNameOutlet.text = article.getName()
         cell.articlePriceOutlet.text = article.getPrice()
@@ -235,14 +220,17 @@ extension NavigationViewController: UITableViewDataSource{
 extension NavigationViewController: AutomaticSearchTableTableViewCellDelegate {
     func automaticSearchTableTableViewCell(_ automaticSearchTableTableViewCell: AutomaticSearchTableTableViewCell, articleName item: Int) {
         
+        if !selectedItems.contains(item) {
+            
+            automaticSearchTableTableViewCell.amountOfItem += 1
+            automaticSearchTableTableViewCell.amountItemLabel.text = String(amountOfItems)
+            selectedItems.append(item)
+            print("Items: \(selectedItems)")
+            selectedArticles.append(automaticSearchTableTableViewCell.articleNameOutlet.text!)
+        }
         
-        amountOfItems += 1
-        amountItemsOutlet.text = String(amountOfItems)
         
-        selectedItems.append(item)
-        print("Items: \(selectedItems)")
         
-        selectedArticles.append(automaticSearchTableTableViewCell.articleNameOutlet.text!)
         
         UIView.animate(withDuration: 0.2) {
             self.addedWindowView.alpha = 1.0
