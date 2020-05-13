@@ -13,7 +13,10 @@ class KategorieViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+                let testImage = UIImage(named: "Eier_aus Freilandhaltung_38_1,59")
+               let testImageView = UIImageView(image: testImage)
+               testImageView.frame = CGRect(origin: CGPoint(x: 200, y: 700), size: CGSize(width: 20, height: 20))
+               self.view.addSubview(testImageView)
     }
     
 
