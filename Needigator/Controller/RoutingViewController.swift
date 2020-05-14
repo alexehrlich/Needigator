@@ -14,10 +14,15 @@ class RoutingViewController: UIViewController, ImageTransfer {
     
     @IBOutlet weak var routeImageView: UIImageView!
     @IBOutlet weak var navigationArrowImage: UIImageView!
+    @IBOutlet weak var backgroundImageView: UIImageView!
     
     var navigation = Navigation()
     var nodesInRoute = [Int]()
     var pixelCoordinatesInRoute = [CGPoint]()
+    var pixelCordinatesOfNodesInRoute = [Int:CGPoint]()
+    
+    let articleDataBase = ArticleDataBase()
+   
     
     var recursiveCounter = 0
     var secondRecursiveCounter = 0
@@ -29,12 +34,42 @@ class RoutingViewController: UIViewController, ImageTransfer {
     var firstHalfDone = false
     
     
+    //InformationView Stuff
+    
+    
+    @IBOutlet weak var informationView: UIView!
+    @IBOutlet weak var articleNameInView: UILabel!
+    @IBOutlet weak var articlePriceInView: UILabel!
+    @IBOutlet weak var articleImageView: UIImageView!
+    
+    let blurEffectView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffect.Style.light))
+      
+    
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         navigationArrowImage.isHidden = true
+        informationView.alpha = 0
+        
+        for node in nodesInRoute{
+            let startingPoint = CGPoint(x: routeImageView.center.x - routeImageView.frame.size.width/2, y: routeImageView.center.y - routeImageView.frame.size.height/2)
+            let newProductPinButton = UIButton()
+            newProductPinButton.frame = CGRect(origin: CGPoint(x: startingPoint.x + pixelCordinatesOfNodesInRoute[node]!.x/3, y: startingPoint.y + pixelCordinatesOfNodesInRoute[node]!.y/3), size: CGSize(width: 20, height: 20))
+            newProductPinButton.center = CGPoint(x: startingPoint.x + pixelCordinatesOfNodesInRoute[node]!.x/3, y: startingPoint.y + pixelCordinatesOfNodesInRoute[node]!.y/3 - newProductPinButton.frame.size.height/2)
+            newProductPinButton.setImage(UIImage(named: "product_map"), for: .normal)
+            newProductPinButton.imageView?.tintColor = .white
+            newProductPinButton.addTarget(self, action: #selector(productMapButtonPressed), for: .touchUpInside)
+            newProductPinButton.alpha = 1
+            newProductPinButton.isHidden = false
+            newProductPinButton.tag = node
+            self.view.addSubview(newProductPinButton)
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        informationView.layer.cornerRadius = 10
         
         navigation.delegate = self
         navigation.drawImage(nodes: nodesInRoute)
@@ -142,5 +177,55 @@ class RoutingViewController: UIViewController, ImageTransfer {
         }
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        let touch = touches.first
+        
+        if touch?.view != informationView {
+            
+            UIView.animate(withDuration: 0.5) {
+                self.informationView.alpha = 0
+                self.blurEffectView.removeFromSuperview()
+            }
+            
+        }
+        
+            }
+    
+    @objc func productMapButtonPressed(button: UIButton){
+        
+        print(button.tag)
+        
+        blurEffectView.frame = view.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.addSubview(blurEffectView)
+        
+        //INFO: positionierung funktioniet noch nicht!
+        informationView.frame.origin = CGPoint(x: button.center.x , y: button.center.y + button.frame.size.height/2)
+        
+        for article in articleDataBase.items {
+            
+            if button.tag == article.getNode() {
+                
+                articleImageView.image = article.getImage()
+                articleNameInView.text = article.getName()
+                articlePriceInView.text = article.getPrice()
+            }
+        }
+        
+        informationView.backgroundColor = .white
+        self.view.addSubview(informationView)
+        informationView.alpha = 0
+        UIView.animate(withDuration: 0.5) {
+            self.informationView.alpha = 1
+        }
+    }
+    
+    func setViewInformation(){
+        
+    }
+    
     
 }
+
+

@@ -106,6 +106,7 @@ class NavigationViewController: UIViewController, UITableViewDelegate, Calculati
             
             let destVC = segue.destination as! RoutingViewController
             destVC.nodesInRoute = selectedItems
+            destVC.pixelCordinatesOfNodesInRoute = navigation.market.pixelsOfAllNodes
         }
         
         else if segue.identifier == "goToCartVC" {
@@ -127,7 +128,6 @@ class NavigationViewController: UIViewController, UITableViewDelegate, Calculati
             
             UIView.animate(withDuration: 0.2) {
                 self.calculatingView.alpha = 1.0
-                print("ALPHA 1.0")
             }
             
             for i in 1...8 {
@@ -228,8 +228,6 @@ extension NavigationViewController: AutomaticSearchTableTableViewCellDelegate {
             print("Items: \(selectedItems)")
             selectedArticles.append(automaticSearchTableTableViewCell.articleNameOutlet.text!)
         }
-        
-        
         
         
         UIView.animate(withDuration: 0.2) {
