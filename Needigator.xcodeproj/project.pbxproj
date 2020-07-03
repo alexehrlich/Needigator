@@ -26,7 +26,7 @@
 		1D8DAF2D242A994200B4DBA8 /* RoutingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8DAF2C242A994200B4DBA8 /* RoutingViewController.swift */; };
 		1DC109CD24201339007AA117 /* ArticleDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC109CC24201339007AA117 /* ArticleDataBase.swift */; };
 		1DF4FC1F241F34BF0058FF02 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF4FC1E241F34BF0058FF02 /* WelcomeViewController.swift */; };
-		1DF4FC21241F36390058FF02 /* AngebotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF4FC20241F36390058FF02 /* AngebotViewController.swift */; };
+		1DF4FC21241F36390058FF02 /* ShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF4FC20241F36390058FF02 /* ShoppingListViewController.swift */; };
 		1DF4FC23241F3A730058FF02 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF4FC22241F3A730058FF02 /* NavigationViewController.swift */; };
 		1DF4FC25241F3A810058FF02 /* WhateverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF4FC24241F3A810058FF02 /* WhateverViewController.swift */; };
 		1DF4FC27241F3B060058FF02 /* KategorieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF4FC26241F3B060058FF02 /* KategorieViewController.swift */; };
@@ -55,7 +55,7 @@
 		1D8DAF2C242A994200B4DBA8 /* RoutingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutingViewController.swift; sourceTree = "<group>"; };
 		1DC109CC24201339007AA117 /* ArticleDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDataBase.swift; sourceTree = "<group>"; };
 		1DF4FC1E241F34BF0058FF02 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
-		1DF4FC20241F36390058FF02 /* AngebotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngebotViewController.swift; sourceTree = "<group>"; };
+		1DF4FC20241F36390058FF02 /* ShoppingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListViewController.swift; sourceTree = "<group>"; };
 		1DF4FC22241F3A730058FF02 /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 		1DF4FC24241F3A810058FF02 /* WhateverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhateverViewController.swift; sourceTree = "<group>"; };
 		1DF4FC26241F3B060058FF02 /* KategorieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KategorieViewController.swift; sourceTree = "<group>"; };
@@ -135,7 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				1DF4FC1E241F34BF0058FF02 /* WelcomeViewController.swift */,
-				1DF4FC20241F36390058FF02 /* AngebotViewController.swift */,
+				1DF4FC20241F36390058FF02 /* ShoppingListViewController.swift */,
 				1DF4FC22241F3A730058FF02 /* NavigationViewController.swift */,
 				1DF4FC24241F3A810058FF02 /* WhateverViewController.swift */,
 				1DF4FC26241F3B060058FF02 /* KategorieViewController.swift */,
@@ -233,7 +233,7 @@
 				1DF4FC25241F3A810058FF02 /* WhateverViewController.swift in Sources */,
 				1D2E5841241E31CE002D341D /* SceneDelegate.swift in Sources */,
 				1D79972F2425FA22007CE3A5 /* RGB32.swift in Sources */,
-				1DF4FC21241F36390058FF02 /* AngebotViewController.swift in Sources */,
+				1DF4FC21241F36390058FF02 /* ShoppingListViewController.swift in Sources */,
 				1D8DAF2D242A994200B4DBA8 /* RoutingViewController.swift in Sources */,
 				1D7997272425EAEB007CE3A5 /* Node.swift in Sources */,
 				1D2593C5243372C4008F5BAC /* Market.swift in Sources */,

@@ -80,7 +80,6 @@ class NavigationViewController: UIViewController, UITableViewDelegate, Calculati
         
         // Live auf Änderungen im TextField reagiern
         searchTextField.addTarget(self, action: #selector(NavigationViewController.textFieldDidChange), for: UIControl.Event.editingChanged)
-        
         articleTableView.reloadData()
 
         //Button Form einstellung
