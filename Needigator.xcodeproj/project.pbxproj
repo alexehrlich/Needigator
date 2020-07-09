@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1D00D647242112D300DBBC41 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1D00D646242112D300DBBC41 /* README.txt */; };
+		1D2165D424B518F4004E2A0B /* MarketSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2165D324B518F4004E2A0B /* MarketSearchViewController.swift */; };
 		1D2593C5243372C4008F5BAC /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2593C4243372C4008F5BAC /* Market.swift */; };
 		1D2593C924337DC5008F5BAC /* AllRoutes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1D2593C824337DC4008F5BAC /* AllRoutes.txt */; };
 		1D2E583F241E31CE002D341D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2E583E241E31CE002D341D /* AppDelegate.swift */; };
@@ -23,18 +24,20 @@
 		1D7DBD9924274D53009E9D4E /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7DBD9824274D53009E9D4E /* Navigation.swift */; };
 		1D7FAB502420B8F5001A5215 /* AutomaticSearchTableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7FAB4E2420B8F5001A5215 /* AutomaticSearchTableTableViewCell.swift */; };
 		1D7FAB512420B8F5001A5215 /* AutomaticSearchTableTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D7FAB4F2420B8F5001A5215 /* AutomaticSearchTableTableViewCell.xib */; };
+		1D8D6E3E24B5176C007E8059 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8D6E3D24B5176C007E8059 /* CardViewController.swift */; };
+		1D8D6E4024B5177A007E8059 /* CardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D8D6E3F24B5177A007E8059 /* CardViewController.xib */; };
 		1D8DAF2D242A994200B4DBA8 /* RoutingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8DAF2C242A994200B4DBA8 /* RoutingViewController.swift */; };
 		1DC109CD24201339007AA117 /* ArticleDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC109CC24201339007AA117 /* ArticleDataBase.swift */; };
 		1DF4FC1F241F34BF0058FF02 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF4FC1E241F34BF0058FF02 /* WelcomeViewController.swift */; };
 		1DF4FC21241F36390058FF02 /* ShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF4FC20241F36390058FF02 /* ShoppingListViewController.swift */; };
 		1DF4FC23241F3A730058FF02 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF4FC22241F3A730058FF02 /* NavigationViewController.swift */; };
-		1DF4FC25241F3A810058FF02 /* WhateverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF4FC24241F3A810058FF02 /* WhateverViewController.swift */; };
 		1DF4FC27241F3B060058FF02 /* KategorieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF4FC26241F3B060058FF02 /* KategorieViewController.swift */; };
 		1DF4FC29241F3B970058FF02 /* Kategorien.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF4FC28241F3B970058FF02 /* Kategorien.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1D00D646242112D300DBBC41 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		1D2165D324B518F4004E2A0B /* MarketSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketSearchViewController.swift; sourceTree = SOURCE_ROOT; };
 		1D2593C4243372C4008F5BAC /* Market.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
 		1D2593C824337DC4008F5BAC /* AllRoutes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AllRoutes.txt; sourceTree = "<group>"; };
 		1D2E583B241E31CE002D341D /* Needigator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Needigator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,12 +55,13 @@
 		1D7DBD9824274D53009E9D4E /* Navigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
 		1D7FAB4E2420B8F5001A5215 /* AutomaticSearchTableTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomaticSearchTableTableViewCell.swift; sourceTree = "<group>"; };
 		1D7FAB4F2420B8F5001A5215 /* AutomaticSearchTableTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AutomaticSearchTableTableViewCell.xib; sourceTree = "<group>"; };
+		1D8D6E3D24B5176C007E8059 /* CardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
+		1D8D6E3F24B5177A007E8059 /* CardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardViewController.xib; sourceTree = "<group>"; };
 		1D8DAF2C242A994200B4DBA8 /* RoutingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutingViewController.swift; sourceTree = "<group>"; };
 		1DC109CC24201339007AA117 /* ArticleDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDataBase.swift; sourceTree = "<group>"; };
 		1DF4FC1E241F34BF0058FF02 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		1DF4FC20241F36390058FF02 /* ShoppingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListViewController.swift; sourceTree = "<group>"; };
 		1DF4FC22241F3A730058FF02 /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
-		1DF4FC24241F3A810058FF02 /* WhateverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhateverViewController.swift; sourceTree = "<group>"; };
 		1DF4FC26241F3B060058FF02 /* KategorieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KategorieViewController.swift; sourceTree = "<group>"; };
 		1DF4FC28241F3B970058FF02 /* Kategorien.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kategorien.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -127,6 +131,8 @@
 				1D2E5847241E31D0002D341D /* Assets.xcassets */,
 				1D7FAB4E2420B8F5001A5215 /* AutomaticSearchTableTableViewCell.swift */,
 				1D7FAB4F2420B8F5001A5215 /* AutomaticSearchTableTableViewCell.xib */,
+				1D8D6E3F24B5177A007E8059 /* CardViewController.xib */,
+				1D8D6E3D24B5176C007E8059 /* CardViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -134,10 +140,10 @@
 		1D2E5855241E3217002D341D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				1D2165D324B518F4004E2A0B /* MarketSearchViewController.swift */,
 				1DF4FC1E241F34BF0058FF02 /* WelcomeViewController.swift */,
 				1DF4FC20241F36390058FF02 /* ShoppingListViewController.swift */,
 				1DF4FC22241F3A730058FF02 /* NavigationViewController.swift */,
-				1DF4FC24241F3A810058FF02 /* WhateverViewController.swift */,
 				1DF4FC26241F3B060058FF02 /* KategorieViewController.swift */,
 				1D8DAF2C242A994200B4DBA8 /* RoutingViewController.swift */,
 				1D5D03842454C12000E7AA22 /* CartTableViewController.swift */,
@@ -207,6 +213,7 @@
 				1D2E584B241E31D0002D341D /* LaunchScreen.storyboard in Resources */,
 				1D2E5848241E31D0002D341D /* Assets.xcassets in Resources */,
 				1D7FAB512420B8F5001A5215 /* AutomaticSearchTableTableViewCell.xib in Resources */,
+				1D8D6E4024B5177A007E8059 /* CardViewController.xib in Resources */,
 				1D2E5846241E31CE002D341D /* Main.storyboard in Resources */,
 				1D00D647242112D300DBBC41 /* README.txt in Resources */,
 			);
@@ -222,15 +229,16 @@
 				1DF4FC23241F3A730058FF02 /* NavigationViewController.swift in Sources */,
 				1DF4FC29241F3B970058FF02 /* Kategorien.swift in Sources */,
 				1D2E5857241E329A002D341D /* Article.swift in Sources */,
+				1D8D6E3E24B5176C007E8059 /* CardViewController.swift in Sources */,
 				1D7997292425ED73007CE3A5 /* Route.swift in Sources */,
 				1DF4FC27241F3B060058FF02 /* KategorieViewController.swift in Sources */,
 				1DF4FC1F241F34BF0058FF02 /* WelcomeViewController.swift in Sources */,
 				1DC109CD24201339007AA117 /* ArticleDataBase.swift in Sources */,
+				1D2165D424B518F4004E2A0B /* MarketSearchViewController.swift in Sources */,
 				1D5D03852454C12000E7AA22 /* CartTableViewController.swift in Sources */,
 				1D7FAB502420B8F5001A5215 /* AutomaticSearchTableTableViewCell.swift in Sources */,
 				1D7DBD9924274D53009E9D4E /* Navigation.swift in Sources */,
 				1D2E583F241E31CE002D341D /* AppDelegate.swift in Sources */,
-				1DF4FC25241F3A810058FF02 /* WhateverViewController.swift in Sources */,
 				1D2E5841241E31CE002D341D /* SceneDelegate.swift in Sources */,
 				1D79972F2425FA22007CE3A5 /* RGB32.swift in Sources */,
 				1DF4FC21241F36390058FF02 /* ShoppingListViewController.swift in Sources */,
