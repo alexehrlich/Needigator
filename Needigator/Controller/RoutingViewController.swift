@@ -73,13 +73,15 @@ class RoutingViewController: UIViewController, ImageTransfer {
         
         navigation.delegate = self
         navigation.drawImage(nodes: nodesInRoute)
+        navigationArrowImage.tintColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
         navigationArrowImage.alpha = 0
         
         seconNAvigationArrowImage = UIImage(systemName: "cart")!
         secondNavigationArrowImageView = UIImageView(image: seconNAvigationArrowImage)
-        secondNavigationArrowImageView.tintColor = .white
+        secondNavigationArrowImageView.tintColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
         secondNavigationArrowImageView.contentMode = .scaleAspectFit
         secondNavigationArrowImageView.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 20, height: 20))
+        secondNavigationArrowImageView.isHidden = true
         self.view.addSubview(secondNavigationArrowImageView)
         
         
@@ -161,15 +163,13 @@ class RoutingViewController: UIViewController, ImageTransfer {
         
         if secondRecursiveCounter < pixelCoordinatesInRoute.count {
             
-           
-            
             secondNavigationArrowImageView.center = CGPoint(x: startingPoint.x + pixelCoordinatesInRoute[secondRecursiveCounter].x/3, y: startingPoint.y + pixelCoordinatesInRoute[secondRecursiveCounter].y/3)
-            
+            secondNavigationArrowImageView.isHidden = false
             let _ = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: false) { (timer) in
                 
 
                 self.secondRecursiveCounter += 1
-                //self.moveSecondNavigationArrow()
+               
             }
         }else{
             secondRecursiveCounter = 0

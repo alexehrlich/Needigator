@@ -190,10 +190,7 @@ extension NavigationViewController: UITableViewDataSource{
         
         cell.delegate = self
         
-//        cell.clearBackgroundView.backgroundColor = UIColor.clear
-        cell.backgroundColor = UIColor.clear
-        cell.backgroundImageView.backgroundColor = UIColor.white
-        cell.backgroundImageView.alpha = 0.7
+
         cell.backgroundImageView.layer.cornerRadius = 10
         cell.selectionStyle = .default
         

@@ -11,7 +11,8 @@ import UIKit
 class WelcomeViewController: UIViewController {
     
 
-    @IBOutlet weak var shoppingPlanButton: UIButton!
+   
+    @IBOutlet weak var shoppingButtonView: UIView!
     @IBOutlet weak var shoppingListButton: UIButton!
     @IBOutlet weak var helpButton: UIButton!
     
@@ -20,7 +21,7 @@ class WelcomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         title = "Wilkommen im Markt"
-      
+       
         
     }
     
@@ -28,11 +29,11 @@ class WelcomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        shoppingPlanButton.layer.cornerRadius = 12
-        shoppingPlanButton.layer.shadowColor = UIColor.gray.cgColor
-        shoppingPlanButton.layer.shadowOpacity = 0.4
-        shoppingPlanButton.layer.shadowOffset = .zero
-        shoppingPlanButton.layer.shadowRadius = 10
+        shoppingButtonView.layer.cornerRadius = 12
+        shoppingButtonView.layer.shadowColor = UIColor.gray.cgColor
+        shoppingButtonView.layer.shadowOpacity = 0.4
+        shoppingButtonView.layer.shadowOffset = .zero
+        shoppingButtonView.layer.shadowRadius = 10
         
         shoppingListButton.layer.cornerRadius = 12
         shoppingListButton.layer.shadowColor = UIColor.gray.cgColor

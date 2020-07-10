@@ -14,19 +14,24 @@ protocol MarketSelectedProtocol {
 
 class CardViewController: UIViewController {
     
+    
     @IBOutlet weak var handleArea: UIView!
     @IBOutlet weak var dragBar: UIView!
-    @IBOutlet weak var goToMarketButton: UIButton!
+  
+    @IBOutlet weak var getLocationView: UIView!
+    
+    @IBOutlet weak var myMarketButtonView: UIView!
+    
     
     var delegate: MarketSelectedProtocol!
     
     override func viewDidLoad() {
         dragBar.layer.cornerRadius = dragBar.frame.size.height/2
-        goToMarketButton.layer.cornerRadius = 12
+        getLocationView.layer.cornerRadius = getLocationView.frame.size.height/2
+       myMarketButtonView.layer.cornerRadius = myMarketButtonView.frame.size.height/2
     }
     
-    
-    @IBAction func visitSelectedMarket(_ sender: UIButton) {
+    @IBAction func myMarketButtonPressed(_ sender: UIButton) {
         delegate.marketHasBeenChoosen()
     }
     

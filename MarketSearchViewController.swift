@@ -21,6 +21,7 @@ class MarketSearchViewController: UIViewController, MarketSelectedProtocol{
     
     let cardHeight:CGFloat = 600
     let cardHandleAreaHeight:CGFloat = 150
+
     
     
     var cardVisible = false
@@ -37,14 +38,16 @@ class MarketSearchViewController: UIViewController, MarketSelectedProtocol{
         setupCard()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        animateTransitionIfNeeded(state: nextState, duration: 0.5)
+   
+    
+    override func viewWillAppear(_ animated: Bool) {
+        cardVisible = true
+        animateTransitionIfNeeded(state: nextState, duration: 0.1)
     }
     
+   
+    
     func setupCard() {
-        visualEffectView = UIVisualEffectView()
-        visualEffectView.frame = self.view.frame
-        self.view.addSubview(visualEffectView)
         
         cardViewController = CardViewController(nibName:"CardViewController", bundle:nil)
         cardViewController.delegate = self
@@ -65,9 +68,10 @@ class MarketSearchViewController: UIViewController, MarketSelectedProtocol{
         
         
     }
+    
+   
 
-    @objc
-    func handleCardTap(recognzier:UITapGestureRecognizer) {
+    @objc func handleCardTap(recognzier:UITapGestureRecognizer) {
         switch recognzier.state {
         case .ended:
             animateTransitionIfNeeded(state: nextState, duration: 0.9)
@@ -106,26 +110,13 @@ class MarketSearchViewController: UIViewController, MarketSelectedProtocol{
             }
             
             frameAnimator.addCompletion { _ in
+            
                 self.cardVisible = !self.cardVisible
                 self.runningAnimations.removeAll()
             }
             
             frameAnimator.startAnimation()
             runningAnimations.append(frameAnimator)
-            
-    
-            let blurAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 1) {
-                switch state {
-                case .expanded:
-                    self.visualEffectView.effect = UIBlurEffect(style: .dark)
-                case .collapsed:
-                    self.visualEffectView.effect = nil
-                }
-            }
-            
-            blurAnimator.startAnimation()
-            runningAnimations.append(blurAnimator)
-            
         }
     }
     
@@ -155,6 +146,7 @@ class MarketSearchViewController: UIViewController, MarketSelectedProtocol{
     
     //Segue
     func marketHasBeenChoosen() {
+        
         performSegue(withIdentifier: "goToWelcomeScreen", sender: self)
     }
     
