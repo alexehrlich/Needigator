@@ -11,8 +11,11 @@
             <connections>
                 <outlet property="dragBar" destination="zJO-XV-NL4" id="nTz-L9-emy"/>
                 <outlet property="getLocationView" destination="9Cd-Pj-tuJ" id="2EI-ov-KDT"/>
-                <outlet property="handleArea" destination="r6F-YW-eeF" id="1Y4-Bw-5yT"/>
+                <outlet property="handleArea" destination="ckI-vR-0TA" id="sfe-fV-jdy"/>
+                <outlet property="headBar" destination="r6F-YW-eeF" id="1Y4-Bw-5yT"/>
                 <outlet property="myMarketButtonView" destination="onc-BR-Eaq" id="4X5-4C-wkO"/>
+                <outlet property="texFieldRecteangleView" destination="Jjd-9e-3No" id="XIz-85-7VP"/>
+                <outlet property="textField" destination="OX4-co-RnA" id="ghD-BB-VYG"/>
                 <outlet property="view" destination="iN0-l3-epB" id="DJP-sT-hnF"/>
             </connections>
         </placeholder>
@@ -32,17 +35,14 @@
                                 <constraint firstAttribute="width" constant="40" id="RBz-3m-ETi"/>
                             </constraints>
                         </view>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Suche nach einem Markt" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xc9-Qp-9rQ">
-                            <rect key="frame" x="20" y="27" width="335" height="34"/>
-                            <color key="backgroundColor" red="0.97254901959999995" green="0.95294117649999999" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </textField>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Cd-Pj-tuJ">
                             <rect key="frame" x="20" y="76" width="140" height="40"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j0S-Yy-iCp">
                                     <rect key="frame" x="0.0" y="0.0" width="140" height="40"/>
+                                    <connections>
+                                        <action selector="myLocationButtonPressed:" destination="-1" eventType="touchUpInside" id="qVt-9C-mwJ"/>
+                                    </connections>
                                 </button>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mappin.and.ellipse" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ZGp-NZ-GKU">
                                     <rect key="frame" x="10" y="4.5" width="30" height="30.5"/>
@@ -119,19 +119,47 @@
                                 <constraint firstAttribute="height" constant="40" id="u6p-Bp-Ji2"/>
                             </constraints>
                         </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jjd-9e-3No">
+                            <rect key="frame" x="20" y="32" width="335" height="34"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="34" id="zEJ-KH-FL3"/>
+                            </constraints>
+                        </view>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Suche deinen Markt" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OX4-co-RnA">
+                            <rect key="frame" x="20" y="32" width="335" height="34"/>
+                            <color key="backgroundColor" red="0.97254901959999995" green="0.95294117649999999" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="34" id="arc-Sq-Lg2"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                        </textField>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ckI-vR-0TA">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="cud-yc-Jev"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" red="1" green="0.60392156860000001" blue="0.46274509800000002" alpha="0.83999999999999997" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="onc-BR-Eaq" secondAttribute="trailing" constant="20" id="1iv-aJ-mEK"/>
+                        <constraint firstItem="Jjd-9e-3No" firstAttribute="leading" secondItem="r6F-YW-eeF" secondAttribute="leading" constant="20" id="3JT-v5-Oag"/>
                         <constraint firstItem="zJO-XV-NL4" firstAttribute="centerX" secondItem="r6F-YW-eeF" secondAttribute="centerX" id="4t4-pW-5yv"/>
+                        <constraint firstAttribute="trailing" secondItem="OX4-co-RnA" secondAttribute="trailing" constant="20" id="5OL-xF-GqY"/>
+                        <constraint firstItem="OX4-co-RnA" firstAttribute="leading" secondItem="r6F-YW-eeF" secondAttribute="leading" constant="20" id="6Q1-b3-qyE"/>
+                        <constraint firstItem="onc-BR-Eaq" firstAttribute="top" secondItem="9Cd-Pj-tuJ" secondAttribute="top" id="6fe-r6-UXh"/>
+                        <constraint firstAttribute="trailing" secondItem="ckI-vR-0TA" secondAttribute="trailing" id="ATE-fs-JFc"/>
+                        <constraint firstAttribute="bottom" secondItem="onc-BR-Eaq" secondAttribute="bottom" constant="34" id="HH3-YV-Qbl"/>
                         <constraint firstAttribute="height" constant="150" id="I14-5u-1pH"/>
                         <constraint firstItem="9Cd-Pj-tuJ" firstAttribute="leading" secondItem="r6F-YW-eeF" secondAttribute="leading" constant="20" id="Lwx-mW-Cez"/>
-                        <constraint firstItem="9Cd-Pj-tuJ" firstAttribute="top" secondItem="xc9-Qp-9rQ" secondAttribute="bottom" constant="15" id="SBy-7I-zhT"/>
-                        <constraint firstItem="xc9-Qp-9rQ" firstAttribute="leading" secondItem="r6F-YW-eeF" secondAttribute="leading" constant="20" id="X5t-UV-trr"/>
                         <constraint firstItem="zJO-XV-NL4" firstAttribute="top" secondItem="r6F-YW-eeF" secondAttribute="top" constant="10" id="XSl-fl-k5i"/>
-                        <constraint firstItem="xc9-Qp-9rQ" firstAttribute="top" secondItem="zJO-XV-NL4" secondAttribute="bottom" constant="10" id="bgA-ft-Kmz"/>
-                        <constraint firstAttribute="trailing" secondItem="xc9-Qp-9rQ" secondAttribute="trailing" constant="20" id="peP-BA-zgN"/>
-                        <constraint firstItem="onc-BR-Eaq" firstAttribute="top" secondItem="xc9-Qp-9rQ" secondAttribute="bottom" constant="15" id="sAR-zk-49P"/>
+                        <constraint firstItem="Jjd-9e-3No" firstAttribute="top" secondItem="zJO-XV-NL4" secondAttribute="bottom" constant="15" id="Zpd-13-Yu0"/>
+                        <constraint firstAttribute="trailing" secondItem="Jjd-9e-3No" secondAttribute="trailing" constant="20" id="eFa-eg-bvM"/>
+                        <constraint firstItem="ckI-vR-0TA" firstAttribute="leading" secondItem="r6F-YW-eeF" secondAttribute="leading" id="eWr-ib-yoI"/>
+                        <constraint firstItem="ckI-vR-0TA" firstAttribute="top" secondItem="r6F-YW-eeF" secondAttribute="top" id="hvc-Xk-E5T"/>
+                        <constraint firstItem="OX4-co-RnA" firstAttribute="top" secondItem="zJO-XV-NL4" secondAttribute="bottom" constant="15" id="mVJ-vh-eo8"/>
                     </constraints>
                 </view>
             </subviews>

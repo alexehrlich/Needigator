@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import MapKit
 
-class MarketSearchViewController: UIViewController, MarketSelectedProtocol{
+class MarketSearchViewController: UIViewController, MarketViewControllerButtonDelegate{
+    
+    
     
     
     enum CardState {
@@ -21,7 +24,8 @@ class MarketSearchViewController: UIViewController, MarketSelectedProtocol{
     
     let cardHeight:CGFloat = 600
     let cardHandleAreaHeight:CGFloat = 150
-
+    
+    @IBOutlet weak var mapView: MKMapView!
     
     
     var cardVisible = false
@@ -34,18 +38,37 @@ class MarketSearchViewController: UIViewController, MarketSelectedProtocol{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         title = "Marktsuche"
+        
+        
+        //Map setup
+        let appleHQ = CLLocation(latitude: 37.335556, longitude: -122.009167)
+        let regionRadius : CLLocationDistance = 1000.0
+        let region = MKCoordinateRegion(center: appleHQ.coordinate, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
+        mapView.setRegion(region, animated: true)
+        
+        //Tastatur soll verschwinden, wenn irgendwo getippt wird
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        view.addGestureRecognizer(tap)
+        
+        //NotifcationCenter setup for keyboard
+        NotificationCenter.default.addObserver(self, selector: #selector(prepareKeyBoardHideAndShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(prepareKeyBoardHideAndShow), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        
         setupCard()
     }
     
-   
+    
     
     override func viewWillAppear(_ animated: Bool) {
         cardVisible = true
         animateTransitionIfNeeded(state: nextState, duration: 0.1)
     }
     
-   
+    
     
     func setupCard() {
         
@@ -69,15 +92,20 @@ class MarketSearchViewController: UIViewController, MarketSelectedProtocol{
         
     }
     
-   
 
     @objc func handleCardTap(recognzier:UITapGestureRecognizer) {
-        switch recognzier.state {
-        case .ended:
-            animateTransitionIfNeeded(state: nextState, duration: 0.9)
-        default:
-            break
-        }
+
+            print(cardViewController.tapIsWithinTextField)
+            switch recognzier.state {
+            case .ended:
+                animateTransitionIfNeeded(state: nextState, duration: 0.9)
+                
+                if cardVisible == true {
+                    self.view.endEditing(true)
+                }
+            default:
+                break
+            }
     }
     
     @objc
@@ -86,9 +114,13 @@ class MarketSearchViewController: UIViewController, MarketSelectedProtocol{
         case .began:
             startInteractiveTransition(state: nextState, duration: 0.9)
         case .changed:
-            let translation = recognizer.translation(in: self.cardViewController.handleArea)
+            let translation = recognizer.translation(in: self.cardViewController.headBar)
             var fractionComplete = translation.y / cardHeight
             fractionComplete = cardVisible ? fractionComplete : -fractionComplete
+            
+            if fractionComplete > 0 {
+                self.view.endEditing(true)
+            }
             updateInteractiveTransition(fractionCompleted: fractionComplete)
         case .ended:
             continueInteractiveTransition()
@@ -110,8 +142,9 @@ class MarketSearchViewController: UIViewController, MarketSelectedProtocol{
             }
             
             frameAnimator.addCompletion { _ in
-            
+                
                 self.cardVisible = !self.cardVisible
+                
                 self.runningAnimations.removeAll()
             }
             
@@ -146,9 +179,27 @@ class MarketSearchViewController: UIViewController, MarketSelectedProtocol{
     
     //Segue
     func marketHasBeenChoosen() {
-        
+        self.view.endEditing(true)
         performSegue(withIdentifier: "goToWelcomeScreen", sender: self)
+    }
+    
+    func chooseUsersLocation() {
+        //        choose the useres location and display it on the map
+    }
+    
+    func keyBoardShouldClose() {
+        animateTransitionIfNeeded(state: nextState, duration: 0.9)
+        self.view.endEditing(true)
+    }
+    
+    @objc func prepareKeyBoardHideAndShow(){
+        
+        if cardVisible == false {
+            animateTransitionIfNeeded(state: nextState, duration: 0.9)
+        }
+        
     }
     
     
 }
+
