@@ -15,19 +15,7 @@ protocol AutomaticSearchTableTableViewCellDelegate: AnyObject {
 
 class AutomaticSearchTableTableViewCell: UITableViewCell {
 
-    
-        
-//    @IBOutlet weak var clearBackgroundView: UIView!
-    
-    
-    @IBOutlet weak var articleImageView: UIImageView!
-    @IBOutlet weak var articleNameOutlet: UILabel!
-    @IBOutlet weak var articleInfoOutlet: UILabel!
-    @IBOutlet weak var articlePriceOutlet: UILabel!
-    @IBOutlet weak var backgroundImageView: UIView!
-    @IBOutlet weak var addToRouteButtonBackground: UIView!
-    @IBOutlet weak var amountItemLabel: UILabel!
-    
+
     
     var articleNodeNumber: Int?
     var amountOfItem: Int = 0
@@ -36,44 +24,38 @@ class AutomaticSearchTableTableViewCell: UITableViewCell {
     weak var delegate : AutomaticSearchTableTableViewCellDelegate?
     
     @IBOutlet weak var tableCellView: UIView!
+    @IBOutlet weak var horizontalCardStackView: UIStackView!
+    @IBOutlet weak var leftProductCardView: UIView!
+    @IBOutlet weak var rightProductCardView: UIView!
     
-    @IBOutlet weak var addButtonOutlet: UIButton!
+    
+    @IBOutlet weak var leftCellImage: UIImageView!
+    @IBOutlet weak var leftProductLabel: UILabel!
+    @IBOutlet weak var leftProductInformation: UILabel!
+    @IBOutlet weak var leftProductPrice: UILabel!
+    
+    
+    @IBOutlet weak var rightCellImage: UIImageView!
+    @IBOutlet weak var rightProductLabel: UILabel!
+    @IBOutlet weak var rightProductInformation: UILabel!
+    @IBOutlet weak var rightProductPrice: UILabel!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        addToRouteButtonBackground.layer.cornerRadius = 10
         
+        self.frame.size.height = 10
         
-        //backgroundImageView.frame.size.height = 90
-        self.addButtonOutlet.addTarget(self, action: #selector(addToRouteButtonPressed(_:)), for: .touchUpInside)
-        }
+        leftProductCardView.layer.cornerRadius = 5
+        rightProductCardView.layer.cornerRadius = 5
+   
+    }
+
     override func setSelected(_ selected: Bool, animated: Bool) {
            super.setSelected(selected, animated: animated)
 
            // Configure the view for the selected state
        }
-       
-      
-    @IBAction func addToRouteButtonPressed(_ sender: UIButton) {
-          delegate?.automaticSearchTableTableViewCell(self, articleName: articleNodeNumber!)
-    }
-    
-   
-    @IBAction func increaseItemButtonPressed(_ sender: UIButton) {
-        amountOfItem += 1
-        amountItemLabel.text = String(amountOfItem)
-    }
-    
-    
-    @IBAction func decreaseItemButtonPressed(_ sender: UIButton) {
-        
-        if amountOfItem > 0 {
-            amountOfItem -= 1
-            amountItemLabel.text = String(amountOfItem)
-        }
-        
-    }
 }
 
    

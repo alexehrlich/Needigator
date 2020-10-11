@@ -43,6 +43,8 @@ class NavigationViewController: UIViewController, UITableViewDelegate, Calculati
     //Wenn der Bildschirm auftaucht wenn man wieder zu diesem zurückkehrt, dann soll alles gelöscht sein.
     override func viewWillAppear(_ animated: Bool){
         
+        
+        
         amountItemsOutlet.text = String(amountOfItems)
         
         addedWindowView.alpha = 0
@@ -55,8 +57,6 @@ class NavigationViewController: UIViewController, UITableViewDelegate, Calculati
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        articleTableView.rowHeight = 220
         
         navigation.calculationDelegate = self
         
@@ -178,66 +178,37 @@ extension NavigationViewController: UITableViewDataSource{
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return substringArticles.count
+        
+        if substringArticles.count % 2 == 0 {
+            return substringArticles.count/2
+        }else{
+            return substringArticles.count/2 + 1
+        }
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let article = substringArticles[indexPath.row]
-        
+        let leftArticle = substringArticles[indexPath.row]
+        let rightArticle = substringArticles[indexPath.row + 1]
         let cell = articleTableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as! AutomaticSearchTableTableViewCell
-        
-        cell.delegate = self
-        
-
-        cell.backgroundImageView.layer.cornerRadius = 10
         cell.selectionStyle = .default
         
+        cell.leftCellImage.image = leftArticle.getImage()
+        cell.leftProductLabel.text = leftArticle.getName()
+        cell.leftProductPrice.text = leftArticle.getPrice()
         
-        
-        cell.articleImageView.image = article.getImage()
-        
-        if article.getInfo() != " " {
-            cell.articleInfoOutlet.text = article.getInfo()
-        }else {
-            cell.articleInfoOutlet.text = "Keine Produktinformation"
-        }
-        cell.articleNameOutlet.text = article.getName()
-        cell.articlePriceOutlet.text = article.getPrice()
-        cell.articleNodeNumber = article.getNode()
+        cell.rightCellImage.image = rightArticle.getImage()
+        cell.rightProductLabel.text = rightArticle.getName()
+        cell.rightProductPrice.text = rightArticle.getPrice()
         
         return cell
     }
     
-}
-
-//Diese Delegate-Methode ist notwenidig um die Informationen bei einem Button-Press innerhalb der Zelle zu bekommen
-extension NavigationViewController: AutomaticSearchTableTableViewCellDelegate {
-    func automaticSearchTableTableViewCell(_ automaticSearchTableTableViewCell: AutomaticSearchTableTableViewCell, articleName item: Int) {
-        
-        if !selectedItems.contains(item) {
-            
-            automaticSearchTableTableViewCell.amountOfItem += 1
-            automaticSearchTableTableViewCell.amountItemLabel.text = String(amountOfItems)
-            selectedItems.append(item)
-            print("Items: \(selectedItems)")
-            selectedArticles.append(automaticSearchTableTableViewCell.articleNameOutlet.text!)
-        }
-        
-        
-        UIView.animate(withDuration: 0.2) {
-            self.addedWindowView.alpha = 1.0
-        }
-        UIView.animate(withDuration: 1) {
-            self.addedWindowView.alpha = 0
-        }
-        
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 320
     }
     
-    
 }
-
 
 //Delegate-Methoden um mit der Tabelle zu interagoeren (auf Berührung reagieren)
 extension NavigationViewController: UIScrollViewDelegate {
