@@ -8,22 +8,23 @@
 
 import UIKit
 
-class NavigationViewController: UIViewController, UITableViewDelegate, CalculationComplete{
-    
-    func didFinishWithCalculation() {
-        print("Calculation Done!")
+class NavigationViewController: UIViewController, UITableViewDelegate, SearchTableViewCellDelegate{
+    func getNodeNumberOfLeftProductCard(number: Int) {
+        selectedItems.append(number)
     }
+    
+    func getNodeNumberOfRightProductCard(number: Int) {
+        selectedItems.append(number)
+    }
+    
     
 
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var articleTableView: UITableView!
-    @IBOutlet weak var addedWindowBackgroundView: UIImageView!
+    @IBOutlet weak var productTypeSegmentedControl: UISegmentedControl!
     
-    @IBOutlet weak var addedWindowView: UIView!
-    @IBOutlet weak var calculatingView: UIView!
-    @IBOutlet weak var gearImageView: UIImageView!
     
-   
+    @IBOutlet weak var navigationButtonBackgroundView: UIView!
     @IBOutlet weak var cartButtonOutlet: UIButton!
     @IBOutlet weak var amountItemsOutlet: UILabel!
     
@@ -43,13 +44,6 @@ class NavigationViewController: UIViewController, UITableViewDelegate, Calculati
     //Wenn der Bildschirm auftaucht wenn man wieder zu diesem zurückkehrt, dann soll alles gelöscht sein.
     override func viewWillAppear(_ animated: Bool){
         
-        
-        
-        amountItemsOutlet.text = String(amountOfItems)
-        
-        addedWindowView.alpha = 0
-        calculatingView.alpha = 0
-        
         selectedItems.removeAll()
         substringArticles.removeAll()
         articleTableView.reloadData()
@@ -58,15 +52,13 @@ class NavigationViewController: UIViewController, UITableViewDelegate, Calculati
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigation.calculationDelegate = self
+        navigationButtonBackgroundView.layer.cornerRadius = 5
         
-        //Berechnungs Übergangsfenster
-        calculatingView.alpha = 0
+        //Segmented Control SetUp
+        productTypeSegmentedControl.setTitle("Alle Produkte", forSegmentAt: 0)
+        productTypeSegmentedControl.setTitle("Angebote", forSegmentAt: 1)
         
-        //Einstellungen am Hinzugefügt Fensterchen
-        addedWindowBackgroundView.layer.cornerRadius = 10
-        
-        
+
         //Tastatur soll verschwinden, wenn irgendwo getippt wird
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
         view.addGestureRecognizer(tap)
@@ -81,10 +73,8 @@ class NavigationViewController: UIViewController, UITableViewDelegate, Calculati
         // Live auf Änderungen im TextField reagiern
         searchTextField.addTarget(self, action: #selector(NavigationViewController.textFieldDidChange), for: UIControl.Event.editingChanged)
         articleTableView.reloadData()
-
-        //Button Form einstellung
-        cartButtonOutlet.layer.cornerRadius = 5
     }
+    
     
     
     //Diese Methode wird aufgerufen, wenn der Nutzer eine Änderung im TextField vorgenommen hat. (Ein weiterer Buchstaben getippt z.B.)
@@ -121,37 +111,16 @@ class NavigationViewController: UIViewController, UITableViewDelegate, Calculati
     
     
     @IBAction func searchButtonPressed(_ sender: UIButton) {
-        
-        
-        if selectedItems.isEmpty == false {
-            
-            UIView.animate(withDuration: 0.2) {
-                self.calculatingView.alpha = 1.0
-            }
-            
-            for i in 1...8 {
-                
-                UIView.animate(withDuration: 3.0, animations: {
-                    self.gearImageView.transform = CGAffineTransform(rotationAngle: CGFloat(i) * (180.0 * .pi) / 180.0)
-                })
-            }
-            
-            //Warte bis die Animation ausgeführt ist und perform dann erst den Übergang
-            DispatchQueue.main.asyncAfter(deadline:.now() + 0.1, execute: {
-                self.performSegue(withIdentifier: "goToRouteVC", sender: self)
-                self.searchTextField.text = ""
-            })
-            
+
+        if selectedItems.isEmpty{
+            let alertController = UIAlertController(title: "Ihre Einkaufsliste ist leer!", message:
+                "Für die Routenberechnung muss sich mindestens 1 Artikel im Warenkorb befinden.", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(alertController, animated: true, completion: nil)
             
         }else{
-            let alertController = UIAlertController(title: "Ihr Warenkorb ist leer", message:
-                "Für die Routenberechnung muss sich mindestens 1 Artikel im Warenkorb befinden!", preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: .default))
-            
-            self.present(alertController, animated: true, completion: nil)
+            performSegue(withIdentifier: "goToRouteVC", sender: self)
         }
-        
-        
     }
     
     //Diese Methode schaut in der Artikel-Datenbank, ob ein Item die Buchstabenfolge im Namen enthält und gibt eine Liste zurück mit den Artikel, die diese Buchstabenfolge im Namen haben
@@ -173,12 +142,13 @@ class NavigationViewController: UIViewController, UITableViewDelegate, Calculati
 }
 
 
+
 //Delegate-Methoden um die Tabelle zu generieren
 extension NavigationViewController: UITableViewDataSource{
     
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+    
+       
         if substringArticles.count % 2 == 0 {
             return substringArticles.count/2
         }else{
@@ -188,24 +158,44 @@ extension NavigationViewController: UITableViewDataSource{
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let leftArticle = substringArticles[indexPath.row]
-        let rightArticle = substringArticles[indexPath.row + 1]
-        let cell = articleTableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as! AutomaticSearchTableTableViewCell
-        cell.selectionStyle = .default
+
+        let cell = articleTableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as! SearchTableViewCell
+        cell.delegate = self
         
-        cell.leftCellImage.image = leftArticle.getImage()
-        cell.leftProductLabel.text = leftArticle.getName()
-        cell.leftProductPrice.text = leftArticle.getPrice()
-        
-        cell.rightCellImage.image = rightArticle.getImage()
-        cell.rightProductLabel.text = rightArticle.getName()
-        cell.rightProductPrice.text = rightArticle.getPrice()
-        
+        if indexPath.row < tableView.numberOfRows(inSection: 0) - 1 {
+            
+
+            let leftArticle = substringArticles[indexPath.row * 2]
+            let rightArticle = substringArticles[indexPath.row * 2 + 1]
+            
+            cell.leftCellImage.image = leftArticle.getImage()
+            cell.leftProductLabel.text = leftArticle.getName()
+            cell.leftProductPrice.text = leftArticle.getPrice()
+            cell.leftCardProductNode = leftArticle.getNode()
+            cell.onlyOneProductCard = false
+
+            cell.rightCellImage.image = rightArticle.getImage()
+            cell.rightProductLabel.text = rightArticle.getName()
+            cell.rightProductPrice.text = rightArticle.getPrice()
+            cell.rightCardProductNode = rightArticle.getNode()
+            cell.onlyOneProductCard = false
+        }else{
+            if let leftArticle = substringArticles.last {
+                cell.leftCellImage.image = leftArticle.getImage()
+                cell.leftProductLabel.text = leftArticle.getName()
+                cell.leftProductPrice.text = leftArticle.getPrice()
+                cell.leftCardProductNode = leftArticle.getNode()
+
+                cell.onlyOneProductCard = true
+                
+            }
+        }
+            cell.selectionStyle = .default
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 320
+        return 290
     }
     
 }

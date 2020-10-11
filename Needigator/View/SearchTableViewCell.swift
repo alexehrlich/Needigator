@@ -8,7 +8,10 @@
 
 import UIKit
 
-protocol
+protocol SearchTableViewCellDelegate{
+    func getNodeNumberOfLeftProductCard(number: Int)
+    func getNodeNumberOfRightProductCard(number: Int)
+}
 
 class SearchTableViewCell: UITableViewCell {
 
@@ -27,6 +30,8 @@ class SearchTableViewCell: UITableViewCell {
     
     var rightCardProductNode = 0
     var leftCardProductNode = 0
+    
+    var delegate: SearchTableViewCellDelegate?
 
     @IBOutlet weak var tableCellView: UIView!
     @IBOutlet weak var horizontalCardStackView: UIStackView!
@@ -71,11 +76,11 @@ class SearchTableViewCell: UITableViewCell {
        }
     
     @IBAction func leftCardTouched(_ sender: UIButton) {
-        print("Linke Karte berührt")
+        delegate!.getNodeNumberOfLeftProductCard(number: leftCardProductNode)
     }
     
     @IBAction func rightCardTouched(_ sender: UIButton) {
-        print("Rechte Karte berührt")
+        delegate!.getNodeNumberOfRightProductCard(number: rightCardProductNode)
     }
     
     func hideLastCard(){
