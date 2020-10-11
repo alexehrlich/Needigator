@@ -13,10 +13,10 @@ struct Article {
     private var name: String
     private var info: String
     private var node: Int
-//    private var category: String
     private var price: String
     private var image: UIImage
     
+    //Die Daten eines Artikels sind durch Unterstriche im Bildname enthalten. Hier wird der Bildname zerlegt und die Daten extrahiert.
     init(imageFileName: String) {
         
         let shortenedString = imageFileName.replacingOccurrences(of: ".png", with: "")
@@ -30,6 +30,7 @@ struct Article {
     }
     
     
+    //MARK: Getter-Methoden 
     func getName() -> String {
         return name
     }
@@ -49,8 +50,5 @@ struct Article {
     func getNode() -> Int {
         return node
     }
-    //    func getCategory() -> String {
-    //        return category
-    //    }
 }
 

@@ -9,7 +9,8 @@
 import Foundation
 
 struct ArticleDataBase {
-    
+  
+    //Hart-coded Produktdatenbank aus Testzwecke. Das soll durch eine Cloud-DB ersetzt werden.
     var items : [Article] = [
         Article(imageFileName: "Absolut Vodka_ _78_12,99.png"),
         Article(imageFileName: "Brantweinessig_ _72_1,19.png"),
@@ -25,5 +26,4 @@ struct ArticleDataBase {
         Article(imageFileName: "Weihenstephan Vollmilch_ _10_0,89.png"),
         Article(imageFileName: "Weißwein_trocken_75_5,99.png"),
     ]
-    
 }

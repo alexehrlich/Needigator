@@ -17,7 +17,6 @@ struct Node: Equatable {
     private var connectedNodes = [Int]()
     
     init(name: Int, xPosition: Int, yPosition: Int) {
-        
         self.name = name
         self.xPosition = xPosition
         self.yPosition = yPosition

@@ -31,7 +31,6 @@
 		1DF4FC1F241F34BF0058FF02 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF4FC1E241F34BF0058FF02 /* WelcomeViewController.swift */; };
 		1DF4FC21241F36390058FF02 /* ShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF4FC20241F36390058FF02 /* ShoppingListViewController.swift */; };
 		1DF4FC23241F3A730058FF02 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF4FC22241F3A730058FF02 /* NavigationViewController.swift */; };
-		1DF4FC29241F3B970058FF02 /* Kategorien.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF4FC28241F3B970058FF02 /* Kategorien.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,7 +60,6 @@
 		1DF4FC1E241F34BF0058FF02 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		1DF4FC20241F36390058FF02 /* ShoppingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListViewController.swift; sourceTree = "<group>"; };
 		1DF4FC22241F3A730058FF02 /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
-		1DF4FC28241F3B970058FF02 /* Kategorien.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kategorien.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,7 +108,6 @@
 			isa = PBXGroup;
 			children = (
 				1D2E5856241E329A002D341D /* Article.swift */,
-				1DF4FC28241F3B970058FF02 /* Kategorien.swift */,
 				1DC109CC24201339007AA117 /* ArticleDataBase.swift */,
 				1D7997262425EAEB007CE3A5 /* Node.swift */,
 				1D7997282425ED73007CE3A5 /* Route.swift */,
@@ -175,7 +172,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Alexander Ehrlich";
 				TargetAttributes = {
 					1D2E583A241E31CE002D341D = {
@@ -224,7 +221,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DF4FC23241F3A730058FF02 /* NavigationViewController.swift in Sources */,
-				1DF4FC29241F3B970058FF02 /* Kategorien.swift in Sources */,
 				1D2E5857241E329A002D341D /* Article.swift in Sources */,
 				1D8D6E3E24B5176C007E8059 /* CardViewController.swift in Sources */,
 				1D7997292425ED73007CE3A5 /* Route.swift in Sources */,
@@ -292,6 +288,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -352,6 +349,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;

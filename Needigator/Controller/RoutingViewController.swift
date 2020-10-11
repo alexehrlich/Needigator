@@ -15,6 +15,8 @@ class RoutingViewController: UIViewController, ImageTransfer {
     @IBOutlet weak var routeImageView: UIImageView!
     @IBOutlet weak var navigationArrowImage: UIImageView!
     @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var testSwitch: UISwitch!
+    
     
     var navigation = Navigation()
     var nodesInRoute = [Int]()
@@ -48,6 +50,8 @@ class RoutingViewController: UIViewController, ImageTransfer {
     
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        
         navigationArrowImage.isHidden = true
         informationView.alpha = 0
         

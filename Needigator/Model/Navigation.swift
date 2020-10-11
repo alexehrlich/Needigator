@@ -18,10 +18,7 @@ protocol CalculationComplete {
 }
 
 struct Navigation {
-    
-    //    private var end: Int = 0
-    //    private var depth = 0
-    
+
     var market = Market()
     
     //Damit das Bild mit der Route an den RouteVC gesendet werden und dort angezeigt werden kann
@@ -144,9 +141,6 @@ struct Navigation {
                 //Verringere Sigma
                 sigma *= 1-sigmaReduktion
             }
-            
-            //        print("Distanz initialen Route: \(initialRoute.calculateDistance())")
-            //        print("Distanz optimierten Route: \(currentRoute.calculateDistance())")
             
             print("Die optimierte Route ist: ")
             calculationDelegate?.didFinishWithCalculation()
