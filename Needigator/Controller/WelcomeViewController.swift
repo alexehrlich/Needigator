@@ -20,7 +20,7 @@ class WelcomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        title = "Needigator - need it? navigate it!"
+        title = "Needigator"
        
         
     }

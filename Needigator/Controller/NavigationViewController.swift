@@ -28,6 +28,9 @@ class NavigationViewController: UIViewController, UITableViewDelegate, SearchTab
     @IBOutlet weak var cartButtonOutlet: UIButton!
     @IBOutlet weak var amountItemsOutlet: UILabel!
     
+    
+    @IBOutlet weak var searchFieldBackgroundView: UIView!
+    
    var amountOfItems = 0
     
     
@@ -46,13 +49,24 @@ class NavigationViewController: UIViewController, UITableViewDelegate, SearchTab
         
         selectedItems.removeAll()
         substringArticles.removeAll()
+        substringArticles = articleDataBase.items
         articleTableView.reloadData()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationButtonBackgroundView.layer.cornerRadius = 5
+        navigationButtonBackgroundView.layer.cornerRadius = navigationButtonBackgroundView.frame.size.height / 2
+        
+        searchTextField.layer.cornerRadius = searchTextField.frame.size.height / 2
+        
+        searchFieldBackgroundView.layer.cornerRadius = searchFieldBackgroundView.frame.size.height / 2
+        
+        searchFieldBackgroundView.layer.shadowColor = UIColor.lightGray.cgColor
+        searchFieldBackgroundView.layer.shadowOpacity = 0.2
+        searchFieldBackgroundView.layer.shadowOffset = .zero
+        searchFieldBackgroundView.layer.shadowRadius = searchFieldBackgroundView.frame.size.height / 2
+        
         
         //Segmented Control SetUp
         productTypeSegmentedControl.setTitle("Alle Produkte", forSegmentAt: 0)
@@ -80,9 +94,13 @@ class NavigationViewController: UIViewController, UITableViewDelegate, SearchTab
     //Diese Methode wird aufgerufen, wenn der Nutzer eine Änderung im TextField vorgenommen hat. (Ein weiterer Buchstaben getippt z.B.)
     @objc func textFieldDidChange(){
         
-        //Sucht in der Datenbank nach Artikeln mit den eingegeben Buchstaben
-        substringArticles = checkSubstringInArticle(substring: searchTextField.text!)
-        
+        if searchTextField.text == ""{
+            substringArticles = articleDataBase.items
+        }else{
+            //Sucht in der Datenbank nach Artikeln mit den eingegeben Buchstaben
+            substringArticles = checkSubstringInArticle(substring: searchTextField.text!)
+        }
+
         //Erhält eine Liste zurück und lädt die Tabelle neu
         articleTableView.reloadData()
     }
