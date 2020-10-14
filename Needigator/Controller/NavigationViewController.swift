@@ -9,39 +9,35 @@
 import UIKit
 
 class NavigationViewController: UIViewController, UITableViewDelegate, SearchTableViewCellDelegate{
+    
+    //Stellt die Nodenumber der linken gedrückten Karte aus der Klaasse SearchTableViewCell.swift bereit
     func getNodeNumberOfLeftProductCard(number: Int) {
         selectedItems.append(number)
     }
     
+    //Stellt die Nodenumber der rechten gedrückten Karte aus der Klaasse SearchTableViewCell.swift bereit
     func getNodeNumberOfRightProductCard(number: Int) {
         selectedItems.append(number)
     }
     
     
-
+    //Verbindung zum Interface-Builder
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var articleTableView: UITableView!
     @IBOutlet weak var productTypeSegmentedControl: UISegmentedControl!
-    
-    
-    @IBOutlet weak var navigationButtonBackgroundView: UIView!
-    @IBOutlet weak var cartButtonOutlet: UIButton!
-    @IBOutlet weak var amountItemsOutlet: UILabel!
-    
-    
     @IBOutlet weak var searchFieldBackgroundView: UIView!
+   
     
-   var amountOfItems = 0
-    
-    
+    //"Datenbank" der hard-coded Artikel
     let articleDataBase = ArticleDataBase()
     
+    //Liste die mit den Artikeln gefüllt wird, die 3 im Textfeld eingegebenen Buchstaben enthalten
     var substringArticles = [Article]()
     
+    //Liste mit den Nodenumbers der ausgewählten Artikel
     var selectedItems = [Int]()
     
-    var selectedArticles = [String]()
-    
+    //Zuständig für die Routenberechnung
     var navigation = Navigation()
     
     //Wenn der Bildschirm auftaucht wenn man wieder zu diesem zurückkehrt, dann soll alles gelöscht sein.
@@ -56,12 +52,9 @@ class NavigationViewController: UIViewController, UITableViewDelegate, SearchTab
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationButtonBackgroundView.layer.cornerRadius = navigationButtonBackgroundView.frame.size.height / 2
-        
+        //Search-Textfield Layouting
         searchTextField.layer.cornerRadius = searchTextField.frame.size.height / 2
-        
         searchFieldBackgroundView.layer.cornerRadius = searchFieldBackgroundView.frame.size.height / 2
-        
         searchFieldBackgroundView.layer.shadowColor = UIColor.lightGray.cgColor
         searchFieldBackgroundView.layer.shadowOpacity = 0.2
         searchFieldBackgroundView.layer.shadowOffset = .zero
@@ -115,21 +108,11 @@ class NavigationViewController: UIViewController, UITableViewDelegate, SearchTab
             destVC.nodesInRoute = selectedItems
             destVC.pixelCordinatesOfNodesInRoute = navigation.market.pixelsOfAllNodes
         }
-        
-        else if segue.identifier == "goToCartVC" {
-            
-            let destVC = segue.destination as! CartTableViewController
-            
-            destVC.itemArray = selectedArticles
-            
-            print("Die Artikel sind: \(selectedArticles)")
-        }
     }
     
     
     
     @IBAction func searchButtonPressed(_ sender: UIButton) {
-
         if selectedItems.isEmpty{
             let alertController = UIAlertController(title: "Ihre Einkaufsliste ist leer!", message:
                 "Für die Routenberechnung muss sich mindestens 1 Artikel im Warenkorb befinden.", preferredStyle: .alert)
@@ -147,9 +130,7 @@ class NavigationViewController: UIViewController, UITableViewDelegate, SearchTab
         
         //Es soll erst nach 3 Buchstaben geschaut werden, sonst zeigt er ja alles an.
         if substring.count >= 3 {
-            
             for article in articleDataBase.items {
-                
                 if article.getName().lowercased().contains(substring.lowercased()){
                     articleArray.append(article)
                 }
@@ -166,7 +147,6 @@ extension NavigationViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     
-       
         if substringArticles.count % 2 == 0 {
             return substringArticles.count/2
         }else{

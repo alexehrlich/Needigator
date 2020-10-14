@@ -27,7 +27,7 @@ struct Navigation {
     
     
     //SIMULATED ANNEALING
-    var sigma:Double = 10000
+    var sigma: Double = 10000
     let sigmaReduktion = 0.001
     
     
@@ -86,7 +86,7 @@ struct Navigation {
     //Dise Funktion berrechnet die kürzeste Route nach dem Simulated Annealing Verfahren und gibt diese Route zurück.
     mutating func simulatedAnnealing(for route: Route) -> Route {
         
-        //        let initialRoute = route
+        
         var currentRoute = route
         var tempRoute = route
         var tradeNode1: Node?
@@ -142,7 +142,7 @@ struct Navigation {
                 sigma *= 1-sigmaReduktion
             }
             
-            print("Die optimierte Route ist: ")
+            //print("Die optimierte Route ist: ")
             calculationDelegate?.didFinishWithCalculation()
             currentRoute.showRoute()
             return currentRoute
@@ -217,26 +217,4 @@ struct Navigation {
             }
         }
     }
-    
-    
-    
-    
-    func calcRoutePerTick(tick: Int){
-        //EMPTY
-    }
-    
-    
-    
-    //    mutating func startNavigation(startingPoint: Int, endPoint: Int) {
-    //
-    //        routesToitem = [Route]()
-    //        nodesInRoute = [Node]()
-    //        self.end = endPoint
-    //
-    //        nextNode(currentNode: startingPoint)
-    //
-    //        finalRoutes.append(getShortestRoute())
-    //
-    //    }
-    
 }

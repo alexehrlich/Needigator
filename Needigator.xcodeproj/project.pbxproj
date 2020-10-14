@@ -16,7 +16,6 @@
 		1D2E5848241E31D0002D341D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D2E5847241E31D0002D341D /* Assets.xcassets */; };
 		1D2E584B241E31D0002D341D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D2E5849241E31D0002D341D /* LaunchScreen.storyboard */; };
 		1D2E5857241E329A002D341D /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2E5856241E329A002D341D /* Article.swift */; };
-		1D5D03852454C12000E7AA22 /* CartTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5D03842454C12000E7AA22 /* CartTableViewController.swift */; };
 		1D7997272425EAEB007CE3A5 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7997262425EAEB007CE3A5 /* Node.swift */; };
 		1D7997292425ED73007CE3A5 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7997282425ED73007CE3A5 /* Route.swift */; };
 		1D79972F2425FA22007CE3A5 /* RGB32.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D79972E2425FA22007CE3A5 /* RGB32.swift */; };
@@ -36,7 +35,7 @@
 		1D00D646242112D300DBBC41 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		1D2593C4243372C4008F5BAC /* Market.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
 		1D2593C824337DC4008F5BAC /* AllRoutes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AllRoutes.txt; sourceTree = "<group>"; };
-		1D2E583B241E31CE002D341D /* Needigator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Needigator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D2E583B241E31CE002D341D /* Needigator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Needigator.app; path = "/Users/alexanderehrlich/Desktop/NEEDIGATOR/01_Needigator/build/Debug-iphoneos/Needigator.app"; sourceTree = "<absolute>"; };
 		1D2E583E241E31CE002D341D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1D2E5840241E31CE002D341D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		1D2E5845241E31CE002D341D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -44,7 +43,6 @@
 		1D2E584A241E31D0002D341D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1D2E584C241E31D0002D341D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1D2E5856241E329A002D341D /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
-		1D5D03842454C12000E7AA22 /* CartTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableViewController.swift; sourceTree = "<group>"; };
 		1D7997262425EAEB007CE3A5 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		1D7997282425ED73007CE3A5 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		1D79972E2425FA22007CE3A5 /* RGB32.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGB32.swift; sourceTree = "<group>"; };
@@ -77,16 +75,7 @@
 				1D00D646242112D300DBBC41 /* README.txt */,
 				1D2593C824337DC4008F5BAC /* AllRoutes.txt */,
 				1D2E583D241E31CE002D341D /* Needigator */,
-				1D2E583C241E31CE002D341D /* Products */,
 			);
-			sourceTree = "<group>";
-		};
-		1D2E583C241E31CE002D341D /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				1D2E583B241E31CE002D341D /* Needigator.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		1D2E583D241E31CE002D341D /* Needigator */ = {
@@ -137,7 +126,6 @@
 				1DF4FC20241F36390058FF02 /* ShoppingListViewController.swift */,
 				1DF4FC22241F3A730058FF02 /* NavigationViewController.swift */,
 				1D8DAF2C242A994200B4DBA8 /* RoutingViewController.swift */,
-				1D5D03842454C12000E7AA22 /* CartTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -186,7 +174,7 @@
 				Base,
 			);
 			mainGroup = 1D2E5832241E31CE002D341D;
-			productRefGroup = 1D2E583C241E31CE002D341D /* Products */;
+			productRefGroup = 1D2E5832241E31CE002D341D;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -223,7 +211,6 @@
 				1D7997292425ED73007CE3A5 /* Route.swift in Sources */,
 				1DF4FC1F241F34BF0058FF02 /* WelcomeViewController.swift in Sources */,
 				1DC109CD24201339007AA117 /* ArticleDataBase.swift in Sources */,
-				1D5D03852454C12000E7AA22 /* CartTableViewController.swift in Sources */,
 				1D7FAB502420B8F5001A5215 /* SearchTableViewCell.swift in Sources */,
 				1D7DBD9924274D53009E9D4E /* Navigation.swift in Sources */,
 				1D2E583F241E31CE002D341D /* AppDelegate.swift in Sources */,

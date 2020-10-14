@@ -17,7 +17,7 @@ struct Market {
     var allNodesInMarket: [Node] = [Node]()
     var pathsToRoutesFile: String = "AllRoutes.txt"
     var finalRoutes: [Route] = [Route]()
-    private var routesToitem: [Route] = [Route]()
+    private var routesToItem: [Route] = [Route]()
     private var nodesInRoute: [Node] = [Node]()
     var pixelsOfAllNodes = [Int: CGPoint]()
     
@@ -47,13 +47,13 @@ struct Market {
         let bitmapInfo       = RGBA32.bitmapInfo
         
         guard let context = CGContext(data: nil, width: width, height: height, bitsPerComponent: bitsPerComponent, bytesPerRow: bytesPerRow, space: colorSpace, bitmapInfo: bitmapInfo) else {
-            print("unable to create context")
+            //print("unable to create context")
             return
         }
         context.draw(inputCGImage, in: CGRect(x: 0, y: 0, width: width, height: height))
         
         guard let buffer = context.data else {
-            print("unable to get context data")
+            //print("unable to get context data")
             return
         }
         
@@ -64,19 +64,15 @@ struct Market {
                 if pixelBuffer[getCurrentPixelPosition(y: row, width: width, x: column)] == .red {
                     allNodesInMarket.append(Node(name: nodesCounter, xPosition: column, yPosition: row))
                     pixelsOfAllNodes[nodesCounter] = CGPoint(x: column, y: row)
-                    print("Knoten: \(nodesCounter), x: \(column), y: \(row)")
                     nodesCounter += 1
                 }
             }
         }
         
-        //        print("\(allNodesInMarket.count) Knoten gefunden.")
-        
         for i in 0..<allNodesInMarket.count {
             
             let pX = allNodesInMarket[i].getXPosition()
             let pY = allNodesInMarket[i].getYPosition()
-            
             
             var nextX = pX
             var nextY = pY
@@ -180,8 +176,6 @@ struct Market {
             } catch {
                 print(error.localizedDescription)
             }
-            
-            //            print("\(finalRoutes.count) mögliche Routen im Markt gefunden und geladen")
         }else{
             // @FRANK warum, die Datei ist doch sicher vorhanden?
         }
@@ -217,7 +211,7 @@ struct Market {
                     //Zielknoten gefunden
                     
                     nodesInRoute.append(allNodesInMarket[Int(allNodesInMarket[currentNode].getConnectedNodes()[i])])
-                    routesToitem.append(Route(nodes: nodesInRoute))
+                    routesToItem.append(Route(nodes: nodesInRoute))
                     nodesInRoute.remove(at: nodesInRoute.count - 1)
                     
                     continue
@@ -239,7 +233,7 @@ struct Market {
             if (allNodesInMarket[currentNode].getConnectedNodes()[0] == end){
                 
                 nodesInRoute.append(allNodesInMarket[Int(allNodesInMarket[currentNode].getConnectedNodes()[0])])
-                routesToitem.append(Route(nodes: nodesInRoute))
+                routesToItem.append(Route(nodes: nodesInRoute))
                 nodesInRoute.remove(at: nodesInRoute.count - 1)
                 
                 return
@@ -259,15 +253,15 @@ struct Market {
     func getShortestRoute() -> Route {
         
         var index = 0
-        let distance = routesToitem[0].getLength()
+        let distance = routesToItem[0].getLength()
         
-        for i in 0..<routesToitem.count {
+        for i in 0..<routesToItem.count {
             
-            if routesToitem[i].getLength() < distance {
+            if routesToItem[i].getLength() < distance {
                 index = i
             }
         }
-        return routesToitem[index]
+        return routesToItem[index]
     }
     
     func getDrawPixelCoordinates() -> [CGPoint]{
