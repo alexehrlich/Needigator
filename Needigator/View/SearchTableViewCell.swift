@@ -9,8 +9,8 @@
 import UIKit
 
 protocol SearchTableViewCellDelegate{
-    func getNodeNumberOfLeftProductCard(number: Int)
-    func getNodeNumberOfRightProductCard(number: Int)
+    func getLeftProductCardArticle(article: Article)
+    func getRightProductCardArticle(article: Article)
 }
 
 class SearchTableViewCell: UITableViewCell {
@@ -27,9 +27,10 @@ class SearchTableViewCell: UITableViewCell {
             }
         }
     }
-    
-    var rightCardProductNode = 0
     var leftCardProductNode = 0
+    var rightCardProductNode = 0
+    var rightCardArticle : Article?
+    var leftCardArticle: Article?
     
     var delegate: SearchTableViewCellDelegate?
 
@@ -83,21 +84,18 @@ class SearchTableViewCell: UITableViewCell {
        }
     
     @IBAction func leftCardTouched(_ sender: UIButton) {
-        delegate!.getNodeNumberOfLeftProductCard(number: leftCardProductNode)
-        print("Touched")
+        delegate!.getLeftProductCardArticle(article: leftCardArticle!)
+        
     }
     
     @IBAction func rightCardTouched(_ sender: UIButton) {
-        delegate!.getNodeNumberOfRightProductCard(number: rightCardProductNode)
-        
-        print("Touched")
+        delegate!.getRightProductCardArticle(article: rightCardArticle!)
     }
     
     func hideLastCard(){
         rightProductCardView.alpha = 0
         rightCardButton.isUserInteractionEnabled = false
     }
-   
 }
 
    

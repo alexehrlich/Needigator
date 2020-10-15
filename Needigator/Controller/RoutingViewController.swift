@@ -37,8 +37,6 @@ class RoutingViewController: UIViewController, ImageTransfer {
     
     
     //InformationView Stuff
-    
-    
     @IBOutlet weak var informationView: UIView!
     @IBOutlet weak var articleNameInView: UILabel!
     @IBOutlet weak var articlePriceInView: UILabel!
@@ -224,12 +222,6 @@ class RoutingViewController: UIViewController, ImageTransfer {
             self.informationView.alpha = 1
         }
     }
-    
-    func setViewInformation(){
-        
-    }
-    
-    
 }
 
 

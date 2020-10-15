@@ -11,7 +11,6 @@ import UIKit
 class WelcomeViewController: UIViewController {
     
 
-   
     @IBOutlet weak var shoppingButtonView: UIView!
     @IBOutlet weak var shoppingListButton: UIButton!
     @IBOutlet weak var helpButton: UIButton!
@@ -24,38 +23,39 @@ class WelcomeViewController: UIViewController {
         
     }
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        shoppingButtonView.layer.cornerRadius = 12
-        shoppingButtonView.layer.shadowColor = UIColor.gray.cgColor
-        shoppingButtonView.layer.shadowOpacity = 0.4
-        shoppingButtonView.layer.shadowOffset = .zero
-        shoppingButtonView.layer.shadowRadius = 10
-        
-        shoppingListButton.layer.cornerRadius = 12
-        shoppingListButton.layer.shadowColor = UIColor.gray.cgColor
-        shoppingListButton.layer.shadowOpacity = 0.3
-        shoppingListButton.layer.shadowOffset = .zero
-        shoppingListButton.layer.shadowRadius = 10
-        
-        helpButton.layer.cornerRadius = 12
-        helpButton.layer.shadowColor = UIColor.gray.cgColor
-        helpButton.layer.shadowOpacity = 0.3
-        helpButton.layer.shadowOffset = .zero
-        helpButton.layer.shadowRadius = 10
-        
-    }
     
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        navigationController?.isNavigationBarHidden = false
-
-    }
     
+    shoppingButtonView.layer.cornerRadius = 12
+    shoppingButtonView.layer.shadowColor = UIColor.gray.cgColor
+    shoppingButtonView.layer.shadowOpacity = 0.4
+    shoppingButtonView.layer.shadowOffset = .zero
+    shoppingButtonView.layer.shadowRadius = 10
+    
+    shoppingListButton.layer.cornerRadius = 12
+    shoppingListButton.layer.shadowColor = UIColor.gray.cgColor
+    shoppingListButton.layer.shadowOpacity = 0.3
+    shoppingListButton.layer.shadowOffset = .zero
+    shoppingListButton.layer.shadowRadius = 10
+    
+    helpButton.layer.cornerRadius = 12
+    helpButton.layer.shadowColor = UIColor.gray.cgColor
+    helpButton.layer.shadowOpacity = 0.3
+    helpButton.layer.shadowOffset = .zero
+    helpButton.layer.shadowRadius = 10
+    
+}
+
+
+override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    
+    navigationController?.isNavigationBarHidden = false
+    
+}
+
 }
 
 

@@ -8,65 +8,68 @@
 
 import UIKit
 
-protocol MarketViewControllerButtonDelegate {
-    func marketHasBeenChoosen()
-    func chooseUsersLocation()
-    func keyBoardShouldClose()
-}
 
-class CardViewController: UIViewController, UITextFieldDelegate {
+class CardViewController: UIViewController{
+
     
-    
+    @IBOutlet weak var selctedProductsTableView: UITableView!
     @IBOutlet weak var headBar: UIView!
     @IBOutlet weak var dragBar: UIView!
-    @IBOutlet weak var getLocationView: UIView!
-    @IBOutlet weak var myMarketButtonView: UIView!
-    @IBOutlet weak var textField: UITextField!
-    @IBOutlet weak var texFieldRecteangleView: UIView!
     @IBOutlet weak var handleArea: UIView!
     
-    
-    var delegate: MarketViewControllerButtonDelegate!
-    
     var tapIsWithinTextField = false
+    var selectedArticles = [String]()
+    
     
     override func viewDidLoad() {
         
+        NotificationCenter.default.addObserver(self, selector: #selector(self.printSome(notification:)), name: NavigationViewController.notificationName, object: nil)
        
-        textField.delegate = self
-        textField.returnKeyType = .search
+        
+        selctedProductsTableView.delegate = self
+        selctedProductsTableView.dataSource = self
+        selctedProductsTableView.tableFooterView = UIView()
         
         dragBar.layer.cornerRadius = dragBar.frame.size.height/2
-        getLocationView.layer.cornerRadius = getLocationView.frame.size.height/2
-       myMarketButtonView.layer.cornerRadius = myMarketButtonView.frame.size.height/2
         
-        textField.addTarget(self, action: #selector(setTexFieldTappedFlag), for: .touchDown)
+        selctedProductsTableView.register(UINib(nibName: "SelectedProductsTableViewCell", bundle: nil), forCellReuseIdentifier: "ReusableSelectedProductCell")
+    }
+    
+    @objc func printSome(notification: Notification) {
+        
+        let article = notification.userInfo!["data"] as! String
+        
+        if !selectedArticles.contains(article){
+            selectedArticles.append(article)
+            selctedProductsTableView.reloadData()
+        }
         
     }
-    
-    @IBAction func myMarketButtonPressed(_ sender: UIButton) {
-        delegate.marketHasBeenChoosen()
-    }
-    
-    
-    @IBAction func myLocationButtonPressed(_ sender: UIButton) {
-        
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        delegate.keyBoardShouldClose()
-        return false
-    }
-    
-    @objc func setTexFieldTappedFlag(){
-        tapIsWithinTextField = true
-    }
-    
-    
-  
-    
 
-   
-    
-    
 }
+
+//TableView Set-Up
+extension CardViewController: UITableViewDelegate, UITableViewDataSource{
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return selectedArticles.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableSelectedProductCell")! as! SelectedProductsTableViewCell
+        
+        cell.productLabel.text = selectedArticles[indexPath.row]
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
+}
+
+
