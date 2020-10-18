@@ -12,6 +12,16 @@ class SelectedProductsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var productLabel: UILabel!
     
+    var dataToDisplay : (String, Int)? {
+        set(newValue) {
+            productLabel.text = "\(newValue!.1) x \(newValue!.0)"
+        }
+        
+        get {
+            return nil
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

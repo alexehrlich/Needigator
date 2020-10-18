@@ -14,21 +14,21 @@ protocol PassInformationToListView {
 
 
 class NavigationViewController: UIViewController, UITableViewDelegate, SearchTableViewCellDelegate{
+
+    func cellTapped(_ cell: SearchTableViewCell, side: String) {
+        
+    }
     
     static let notificationName = Notification.Name("myNotificationName")
     
-    func getLeftProductCardArticle(article: Article) {
-        
-       
-        
+    func getLeftProductCardArticle(article: Article, amount: Int) {
         selectedItems.append(article.getNode())
-        NotificationCenter.default.post(name: NavigationViewController.notificationName, object: nil, userInfo: ["data" : article.getName()])
-       
+        NotificationCenter.default.post(name: NavigationViewController.notificationName, object: nil, userInfo: ["data" : article.getName(), "amount": amount])
     }
     
-    func getRightProductCardArticle(article: Article) {
-        NotificationCenter.default.post(name: NavigationViewController.notificationName, object: nil, userInfo: ["data" : article.getName()])
-
+    func getRightProductCardArticle(article: Article, amount: Int) {
+        selectedItems.append(article.getNode())
+        NotificationCenter.default.post(name: NavigationViewController.notificationName, object: nil, userInfo: ["data" : article.getName(), "amount": amount])
     }
 
     //Verbindung zum Interface-Builder
@@ -219,7 +219,6 @@ extension NavigationViewController: UITableViewDataSource{
         
         if indexPath.row < tableView.numberOfRows(inSection: 0) - 1 || tableView.numberOfRows(inSection: 0) == 1{
             
-
             let leftArticle = substringArticles[indexPath.row * 2]
             let rightArticle = substringArticles[indexPath.row * 2 + 1]
             
@@ -229,6 +228,7 @@ extension NavigationViewController: UITableViewDataSource{
             cell.leftCardProductNode = leftArticle.getNode()
             cell.leftCardArticle = leftArticle
             cell.onlyOneProductCard = false
+            cell.leftCardIsFlipped = false
 
             cell.rightCellImage.image = rightArticle.getImage()
             cell.rightProductLabel.text = rightArticle.getName()
@@ -236,6 +236,9 @@ extension NavigationViewController: UITableViewDataSource{
             cell.rightCardProductNode = rightArticle.getNode()
             cell.rightCardArticle = rightArticle
             cell.onlyOneProductCard = false
+            cell.rightCardIsFlipped = false
+            
+            
         }else{
             if let leftArticle = substringArticles.last {
                 cell.leftCellImage.image = leftArticle.getImage()
@@ -244,10 +247,13 @@ extension NavigationViewController: UITableViewDataSource{
                 cell.leftCardProductNode = leftArticle.getNode()
                 cell.leftCardArticle = leftArticle
                 cell.onlyOneProductCard = true
+                cell.leftCardIsFlipped = false
                 
             }
         }
-            cell.selectionStyle = .default
+        self.addChild(cell.leftDetailedProdSelectVC)
+        self.addChild(cell.rightDetailedProdSelectVC)
+        cell.selectionStyle = .default
         return cell
     }
     

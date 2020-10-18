@@ -44,9 +44,7 @@ class RoutingViewController: UIViewController, ImageTransfer {
     
     let blurEffectView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffect.Style.light))
       
-    
-    
-    
+
     override func viewWillAppear(_ animated: Bool) {
         
         

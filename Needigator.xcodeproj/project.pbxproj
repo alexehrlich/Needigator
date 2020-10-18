@@ -18,6 +18,8 @@
 		1D2E5848241E31D0002D341D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D2E5847241E31D0002D341D /* Assets.xcassets */; };
 		1D2E584B241E31D0002D341D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D2E5849241E31D0002D341D /* LaunchScreen.storyboard */; };
 		1D2E5857241E329A002D341D /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2E5856241E329A002D341D /* Article.swift */; };
+		1D3DEFBB2539F15300D77B86 /* DetailedProductSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3DEFB92539F15300D77B86 /* DetailedProductSelectionViewController.swift */; };
+		1D3DEFBC2539F15300D77B86 /* DetailedProductSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D3DEFBA2539F15300D77B86 /* DetailedProductSelectionViewController.xib */; };
 		1D7997272425EAEB007CE3A5 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7997262425EAEB007CE3A5 /* Node.swift */; };
 		1D7997292425ED73007CE3A5 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7997282425ED73007CE3A5 /* Route.swift */; };
 		1D79972F2425FA22007CE3A5 /* RGB32.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D79972E2425FA22007CE3A5 /* RGB32.swift */; };
@@ -47,6 +49,8 @@
 		1D2E584A241E31D0002D341D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1D2E584C241E31D0002D341D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1D2E5856241E329A002D341D /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
+		1D3DEFB92539F15300D77B86 /* DetailedProductSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedProductSelectionViewController.swift; sourceTree = "<group>"; };
+		1D3DEFBA2539F15300D77B86 /* DetailedProductSelectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailedProductSelectionViewController.xib; sourceTree = "<group>"; };
 		1D7997262425EAEB007CE3A5 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		1D7997282425ED73007CE3A5 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		1D79972E2425FA22007CE3A5 /* RGB32.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGB32.swift; sourceTree = "<group>"; };
@@ -122,6 +126,8 @@
 				1D8D6E3D24B5176C007E8059 /* CardViewController.swift */,
 				1D2B10E22537792600D9119C /* SelectedProductsTableViewCell.swift */,
 				1D2B10E32537792600D9119C /* SelectedProductsTableViewCell.xib */,
+				1D3DEFB92539F15300D77B86 /* DetailedProductSelectionViewController.swift */,
+				1D3DEFBA2539F15300D77B86 /* DetailedProductSelectionViewController.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -200,6 +206,7 @@
 				1D2E5848241E31D0002D341D /* Assets.xcassets in Resources */,
 				1D7FAB512420B8F5001A5215 /* AutomaticSearchTableTableViewCell.xib in Resources */,
 				1D8D6E4024B5177A007E8059 /* CardViewController.xib in Resources */,
+				1D3DEFBC2539F15300D77B86 /* DetailedProductSelectionViewController.xib in Resources */,
 				1D2E5846241E31CE002D341D /* Main.storyboard in Resources */,
 				1D2B10E52537792600D9119C /* SelectedProductsTableViewCell.xib in Resources */,
 				1D00D647242112D300DBBC41 /* README.txt in Resources */,
@@ -216,6 +223,7 @@
 				1DF4FC23241F3A730058FF02 /* NavigationViewController.swift in Sources */,
 				1D2E5857241E329A002D341D /* Article.swift in Sources */,
 				1D8D6E3E24B5176C007E8059 /* CardViewController.swift in Sources */,
+				1D3DEFBB2539F15300D77B86 /* DetailedProductSelectionViewController.swift in Sources */,
 				1D7997292425ED73007CE3A5 /* Route.swift in Sources */,
 				1DF4FC1F241F34BF0058FF02 /* WelcomeViewController.swift in Sources */,
 				1DC109CD24201339007AA117 /* ArticleDataBase.swift in Sources */,

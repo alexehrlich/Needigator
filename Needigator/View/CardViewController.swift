@@ -11,14 +11,14 @@ import UIKit
 
 class CardViewController: UIViewController{
 
-    
     @IBOutlet weak var selctedProductsTableView: UITableView!
     @IBOutlet weak var headBar: UIView!
     @IBOutlet weak var dragBar: UIView!
     @IBOutlet weak var handleArea: UIView!
     
     var tapIsWithinTextField = false
-    var selectedArticles = [String]()
+    var selectedArticles = [(String, Int)]()
+    var amountOfArticle = 0
     
     
     override func viewDidLoad() {
@@ -38,14 +38,13 @@ class CardViewController: UIViewController{
     @objc func printSome(notification: Notification) {
         
         let article = notification.userInfo!["data"] as! String
-        
-        if !selectedArticles.contains(article){
-            selectedArticles.append(article)
-            selctedProductsTableView.reloadData()
-        }
-        
-    }
+        let amount = notification.userInfo!["amount"] as! Int
 
+        
+            selectedArticles.append((article, amount))
+            selctedProductsTableView.reloadData()
+
+    }
 }
 
 //TableView Set-Up
@@ -61,8 +60,7 @@ extension CardViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableSelectedProductCell")! as! SelectedProductsTableViewCell
-        
-        cell.productLabel.text = selectedArticles[indexPath.row]
+        cell.dataToDisplay = (selectedArticles[indexPath.row])
         
         return cell
     }
