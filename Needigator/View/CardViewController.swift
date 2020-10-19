@@ -23,7 +23,7 @@ class CardViewController: UIViewController{
     
     override func viewDidLoad() {
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.printSome(notification:)), name: NavigationViewController.notificationName, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.printSome(notification:)), name: NavigationViewController.notificationNameForCardVC, object: nil)
        
         
         selctedProductsTableView.delegate = self

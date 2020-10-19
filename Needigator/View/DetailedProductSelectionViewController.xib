@@ -15,6 +15,7 @@
                 <outlet property="amountLabel" destination="5Vg-OR-97u" id="m8z-Kb-QsY"/>
                 <outlet property="amountStackView" destination="Nbo-Mx-kJv" id="sIm-OE-MfZ"/>
                 <outlet property="cancelButtonOutlet" destination="tcP-LD-2ct" id="qnb-hK-F8Y"/>
+                <outlet property="productLabel" destination="nBM-gu-Hmf" id="tXe-Mw-vz8"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -90,8 +91,8 @@
                         <constraint firstItem="5Vg-OR-97u" firstAttribute="top" secondItem="Nbo-Mx-kJv" secondAttribute="top" id="zi1-I4-6bA"/>
                     </constraints>
                 </stackView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menge" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBM-gu-Hmf">
-                    <rect key="frame" x="0.0" y="20" width="375" height="30"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menge" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="nBM-gu-Hmf">
+                    <rect key="frame" x="20" y="20" width="345" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="Qq1-ld-agG"/>
                     </constraints>
@@ -141,13 +142,13 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="nBM-gu-Hmf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Fpm-2D-M37"/>
+                <constraint firstItem="nBM-gu-Hmf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="Fpm-2D-M37"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Nbo-Mx-kJv" secondAttribute="trailing" constant="15" id="OEN-00-RUY"/>
                 <constraint firstItem="Nbo-Mx-kJv" firstAttribute="top" secondItem="nBM-gu-Hmf" secondAttribute="bottom" id="Ssc-4I-Ogf"/>
                 <constraint firstItem="UOa-nd-hiS" firstAttribute="top" secondItem="Nbo-Mx-kJv" secondAttribute="bottom" constant="20" id="ZG5-cq-Nhm"/>
                 <constraint firstItem="Nbo-Mx-kJv" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="50" id="bh1-LI-Pqb"/>
                 <constraint firstItem="UOa-nd-hiS" firstAttribute="width" secondItem="Nbo-Mx-kJv" secondAttribute="width" id="jmb-3q-1dO"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="nBM-gu-Hmf" secondAttribute="trailing" id="nEL-eO-TfV"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="nBM-gu-Hmf" secondAttribute="trailing" constant="10" id="nEL-eO-TfV"/>
                 <constraint firstItem="UOa-nd-hiS" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="q1n-Qc-Uml"/>
                 <constraint firstItem="Nbo-Mx-kJv" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="zoi-NY-lsg"/>
             </constraints>

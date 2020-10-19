@@ -13,7 +13,9 @@ protocol SearchTableViewCellDelegate{
     func getRightProductCardArticle(article: Article, amount: Int)
 }
 
-class SearchTableViewCell: UITableViewCell, DetailedProductSelectionViewControllerDelegate {
+class SearchTableViewCell: UITableViewCell, DetailedProductSelectionViewControllerDelegate, UIScrollViewDelegate {
+
+    
     func passUserSelection(amount: Int, action: UserInteraction, sender: DetailedProductSelectionViewController) {
         if action == .cancleAdding {
             UIView.transition(with: sender.view.superview!, duration: 0.3, options: .transitionFlipFromRight, animations: nil, completion: nil)
@@ -45,6 +47,9 @@ class SearchTableViewCell: UITableViewCell, DetailedProductSelectionViewControll
             }
         }
     }
+    
+    var flippedCard = UIView()
+    
     var leftCardProductNode = 0
     var rightCardProductNode = 0
     var rightCardArticle : Article?
@@ -54,6 +59,7 @@ class SearchTableViewCell: UITableViewCell, DetailedProductSelectionViewControll
     var rightCardIsFlipped = false
     
     var delegate: SearchTableViewCellDelegate?
+    
     
     let leftDetailedProdSelectVC = DetailedProductSelectionViewController(nibName: "DetailedProductSelectionViewController", bundle: nil)
     let rightDetailedProdSelectVC = DetailedProductSelectionViewController(nibName: "DetailedProductSelectionViewController", bundle: nil)
@@ -81,6 +87,8 @@ class SearchTableViewCell: UITableViewCell, DetailedProductSelectionViewControll
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.scrollViewWillBeginDragging), name: NavigationViewController.notificationNameForSearchTableVC, object: nil)
         
         self.leftDetailedProdSelectVC.userInteractionDelegate = self
         self.rightDetailedProdSelectVC.userInteractionDelegate = self
@@ -118,6 +126,8 @@ class SearchTableViewCell: UITableViewCell, DetailedProductSelectionViewControll
         leftDetailedProdSelectVC.view.layer.cornerRadius = 10
         leftDetailedProdSelectVC.view.frame.origin = leftCardButton.frame.origin
         leftProductCardView.addSubview(leftDetailedProdSelectVC.view)
+        leftDetailedProdSelectVC.productLabel.text = leftProductLabel.text
+        leftDetailedProdSelectVC.amountCnt = 1
         UIView.transition(with: leftProductCardView, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
     }
     
@@ -127,6 +137,8 @@ class SearchTableViewCell: UITableViewCell, DetailedProductSelectionViewControll
         rightDetailedProdSelectVC.view.layer.cornerRadius = 10
         rightDetailedProdSelectVC.view.frame.origin = rightCardButton.frame.origin
         rightProductCardView.addSubview(rightDetailedProdSelectVC.view)
+        rightDetailedProdSelectVC.productLabel.text = rightProductLabel.text
+        rightDetailedProdSelectVC.amountCnt = 1
         UIView.transition(with: rightProductCardView, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
         
     }
@@ -134,6 +146,12 @@ class SearchTableViewCell: UITableViewCell, DetailedProductSelectionViewControll
     func hideLastCard(){
         rightProductCardView.alpha = 0
         rightCardButton.isUserInteractionEnabled = false
+    }
+    
+    @objc func scrollViewWillBeginDragging() {
+        if rightCardIsFlipped{
+            UIView.transition(with: rightDetailedProdSelectVC.view, duration: 0.3, options: .transitionFlipFromRight, animations: nil, completion: nil)
+        }
     }
 }
 

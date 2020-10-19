@@ -12,23 +12,20 @@ protocol PassInformationToListView {
     func passSelectedArticles(for articles: [String])
 }
 
-
 class NavigationViewController: UIViewController, UITableViewDelegate, SearchTableViewCellDelegate{
 
-    func cellTapped(_ cell: SearchTableViewCell, side: String) {
-        
-    }
     
-    static let notificationName = Notification.Name("myNotificationName")
+    static let notificationNameForCardVC = Notification.Name("gefehrlich.Needigator.dataForCardView")
+    static let notificationNameForSearchTableVC = Notification.Name("gefehrlich.Needigator.dataForSearchTableVC")
     
     func getLeftProductCardArticle(article: Article, amount: Int) {
         selectedItems.append(article.getNode())
-        NotificationCenter.default.post(name: NavigationViewController.notificationName, object: nil, userInfo: ["data" : article.getName(), "amount": amount])
+        NotificationCenter.default.post(name: NavigationViewController.notificationNameForCardVC, object: nil, userInfo: ["data" : article.getName(), "amount": amount])
     }
     
     func getRightProductCardArticle(article: Article, amount: Int) {
         selectedItems.append(article.getNode())
-        NotificationCenter.default.post(name: NavigationViewController.notificationName, object: nil, userInfo: ["data" : article.getName(), "amount": amount])
+        NotificationCenter.default.post(name: NavigationViewController.notificationNameForCardVC, object: nil, userInfo: ["data" : article.getName(), "amount": amount])
     }
 
     //Verbindung zum Interface-Builder
@@ -77,6 +74,7 @@ class NavigationViewController: UIViewController, UITableViewDelegate, SearchTab
     
     //Datentransfer zum CardView
     var articleDelegate: PassInformationToListView?
+    
     
     //Wenn der Bildschirm auftaucht wenn man wieder zu diesem zurückkehrt, dann soll alles gelöscht sein.
     override func viewWillAppear(_ animated: Bool){
@@ -216,8 +214,7 @@ extension NavigationViewController: UITableViewDataSource{
         let cell = articleTableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as! SearchTableViewCell
         
         cell.delegate = self
-        
-        if indexPath.row < tableView.numberOfRows(inSection: 0) - 1 || tableView.numberOfRows(inSection: 0) == 1{
+        if indexPath.row < tableView.numberOfRows(inSection: 0) - 1 || tableView.numberOfRows(inSection: 0) == 1 && substringArticles.count > 1{
             
             let leftArticle = substringArticles[indexPath.row * 2]
             let rightArticle = substringArticles[indexPath.row * 2 + 1]
@@ -268,6 +265,7 @@ extension NavigationViewController: UIScrollViewDelegate {
     
     //Wenn in der Tabelle gescrollt wird, soll die Tastatur verschwinden
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        NotificationCenter.default.post(name: NavigationViewController.notificationNameForSearchTableVC, object: nil)
         self.view.endEditing(true)
     }
     

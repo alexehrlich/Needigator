@@ -25,8 +25,13 @@ class DetailedProductSelectionViewController: UIViewController {
     @IBOutlet weak var addButtonOutlet: UIButton!
     @IBOutlet weak var amountStackView: UIStackView!
     @IBOutlet weak var amountLabel: UILabel!
+    @IBOutlet weak var productLabel: UILabel!
     
-    var amountCnt = 1
+    var amountCnt = 1 {
+        didSet{
+            amountLabel.text = "\(amountCnt)"
+        }
+    }
     var userInteractionDelegate: DetailedProductSelectionViewControllerDelegate?
     
     
@@ -43,7 +48,6 @@ class DetailedProductSelectionViewController: UIViewController {
 
     @IBAction func plusButtonTapped(_ sender: UIButton) {
         amountCnt += 1
-        amountLabel.text = "\(amountCnt)"
     }
     
     
@@ -52,7 +56,6 @@ class DetailedProductSelectionViewController: UIViewController {
         if amountCnt > 1 {
             amountCnt -= 1
         }
-        amountLabel.text = "\(amountCnt)"
     }
     
     
