@@ -219,14 +219,16 @@ extension NavigationViewController: UITableViewDataSource{
             let leftArticle = substringArticles[indexPath.row * 2]
             let rightArticle = substringArticles[indexPath.row * 2 + 1]
             
-            cell.leftCellImage.image = leftArticle.getImage()
-            cell.leftProductLabel.text = leftArticle.getName()
-            cell.leftProductPrice.text = leftArticle.getPrice()
+            
+            
+            cell.leftCardFrontSideVC.cellImage.image = leftArticle.getImage()
+            cell.leftCardFrontSideVC.productLabel.text = leftArticle.getName()
+            cell.leftCardFrontSideVC.productPrice.text = leftArticle.getPrice()
             cell.leftCardProductNode = leftArticle.getNode()
             cell.leftCardArticle = leftArticle
             cell.onlyOneProductCard = false
             cell.leftCardIsFlipped = false
-
+            
             cell.rightCellImage.image = rightArticle.getImage()
             cell.rightProductLabel.text = rightArticle.getName()
             cell.rightProductPrice.text = rightArticle.getPrice()
@@ -238,9 +240,9 @@ extension NavigationViewController: UITableViewDataSource{
             
         }else{
             if let leftArticle = substringArticles.last {
-                cell.leftCellImage.image = leftArticle.getImage()
-                cell.leftProductLabel.text = leftArticle.getName()
-                cell.leftProductPrice.text = leftArticle.getPrice()
+                cell.leftCardFrontSideVC.cellImage.image = leftArticle.getImage()
+                cell.leftCardFrontSideVC.productLabel.text = leftArticle.getName()
+                cell.leftCardFrontSideVC.productPrice.text = leftArticle.getPrice()
                 cell.leftCardProductNode = leftArticle.getNode()
                 cell.leftCardArticle = leftArticle
                 cell.onlyOneProductCard = true
@@ -250,6 +252,7 @@ extension NavigationViewController: UITableViewDataSource{
         }
         self.addChild(cell.leftDetailedProdSelectVC)
         self.addChild(cell.rightDetailedProdSelectVC)
+        self.addChild(cell.leftCardFrontSideVC)
         cell.selectionStyle = .default
         return cell
     }

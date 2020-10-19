@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FrontsideOfCardViewController" customModule="Needigator" customModuleProvider="target">
+            <connections>
+                <outlet property="cardBackgroundView" destination="rvn-SN-AHV" id="464-VN-eBD"/>
+                <outlet property="cardButton" destination="u1w-is-IJR" id="Gyh-AG-wYP"/>
+                <outlet property="cellImage" destination="OVQ-JN-RUI" id="0xK-lP-Q1f"/>
+                <outlet property="dataBackgroundView" destination="rvn-SN-AHV" id="dAn-p3-ckR"/>
+                <outlet property="productInformation" destination="UjD-KO-WOl" id="nEd-WJ-d7i"/>
+                <outlet property="productLabel" destination="dfC-lu-baj" id="71F-A0-hg7"/>
+                <outlet property="productPrice" destination="siW-uf-Ze2" id="kNu-uC-8Y4"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u1w-is-IJR">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <connections>
+                        <action selector="cardTapped:" destination="-1" eventType="touchUpInside" id="Fck-Gg-wCB"/>
+                    </connections>
+                </button>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Xmh-lr-i7n">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Absolut Vodka__78_12,99" translatesAutoresizingMaskIntoConstraints="NO" id="OVQ-JN-RUI">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="333.5"/>
+                        </imageView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rvn-SN-AHV">
+                            <rect key="frame" x="0.0" y="333.5" width="375" height="333.5"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Produktname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dfC-lu-baj">
+                                    <rect key="frame" x="15" y="0.0" width="345" height="50"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="bCe-dG-J07"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="500g" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UjD-KO-WOl">
+                                    <rect key="frame" x="15" y="50" width="350" height="25"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="25" id="OIR-9D-6X3"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2,99€" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="siW-uf-Ze2">
+                                    <rect key="frame" x="15" y="75" width="345" height="40"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="nGK-7M-ihd"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>
+                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemYellowColor"/>
+                            <constraints>
+                                <constraint firstItem="dfC-lu-baj" firstAttribute="leading" secondItem="rvn-SN-AHV" secondAttribute="leading" constant="15" id="3pC-Id-8mq"/>
+                                <constraint firstItem="UjD-KO-WOl" firstAttribute="leading" secondItem="rvn-SN-AHV" secondAttribute="leading" constant="15" id="9mJ-ux-jSD"/>
+                                <constraint firstItem="siW-uf-Ze2" firstAttribute="top" secondItem="UjD-KO-WOl" secondAttribute="bottom" id="G30-yE-WAm"/>
+                                <constraint firstItem="UjD-KO-WOl" firstAttribute="top" secondItem="dfC-lu-baj" secondAttribute="bottom" id="Qbt-yd-eNi"/>
+                                <constraint firstItem="dfC-lu-baj" firstAttribute="top" secondItem="rvn-SN-AHV" secondAttribute="top" id="WkV-fJ-YGZ"/>
+                                <constraint firstAttribute="trailing" secondItem="siW-uf-Ze2" secondAttribute="trailing" constant="15" id="WvF-eU-jXi"/>
+                                <constraint firstAttribute="trailing" secondItem="UjD-KO-WOl" secondAttribute="trailing" constant="10" id="dEY-fk-jEf"/>
+                                <constraint firstItem="siW-uf-Ze2" firstAttribute="leading" secondItem="rvn-SN-AHV" secondAttribute="leading" constant="15" id="h8h-Ku-V45"/>
+                                <constraint firstAttribute="trailing" secondItem="dfC-lu-baj" secondAttribute="trailing" constant="15" id="tge-6j-IJV"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="u1w-is-IJR" secondAttribute="bottom" id="DbO-FH-eda"/>
+                <constraint firstItem="Xmh-lr-i7n" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="GKu-ip-wOw"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="u1w-is-IJR" secondAttribute="trailing" id="HgU-we-znb"/>
+                <constraint firstItem="Xmh-lr-i7n" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="U4v-zk-xLI"/>
+                <constraint firstItem="Xmh-lr-i7n" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="XDk-zP-mnV"/>
+                <constraint firstItem="u1w-is-IJR" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="fc1-Zr-AAZ"/>
+                <constraint firstItem="u1w-is-IJR" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="mue-oA-6nk"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Xmh-lr-i7n" secondAttribute="bottom" id="yb2-3I-2dM"/>
+            </constraints>
+            <point key="canvasLocation" x="-64.799999999999997" y="84.107946026986511"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Absolut Vodka__78_12,99" width="200" height="200"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

@@ -13,7 +13,7 @@ protocol SearchTableViewCellDelegate{
     func getRightProductCardArticle(article: Article, amount: Int)
 }
 
-class SearchTableViewCell: UITableViewCell, DetailedProductSelectionViewControllerDelegate, UIScrollViewDelegate {
+class SearchTableViewCell: UITableViewCell, DetailedProductSelectionViewControllerDelegate {
 
     
     func passUserSelection(amount: Int, action: UserInteraction, sender: DetailedProductSelectionViewController) {
@@ -63,19 +63,14 @@ class SearchTableViewCell: UITableViewCell, DetailedProductSelectionViewControll
     
     let leftDetailedProdSelectVC = DetailedProductSelectionViewController(nibName: "DetailedProductSelectionViewController", bundle: nil)
     let rightDetailedProdSelectVC = DetailedProductSelectionViewController(nibName: "DetailedProductSelectionViewController", bundle: nil)
+    let rightCardFrontSideVC = FrontsideOfCardViewController(nibName: "FrontsideOfCardViewController", bundle: nil)
+    let leftCardFrontSideVC = FrontsideOfCardViewController(nibName: "FrontsideOfCardViewController", bundle: nil)
     
     @IBOutlet weak var tableCellView: UIView!
     @IBOutlet weak var horizontalCardStackView: UIStackView!
     @IBOutlet weak var leftProductCardView: UIView!
     @IBOutlet weak var rightProductCardView: UIView!
-    
-    
-    @IBOutlet weak var leftCellImage: UIImageView!
-    @IBOutlet weak var leftProductLabel: UILabel!
-    @IBOutlet weak var leftProductInformation: UILabel!
-    @IBOutlet weak var leftProductPrice: UILabel!
-    @IBOutlet weak var leftCardButton: UIButton!
-    @IBOutlet weak var leftDataBackgroundView: UIView!
+
     
     @IBOutlet weak var rightCellImage: UIImageView!
     @IBOutlet weak var rightProductLabel: UILabel!
@@ -88,7 +83,14 @@ class SearchTableViewCell: UITableViewCell, DetailedProductSelectionViewControll
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        
         NotificationCenter.default.addObserver(self, selector: #selector(self.scrollViewWillBeginDragging), name: NavigationViewController.notificationNameForSearchTableVC, object: nil)
+        
+        leftCardFrontSideVC.view.bounds = rightProductCardView.bounds
+        leftCardFrontSideVC.view.layer.cornerRadius = 10
+        leftCardFrontSideVC.view.frame.origin = rightCardButton.frame.origin
+        leftProductCardView.addSubview(leftCardFrontSideVC.view)
+        
         
         self.leftDetailedProdSelectVC.userInteractionDelegate = self
         self.rightDetailedProdSelectVC.userInteractionDelegate = self
@@ -99,17 +101,12 @@ class SearchTableViewCell: UITableViewCell, DetailedProductSelectionViewControll
         leftProductCardView.layer.shadowOffset = .zero
         leftProductCardView.layer.shadowRadius = 10
         
-        leftDataBackgroundView.layer.cornerRadius = 10
-        
         rightProductCardView.layer.cornerRadius = 10
         rightProductCardView.layer.shadowColor = UIColor.lightGray.cgColor
         rightProductCardView.layer.shadowOpacity = 0.2
         rightProductCardView.layer.shadowOffset = .zero
         rightProductCardView.layer.shadowRadius = 10
         rightDataBackgroundView.layer.cornerRadius = 10
-        
-        leftDetailedProdSelectVC.view.removeFromSuperview()
-        rightDetailedProdSelectVC.view.removeFromSuperview()
     }
     
 
@@ -118,18 +115,7 @@ class SearchTableViewCell: UITableViewCell, DetailedProductSelectionViewControll
 
            // Configure the view for the selected state
        }
-    
-    @IBAction func leftCardTouched(_ sender: UIButton) {
-        
-        leftCardIsFlipped = true
-        leftDetailedProdSelectVC.view.bounds = leftProductCardView.bounds
-        leftDetailedProdSelectVC.view.layer.cornerRadius = 10
-        leftDetailedProdSelectVC.view.frame.origin = leftCardButton.frame.origin
-        leftProductCardView.addSubview(leftDetailedProdSelectVC.view)
-        leftDetailedProdSelectVC.productLabel.text = leftProductLabel.text
-        leftDetailedProdSelectVC.amountCnt = 1
-        UIView.transition(with: leftProductCardView, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-    }
+
     
     @IBAction func rightCardTouched(_ sender: UIButton) {
         rightCardIsFlipped = true

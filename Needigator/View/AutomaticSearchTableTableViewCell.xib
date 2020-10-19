@@ -22,74 +22,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yDc-I4-x7B">
                                 <rect key="frame" x="0.0" y="0.0" width="214" height="307"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pVk-k3-GnI">
-                                        <rect key="frame" x="0.0" y="135" width="214" height="172"/>
-                                        <color key="backgroundColor" red="1" green="0.60392156860000001" blue="0.46274509800000002" alpha="0.83999999999999997" colorSpace="custom" customColorSpace="displayP3"/>
-                                    </view>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Vollkornbrot__70_1,19" translatesAutoresizingMaskIntoConstraints="NO" id="Uay-rX-eZx">
-                                        <rect key="frame" x="42" y="5" width="130" height="130"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="130" id="MwS-bY-Jza"/>
-                                            <constraint firstAttribute="width" constant="130" id="X9p-8Y-XNJ"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Produkt" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KuK-T0-DO1">
-                                        <rect key="frame" x="15" y="135" width="184" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="8hz-kL-016"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="500g" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rN7-da-QVH">
-                                        <rect key="frame" x="15" y="185" width="184" height="25"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="25" id="vZz-Iz-HrM"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2,99€" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qjG-wX-wHM">
-                                        <rect key="frame" x="15" y="215" width="100" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="19p-fE-vnU"/>
-                                            <constraint firstAttribute="width" constant="100" id="KQ8-a4-Qzz"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lGP-YB-cvM">
-                                        <rect key="frame" x="0.0" y="0.0" width="214" height="307"/>
-                                        <connections>
-                                            <action selector="leftCardTouched:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="gTv-Yc-xH5"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="lGP-YB-cvM" secondAttribute="trailing" id="4vb-Xq-ry5"/>
-                                    <constraint firstItem="lGP-YB-cvM" firstAttribute="leading" secondItem="yDc-I4-x7B" secondAttribute="leading" id="55c-Ki-TIu"/>
-                                    <constraint firstAttribute="trailing" secondItem="KuK-T0-DO1" secondAttribute="trailing" constant="15" id="6lz-8P-ZXx"/>
-                                    <constraint firstAttribute="bottom" secondItem="pVk-k3-GnI" secondAttribute="bottom" id="A1E-9m-otq"/>
-                                    <constraint firstAttribute="trailing" secondItem="rN7-da-QVH" secondAttribute="trailing" constant="15" id="CfC-eb-8T0"/>
-                                    <constraint firstItem="KuK-T0-DO1" firstAttribute="top" secondItem="Uay-rX-eZx" secondAttribute="bottom" id="CyO-DO-5i3"/>
-                                    <constraint firstItem="Uay-rX-eZx" firstAttribute="centerX" secondItem="yDc-I4-x7B" secondAttribute="centerX" id="DaU-AB-PgO"/>
-                                    <constraint firstItem="lGP-YB-cvM" firstAttribute="top" secondItem="yDc-I4-x7B" secondAttribute="top" id="FRi-ya-bWA"/>
-                                    <constraint firstItem="rN7-da-QVH" firstAttribute="top" secondItem="KuK-T0-DO1" secondAttribute="bottom" id="ITa-oX-Gs1"/>
-                                    <constraint firstAttribute="trailing" secondItem="pVk-k3-GnI" secondAttribute="trailing" id="To5-ID-4GS"/>
-                                    <constraint firstItem="pVk-k3-GnI" firstAttribute="leading" secondItem="yDc-I4-x7B" secondAttribute="leading" id="fFA-Xn-8ME"/>
-                                    <constraint firstItem="KuK-T0-DO1" firstAttribute="leading" secondItem="yDc-I4-x7B" secondAttribute="leading" constant="15" id="fXw-nQ-ezI"/>
-                                    <constraint firstItem="rN7-da-QVH" firstAttribute="leading" secondItem="yDc-I4-x7B" secondAttribute="leading" constant="15" id="iy6-5I-7x1"/>
-                                    <constraint firstItem="qjG-wX-wHM" firstAttribute="leading" secondItem="yDc-I4-x7B" secondAttribute="leading" constant="15" id="mt2-uk-ZeF"/>
-                                    <constraint firstItem="qjG-wX-wHM" firstAttribute="top" secondItem="rN7-da-QVH" secondAttribute="bottom" constant="5" id="nFH-Fr-DrA"/>
-                                    <constraint firstAttribute="bottom" secondItem="lGP-YB-cvM" secondAttribute="bottom" id="qgr-cj-dbE"/>
-                                    <constraint firstItem="pVk-k3-GnI" firstAttribute="top" secondItem="Uay-rX-eZx" secondAttribute="bottom" id="uJN-N1-4cu"/>
-                                    <constraint firstItem="Uay-rX-eZx" firstAttribute="top" secondItem="yDc-I4-x7B" secondAttribute="top" constant="5" id="zaD-MY-ylR"/>
-                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zjf-dp-koO">
                                 <rect key="frame" x="234" y="0.0" width="214" height="307"/>
@@ -177,13 +110,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="horizontalCardStackView" destination="uz7-lv-4tk" id="w8H-kE-1dO"/>
-                <outlet property="leftCardButton" destination="lGP-YB-cvM" id="BZ1-oV-Liu"/>
-                <outlet property="leftCellImage" destination="Uay-rX-eZx" id="zTo-6G-XjL"/>
-                <outlet property="leftDataBackgroundView" destination="pVk-k3-GnI" id="BWK-uy-g7Y"/>
                 <outlet property="leftProductCardView" destination="yDc-I4-x7B" id="bTx-91-b63"/>
-                <outlet property="leftProductInformation" destination="rN7-da-QVH" id="625-7a-tsB"/>
-                <outlet property="leftProductLabel" destination="KuK-T0-DO1" id="ew3-Yx-t4H"/>
-                <outlet property="leftProductPrice" destination="qjG-wX-wHM" id="LUk-p6-9sR"/>
                 <outlet property="rightCardButton" destination="mlx-vi-e6b" id="cvt-Oz-ebD"/>
                 <outlet property="rightCellImage" destination="9gi-ie-4kk" id="fMB-9k-eJu"/>
                 <outlet property="rightDataBackgroundView" destination="Wfq-7B-EVF" id="0QY-u7-Bsh"/>

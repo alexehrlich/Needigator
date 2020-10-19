@@ -10,6 +10,8 @@
 		1D00D647242112D300DBBC41 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1D00D646242112D300DBBC41 /* README.txt */; };
 		1D2593C5243372C4008F5BAC /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2593C4243372C4008F5BAC /* Market.swift */; };
 		1D2593C924337DC5008F5BAC /* AllRoutes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1D2593C824337DC4008F5BAC /* AllRoutes.txt */; };
+		1D2AB430253D7AA300F0B3CA /* FrontsideOfCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2AB42E253D7AA300F0B3CA /* FrontsideOfCardViewController.swift */; };
+		1D2AB431253D7AA300F0B3CA /* FrontsideOfCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D2AB42F253D7AA300F0B3CA /* FrontsideOfCardViewController.xib */; };
 		1D2B10E42537792600D9119C /* SelectedProductsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2B10E22537792600D9119C /* SelectedProductsTableViewCell.swift */; };
 		1D2B10E52537792600D9119C /* SelectedProductsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D2B10E32537792600D9119C /* SelectedProductsTableViewCell.xib */; };
 		1D2E583F241E31CE002D341D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2E583E241E31CE002D341D /* AppDelegate.swift */; };
@@ -39,6 +41,8 @@
 		1D00D646242112D300DBBC41 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		1D2593C4243372C4008F5BAC /* Market.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
 		1D2593C824337DC4008F5BAC /* AllRoutes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AllRoutes.txt; sourceTree = "<group>"; };
+		1D2AB42E253D7AA300F0B3CA /* FrontsideOfCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontsideOfCardViewController.swift; sourceTree = "<group>"; };
+		1D2AB42F253D7AA300F0B3CA /* FrontsideOfCardViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FrontsideOfCardViewController.xib; sourceTree = "<group>"; };
 		1D2B10E0253763FA00D9119C /* Needigator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Needigator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D2B10E22537792600D9119C /* SelectedProductsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedProductsTableViewCell.swift; sourceTree = "<group>"; };
 		1D2B10E32537792600D9119C /* SelectedProductsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectedProductsTableViewCell.xib; sourceTree = "<group>"; };
@@ -128,6 +132,8 @@
 				1D2B10E32537792600D9119C /* SelectedProductsTableViewCell.xib */,
 				1D3DEFB92539F15300D77B86 /* DetailedProductSelectionViewController.swift */,
 				1D3DEFBA2539F15300D77B86 /* DetailedProductSelectionViewController.xib */,
+				1D2AB42E253D7AA300F0B3CA /* FrontsideOfCardViewController.swift */,
+				1D2AB42F253D7AA300F0B3CA /* FrontsideOfCardViewController.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -207,6 +213,7 @@
 				1D7FAB512420B8F5001A5215 /* AutomaticSearchTableTableViewCell.xib in Resources */,
 				1D8D6E4024B5177A007E8059 /* CardViewController.xib in Resources */,
 				1D3DEFBC2539F15300D77B86 /* DetailedProductSelectionViewController.xib in Resources */,
+				1D2AB431253D7AA300F0B3CA /* FrontsideOfCardViewController.xib in Resources */,
 				1D2E5846241E31CE002D341D /* Main.storyboard in Resources */,
 				1D2B10E52537792600D9119C /* SelectedProductsTableViewCell.xib in Resources */,
 				1D00D647242112D300DBBC41 /* README.txt in Resources */,
@@ -234,6 +241,7 @@
 				1D79972F2425FA22007CE3A5 /* RGB32.swift in Sources */,
 				1DF4FC21241F36390058FF02 /* ShoppingListViewController.swift in Sources */,
 				1D8DAF2D242A994200B4DBA8 /* RoutingViewController.swift in Sources */,
+				1D2AB430253D7AA300F0B3CA /* FrontsideOfCardViewController.swift in Sources */,
 				1D7997272425EAEB007CE3A5 /* Node.swift in Sources */,
 				1D2B10E42537792600D9119C /* SelectedProductsTableViewCell.swift in Sources */,
 				1D2593C5243372C4008F5BAC /* Market.swift in Sources */,
