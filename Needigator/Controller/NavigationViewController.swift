@@ -33,7 +33,7 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
     var selectedItems = [Int]()
     
     //Zuständig für die Routenberechnung
-    var navigation = Navigation()
+    var navigation = RouteCalculationManager()
     
 
     //Globale Variablen um Card-View zu realisieren
@@ -106,7 +106,7 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
         articleTableView.tableFooterView = UIView() //Tabelle zeigt nur so viel Zeilen wie Elemente
         
         //Registrieren NIB file (XIB file)
-        articleTableView.register(UINib(nibName: "AutomaticSearchTableTableViewCell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
+        articleTableView.register(UINib(nibName: "SearchTableViewCellDesign", bundle: nil), forCellReuseIdentifier: "ReusableCell")
         
         // Live auf Änderungen im TextField reagiern
         searchTextField.addTarget(self, action: #selector(NavigationViewController.textFieldDidChange), for: UIControl.Event.editingChanged)
@@ -190,7 +190,7 @@ extension NavigationViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let cell = articleTableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as! SearchTableViewCell
+        let cell = articleTableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as! SearchTableViewCellController
         
         cell.delegate = self
         if indexPath.row < tableView.numberOfRows(inSection: 0) - 1 || tableView.numberOfRows(inSection: 0) == 1 && substringArticles.count > 1{

@@ -8,17 +8,16 @@
 
 import UIKit
 
-class RoutingViewController: UIViewController, ImageTransfer {
+class RoutingViewController: UIViewController, RouteCalculationManagerDelegate {
     
     
     
     @IBOutlet weak var routeImageView: UIImageView!
     @IBOutlet weak var navigationArrowImage: UIImageView!
     @IBOutlet weak var backgroundImageView: UIImageView!
-    @IBOutlet weak var testSwitch: UISwitch!
     
     
-    var navigation = Navigation()
+    var navigation = RouteCalculationManager()
     var nodesInRoute = [Int]()
     var pixelCoordinatesInRoute = [CGPoint]()
     var pixelCordinatesOfNodesInRoute = [Int:CGPoint]()

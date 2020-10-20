@@ -13,7 +13,7 @@ protocol SearchTableViewCellDelegate{
     func getRightProductCardArticle(article: Article, amount: Int)
 }
 
-class SearchTableViewCell: UITableViewCell, DetailedProductSelectionViewControllerDelegate, UIScrollViewDelegate {
+class SearchTableViewCellController: UITableViewCell, DetailedProductSelectionViewControllerDelegate, UIScrollViewDelegate {
 
     
     func passUserSelection(amount: Int, action: UserInteraction, sender: DetailedProductSelectionViewController) {

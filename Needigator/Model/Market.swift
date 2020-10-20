@@ -13,10 +13,10 @@ import UIKit
 struct Market {
     
     var end = 0
-    var bitMapImageOfNodes = UIImage(named: "NODES_1242x1065_colored")
-    var allNodesInMarket: [Node] = [Node]()
+    var bitMapMarketPlan2D = UIImage(named: "NODES_1242x1065_colored")
+    var allNodesInMarket = [Node]()
     var pathsToRoutesFile: String = "AllRoutes.txt"
-    var finalRoutes: [Route] = [Route]()
+    var finalRoutes = [Route]()
     private var routesToItem: [Route] = [Route]()
     private var nodesInRoute: [Node] = [Node]()
     var pixelsOfAllNodes = [Int: CGPoint]()
@@ -33,7 +33,7 @@ struct Market {
         
         var nodesCounter = 0
         
-        guard let inputCGImage = bitMapImageOfNodes?.cgImage else {
+        guard let inputCGImage = bitMapMarketPlan2D?.cgImage else {
             print("unable to get cgImage")
             return
         }
@@ -147,7 +147,7 @@ struct Market {
         
         for i in 0..<allNodesInMarket.count {
             
-            if allNodesInMarket[i].getXPosition() == x && allNodesInMarket[i].yPosition == y {
+            if allNodesInMarket[i].getXPosition() == x && allNodesInMarket[i].getYPosition() == y {
                 return i
             }
         }
@@ -272,7 +272,7 @@ struct Market {
     //Funktion um eine Route ins Bild einzuzeichnen
     mutating func drawTestRoute(route: Route) -> UIImage?{
         
-        guard let inputCGImage = bitMapImageOfNodes?.cgImage else {
+        guard let inputCGImage = bitMapMarketPlan2D?.cgImage else {
             print("unable to get cgImage")
             return nil
         }
@@ -299,20 +299,20 @@ struct Market {
         let pixelBuffer = buffer.bindMemory(to: RGBA32.self, capacity: width * height)
         
         
-        for i in 0..<route.getRoute().count - 1{
+        for i in 0..<route.getListOfNodesInRoute().count - 1{
             
-            let currentNode = route.getRoute()[i]
+            let currentNode = route.getListOfNodesInRoute()[i]
             
             //Wenn der aktuelle Knoten und der Folgeknoten die gleiche x-Position haben, soll nur in y-Richtung gelaufen und gemalt werden.
             
-            if route.getRoute()[i].getXPosition() == route.getRoute()[i + 1].getXPosition(){
+            if route.getListOfNodesInRoute()[i].getXPosition() == route.getListOfNodesInRoute()[i + 1].getXPosition(){
                 
                 let fixedXPosition = currentNode.getXPosition()
                 
                 //Wenn der y-Wert des Folgeknoten höher ist, dann soll in positive y-Richtung gelaufen werden
                 //Wenn der y-Wert des Folgeknoten kleiner ist, dann soll in negative y-Richtung gelaufen werden
                 
-                if route.getRoute()[i].getYPosition() < route.getRoute()[i + 1].getYPosition() {
+                if route.getListOfNodesInRoute()[i].getYPosition() < route.getListOfNodesInRoute()[i + 1].getYPosition() {
                     
                     var nextY = currentNode.getYPosition() + 1
                     
@@ -322,7 +322,7 @@ struct Market {
                     pixelBuffer[getCurrentPixelPosition(y: currentNode.getYPosition(), width: width, x: fixedXPosition - 1)] = .red
                     pixelBuffer[getCurrentPixelPosition(y: currentNode.getYPosition(), width: width, x: fixedXPosition - 2)] = .red
                     
-                    while nextY != route.getRoute()[i + 1].getYPosition() {
+                    while nextY != route.getListOfNodesInRoute()[i + 1].getYPosition() {
                         
                         drawCoordinateDictionary.append(CGPoint(x: fixedXPosition, y: nextY))
                         
@@ -345,7 +345,7 @@ struct Market {
                     pixelBuffer[getCurrentPixelPosition(y: currentNode.getYPosition(), width: width, x: fixedXPosition - 1)] = .red
                     pixelBuffer[getCurrentPixelPosition(y: currentNode.getYPosition(), width: width, x: fixedXPosition - 2)] = .red
                     
-                    while nextY != route.getRoute()[i + 1].getYPosition() {
+                    while nextY != route.getListOfNodesInRoute()[i + 1].getYPosition() {
                         drawCoordinateDictionary.append(CGPoint(x: fixedXPosition, y: nextY))
                         pixelBuffer[getCurrentPixelPosition(y: nextY, width: width, x: fixedXPosition)] = .red
                         pixelBuffer[getCurrentPixelPosition(y: nextY, width: width, x: fixedXPosition + 1)] = .red
@@ -355,10 +355,10 @@ struct Market {
                         nextY -=  1
                     }
                 }
-            } else  if route.getRoute()[i].getYPosition() == route.getRoute()[i + 1].getYPosition(){
+            } else  if route.getListOfNodesInRoute()[i].getYPosition() == route.getListOfNodesInRoute()[i + 1].getYPosition(){
                 let fixedYPosition = currentNode.getYPosition()
                 
-                if route.getRoute()[i].getXPosition() < route.getRoute()[i + 1].getXPosition(){
+                if route.getListOfNodesInRoute()[i].getXPosition() < route.getListOfNodesInRoute()[i + 1].getXPosition(){
                     var nextX = currentNode.getXPosition() + 1
                     
                     pixelBuffer[getCurrentPixelPosition(y: fixedYPosition, width: width, x: currentNode.getXPosition())] = .red
@@ -367,7 +367,7 @@ struct Market {
                     pixelBuffer[getCurrentPixelPosition(y: fixedYPosition, width: width, x: currentNode.getXPosition() - 1)] = .red
                     pixelBuffer[getCurrentPixelPosition(y: fixedYPosition, width: width, x: currentNode.getXPosition() - 2)] = .red
                     
-                    while nextX != route.getRoute()[i + 1].getXPosition() {
+                    while nextX != route.getListOfNodesInRoute()[i + 1].getXPosition() {
                         drawCoordinateDictionary.append(CGPoint(x: nextX, y: fixedYPosition))
                         pixelBuffer[getCurrentPixelPosition(y: fixedYPosition, width: width, x: nextX)] = .red
                         pixelBuffer[getCurrentPixelPosition(y: fixedYPosition + 1, width: width, x: nextX)] = .red
@@ -385,7 +385,7 @@ struct Market {
                     pixelBuffer[getCurrentPixelPosition(y: fixedYPosition, width: width, x: currentNode.getXPosition() - 1)] = .red
                     pixelBuffer[getCurrentPixelPosition(y: fixedYPosition, width: width, x: currentNode.getXPosition() - 2)] = .red
                     
-                    while nextX != route.getRoute()[i + 1].getXPosition() {
+                    while nextX != route.getListOfNodesInRoute()[i + 1].getXPosition() {
                         drawCoordinateDictionary.append(CGPoint(x: nextX, y: fixedYPosition))
                         pixelBuffer[getCurrentPixelPosition(y: fixedYPosition, width: width, x: nextX)] = .red
                         pixelBuffer[getCurrentPixelPosition(y: fixedYPosition + 1, width: width, x: nextX)] = .red
@@ -400,7 +400,7 @@ struct Market {
         }
         
         let outputCGImage = context.makeImage()!
-        let outputImage = UIImage(cgImage: outputCGImage, scale: bitMapImageOfNodes!.scale, orientation: bitMapImageOfNodes!.imageOrientation)
+        let outputImage = UIImage(cgImage: outputCGImage, scale: bitMapMarketPlan2D!.scale, orientation: bitMapMarketPlan2D!.imageOrientation)
         
         return outputImage
     }

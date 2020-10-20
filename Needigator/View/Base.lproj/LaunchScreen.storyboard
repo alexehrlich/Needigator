@@ -12,22 +12,22 @@
         <scene sceneID="EHf-IW-A2E">
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Needigator" translatesAutoresizingMaskIntoConstraints="NO" id="ORN-dL-ece">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Needigator" translatesAutoresizingMaskIntoConstraints="NO" id="HAK-8q-4oN">
                                 <rect key="frame" x="0.0" y="344" width="414" height="218"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.94540506599999996" green="0.62166225909999995" blue="0.49010491369999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ORN-dL-ece" secondAttribute="bottom" constant="300" id="5Nm-iN-10o"/>
-                            <constraint firstItem="ORN-dL-ece" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="300" id="Cn4-GN-92h"/>
-                            <constraint firstItem="ORN-dL-ece" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="F18-xZ-Ycq"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ORN-dL-ece" secondAttribute="trailing" id="ZUX-cJ-4PV"/>
-                            <constraint firstItem="ORN-dL-ece" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="pIq-Mf-W6V"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="HAK-8q-4oN" secondAttribute="trailing" id="16c-jD-JJE"/>
+                            <constraint firstItem="HAK-8q-4oN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="LFZ-zh-tyZ"/>
+                            <constraint firstItem="HAK-8q-4oN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="300" id="cCV-x7-pXE"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="HAK-8q-4oN" secondAttribute="bottom" constant="300" id="czb-Ud-Kn7"/>
+                            <constraint firstItem="HAK-8q-4oN" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="t1m-jT-eqm"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -37,6 +37,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Needigator" width="5000" height="5000"/>
+        <image name="Needigator" width="2500" height="2500"/>
     </resources>
 </document>

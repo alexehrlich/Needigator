@@ -10,9 +10,9 @@ import Foundation
 
 struct Node: Equatable {
     
-    var name: Int
-    var xPosition: Int
-    var yPosition: Int
+    private var name: Int
+    private var xPosition: Int
+    private var yPosition: Int
     
     private var connectedNodes = [Int]()
     

@@ -10,8 +10,8 @@ import Foundation
 
 struct Route {
     
-    var nodeList = [Node]()
-    var length: Int = 0
+    private var nodeList = [Node]()
+    private var length: Int = 0
     
     init(nodes: [Node]) {
         for i in 0..<nodes.count {
@@ -40,7 +40,7 @@ struct Route {
         return length
     }
     
-    func getRoute() -> [Node]{
+    func getListOfNodesInRoute() -> [Node]{
         return nodeList
     }
     

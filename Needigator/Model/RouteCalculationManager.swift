@@ -8,62 +8,101 @@
 
 import UIKit
 
-protocol ImageTransfer {
+protocol RouteCalculationManagerDelegate {
     func receiveImage(image: UIImage)
     func receiveImagePixelData(points: [CGPoint])
 }
 
-protocol CalculationComplete {
-    func didFinishWithCalculation()
-}
 
-struct Navigation {
+struct RouteCalculationManager {
 
     var market = Market()
     
+    //SIMULATED ANNEALING CONSTANTS
+    private var sigma: Double = 10000
+    private let sigmaReduktion = 0.001
+    
     //Damit das Bild mit der Route an den RouteVC gesendet werden und dort angezeigt werden kann
-    var delegate: ImageTransfer?
-    var calculationDelegate: CalculationComplete?
-    
-    
-    //SIMULATED ANNEALING
-    var sigma: Double = 10000
-    let sigmaReduktion = 0.001
-    
+    var delegate: RouteCalculationManagerDelegate?
     
     //In dieser Methode wird durch eine andere Methode die Route berechnet und deren Umsetzung in ein Bild initiiert
     mutating func drawImage(nodes: [Int]) {
         
-        var routeNodes = [Node]()
+        var nodesInRoute = [Node]()
         
         for nodeNumber in nodes {
-            
-        routeNodes.append(market.allNodesInMarket[nodeNumber])
+        nodesInRoute.append(market.allNodesInMarket[nodeNumber])
         }
         
-        let shuffeledRoute = Route(nodes: routeNodes.shuffled())
+        let shuffeledRoute = Route(nodes: nodesInRoute.shuffled())
         
         //Lösche alle doppelt vorkommenden Produktzielknoten. Verschiedene Produkte können sich am gleichen Zielknoten befinden.
         let doubleDeletedRoute = deleteDuplicateNodes(route: shuffeledRoute)
         
-        let optimizedRoute = simulatedAnnealing(for: doubleDeletedRoute)
+        let optimizedRoute = calculateShortestRouteWithSimulatedAnnealing(for: doubleDeletedRoute)
         
         //erzeugt aus der Liste der Zielknoten der kürzesten Route die Liste die alle Knoten enthält - auch die zwischen den Zielknoten. Diese Knotenliste wird dann zum Zeichnen benötigt.
         let finalAppendedRoute = createCompleteRoute(route: optimizedRoute)
         
+        let imageWithDrawnRoute = market.drawTestRoute(route: finalAppendedRoute)!
         
         //Beauftragt den Delegate dieser Klasse das errechnete Zielbild zu laden.
-        delegate?.receiveImage(image: market.drawTestRoute(route: finalAppendedRoute)!)
+        delegate?.receiveImage(image: imageWithDrawnRoute)
         
-        //Sendet die Pixel in der Route an den Routing VC
+        //Sendet die Pixel in der Route an den Routing VC, damit die Route von den Einkaufswagen abgefahren werden kann.
         delegate?.receiveImagePixelData(points: market.getDrawPixelCoordinates())
+    }
+}
+   
+
+//MARK: Route manipulating methods
+
+extension RouteCalculationManager{
+    //Diese Funktion erzeigt aus der Route, die nur die Zielknoten enthält, die endgültige Route mit alle Knoten die zwischen den Zielknoten liegen. Diese Route ist dann auch tatsächlich laufbar, da von jedem Knoten der Folgeknoten erreicht werden kann.
+    private func createCompleteRoute(route: Route) -> Route {
         
+        var tempNodeArray = [market.allNodesInMarket[74]]
+        
+        for i in 0..<route.getListOfNodesInRoute().count {
+            
+            //Folgende Abfrage ist für den Zugriff auf AllRoutes.txt notwendig. Liegt der ist der Folgeknoten kleiner als Knoten, gilt eine andere Berechnung füpr den Zugriff auf das Array, wie wenn der Folgeknoten größer als der Knoten ist.
+            if i < route.getListOfNodesInRoute().count - 1 {
+                
+                if route.getListOfNodesInRoute()[i].getNodeName() < route.getListOfNodesInRoute()[i + 1].getNodeName() {
+                    
+                    //Berechnung des Index
+                    let index = route.getListOfNodesInRoute()[i].getNodeName() * 95 + route.getListOfNodesInRoute()[i + 1].getNodeName() - 1
+                    var partWay = market.finalRoutes[index].getListOfNodesInRoute()
+                    
+                    //Das erste Element wird gelöscht, da es schon als Knoten der vorherigen Subroute enthalten ist.
+                    partWay.removeFirst()
+                    
+                    //Hänge die Subroute an
+                    tempNodeArray += partWay
+                    
+                }else{
+                    //Berechnung des Index (anders!)
+                    let index = route.getListOfNodesInRoute()[i].getNodeName() * 95 + route.getListOfNodesInRoute()[i + 1].getNodeName()
+                    var partWay = market.finalRoutes[index].getListOfNodesInRoute()
+                    
+                    //Das erste Element wird gelöscht, da es schon als Knoten der vorherigen Subroute enthalten ist.
+                    partWay.removeFirst()
+                    
+                    //Hänge die Subroute an
+                    tempNodeArray += partWay
+                }
+                
+            }
+        }
+        
+        let finalRoute = Route(nodes: tempNodeArray)
+        return finalRoute
     }
     
     //Funktion die gleiche Endknoten aus der Liste löscht. Die zurückgegebene Route hat die Reihenfolge der Auswahl des Nutzers (zufaellig) und hat als ersten Knoten den Eingang hinzugefügt und als letzten Knoten die KAssse hinzugefügt
-    func deleteDuplicateNodes(route: Route) -> Route {
+    private func deleteDuplicateNodes(route: Route) -> Route {
         
-        let tempNodeList = route.nodeList
+        let tempNodeList = route.getListOfNodesInRoute()
         
         //Die neue Liste soll mit 74 beginnen, da hier der Eingang ist
         var filteredTempNodeList = [market.allNodesInMarket[74]]
@@ -81,11 +120,15 @@ struct Navigation {
     
         return Route(nodes: filteredTempNodeList)
     }
-    
+}
+
+
+//MARK: Simulated Annelaing Algorithm
+
+extension RouteCalculationManager {
     
     //Dise Funktion berrechnet die kürzeste Route nach dem Simulated Annealing Verfahren und gibt diese Route zurück.
-    mutating func simulatedAnnealing(for route: Route) -> Route {
-        
+    private mutating func calculateShortestRouteWithSimulatedAnnealing(for route: Route) -> Route {
         
         var currentRoute = route
         var tempRoute = route
@@ -96,7 +139,7 @@ struct Navigation {
         
         
         //Abfrage, ob nur ein Artikel (3, da Kasse udn Eingang hinzukommen) gewählt wurde
-        if route.getRoute().count == 3 {
+        if route.getListOfNodesInRoute().count == 3 {
 
             createCompleteRoute(route: route).showRoute()
             return route
@@ -104,16 +147,16 @@ struct Navigation {
             while sigma > 0.5{
                 
                 //Index für den Tausch bestimmen, dieser kann nicht das erste oder das letzte Element sin, da die Kasse und der Eingang fix sind
-                index1 = Int.random(in: 1..<tempRoute.getRoute().count - 1)
-                index2 = Int.random(in: 1..<tempRoute.getRoute().count - 1)
+                index1 = Int.random(in: 1..<tempRoute.getListOfNodesInRoute().count - 1)
+                index2 = Int.random(in: 1..<tempRoute.getListOfNodesInRoute().count - 1)
                 
                 while index2 == index1 {
-                    index2 = Int.random(in: 1..<tempRoute.getRoute().count - 1)
+                    index2 = Int.random(in: 1..<tempRoute.getListOfNodesInRoute().count - 1)
                 }
                 
                 //Bestimme die zu tauschenden Knoten an den errechneten Indexen
-                tradeNode1 = currentRoute.getRoute()[index1]
-                tradeNode2 = currentRoute.getRoute()[index2]
+                tradeNode1 = currentRoute.getListOfNodesInRoute()[index1]
+                tradeNode2 = currentRoute.getListOfNodesInRoute()[index2]
                 
                 
                 //Tausche die Knoten
@@ -130,73 +173,22 @@ struct Navigation {
                 if !acceptingChangeOfRoutes(oldRouteDistance: distanceFromOldRoute.calculateDistance(), newRouteDistance: distanceFromNewRoute.calculateDistance(), sigma: Double(sigma)){
                     tempRoute.changeNodes(position: index1, node: tradeNode1!)
                     tempRoute.changeNodes(position: index2, node: tradeNode2!)
-                    //                print("Tausch rückgängig gemacht")
                     
                     //Wenn die Route mit dem Tausch akzeptiert wird, dann setzte die aktuelle Route gleich der Route mit dem Wechsel der Knoten
                 }else{
-                    //                print("Tausch akzeptiert")
                     currentRoute = tempRoute
                 }
                 
                 //Verringere Sigma
                 sigma *= 1-sigmaReduktion
             }
-            
-            //print("Die optimierte Route ist: ")
-            calculationDelegate?.didFinishWithCalculation()
-            currentRoute.showRoute()
             return currentRoute
         }
         
     }
     
-    //Diese Funktion erzeigt aus der Route, die nur die Zielknoten enthält, die endgültige Route mit alle Knoten die zwischen den Zielknoten liegen. Diese Route ist dann auch tatsächlich laufbar, da von jedem Knoten der Folgeknoten erreicht werden kann.
-    func createCompleteRoute(route: Route) -> Route {
-        
-        var tempNodeArray = [market.allNodesInMarket[74]]
-        
-        for i in 0..<route.getRoute().count {
-            
-            
-            
-            //Folgende Abfrage ist für den Zugriff auf AllRoutes.txt notwendig. Liegt der ist der Folgeknoten kleiner als Knoten, gilt eine andere Berechnung füpr den Zugriff auf das Array, wie wenn der Folgeknoten größer als der Knoten ist.
-            if i < route.getRoute().count - 1 {
-                
-                if route.getRoute()[i].getNodeName() < route.getRoute()[i + 1].getNodeName() {
-                    
-                    //Berechnung des Index
-                    let index = route.getRoute()[i].getNodeName() * 95 + route.getRoute()[i + 1].getNodeName() - 1
-                    var partWay = market.finalRoutes[index].getRoute()
-                    
-                    //Das erste Element wird gelöscht, da es schon als Knoten der vorherigen Subroute enthalten ist.
-                    partWay.removeFirst()
-                    
-                    //Hänge die Subroute an
-                    tempNodeArray += partWay
-                    
-                }else{
-                    //Berechnung des Index (anders!)
-                    let index = route.getRoute()[i].getNodeName() * 95 + route.getRoute()[i + 1].getNodeName()
-                    var partWay = market.finalRoutes[index].getRoute()
-                    
-                    //Das erste Element wird gelöscht, da es schon als Knoten der vorherigen Subroute enthalten ist.
-                    partWay.removeFirst()
-                    
-                    //Hänge die Subroute an
-                    tempNodeArray += partWay
-                }
-                
-            }
-        }
-        
-        let finalRoute = Route(nodes: tempNodeArray)
-        return finalRoute
-    }
-    
-    
-    
     //Prüft, ob der Tausch akzepiert werden kann
-    func acceptingChangeOfRoutes(oldRouteDistance: Int, newRouteDistance: Int, sigma: Double) -> Bool{
+    private func acceptingChangeOfRoutes(oldRouteDistance: Int, newRouteDistance: Int, sigma: Double) -> Bool{
         
         let delta: Double = Double(newRouteDistance - oldRouteDistance)
         let exponent: Double = -(delta/sigma)
@@ -218,3 +210,4 @@ struct Navigation {
         }
     }
 }
+
