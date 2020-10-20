@@ -8,26 +8,14 @@
 
 import UIKit
 
-protocol PassInformationToListView {
-    func passSelectedArticles(for articles: [String])
-}
 
-class NavigationViewController: UIViewController, UITableViewDelegate, SearchTableViewCellDelegate{
+class NavigationViewController: UIViewController, UITableViewDelegate{
 
-    
+    //Notification-Center als Kommunikationsweg zwischen NavigationController.swift und CardViewController.swift und SearchTableViewCell.swift
     static let notificationNameForCardVC = Notification.Name("gefehrlich.Needigator.dataForCardView")
     static let notificationNameForSearchTableVC = Notification.Name("gefehrlich.Needigator.dataForSearchTableVC")
-    
-    func getLeftProductCardArticle(article: Article, amount: Int) {
-        selectedItems.append(article.getNode())
-        NotificationCenter.default.post(name: NavigationViewController.notificationNameForCardVC, object: nil, userInfo: ["data" : article.getName(), "amount": amount])
-    }
-    
-    func getRightProductCardArticle(article: Article, amount: Int) {
-        selectedItems.append(article.getNode())
-        NotificationCenter.default.post(name: NavigationViewController.notificationNameForCardVC, object: nil, userInfo: ["data" : article.getName(), "amount": amount])
-    }
 
+    
     //Verbindung zum Interface-Builder
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var articleTableView: UITableView!
@@ -47,10 +35,8 @@ class NavigationViewController: UIViewController, UITableViewDelegate, SearchTab
     //Zuständig für die Routenberechnung
     var navigation = Navigation()
     
-    var listOfSelectedArticles = [String]()
-    
-    
-    //Für Card View
+
+    //Globale Variablen um Card-View zu realisieren
     enum CardState {
         case expanded
         case collapsed
@@ -70,10 +56,6 @@ class NavigationViewController: UIViewController, UITableViewDelegate, SearchTab
     
     var runningAnimations = [UIViewPropertyAnimator]()
     var animationProgressWhenInterrupted:CGFloat = 0
-
-    
-    //Datentransfer zum CardView
-    var articleDelegate: PassInformationToListView?
     
     
     //Wenn der Bildschirm auftaucht wenn man wieder zu diesem zurückkehrt, dann soll alles gelöscht sein.
@@ -84,12 +66,9 @@ class NavigationViewController: UIViewController, UITableViewDelegate, SearchTab
         animateTransitionIfNeeded(state: nextState, duration: 0.1)
         
         selectedItems.removeAll()
-        substringArticles.removeAll()
         substringArticles = articleDataBase.items
         articleTableView.reloadData()
     }
-    
-    
     
     
     override func viewDidLoad() {
@@ -100,7 +79,7 @@ class NavigationViewController: UIViewController, UITableViewDelegate, SearchTab
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
         view.addGestureRecognizer(tap)
         
-
+        //Card-View für Einkaufsliste
         setupCard()
         
         
@@ -124,7 +103,7 @@ class NavigationViewController: UIViewController, UITableViewDelegate, SearchTab
         
         articleTableView.dataSource = self
         articleTableView.delegate = self
-        articleTableView.tableFooterView = UIView()
+        articleTableView.tableFooterView = UIView() //Tabelle zeigt nur so viel Zeilen wie Elemente
         
         //Registrieren NIB file (XIB file)
         articleTableView.register(UINib(nibName: "AutomaticSearchTableTableViewCell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
@@ -268,9 +247,22 @@ extension NavigationViewController: UIScrollViewDelegate {
         NotificationCenter.default.post(name: NavigationViewController.notificationNameForSearchTableVC, object: nil)
         self.view.endEditing(true)
     }
-    
 }
 
+extension NavigationViewController: SearchTableViewCellDelegate{
+    
+    func getLeftProductCardArticle(article: Article, amount: Int) {
+        selectedItems.append(article.getNode())
+        NotificationCenter.default.post(name: NavigationViewController.notificationNameForCardVC, object: nil, userInfo: ["data" : article.getName(), "amount": amount])
+    }
+    
+    func getRightProductCardArticle(article: Article, amount: Int) {
+        selectedItems.append(article.getNode())
+        NotificationCenter.default.post(name: NavigationViewController.notificationNameForCardVC, object: nil, userInfo: ["data" : article.getName(), "amount": amount])
+    }
+}
+
+//Erweiterung um den CardView zu implementieren
 extension NavigationViewController {
 
 func setupCard() {

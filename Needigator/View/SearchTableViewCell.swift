@@ -48,8 +48,7 @@ class SearchTableViewCell: UITableViewCell, DetailedProductSelectionViewControll
         }
     }
     
-    var flippedCard = UIView()
-    
+
     var leftCardProductNode = 0
     var rightCardProductNode = 0
     var rightCardArticle : Article?
@@ -107,9 +106,7 @@ class SearchTableViewCell: UITableViewCell, DetailedProductSelectionViewControll
         rightProductCardView.layer.shadowOffset = .zero
         rightProductCardView.layer.shadowRadius = 10
         rightDataBackgroundView.layer.cornerRadius = 10
-        
-        leftDetailedProdSelectVC.view.removeFromSuperview()
-        rightDetailedProdSelectVC.view.removeFromSuperview()
+
     }
     
 
@@ -122,12 +119,12 @@ class SearchTableViewCell: UITableViewCell, DetailedProductSelectionViewControll
     @IBAction func leftCardTouched(_ sender: UIButton) {
         
         leftCardIsFlipped = true
-        leftDetailedProdSelectVC.view.bounds = leftProductCardView.bounds
-        leftDetailedProdSelectVC.view.layer.cornerRadius = 10
-        leftDetailedProdSelectVC.view.frame.origin = leftCardButton.frame.origin
-        leftProductCardView.addSubview(leftDetailedProdSelectVC.view)
-        leftDetailedProdSelectVC.productLabel.text = leftProductLabel.text
-        leftDetailedProdSelectVC.amountCnt = 1
+        self.leftDetailedProdSelectVC.view.bounds = leftProductCardView.bounds
+        self.leftDetailedProdSelectVC.view.layer.cornerRadius = 10
+        self.leftDetailedProdSelectVC.view.frame.origin = leftCardButton.frame.origin
+        self.leftProductCardView.addSubview(leftDetailedProdSelectVC.view)
+        self.leftDetailedProdSelectVC.productLabel.text = leftProductLabel.text
+        self.leftDetailedProdSelectVC.amountCnt = 1
         UIView.transition(with: leftProductCardView, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
     }
     
@@ -149,12 +146,9 @@ class SearchTableViewCell: UITableViewCell, DetailedProductSelectionViewControll
     }
     
     @objc func scrollViewWillBeginDragging() {
-        if rightCardIsFlipped{
-            UIView.transition(with: rightDetailedProdSelectVC.view, duration: 0.3, options: .transitionFlipFromRight, animations: nil, completion: nil)
-        }
+    
     }
 }
-
    
     
     

@@ -17,17 +17,12 @@ class WelcomeViewController: UIViewController {
     
     
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        title = "Needigator"
-        
-    }
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     
-    
+    title = "Needigator"
+        
+    //UI-Layout Anpassungen
     shoppingButtonView.layer.cornerRadius = 12
     shoppingButtonView.layer.shadowColor = UIColor.gray.cgColor
     shoppingButtonView.layer.shadowOpacity = 0.4
@@ -46,16 +41,7 @@ class WelcomeViewController: UIViewController {
     helpButton.layer.shadowOffset = .zero
     helpButton.layer.shadowRadius = 10
     
-}
-
-
-override func viewWillDisappear(_ animated: Bool) {
-    super.viewWillDisappear(animated)
-    
-    navigationController?.isNavigationBarHidden = false
-    
-}
-
+    }
 }
 
 

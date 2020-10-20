@@ -8,11 +8,12 @@
 
 import UIKit
 
+
 enum UserInteraction {
-    
     case addProduct
     case cancleAdding
 }
+
 
 protocol DetailedProductSelectionViewControllerDelegate {
     func passUserSelection(amount: Int, action: UserInteraction, sender: DetailedProductSelectionViewController)
@@ -37,6 +38,7 @@ class DetailedProductSelectionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(self.scrollViewWillBeginDragging), name: NavigationViewController.notificationNameForSearchTableVC, object: nil)
         
         amountStackView.layer.cornerRadius = 10
         addButtonOutlet.layer.cornerRadius = addButtonOutlet.frame.size.height / 2
@@ -65,6 +67,11 @@ class DetailedProductSelectionViewController: UIViewController {
     
     @IBAction func cancelButtonTapped(_ sender: UIButton) {
         userInteractionDelegate?.passUserSelection(amount: 0, action: .cancleAdding, sender: self)
+    }
+    
+    @objc func scrollViewWillBeginDragging() {
+       // self.removeFromParent()
+       // self.view.removeFromSuperview()
     }
     
     
