@@ -8,8 +8,6 @@
 
 import UIKit
 
-
-
 struct Market {
     
     var end = 0
@@ -270,7 +268,7 @@ struct Market {
     
     
     //Funktion um eine Route ins Bild einzuzeichnen
-    mutating func drawTestRoute(route: Route) -> UIImage?{
+    mutating func drawRouteIntoMarketPlan(route: Route) -> UIImage?{
         
         guard let inputCGImage = bitMapMarketPlan2D?.cgImage else {
             print("unable to get cgImage")

@@ -44,7 +44,7 @@ struct RouteCalculationManager {
         //erzeugt aus der Liste der Zielknoten der kürzesten Route die Liste die alle Knoten enthält - auch die zwischen den Zielknoten. Diese Knotenliste wird dann zum Zeichnen benötigt.
         let finalAppendedRoute = createCompleteRoute(route: optimizedRoute)
         
-        let imageWithDrawnRoute = market.drawTestRoute(route: finalAppendedRoute)!
+        let imageWithDrawnRoute = market.drawRouteIntoMarketPlan(route: finalAppendedRoute)!
         
         //Beauftragt den Delegate dieser Klasse das errechnete Zielbild zu laden.
         delegate?.receiveImage(image: imageWithDrawnRoute)
