@@ -6,11 +6,11 @@
 //  Copyright © 2020 Alexander Ehrlich. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 protocol RouteCalculationManagerDelegate {
-    func receiveImage(image: UIImage)
-    func receiveImagePixelData(points: [CGPoint])
+    func didFinishOptimizingRoute(result: Route)
+//    func receiveImagePixelData(points: [CGPoint])
 }
 
 
@@ -26,12 +26,12 @@ struct RouteCalculationManager {
     var delegate: RouteCalculationManagerDelegate?
     
     //In dieser Methode wird durch eine andere Methode die Route berechnet und deren Umsetzung in ein Bild initiiert
-    mutating func drawImage(nodes: [Int]) {
+    mutating func prepareRoute(nodes: [Int]) {
         
         var nodesInRoute = [Node]()
         
         for nodeNumber in nodes {
-        nodesInRoute.append(market.allNodesInMarket[nodeNumber])
+            nodesInRoute.append(Market.allNodesInMarket[nodeNumber])
         }
         
         let shuffeledRoute = Route(nodes: nodesInRoute.shuffled())
@@ -44,13 +44,11 @@ struct RouteCalculationManager {
         //erzeugt aus der Liste der Zielknoten der kürzesten Route die Liste die alle Knoten enthält - auch die zwischen den Zielknoten. Diese Knotenliste wird dann zum Zeichnen benötigt.
         let finalAppendedRoute = createCompleteRoute(route: optimizedRoute)
         
-        let imageWithDrawnRoute = market.drawRouteIntoMarketPlan(route: finalAppendedRoute)!
-        
         //Beauftragt den Delegate dieser Klasse das errechnete Zielbild zu laden.
-        delegate?.receiveImage(image: imageWithDrawnRoute)
+        delegate?.didFinishOptimizingRoute(result: finalAppendedRoute)
         
         //Sendet die Pixel in der Route an den Routing VC, damit die Route von den Einkaufswagen abgefahren werden kann.
-        delegate?.receiveImagePixelData(points: market.getDrawPixelCoordinates())
+        //delegate?.receiveImagePixelData(points: market.getDrawPixelCoordinates())
     }
 }
    
@@ -61,7 +59,7 @@ extension RouteCalculationManager{
     //Diese Funktion erzeigt aus der Route, die nur die Zielknoten enthält, die endgültige Route mit alle Knoten die zwischen den Zielknoten liegen. Diese Route ist dann auch tatsächlich laufbar, da von jedem Knoten der Folgeknoten erreicht werden kann.
     private func createCompleteRoute(route: Route) -> Route {
         
-        var tempNodeArray = [market.allNodesInMarket[74]]
+        var tempNodeArray = [Market.allNodesInMarket[74]]
         
         for i in 0..<route.getListOfNodesInRoute().count {
             
@@ -72,7 +70,7 @@ extension RouteCalculationManager{
                     
                     //Berechnung des Index
                     let index = route.getListOfNodesInRoute()[i].getNodeName() * 95 + route.getListOfNodesInRoute()[i + 1].getNodeName() - 1
-                    var partWay = market.finalRoutes[index].getListOfNodesInRoute()
+                    var partWay = Market.finalRoutes[index].getListOfNodesInRoute()
                     
                     //Das erste Element wird gelöscht, da es schon als Knoten der vorherigen Subroute enthalten ist.
                     partWay.removeFirst()
@@ -83,7 +81,7 @@ extension RouteCalculationManager{
                 }else{
                     //Berechnung des Index (anders!)
                     let index = route.getListOfNodesInRoute()[i].getNodeName() * 95 + route.getListOfNodesInRoute()[i + 1].getNodeName()
-                    var partWay = market.finalRoutes[index].getListOfNodesInRoute()
+                    var partWay = Market.finalRoutes[index].getListOfNodesInRoute()
                     
                     //Das erste Element wird gelöscht, da es schon als Knoten der vorherigen Subroute enthalten ist.
                     partWay.removeFirst()
@@ -105,18 +103,18 @@ extension RouteCalculationManager{
         let tempNodeList = route.getListOfNodesInRoute()
         
         //Die neue Liste soll mit 74 beginnen, da hier der Eingang ist
-        var filteredTempNodeList = [market.allNodesInMarket[74]]
+        var filteredTempNodeList = [Market.allNodesInMarket[74]]
         
         //Wenn der Knoten noch nicht in der gefilterten Liste ist, soll er angehaengt werden
         for node in tempNodeList {
             
-            if !filteredTempNodeList.contains(node) && node != market.allNodesInMarket[64] {
+            if !filteredTempNodeList.contains(node) && node != Market.allNodesInMarket[64] {
                 filteredTempNodeList.append(node)
             }
         }
         
         // Zum Schluss soll der Kassenknoten noch angehängt werden
-        filteredTempNodeList.append(market.allNodesInMarket[64])
+        filteredTempNodeList.append(Market.allNodesInMarket[64])
     
         return Route(nodes: filteredTempNodeList)
     }
