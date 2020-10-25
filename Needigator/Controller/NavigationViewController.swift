@@ -139,7 +139,6 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
             
             let destVC = segue.destination as! RoutingViewController
             destVC.nodesInRoute = selectedItems
-            destVC.pixelCordinatesOfNodesInRoute = navigation.market.pixelsOfAllNodes
         }
     }
     

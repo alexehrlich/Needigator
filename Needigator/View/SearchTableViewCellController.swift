@@ -118,6 +118,8 @@ class SearchTableViewCellController: UITableViewCell, DetailedProductSelectionVi
     
     @IBAction func leftCardTouched(_ sender: UIButton) {
         
+       
+        
         leftCardIsFlipped = true
         self.leftDetailedProdSelectVC.view.bounds = leftProductCardView.bounds
         self.leftDetailedProdSelectVC.view.layer.cornerRadius = 10
@@ -129,6 +131,9 @@ class SearchTableViewCellController: UITableViewCell, DetailedProductSelectionVi
     }
     
     @IBAction func rightCardTouched(_ sender: UIButton) {
+        
+       
+        
         rightCardIsFlipped = true
         rightDetailedProdSelectVC.view.bounds = rightProductCardView.bounds
         rightDetailedProdSelectVC.view.layer.cornerRadius = 10
@@ -146,7 +151,6 @@ class SearchTableViewCellController: UITableViewCell, DetailedProductSelectionVi
     }
     
     @objc func scrollViewWillBeginDragging() {
-    
     }
 }
    
