@@ -1,9 +1,0 @@
-BUG Tracker:
-
-- View verschiebt sich nachdem Zelle umgedreht ist beim Scrollen. Reusable Cell verwendet die geflippte Karte.
-- Einkaufsliste wird nicht zurückgesetzt (updateViewfromModel() implementieren)
-- Layout vom WelcomeScreen passt nicht ganz
-- Datenbank implementieren
-DONE - User Feedback, wenn die Berechnung läuft! 
-
-

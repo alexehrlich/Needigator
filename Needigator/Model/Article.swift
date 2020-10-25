@@ -8,13 +8,14 @@
 
 import UIKit
 
-struct Article {
+struct Article: Hashable {
     
     private var name: String
     private var info: String
     private var node: Int
     private var price: String
     private var image: UIImage
+
     
     //Die Daten eines Artikels sind durch Unterstriche im Bildname enthalten. Hier wird der Bildname zerlegt und die Daten extrahiert.
     init(imageFileName: String) {
@@ -28,7 +29,6 @@ struct Article {
         price = String(splittedString[3]) + "€"
         image = UIImage(named: imageFileName.replacingOccurrences(of: "_ _", with: "__"))!
     }
-    
     
     //MARK: Getter-Methoden 
     func getName() -> String {

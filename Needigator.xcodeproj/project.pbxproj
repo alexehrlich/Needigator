@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D00D647242112D300DBBC41 /* BUG TRACKER.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1D00D646242112D300DBBC41 /* BUG TRACKER.txt */; };
+		1D00D647242112D300DBBC41 /* BUGTRACKER_TODO.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1D00D646242112D300DBBC41 /* BUGTRACKER_TODO.txt */; };
 		1D2593C5243372C4008F5BAC /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2593C4243372C4008F5BAC /* Market.swift */; };
 		1D2593C924337DC5008F5BAC /* AllRoutes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1D2593C824337DC4008F5BAC /* AllRoutes.txt */; };
 		1D2B10E42537792600D9119C /* SelectedProductsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2B10E22537792600D9119C /* SelectedProductsTableViewCell.swift */; };
 		1D2B10E52537792600D9119C /* SelectedProductsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D2B10E32537792600D9119C /* SelectedProductsTableViewCell.xib */; };
 		1D2BBD952545A4F200B49500 /* UserFeedBackWhileCalculationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2BBD932545A4F200B49500 /* UserFeedBackWhileCalculationViewController.swift */; };
 		1D2BBD962545A4F200B49500 /* UserFeedBackWhileCalculationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D2BBD942545A4F200B49500 /* UserFeedBackWhileCalculationViewController.xib */; };
+		1D2BBD992545BDFA00B49500 /* Shopping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2BBD982545BDFA00B49500 /* Shopping.swift */; };
 		1D2E583F241E31CE002D341D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2E583E241E31CE002D341D /* AppDelegate.swift */; };
 		1D2E5841241E31CE002D341D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2E5840241E31CE002D341D /* SceneDelegate.swift */; };
 		1D2E5846241E31CE002D341D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D2E5844241E31CE002D341D /* Main.storyboard */; };
@@ -38,7 +39,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1D00D646242112D300DBBC41 /* BUG TRACKER.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "BUG TRACKER.txt"; sourceTree = "<group>"; };
+		1D00D646242112D300DBBC41 /* BUGTRACKER_TODO.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BUGTRACKER_TODO.txt; sourceTree = "<group>"; };
 		1D2593C4243372C4008F5BAC /* Market.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
 		1D2593C824337DC4008F5BAC /* AllRoutes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AllRoutes.txt; sourceTree = "<group>"; };
 		1D2B10E0253763FA00D9119C /* Needigator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Needigator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,6 +47,7 @@
 		1D2B10E32537792600D9119C /* SelectedProductsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectedProductsTableViewCell.xib; sourceTree = "<group>"; };
 		1D2BBD932545A4F200B49500 /* UserFeedBackWhileCalculationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedBackWhileCalculationViewController.swift; sourceTree = "<group>"; };
 		1D2BBD942545A4F200B49500 /* UserFeedBackWhileCalculationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserFeedBackWhileCalculationViewController.xib; sourceTree = "<group>"; };
+		1D2BBD982545BDFA00B49500 /* Shopping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shopping.swift; sourceTree = "<group>"; };
 		1D2E583E241E31CE002D341D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1D2E5840241E31CE002D341D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		1D2E5845241E31CE002D341D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -84,7 +86,7 @@
 		1D2E5832241E31CE002D341D = {
 			isa = PBXGroup;
 			children = (
-				1D00D646242112D300DBBC41 /* BUG TRACKER.txt */,
+				1D00D646242112D300DBBC41 /* BUGTRACKER_TODO.txt */,
 				1D2593C824337DC4008F5BAC /* AllRoutes.txt */,
 				1D2E583D241E31CE002D341D /* Needigator */,
 				1D2B10E0253763FA00D9119C /* Needigator.app */,
@@ -114,6 +116,7 @@
 				1D7DBD9824274D53009E9D4E /* RouteCalculationManager.swift */,
 				1D79972E2425FA22007CE3A5 /* RGB32.swift */,
 				1D2593C4243372C4008F5BAC /* Market.swift */,
+				1D2BBD982545BDFA00B49500 /* Shopping.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -216,7 +219,7 @@
 				1D3DEFBC2539F15300D77B86 /* DetailedProductSelectionViewController.xib in Resources */,
 				1D2E5846241E31CE002D341D /* Main.storyboard in Resources */,
 				1D2B10E52537792600D9119C /* SelectedProductsTableViewCell.xib in Resources */,
-				1D00D647242112D300DBBC41 /* BUG TRACKER.txt in Resources */,
+				1D00D647242112D300DBBC41 /* BUGTRACKER_TODO.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,6 +231,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DF4FC23241F3A730058FF02 /* NavigationViewController.swift in Sources */,
+				1D2BBD992545BDFA00B49500 /* Shopping.swift in Sources */,
 				1D2E5857241E329A002D341D /* Article.swift in Sources */,
 				1D8D6E3E24B5176C007E8059 /* CardViewController.swift in Sources */,
 				1D3DEFBB2539F15300D77B86 /* DetailedProductSelectionViewController.swift in Sources */,

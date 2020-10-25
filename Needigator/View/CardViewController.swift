@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 class CardViewController: UIViewController{
 
     @IBOutlet weak var selctedProductsTableView: UITableView!
@@ -17,15 +16,11 @@ class CardViewController: UIViewController{
     @IBOutlet weak var handleArea: UIView!
     
     var tapIsWithinTextField = false
-    var selectedArticles = [(String, Int)]()
     var amountOfArticle = 0
     
     
     override func viewDidLoad() {
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(self.printSome(notification:)), name: NavigationViewController.notificationNameForCardVC, object: nil)
-       
-        
+
         selctedProductsTableView.delegate = self
         selctedProductsTableView.dataSource = self
         selctedProductsTableView.tableFooterView = UIView()
@@ -35,16 +30,6 @@ class CardViewController: UIViewController{
         selctedProductsTableView.register(UINib(nibName: "SelectedProductsTableViewCell", bundle: nil), forCellReuseIdentifier: "ReusableSelectedProductCell")
     }
     
-    @objc func printSome(notification: Notification) {
-        
-        let article = notification.userInfo!["data"] as! String
-        let amount = notification.userInfo!["amount"] as! Int
-
-        
-            selectedArticles.append((article, amount))
-            selctedProductsTableView.reloadData()
-
-    }
 }
 
 //TableView Set-Up
@@ -54,19 +39,24 @@ extension CardViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return selectedArticles.count
+        return Shopping.selectedProductsOfUser.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableSelectedProductCell")! as! SelectedProductsTableViewCell
-        cell.dataToDisplay = (selectedArticles[indexPath.row])
-        
+        cell.dataToDisplay = Shopping.selectedProductsOfUser[indexPath.row]
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
+    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete{
+            Shopping.selectedProductsOfUser.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
     }
 }
 

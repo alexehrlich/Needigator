@@ -11,8 +11,7 @@ import UIKit
 
 class NavigationViewController: UIViewController, UITableViewDelegate{
 
-    //Notification-Center als Kommunikationsweg zwischen NavigationController.swift und CardViewController.swift und SearchTableViewCell.swift
-    static let notificationNameForCardVC = Notification.Name("gefehrlich.Needigator.dataForCardView")
+    //Notofication wenn in der Produkttabelle gescrollt wird
     static let notificationNameForSearchTableVC = Notification.Name("gefehrlich.Needigator.dataForSearchTableVC")
 
     
@@ -30,8 +29,6 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
     //Liste die mit den Artikeln gefüllt wird, die 3 im Textfeld eingegebenen Buchstaben enthalten
     var substringArticles = [Article]()
     
-    //Liste mit den Nodenumbers der ausgewählten Artikel
-    var selectedItems = [Int]()
     
     //Zuständig für die Routenberechnung
     var navigation = RouteCalculationManager()
@@ -43,7 +40,7 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
         case collapsed
     }
     
-    var cardViewController:CardViewController!
+    var cardViewController = CardViewController(nibName:"CardViewController", bundle:nil)
     var visualEffectView:UIVisualEffectView!
     
     let cardHeight:CGFloat = 600
@@ -68,7 +65,7 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
         cardVisible = true
         animateTransitionIfNeeded(state: nextState, duration: 0.1)
         
-        selectedItems.removeAll()
+        Shopping.selectedProductsOfUser.removeAll()
         substringArticles = articleDataBase.items
         articleTableView.reloadData()
     }
@@ -133,22 +130,9 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
         //Erhält eine Liste zurück und lädt die Tabelle neu
         articleTableView.reloadData()
     }
-    
-    
-    //Vorbereitung Übergang zum Route VC
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "goToRouteVC" {
-            
-            let destVC = segue.destination as! RoutingViewController
-            destVC.nodesInRoute = selectedItems
-        }
-    }
-    
-    
-    
+
     @IBAction func searchButtonPressed(_ sender: UIButton) {
-        if selectedItems.isEmpty{
+        if Shopping.selectedProductsOfUser.isEmpty{
             let alertController = UIAlertController(title: "Ihre Einkaufsliste ist leer!", message:
                 "Für die Routenberechnung muss sich mindestens 1 Artikel im Warenkorb befinden.", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "OK", style: .default))
@@ -156,10 +140,9 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
             
         }else{
             
-            userFeedBackVC.view.bounds = self.view.bounds
+            userFeedBackVC.view.frame = self.view.frame
             userFeedBackVC.view.alpha = 0
             self.view.addSubview(userFeedBackVC.view)
-            
             UIView.animate(withDuration: 0.5) {
                 self.userFeedBackVC.view.alpha = 1
             }
@@ -251,7 +234,6 @@ extension NavigationViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 290
     }
-    
 }
 
 //Delegate-Methoden um mit der Tabelle zu interagoeren (auf Berührung reagieren)
@@ -266,14 +248,36 @@ extension NavigationViewController: UIScrollViewDelegate {
 
 extension NavigationViewController: SearchTableViewCellDelegate{
     
+    
+    
     func getLeftProductCardArticle(article: Article, amount: Int) {
-        selectedItems.append(article.getNode())
-        NotificationCenter.default.post(name: NavigationViewController.notificationNameForCardVC, object: nil, userInfo: ["data" : article.getName(), "amount": amount])
+        updateSelectedItemsInModel(article: article, amount: amount)
     }
     
     func getRightProductCardArticle(article: Article, amount: Int) {
-        selectedItems.append(article.getNode())
-        NotificationCenter.default.post(name: NavigationViewController.notificationNameForCardVC, object: nil, userInfo: ["data" : article.getName(), "amount": amount])
+        updateSelectedItemsInModel(article: article, amount: amount)
+    }
+    
+    func updateSelectedItemsInModel(article: Article, amount: Int){
+        if Shopping.selectedProductsOfUser.contains(where: { (arg0) -> Bool in
+            let (thisArticle, _) = arg0
+            if thisArticle == article {
+                return true
+            }else{
+                return false
+            }
+        }){
+            var index = 0
+            
+            for item in Shopping.selectedProductsOfUser {
+                if item.0 == article{
+                    Shopping.selectedProductsOfUser[index].1 = amount
+                }
+                index = index + 1
+            }
+        }else{
+            Shopping.selectedProductsOfUser.append((article, amount))
+        }
     }
 }
 
@@ -282,7 +286,6 @@ extension NavigationViewController {
 
 func setupCard() {
         
-        cardViewController = CardViewController(nibName:"CardViewController", bundle:nil)
         self.addChild(cardViewController)
         self.view.addSubview(cardViewController.view)
         
@@ -303,7 +306,8 @@ func setupCard() {
     
     @objc func handleCardTap(recognzier:UITapGestureRecognizer) {
 
-            print(cardViewController.tapIsWithinTextField)
+        cardViewController.selctedProductsTableView.reloadData()
+        
             switch recognzier.state {
             case .ended:
                 animateTransitionIfNeeded(state: nextState, duration: 0.9)
@@ -318,6 +322,9 @@ func setupCard() {
     
     @objc
     func handleCardPan (recognizer:UIPanGestureRecognizer) {
+        
+        cardViewController.selctedProductsTableView.reloadData()
+        
         switch recognizer.state {
         case .began:
             startInteractiveTransition(state: nextState, duration: 0.9)

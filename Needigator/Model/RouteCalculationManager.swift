@@ -26,12 +26,13 @@ struct RouteCalculationManager {
     var delegate: RouteCalculationManagerDelegate?
     
     //In dieser Methode wird durch eine andere Methode die Route berechnet und deren Umsetzung in ein Bild initiiert
-    mutating func prepareRoute(nodes: [Int]) {
+    mutating func prepareRoute() {
         
         var nodesInRoute = [Node]()
         
-        for nodeNumber in nodes {
-            nodesInRoute.append(Market.allNodesInMarket[nodeNumber])
+        
+        for (article,_) in Shopping.selectedProductsOfUser {
+            nodesInRoute.append(Market.allNodesInMarket[article.getNode()])
         }
         
         let shuffeledRoute = Route(nodes: nodesInRoute.shuffled())

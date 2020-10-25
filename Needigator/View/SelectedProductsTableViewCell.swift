@@ -12,9 +12,9 @@ class SelectedProductsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var productLabel: UILabel!
     
-    var dataToDisplay : (String, Int)? {
+    var dataToDisplay : (Article, Int)? {
         set(newValue) {
-            productLabel.text = "\(newValue!.1) x \(newValue!.0)"
+            productLabel.text = "\(newValue!.1) x \(newValue!.0.getName())"
         }
         
         get {

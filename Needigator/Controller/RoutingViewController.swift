@@ -49,21 +49,21 @@ class RoutingViewController: UIViewController {
         
         //Setze den RoutingVC als Delegate der Berechung veranlasse die Berechnung der Route mit prepareRoute() -->Die Antwort der Berechnugn kommt in der Protokollmethode didFinishOptimizingRoute(result: Route)
         navigation.delegate = self
-        navigation.prepareRoute(nodes: nodesInRoute)
+        navigation.prepareRoute()
         
         
         //Loop: Für jedes Produkt wird ein neuer Pin erstellt und an den Knoten platziert
-        for node in nodesInRoute{
+        for (article, _) in Shopping.selectedProductsOfUser{
             let startingPoint = CGPoint(x: routeImageView.center.x - routeImageView.frame.size.width/2, y: routeImageView.center.y - routeImageView.frame.size.height/2)
             let newProductPinButton = UIButton()
-            newProductPinButton.frame = CGRect(origin: CGPoint(x: startingPoint.x + pixelsOfAllNodes[node]!.x/3, y: startingPoint.y + pixelsOfAllNodes[node]!.y/3), size: CGSize(width: 20, height: 20))
-            newProductPinButton.center = CGPoint(x: startingPoint.x + pixelsOfAllNodes[node]!.x/3, y: startingPoint.y + pixelsOfAllNodes[node]!.y/3 - newProductPinButton.frame.size.height/2)
+            newProductPinButton.frame = CGRect(origin: CGPoint(x: startingPoint.x + pixelsOfAllNodes[article.getNode()]!.x/3, y: startingPoint.y + pixelsOfAllNodes[article.getNode()]!.y/3), size: CGSize(width: 20, height: 20))
+            newProductPinButton.center = CGPoint(x: startingPoint.x + pixelsOfAllNodes[article.getNode()]!.x/3, y: startingPoint.y + pixelsOfAllNodes[article.getNode()]!.y/3 - newProductPinButton.frame.size.height/2)
             newProductPinButton.setImage(UIImage(named: "product_map"), for: .normal)
             newProductPinButton.imageView?.tintColor = .white
             newProductPinButton.addTarget(self, action: #selector(productMapButtonPressed), for: .touchUpInside)
             newProductPinButton.alpha = 1
             newProductPinButton.isHidden = false
-            newProductPinButton.tag = node
+            newProductPinButton.tag = article.getNode()
             self.view.addSubview(newProductPinButton)
         }
         
