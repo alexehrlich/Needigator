@@ -290,14 +290,14 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="XVn-BR-Hlb"/>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uvZ-k0-TCc">
-                                <rect key="frame" x="40" y="320" width="334" height="1"/>
+                                <rect key="frame" x="40" y="386" width="334" height="1"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="pMc-bB-w8o"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xil-kk-V7U">
-                                <rect key="frame" x="40" y="404.5" width="334" height="1"/>
+                                <rect key="frame" x="40" y="470.5" width="334" height="1"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="urb-xc-scO"/>
@@ -556,15 +556,14 @@
                         <outlet property="articleImageView" destination="GRO-M0-8G1" id="kMr-fc-nbh"/>
                         <outlet property="articleNameInView" destination="p4I-1h-pfd" id="H9K-Bt-NJJ"/>
                         <outlet property="articlePriceInView" destination="bGJ-ks-FeY" id="gRY-1a-Lm6"/>
-                        <outlet property="backgroundImageView" destination="8JP-R7-YGR" id="D9Y-Mc-k8S"/>
-                        <outlet property="informationView" destination="o7a-0f-bci" id="HpT-EZ-6YO"/>
-                        <outlet property="navigationArrowImage" destination="SRZ-L8-le9" id="hMH-MH-Mgw"/>
+                        <outlet property="firstNavigationImage" destination="SRZ-L8-le9" id="hMH-MH-Mgw"/>
+                        <outlet property="productViewOfMapMarker" destination="o7a-0f-bci" id="HpT-EZ-6YO"/>
                         <outlet property="routeImageView" destination="Dq9-eA-AOk" id="8eP-cY-o4g"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GXn-7y-S3y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1051" y="1764"/>
+            <point key="canvasLocation" x="1050.7246376811595" y="1763.8392857142856"/>
         </scene>
         <!--Shopping List View Controller-->
         <scene sceneID="4Rm-t9-VzS">
@@ -605,7 +604,7 @@
         <image name="Absolut Vodka__78_12,99" width="200" height="200"/>
         <image name="NODES_1242x1065_colored" width="414" height="355"/>
         <image name="cart" catalog="system" width="128" height="102"/>
-        <image name="einkaufskorb" width="50" height="50"/>
+        <image name="einkaufskorb" width="100" height="100"/>
         <image name="hilfe" width="256" height="256"/>
         <image name="icons8-navigation-96" width="96" height="96"/>
         <image name="liste_neu" width="256" height="256"/>

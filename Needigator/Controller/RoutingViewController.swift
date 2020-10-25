@@ -8,58 +8,56 @@
 
 import UIKit
 
-class RoutingViewController: UIViewController, RouteCalculationManagerDelegate {
-    func didFinishOptimizingRoute(result: Route) {
-        routeImageView.image = drawRouteIntoMarketPlan(route: result)
-    }
+class RoutingViewController: UIViewController {
     
-    
-    //Umzug der Bild-Logik in diesen VC
-    var pixelsOfAllNodes = [Int: CGPoint]()
-    var drawCoordinateDictionary = [CGPoint]()
-    
-    
+    //MARK: IB-Outlets:
     @IBOutlet weak var routeImageView: UIImageView!
-    @IBOutlet weak var navigationArrowImage: UIImageView!
-    @IBOutlet weak var backgroundImageView: UIImageView!
-    
-    
-    var navigation = RouteCalculationManager()
-    var nodesInRoute = [Int]()
-    var pixelCoordinatesInRoute = [CGPoint]()
-    var pixelCordinatesOfNodesInRoute = [Int:CGPoint]()
-    
-    let articleDataBase = ArticleDataBase()
-    
-    
-    var recursiveCounter = 0
-    var secondRecursiveCounter = 0
-    
-    
-    var seconNAvigationArrowImage = UIImage()
-    var secondNavigationArrowImageView = UIImageView()
-    
-    var firstHalfDone = false
-    
+    @IBOutlet weak var firstNavigationImage: UIImageView!
     
     //InformationView Stuff
-    @IBOutlet weak var informationView: UIView!
+    @IBOutlet weak var productViewOfMapMarker: UIView!
     @IBOutlet weak var articleNameInView: UILabel!
     @IBOutlet weak var articlePriceInView: UILabel!
     @IBOutlet weak var articleImageView: UIImageView!
     
+    
+    //MARK: Class-Instances:
+    let articleDataBase = ArticleDataBase()
+    var navigation = RouteCalculationManager()
     let blurEffectView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffect.Style.light))
+    
+    //MARK: Global variables
+    var pixelsOfAllNodes = [Int: CGPoint]()
+    var nodesInRoute = [Int]()
+    var pixelCoordinatesInRoute = [CGPoint]()
+    
+    
+    //MARK: Global variables navigation image movement
+    var recursiveCounter = 0
+    var secondRecursiveCounter = 0
+    var secondNavigationImage = UIImage()
+    var secondNavigationImageView = UIImageView()
+    var firstNavigationImageHasCoveredHalfRoute = false
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
     
     
     override func viewWillAppear(_ animated: Bool) {
         
-        loadNodes()
-        loadRoutes()
+        //Lade die Knoten vom MArktplan und die kürzesten Routen zwischen allen Knoten aus dem Textfile
+        loadNodesFromMarketPlan()
+        loadRoutesFromTextFile()
         
-        informationView.alpha = 0
+        //Setze den RoutingVC als Delegate der Berechung veranlasse die Berechnung der Route mit prepareRoute() -->Die Antwort der Berechnugn kommt in der Protokollmethode didFinishOptimizingRoute(result: Route)
+        navigation.delegate = self
+        navigation.prepareRoute(nodes: nodesInRoute)
         
-        pixelCoordinatesInRoute = drawCoordinateDictionary
         
+        //Loop: Für jedes Produkt wird ein neuer Pin erstellt und an den Knoten platziert
         for node in nodesInRoute{
             let startingPoint = CGPoint(x: routeImageView.center.x - routeImageView.frame.size.width/2, y: routeImageView.center.y - routeImageView.frame.size.height/2)
             let newProductPinButton = UIButton()
@@ -74,168 +72,74 @@ class RoutingViewController: UIViewController, RouteCalculationManagerDelegate {
             self.view.addSubview(newProductPinButton)
         }
         
-        informationView.layer.cornerRadius = 10
-        navigation.delegate = self
-        navigation.prepareRoute(nodes: nodesInRoute)
-        navigationArrowImage.tintColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
-        //navigationArrowImage.alpha = 0
         
-        seconNAvigationArrowImage = UIImage(systemName: "cart")!
-        secondNavigationArrowImageView = UIImageView(image: seconNAvigationArrowImage)
-        secondNavigationArrowImageView.tintColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
-        secondNavigationArrowImageView.contentMode = .scaleAspectFit
-        secondNavigationArrowImageView.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 20, height: 20))
-        secondNavigationArrowImageView.isHidden = true
-        self.view.addSubview(secondNavigationArrowImageView)
+        //Layout of productViewOfMapMarker
+        productViewOfMapMarker.alpha = 0
+        productViewOfMapMarker.layer.cornerRadius = 10
+        
+        //Layout of firstNavigationImage
+        firstNavigationImage.tintColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+        firstNavigationImage.alpha = 0
+        
+        
+        //Set-up and layout of second Navigation Image
+        secondNavigationImage = UIImage(systemName: "cart")!
+        secondNavigationImageView = UIImageView(image: secondNavigationImage)
+        secondNavigationImageView.tintColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
+        secondNavigationImageView.contentMode = .scaleAspectFit
+        secondNavigationImageView.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 20, height: 20))
+        secondNavigationImageView.isHidden = true
+        self.view.addSubview(secondNavigationImageView)
     }
     
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-       
-        
-    }
     
     override func viewDidAppear(_ animated: Bool) {
-        navigationArrowImage.isHidden = false
-        
-            moveFirstNavigationArrow()
-        
+        firstNavigationImage.isHidden = false
+        moveFirstNavigationArrow()
     }
     
-//    func moveFirstNavigationArrow(){
-//        let startingPoint = CGPoint(x: routeImageView.center.x - routeImageView.frame.size.width/2, y: routeImageView.center.y - routeImageView.frame.size.height/2)
-//
-//        for index in 0..<drawCoordinateDictionary.count {
-//
-//                        let _ = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { (timer) in
-//                            self.navigationArrowImage.center = CGPoint(x: startingPoint.x + self.drawCoordinateDictionary[index].x/3, y: startingPoint.y + self.drawCoordinateDictionary[index].y/3)
-//                        }
-//        }
-//    }
     
-    
-        func moveFirstNavigationArrow(){
-    
-            if Double(recursiveCounter)/Double(pixelCoordinatesInRoute.count) > 0.5 {
-                firstHalfDone = true
-            }
-    
-            if recursiveCounter == 0 {
-                UIView.animate(withDuration: 0.8) {
-                    self.navigationArrowImage.alpha = 1.0
-                }
-    
-            }
-    
-            if recursiveCounter > pixelCoordinatesInRoute.count - 40 {
-                navigationArrowImage.alpha *= 0.9
-            }
-    
-            let startingPoint = CGPoint(x: routeImageView.center.x - routeImageView.frame.size.width/2, y: routeImageView.center.y - routeImageView.frame.size.height/2)
-    
-            if recursiveCounter < pixelCoordinatesInRoute.count {
-    
-                navigationArrowImage.center = CGPoint(x: startingPoint.x + pixelCoordinatesInRoute[recursiveCounter].x/3, y: startingPoint.y + pixelCoordinatesInRoute[recursiveCounter].y/3)
-    
-    
-    
-                let _ = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: false) { (timer) in
-    
-                    self.recursiveCounter += 1
-                    self.moveFirstNavigationArrow()
-    
-                    if self.firstHalfDone == true {
-                        self.moveSecondNavigationArrow()
-                    }
-    
-                }
-            }else{
-                recursiveCounter = 0
-                moveFirstNavigationArrow()
-            }
-        }
-    
-        func moveSecondNavigationArrow(){
-    
-            if self.secondRecursiveCounter == 0{
-                UIView.animate(withDuration: 0.8) {
-                    self.secondNavigationArrowImageView.alpha = 1
-                }
-            }
-    
-            if secondRecursiveCounter > pixelCoordinatesInRoute.count - 40 {
-                secondNavigationArrowImageView.alpha *= 0.9
-            }
-    
-            let startingPoint = CGPoint(x: routeImageView.center.x - routeImageView.frame.size.width/2, y: routeImageView.center.y - routeImageView.frame.size.height/2)
-    
-            if secondRecursiveCounter < pixelCoordinatesInRoute.count {
-    
-                secondNavigationArrowImageView.center = CGPoint(x: startingPoint.x + pixelCoordinatesInRoute[secondRecursiveCounter].x/3, y: startingPoint.y + pixelCoordinatesInRoute[secondRecursiveCounter].y/3)
-                secondNavigationArrowImageView.isHidden = false
-                let _ = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: false) { (timer) in
-    
-    
-                    self.secondRecursiveCounter += 1
-    
-                }
-            }else{
-                secondRecursiveCounter = 0
-                moveSecondNavigationArrow()
-            }
-        }
-    
-    
+    //Wenn neben die Karte gedrückt wird, soll diese wieder verschwinden
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         let touch = touches.first
         
-        if touch?.view != informationView {
+        if touch?.view != productViewOfMapMarker {
             UIView.animate(withDuration: 0.5) {
-                self.informationView.alpha = 0
+                self.productViewOfMapMarker.alpha = 0
                 self.blurEffectView.removeFromSuperview()
             }
         }
-        
     }
     
+    //Zeigt die Produktinformationen in dem Extra-View an
     @objc func productMapButtonPressed(button: UIButton){
-        
         blurEffectView.frame = view.bounds
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(blurEffectView)
-        
-        //INFO: positionierung funktioniet noch nicht!
-        informationView.frame.origin = CGPoint(x: button.center.x , y: button.center.y + button.frame.size.height/2)
+        productViewOfMapMarker.frame.origin = CGPoint(x: button.center.x , y: button.center.y + button.frame.size.height/2)
         
         for article in articleDataBase.items {
-            
             if button.tag == article.getNode() {
-                
                 articleImageView.image = article.getImage()
                 articleNameInView.text = article.getName()
                 articlePriceInView.text = article.getPrice()
             }
         }
-        
-        informationView.backgroundColor = .white
-        self.view.addSubview(informationView)
-        informationView.alpha = 0
+        productViewOfMapMarker.backgroundColor = .white
+        self.view.addSubview(productViewOfMapMarker)
+        productViewOfMapMarker.alpha = 0
         UIView.animate(withDuration: 0.5) {
-            self.informationView.alpha = 1
+            self.productViewOfMapMarker.alpha = 1
         }
     }
 }
 
-//hier kommt alles rein, was wwir testweise velagern wollen
+//MARK: Markt-Daten laden und Route in das Bild zeichnen
 extension RoutingViewController {
     
-    //Imgae-Handling --> sollte in eigene Klasse
     //Diese Funktion bereitet das Bild (Marktplan) zur Bearbeitung vor, lädt alle Knoten und findet für jeden Knoten die Nachbarknoten.
-    func loadNodes(){
+    func loadNodesFromMarketPlan(){
         
         var nodesCounter = 0
         
@@ -262,6 +166,8 @@ extension RoutingViewController {
         }
         
         let pixelBuffer = buffer.bindMemory(to: RGBA32.self, capacity: width * height)
+        //Ende Bildvorbereitung --> bild kann jetzt analysiert werden
+        
         
         for column in 0..<Int(width) {
             for row in 0..<Int(height) {
@@ -272,7 +178,6 @@ extension RoutingViewController {
                 }
             }
         }
-        //Ende Bildvorbereitung --> bild kann jetzt analysiert werden
         
         //In dieser Schleife werden alle Knoten aus dem Bild(Marktplan) geladen
         for i in 0..<Market.allNodesInMarket.count {
@@ -282,7 +187,6 @@ extension RoutingViewController {
             
             var nextX = pX
             var nextY = pY
-            
             
             //Im folgenden Code werden für alle geladenen Knoten die Nachbarknoten geladen
             // In positiver x-Richtung nach Node suchen
@@ -342,11 +246,9 @@ extension RoutingViewController {
                 }
             }
         }
-        print("Knoten wurden erfolgreich geladen")
     }
     
     
-    //Imgae-Handling --> sollte in eigene Klasse
     func getCurrentPixelPosition(y row: Int, width: Int, x column: Int) -> Int {
         return row * width + column
     }
@@ -360,14 +262,8 @@ extension RoutingViewController {
         }
         return 0
     }
+
     
-    //Imgae-Handling --> sollte in eigene Klasse
-    func getDrawPixelCoordinates() -> [CGPoint]{
-        return drawCoordinateDictionary
-    }
-    
-    
-    //Imgae-Handling --> sollte in eigene Klasse
     func drawRouteIntoMarketPlan(route: Route) -> UIImage?{
         
         guard let inputCGImage = Market.bitMapMarketPlan2D?.cgImage else {
@@ -423,7 +319,7 @@ extension RoutingViewController {
                     
                     while nextY != route.getListOfNodesInRoute()[i + 1].getYPosition() {
                         
-                        drawCoordinateDictionary.append(CGPoint(x: fixedXPosition, y: nextY))
+                        pixelCoordinatesInRoute.append(CGPoint(x: fixedXPosition, y: nextY))
                         pixelBuffer[getCurrentPixelPosition(y: nextY, width: width, x: fixedXPosition)] = .red
                         pixelBuffer[getCurrentPixelPosition(y: nextY, width: width, x: fixedXPosition + 1)] = .red
                         pixelBuffer[getCurrentPixelPosition(y: nextY, width: width, x: fixedXPosition + 2)] = .red
@@ -443,7 +339,7 @@ extension RoutingViewController {
                     pixelBuffer[getCurrentPixelPosition(y: currentNode.getYPosition(), width: width, x: fixedXPosition - 2)] = .red
                     
                     while nextY != route.getListOfNodesInRoute()[i + 1].getYPosition() {
-                        drawCoordinateDictionary.append(CGPoint(x: fixedXPosition, y: nextY))
+                        pixelCoordinatesInRoute.append(CGPoint(x: fixedXPosition, y: nextY))
                         pixelBuffer[getCurrentPixelPosition(y: nextY, width: width, x: fixedXPosition)] = .red
                         pixelBuffer[getCurrentPixelPosition(y: nextY, width: width, x: fixedXPosition + 1)] = .red
                         pixelBuffer[getCurrentPixelPosition(y: nextY, width: width, x: fixedXPosition + 2)] = .red
@@ -465,7 +361,7 @@ extension RoutingViewController {
                     pixelBuffer[getCurrentPixelPosition(y: fixedYPosition, width: width, x: currentNode.getXPosition() - 2)] = .red
                     
                     while nextX != route.getListOfNodesInRoute()[i + 1].getXPosition() {
-                        drawCoordinateDictionary.append(CGPoint(x: nextX, y: fixedYPosition))
+                        pixelCoordinatesInRoute.append(CGPoint(x: nextX, y: fixedYPosition))
                         pixelBuffer[getCurrentPixelPosition(y: fixedYPosition, width: width, x: nextX)] = .red
                         pixelBuffer[getCurrentPixelPosition(y: fixedYPosition + 1, width: width, x: nextX)] = .red
                         pixelBuffer[getCurrentPixelPosition(y: fixedYPosition + 2, width: width, x: nextX)] = .red
@@ -483,7 +379,7 @@ extension RoutingViewController {
                     pixelBuffer[getCurrentPixelPosition(y: fixedYPosition, width: width, x: currentNode.getXPosition() - 2)] = .red
                     
                     while nextX != route.getListOfNodesInRoute()[i + 1].getXPosition() {
-                        drawCoordinateDictionary.append(CGPoint(x: nextX, y: fixedYPosition))
+                        pixelCoordinatesInRoute.append(CGPoint(x: nextX, y: fixedYPosition))
                         pixelBuffer[getCurrentPixelPosition(y: fixedYPosition, width: width, x: nextX)] = .red
                         pixelBuffer[getCurrentPixelPosition(y: fixedYPosition + 1, width: width, x: nextX)] = .red
                         pixelBuffer[getCurrentPixelPosition(y: fixedYPosition + 2, width: width, x: nextX)] = .red
@@ -495,15 +391,14 @@ extension RoutingViewController {
             }
             
         }
-        
         let outputCGImage = context.makeImage()!
         let outputImage = UIImage(cgImage: outputCGImage, scale: Market.bitMapMarketPlan2D!.scale, orientation: Market.bitMapMarketPlan2D!.imageOrientation)
         
         return outputImage
     }
     
-    func loadRoutes(){
-        //READ Textfile
+    func loadRoutesFromTextFile(){
+        
         if let path = Bundle.main.path(forResource: "AllRoutes", ofType: "txt") {
             do {
                 let data = try String(contentsOfFile: path, encoding: .utf8)
@@ -526,7 +421,84 @@ extension RoutingViewController {
             }
         }
     }
-    
 }
+
+//MARK: Message-Delegate from RouteCalculationManager
+extension RoutingViewController: RouteCalculationManagerDelegate{
+    func didFinishOptimizingRoute(result: Route) {
+        routeImageView.image = drawRouteIntoMarketPlan(route: result)
+    }
+}
+
+
+//MARK: Bewegen der Navigationbilder, welche die Route abfahren.
+extension RoutingViewController {
+    func moveFirstNavigationArrow(){
+        
+        if Double(recursiveCounter)/Double(pixelCoordinatesInRoute.count) > 0.5 {
+            firstNavigationImageHasCoveredHalfRoute = true
+        }
+        
+        if recursiveCounter == 0 {
+            UIView.animate(withDuration: 0.8) {
+                self.firstNavigationImage.alpha = 1.0
+            }
+            
+        }
+        
+        if recursiveCounter > pixelCoordinatesInRoute.count - 40 {
+            firstNavigationImage.alpha *= 0.9
+        }
+        
+        let startingPoint = CGPoint(x: routeImageView.center.x - routeImageView.frame.size.width/2, y: routeImageView.center.y - routeImageView.frame.size.height/2)
+        
+        if recursiveCounter < pixelCoordinatesInRoute.count {
+            
+            firstNavigationImage.center = CGPoint(x: startingPoint.x + pixelCoordinatesInRoute[recursiveCounter].x/3, y: startingPoint.y + pixelCoordinatesInRoute[recursiveCounter].y/3)
+            
+            let _ = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: false) { (timer) in
+                
+                self.recursiveCounter += 1
+                self.moveFirstNavigationArrow()
+                
+                if self.firstNavigationImageHasCoveredHalfRoute == true {
+                    self.moveSecondNavigationArrow()
+                }
+            }
+        }else{
+            recursiveCounter = 0
+            moveFirstNavigationArrow()
+        }
+    }
+    
+    
+    func moveSecondNavigationArrow(){
+        
+        if self.secondRecursiveCounter == 0{
+            UIView.animate(withDuration: 0.8) {
+                self.secondNavigationImageView.alpha = 1
+            }
+        }
+        
+        if secondRecursiveCounter > pixelCoordinatesInRoute.count - 40 {
+            secondNavigationImageView.alpha *= 0.9
+        }
+        
+        let startingPoint = CGPoint(x: routeImageView.center.x - routeImageView.frame.size.width/2, y: routeImageView.center.y - routeImageView.frame.size.height/2)
+        
+        if secondRecursiveCounter < pixelCoordinatesInRoute.count {
+            
+            secondNavigationImageView.center = CGPoint(x: startingPoint.x + pixelCoordinatesInRoute[secondRecursiveCounter].x/3, y: startingPoint.y + pixelCoordinatesInRoute[secondRecursiveCounter].y/3)
+            secondNavigationImageView.isHidden = false
+            let _ = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: false) { (timer) in
+                self.secondRecursiveCounter += 1
+            }
+        }else{
+            secondRecursiveCounter = 0
+            moveSecondNavigationArrow()
+        }
+    }
+}
+
 
 
