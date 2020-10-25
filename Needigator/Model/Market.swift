@@ -25,7 +25,6 @@ class Market {
     }
     
     
-    
     func getAllNodes() -> [Node] {
         return Market.allNodesInMarket
     }

@@ -10,7 +10,7 @@ import UIKit
 
 class RoutingViewController: UIViewController {
     
-    //MARK: IB-Outlets:
+//MARK: IB-Outlets:
     @IBOutlet weak var routeImageView: UIImageView!
     @IBOutlet weak var firstNavigationImage: UIImageView!
     
@@ -21,18 +21,18 @@ class RoutingViewController: UIViewController {
     @IBOutlet weak var articleImageView: UIImageView!
     
     
-    //MARK: Class-Instances:
+//MARK: Class-Instances:
     let articleDataBase = ArticleDataBase()
     var navigation = RouteCalculationManager()
-    let blurEffectView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffect.Style.light))
+    let blurEffectView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffect.Style.dark))
     
-    //MARK: Global variables
+//MARK: Global variables
     var pixelsOfAllNodes = [Int: CGPoint]()
     var nodesInRoute = [Int]()
     var pixelCoordinatesInRoute = [CGPoint]()
     
     
-    //MARK: Global variables navigation image movement
+//MARK: Global variables navigation image movement
     var recursiveCounter = 0
     var secondRecursiveCounter = 0
     var secondNavigationImage = UIImage()
@@ -40,13 +40,8 @@ class RoutingViewController: UIViewController {
     var firstNavigationImageHasCoveredHalfRoute = false
     
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
-    
-    
     override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = false
         
         //Lade die Knoten vom MArktplan und die kürzesten Routen zwischen allen Knoten aus dem Textfile
         loadNodesFromMarketPlan()

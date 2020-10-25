@@ -20,7 +20,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Plq-BO-BwN">
                                 <rect key="frame" x="0.0" y="150" width="414" height="746"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="H0D-29-0K7">
+                                    <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="equalSpacing" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="H0D-29-0K7">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="990"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VrG-HG-5Uj">
@@ -127,7 +127,7 @@
                                                                 </connections>
                                                             </button>
                                                         </subviews>
-                                                        <color key="backgroundColor" red="0.99215686274509807" green="0.61176470588235299" blue="0.49019607843137253" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <color key="backgroundColor" red="0.99148923160000002" green="0.60612964629999999" blue="0.46263474230000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <constraints>
                                                             <constraint firstAttribute="bottom" secondItem="Xac-n8-tqR" secondAttribute="bottom" id="4kv-p1-wfb"/>
                                                             <constraint firstAttribute="bottom" secondItem="bAJ-lN-0sd" secondAttribute="bottom" constant="20" id="5Rt-fh-zkc"/>
@@ -290,14 +290,14 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="XVn-BR-Hlb"/>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uvZ-k0-TCc">
-                                <rect key="frame" x="40" y="386" width="334" height="1"/>
+                                <rect key="frame" x="40" y="352" width="334" height="1"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="pMc-bB-w8o"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xil-kk-V7U">
-                                <rect key="frame" x="40" y="470.5" width="334" height="1"/>
+                                <rect key="frame" x="40" y="436.5" width="334" height="1"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="urb-xc-scO"/>
@@ -351,7 +351,7 @@
                 </stackView>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2826.0869565217395" y="137.94642857142856"/>
+            <point key="canvasLocation" x="230" y="138"/>
         </scene>
         <!--Suche und Finde-->
         <scene sceneID="eAJ-Hb-FAu">
@@ -465,7 +465,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bav-uo-xSn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1218.840579710145" y="960.9375"/>
+            <point key="canvasLocation" x="1158" y="872"/>
         </scene>
         <!--Deine Route-->
         <scene sceneID="H6C-NX-bJX">
@@ -563,7 +563,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GXn-7y-S3y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1050.7246376811595" y="1763.8392857142856"/>
+            <point key="canvasLocation" x="2032" y="872"/>
         </scene>
         <!--Shopping List View Controller-->
         <scene sceneID="4Rm-t9-VzS">
@@ -579,7 +579,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="14r-DA-qnB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1005.7971014492755" y="-579.24107142857144"/>
+            <point key="canvasLocation" x="1159" y="138"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Ccy-Ct-AcT">
@@ -597,7 +597,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Wz-au-yhl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1915.9420289855075" y="137.94642857142856"/>
+            <point key="canvasLocation" x="-609" y="138"/>
         </scene>
     </scenes>
     <resources>

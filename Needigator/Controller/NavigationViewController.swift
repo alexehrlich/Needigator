@@ -22,6 +22,7 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
     @IBOutlet weak var productTypeSegmentedControl: UISegmentedControl!
     @IBOutlet weak var searchFieldBackgroundView: UIView!
    
+    let userFeedBackVC = UserFeedBackWhileCalculationViewController(nibName: "UserFeedBackWhileCalculationViewController", bundle: nil)
     
     //"Datenbank" der hard-coded Artikel
     let articleDataBase = ArticleDataBase()
@@ -61,6 +62,8 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
     //Wenn der Bildschirm auftaucht wenn man wieder zu diesem zurückkehrt, dann soll alles gelöscht sein.
     override func viewWillAppear(_ animated: Bool){
         
+        userFeedBackVC.view.removeFromSuperview()
+        
         //Für Card View
         cardVisible = true
         animateTransitionIfNeeded(state: nextState, duration: 0.1)
@@ -74,7 +77,7 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+    
         //Tastatur soll verschwinden, wenn irgendwo getippt wird
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
         view.addGestureRecognizer(tap)
@@ -152,9 +155,23 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
             self.present(alertController, animated: true, completion: nil)
             
         }else{
-            performSegue(withIdentifier: "goToRouteVC", sender: self)
+            
+            userFeedBackVC.view.bounds = self.view.bounds
+            userFeedBackVC.view.alpha = 0
+            self.view.addSubview(userFeedBackVC.view)
+            
+            UIView.animate(withDuration: 0.5) {
+                self.userFeedBackVC.view.alpha = 1
+            }
+            
+            navigationController?.isNavigationBarHidden = true
+            
+            let _ = Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { (_) in
+                self.performSegue(withIdentifier: "goToRouteVC", sender: self)
+            }
         }
     }
+    
     
     //Diese Methode schaut in der Artikel-Datenbank, ob ein Item die Buchstabenfolge im Namen enthält und gibt eine Liste zurück mit den Artikel, die diese Buchstabenfolge im Namen haben
     func checkSubstringInArticle(substring: String) -> [Article] {
@@ -185,7 +202,6 @@ extension NavigationViewController: UITableViewDataSource{
             return substringArticles.count/2 + 1
         }
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
