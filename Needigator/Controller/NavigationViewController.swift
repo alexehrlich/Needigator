@@ -251,14 +251,14 @@ extension NavigationViewController: SearchTableViewCellDelegate{
     
     
     func getLeftProductCardArticle(article: Article, amount: Int) {
-        updateSelectedItemsInModel(article: article, amount: amount)
+        updateSelectedItemsInModel(for: article, with: amount)
     }
     
     func getRightProductCardArticle(article: Article, amount: Int) {
-        updateSelectedItemsInModel(article: article, amount: amount)
+        updateSelectedItemsInModel(for: article, with: amount)
     }
     
-    func updateSelectedItemsInModel(article: Article, amount: Int){
+    func updateSelectedItemsInModel(for article: Article, with amount: Int){
         if Shopping.selectedProductsOfUser.contains(where: { (arg0) -> Bool in
             let (thisArticle, _) = arg0
             if thisArticle == article {
@@ -268,7 +268,6 @@ extension NavigationViewController: SearchTableViewCellDelegate{
             }
         }){
             var index = 0
-            
             for item in Shopping.selectedProductsOfUser {
                 if item.0 == article{
                     Shopping.selectedProductsOfUser[index].1 = amount

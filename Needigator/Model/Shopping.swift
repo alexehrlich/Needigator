@@ -11,4 +11,5 @@ import Foundation
 struct  Shopping {
     
     static var selectedProductsOfUser = [(Article, Int)]()
+   
 }

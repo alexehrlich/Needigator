@@ -11,7 +11,7 @@ import UIKit
 protocol SearchTableViewCellDelegate{
     func getLeftProductCardArticle(article: Article, amount: Int)
     func getRightProductCardArticle(article: Article, amount: Int)
-}
+    }
 
 class SearchTableViewCellController: UITableViewCell, DetailedProductSelectionViewControllerDelegate, UIScrollViewDelegate {
 
@@ -37,7 +37,6 @@ class SearchTableViewCellController: UITableViewCell, DetailedProductSelectionVi
     
     var onlyOneProductCard: Bool = false{
         willSet(newValue){
-            print(newValue)
             if newValue == true {
                 rightProductCardView.alpha = 0
                 rightCardButton.isUserInteractionEnabled = false
@@ -94,7 +93,7 @@ class SearchTableViewCellController: UITableViewCell, DetailedProductSelectionVi
         
         leftProductCardView.layer.cornerRadius = 10
         leftProductCardView.layer.shadowColor = UIColor.lightGray.cgColor
-        leftProductCardView.layer.shadowOpacity = 0.2
+        leftProductCardView.layer.shadowOpacity = 0.5
         leftProductCardView.layer.shadowOffset = .zero
         leftProductCardView.layer.shadowRadius = 10
         
@@ -102,7 +101,7 @@ class SearchTableViewCellController: UITableViewCell, DetailedProductSelectionVi
         
         rightProductCardView.layer.cornerRadius = 10
         rightProductCardView.layer.shadowColor = UIColor.lightGray.cgColor
-        rightProductCardView.layer.shadowOpacity = 0.2
+        rightProductCardView.layer.shadowOpacity = 0.5
         rightProductCardView.layer.shadowOffset = .zero
         rightProductCardView.layer.shadowRadius = 10
         rightDataBackgroundView.layer.cornerRadius = 10
@@ -118,7 +117,12 @@ class SearchTableViewCellController: UITableViewCell, DetailedProductSelectionVi
     
     @IBAction func leftCardTouched(_ sender: UIButton) {
         
-       
+        if rightCardIsFlipped {
+            rightCardIsFlipped = false
+            UIView.transition(with: rightProductCardView, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+            rightDetailedProdSelectVC.removeFromParent()
+            rightDetailedProdSelectVC.view.removeFromSuperview()
+        }
         
         leftCardIsFlipped = true
         self.leftDetailedProdSelectVC.view.bounds = leftProductCardView.bounds
@@ -132,8 +136,13 @@ class SearchTableViewCellController: UITableViewCell, DetailedProductSelectionVi
     
     @IBAction func rightCardTouched(_ sender: UIButton) {
         
-       
-        
+        if leftCardIsFlipped {
+            leftCardIsFlipped = false
+            UIView.transition(with: leftProductCardView, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+            leftDetailedProdSelectVC.removeFromParent()
+            leftDetailedProdSelectVC.view.removeFromSuperview()
+        }
+
         rightCardIsFlipped = true
         rightDetailedProdSelectVC.view.bounds = rightProductCardView.bounds
         rightDetailedProdSelectVC.view.layer.cornerRadius = 10
@@ -151,7 +160,23 @@ class SearchTableViewCellController: UITableViewCell, DetailedProductSelectionVi
     }
     
     @objc func scrollViewWillBeginDragging() {
+        
+        if leftCardIsFlipped {
+            leftCardIsFlipped = false
+            UIView.transition(with: leftProductCardView, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+            leftDetailedProdSelectVC.removeFromParent()
+            leftDetailedProdSelectVC.view.removeFromSuperview()
+        }
+        
+        if rightCardIsFlipped {
+            rightCardIsFlipped = false
+            UIView.transition(with: rightProductCardView, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+            rightDetailedProdSelectVC.removeFromParent()
+            rightDetailedProdSelectVC.view.removeFromSuperview()
+        }
     }
+        
+        
 }
    
     
