@@ -38,7 +38,7 @@ class DetailedProductSelectionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(self.scrollViewWillBeginDragging), name: NavigationViewController.notificationNameForSearchTableVC, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.scrollViewWillBeginDragging), name: Messages.notificationNameForSearchTableVC, object: nil)
         
         amountStackView.layer.cornerRadius = 10
         addButtonOutlet.layer.cornerRadius = addButtonOutlet.frame.size.height / 2

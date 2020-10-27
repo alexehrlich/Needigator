@@ -11,29 +11,23 @@ import UIKit
 protocol SearchTableViewCellDelegate{
     func getLeftProductCardArticle(article: Article, amount: Int)
     func getRightProductCardArticle(article: Article, amount: Int)
-    }
+}
 
-class SearchTableViewCell: UITableViewCell, DetailedProductSelectionViewControllerDelegate, UIScrollViewDelegate {
-
+class SearchTableViewCell: UITableViewCell, UIScrollViewDelegate {
     
-    func passUserSelection(amount: Int, action: UserInteraction, sender: DetailedProductSelectionViewController) {
-        if action == .cancleAdding {
-            UIView.transition(with: sender.view.superview!, duration: 0.3, options: .transitionFlipFromRight, animations: nil, completion: nil)
-            sender.view.removeFromSuperview()
-            sender.removeFromParent()
-        }else{
-            if rightCardIsFlipped{
-                delegate!.getRightProductCardArticle(article: rightCardArticle!, amount: amount)
-                rightCardIsFlipped = false
-            }else if leftCardIsFlipped{
-                delegate!.getLeftProductCardArticle(article: leftCardArticle!, amount: amount)
-                leftCardIsFlipped = false
-            }
-            UIView.transition(with: sender.view.superview!, duration: 0.3, options: .transitionFlipFromRight, animations: nil, completion: nil)
-            sender.view.removeFromSuperview()
-            sender.removeFromParent()
-        }
-    }
+    
+    
+    
+   
+    
+    
+    var leftCardProductNode = 0
+    var rightCardProductNode = 0
+    var rightCardArticle : Article?
+    var leftCardArticle: Article?
+    
+    var leftCardIsFlipped = false
+    var rightCardIsFlipped = false
     
     var onlyOneProductCard: Bool = false{
         willSet(newValue){
@@ -46,15 +40,6 @@ class SearchTableViewCell: UITableViewCell, DetailedProductSelectionViewControll
             }
         }
     }
-    
-
-    var leftCardProductNode = 0
-    var rightCardProductNode = 0
-    var rightCardArticle : Article?
-    var leftCardArticle: Article?
-    
-    var leftCardIsFlipped = false
-    var rightCardIsFlipped = false
     
     var delegate: SearchTableViewCellDelegate?
     
@@ -105,19 +90,19 @@ class SearchTableViewCell: UITableViewCell, DetailedProductSelectionViewControll
         rightProductCardView.layer.shadowOffset = .zero
         rightProductCardView.layer.shadowRadius = 10
         rightDataBackgroundView.layer.cornerRadius = 10
-
+        
     }
     
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
-           super.setSelected(selected, animated: animated)
-
-           // Configure the view for the selected state
-       }
+        super.setSelected(selected, animated: animated)
+        
+        // Configure the view for the selected state
+    }
     
     @IBAction func leftCardTouched(_ sender: UIButton) {
         
-        NotificationCenter.default.post(Notification(name: Messages.notificationNameForTappedProductCard, object: nil, userInfo: ["cell" : self]))
+        NotificationCenter.default.post(Notification(name: Messages.notificationNameForTappedProductCard, object: nil, userInfo: nil))
         
         leftCardIsFlipped = true
         self.leftDetailedProdSelectVC.view.bounds = leftProductCardView.bounds
@@ -131,7 +116,9 @@ class SearchTableViewCell: UITableViewCell, DetailedProductSelectionViewControll
     
     @IBAction func rightCardTouched(_ sender: UIButton) {
         
-
+        
+        NotificationCenter.default.post(Notification(name: Messages.notificationNameForTappedProductCard, object: nil, userInfo: nil))
+        
         rightCardIsFlipped = true
         rightDetailedProdSelectVC.view.bounds = rightProductCardView.bounds
         rightDetailedProdSelectVC.view.layer.cornerRadius = 10
@@ -164,10 +151,34 @@ class SearchTableViewCell: UITableViewCell, DetailedProductSelectionViewControll
             rightDetailedProdSelectVC.view.removeFromSuperview()
         }
     }
-        
-        
+    
+    
 }
-   
+
+
+//MARK: Delagate - Kommunikation zwischen der geflippten Kundenauswahl und der TableCell
+extension SearchTableViewCell: DetailedProductSelectionViewControllerDelegate{
     
-    
+    func passUserSelection(amount: Int, action: UserInteraction, sender: DetailedProductSelectionViewController) {
+        if action == .cancleAdding {
+            UIView.transition(with: sender.view.superview!, duration: 0.3, options: .transitionFlipFromRight, animations: nil, completion: nil)
+            sender.view.removeFromSuperview()
+            sender.removeFromParent()
+        }else{
+            if rightCardIsFlipped{
+                delegate!.getRightProductCardArticle(article: rightCardArticle!, amount: amount)
+                rightCardIsFlipped = false
+            }else if leftCardIsFlipped{
+                delegate!.getLeftProductCardArticle(article: leftCardArticle!, amount: amount)
+                leftCardIsFlipped = false
+            }
+            UIView.transition(with: sender.view.superview!, duration: 0.3, options: .transitionFlipFromRight, animations: nil, completion: nil)
+            sender.view.removeFromSuperview()
+            sender.removeFromParent()
+        }
+    }
+}
+
+
+
 

@@ -11,10 +11,6 @@ import UIKit
 
 class NavigationViewController: UIViewController, UITableViewDelegate{
 
-    //Notofication wenn in der Produkttabelle gescrollt wird
-    static let notificationNameForSearchTableVC = Notification.Name("gefehrlich.Needigator.dataForSearchTableVC")
-
-    
     //Verbindung zum Interface-Builder
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var articleTableView: UITableView!
@@ -68,13 +64,16 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
         Shopping.selectedProductsOfUser.removeAll()
         substringArticles = articleDataBase.items
         articleTableView.reloadData()
+        
+        
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    
+        NotificationCenter.default.addObserver(self, selector: #selector(flipProductcardsIfNeeded), name: Messages.notificationNameForTappedProductCard, object: nil)
+        
         //Tastatur soll verschwinden, wenn irgendwo getippt wird
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
         view.addGestureRecognizer(tap)
@@ -170,6 +169,33 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
         }
         return articleArray
     }
+    
+    @objc func flipProductcardsIfNeeded(){
+        
+        for cell in articleTableView.visibleCells {
+            
+            let searchTableViewCell = cell as! SearchTableViewCell
+            
+            if searchTableViewCell.rightCardIsFlipped{
+                
+                searchTableViewCell.rightCardIsFlipped = false
+                
+                searchTableViewCell.rightDetailedProdSelectVC.removeFromParent()
+                searchTableViewCell.rightDetailedProdSelectVC.view.removeFromSuperview()
+                UIView.transition(with: searchTableViewCell.rightProductCardView, duration: 0.3, options: .transitionFlipFromRight, animations: nil, completion: nil)
+            }
+            
+            if searchTableViewCell.leftCardIsFlipped {
+                
+                searchTableViewCell.leftCardIsFlipped = false
+                
+                searchTableViewCell.leftDetailedProdSelectVC.removeFromParent()
+                searchTableViewCell.leftDetailedProdSelectVC.view.removeFromSuperview()
+                UIView.transition(with: searchTableViewCell.leftProductCardView, duration: 0.3, options: .transitionFlipFromRight, animations: nil, completion: nil)
+            }
+
+        }
+    }
 }
 
 
@@ -188,7 +214,7 @@ extension NavigationViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let cell = articleTableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as! SearchTableViewCellController
+        let cell = articleTableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as! SearchTableViewCell
         
         cell.delegate = self
         if indexPath.row < tableView.numberOfRows(inSection: 0) - 1 || tableView.numberOfRows(inSection: 0) == 1 && substringArticles.count > 1{
@@ -241,14 +267,12 @@ extension NavigationViewController: UIScrollViewDelegate {
     
     //Wenn in der Tabelle gescrollt wird, soll die Tastatur verschwinden
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        NotificationCenter.default.post(name: NavigationViewController.notificationNameForSearchTableVC, object: nil)
+        NotificationCenter.default.post(name: Messages.notificationNameForSearchTableVC, object: nil)
         self.view.endEditing(true)
     }
 }
 
 extension NavigationViewController: SearchTableViewCellDelegate{
-    
-    
     
     func getLeftProductCardArticle(article: Article, amount: Int) {
         updateSelectedItemsInModel(for: article, with: amount)

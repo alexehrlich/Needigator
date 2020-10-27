@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1D00D647242112D300DBBC41 /* BUGTRACKER_TODO.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1D00D646242112D300DBBC41 /* BUGTRACKER_TODO.txt */; };
+		1D15711B254877AE00B0847E /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D15711A254877AE00B0847E /* Messages.swift */; };
 		1D2593C5243372C4008F5BAC /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2593C4243372C4008F5BAC /* Market.swift */; };
 		1D2593C924337DC5008F5BAC /* AllRoutes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1D2593C824337DC4008F5BAC /* AllRoutes.txt */; };
 		1D2B10E42537792600D9119C /* SelectedProductsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2B10E22537792600D9119C /* SelectedProductsTableViewCell.swift */; };
@@ -27,7 +28,7 @@
 		1D7997292425ED73007CE3A5 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7997282425ED73007CE3A5 /* Route.swift */; };
 		1D79972F2425FA22007CE3A5 /* RGB32.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D79972E2425FA22007CE3A5 /* RGB32.swift */; };
 		1D7DBD9924274D53009E9D4E /* RouteCalculationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7DBD9824274D53009E9D4E /* RouteCalculationManager.swift */; };
-		1D7FAB502420B8F5001A5215 /* SearchTableViewCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7FAB4E2420B8F5001A5215 /* SearchTableViewCellController.swift */; };
+		1D7FAB502420B8F5001A5215 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7FAB4E2420B8F5001A5215 /* SearchTableViewCell.swift */; };
 		1D7FAB512420B8F5001A5215 /* SearchTableViewCellDesign.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D7FAB4F2420B8F5001A5215 /* SearchTableViewCellDesign.xib */; };
 		1D8D6E3E24B5176C007E8059 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8D6E3D24B5176C007E8059 /* CardViewController.swift */; };
 		1D8D6E4024B5177A007E8059 /* CardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D8D6E3F24B5177A007E8059 /* CardViewController.xib */; };
@@ -40,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		1D00D646242112D300DBBC41 /* BUGTRACKER_TODO.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BUGTRACKER_TODO.txt; sourceTree = "<group>"; };
+		1D15711A254877AE00B0847E /* Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
 		1D2593C4243372C4008F5BAC /* Market.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
 		1D2593C824337DC4008F5BAC /* AllRoutes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AllRoutes.txt; sourceTree = "<group>"; };
 		1D2B10E0253763FA00D9119C /* Needigator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Needigator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,7 +63,7 @@
 		1D7997282425ED73007CE3A5 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		1D79972E2425FA22007CE3A5 /* RGB32.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGB32.swift; sourceTree = "<group>"; };
 		1D7DBD9824274D53009E9D4E /* RouteCalculationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteCalculationManager.swift; sourceTree = "<group>"; };
-		1D7FAB4E2420B8F5001A5215 /* SearchTableViewCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCellController.swift; sourceTree = "<group>"; };
+		1D7FAB4E2420B8F5001A5215 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		1D7FAB4F2420B8F5001A5215 /* SearchTableViewCellDesign.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCellDesign.xib; sourceTree = "<group>"; };
 		1D8D6E3D24B5176C007E8059 /* CardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
 		1D8D6E3F24B5177A007E8059 /* CardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardViewController.xib; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				1D79972E2425FA22007CE3A5 /* RGB32.swift */,
 				1D2593C4243372C4008F5BAC /* Market.swift */,
 				1D2BBD982545BDFA00B49500 /* Shopping.swift */,
+				1D15711A254877AE00B0847E /* Messages.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -127,7 +130,7 @@
 				1D2E5844241E31CE002D341D /* Main.storyboard */,
 				1D2E5849241E31D0002D341D /* LaunchScreen.storyboard */,
 				1D2E5847241E31D0002D341D /* Assets.xcassets */,
-				1D7FAB4E2420B8F5001A5215 /* SearchTableViewCellController.swift */,
+				1D7FAB4E2420B8F5001A5215 /* SearchTableViewCell.swift */,
 				1D7FAB4F2420B8F5001A5215 /* SearchTableViewCellDesign.xib */,
 				1D8D6E3F24B5177A007E8059 /* CardViewController.xib */,
 				1D8D6E3D24B5176C007E8059 /* CardViewController.swift */,
@@ -238,7 +241,7 @@
 				1D7997292425ED73007CE3A5 /* Route.swift in Sources */,
 				1DF4FC1F241F34BF0058FF02 /* WelcomeViewController.swift in Sources */,
 				1DC109CD24201339007AA117 /* ArticleDataBase.swift in Sources */,
-				1D7FAB502420B8F5001A5215 /* SearchTableViewCellController.swift in Sources */,
+				1D7FAB502420B8F5001A5215 /* SearchTableViewCell.swift in Sources */,
 				1D7DBD9924274D53009E9D4E /* RouteCalculationManager.swift in Sources */,
 				1D2E583F241E31CE002D341D /* AppDelegate.swift in Sources */,
 				1D2E5841241E31CE002D341D /* SceneDelegate.swift in Sources */,
@@ -247,6 +250,7 @@
 				1D8DAF2D242A994200B4DBA8 /* RoutingViewController.swift in Sources */,
 				1D2BBD952545A4F200B49500 /* UserFeedBackWhileCalculationViewController.swift in Sources */,
 				1D7997272425EAEB007CE3A5 /* Node.swift in Sources */,
+				1D15711B254877AE00B0847E /* Messages.swift in Sources */,
 				1D2B10E42537792600D9119C /* SelectedProductsTableViewCell.swift in Sources */,
 				1D2593C5243372C4008F5BAC /* Market.swift in Sources */,
 			);
