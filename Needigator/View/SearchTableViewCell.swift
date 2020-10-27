@@ -15,12 +15,6 @@ protocol SearchTableViewCellDelegate{
 
 class SearchTableViewCell: UITableViewCell, UIScrollViewDelegate {
     
-    
-    
-    
-   
-    
-    
     var leftCardProductNode = 0
     var rightCardProductNode = 0
     var rightCardArticle : Article?
@@ -161,6 +155,14 @@ extension SearchTableViewCell: DetailedProductSelectionViewControllerDelegate{
     
     func passUserSelection(amount: Int, action: UserInteraction, sender: DetailedProductSelectionViewController) {
         if action == .cancleAdding {
+            
+            if rightCardIsFlipped{
+                rightCardIsFlipped = !rightCardIsFlipped
+            }
+            
+            if leftCardIsFlipped{
+                leftCardIsFlipped = !leftCardIsFlipped
+            }
             UIView.transition(with: sender.view.superview!, duration: 0.3, options: .transitionFlipFromRight, animations: nil, completion: nil)
             sender.view.removeFromSuperview()
             sender.removeFromParent()
