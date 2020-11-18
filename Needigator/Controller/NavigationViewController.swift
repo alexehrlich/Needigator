@@ -80,7 +80,7 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
         
         //Card-View für Einkaufsliste
         setupCard()
-        
+        cardViewController.view.layer.shadowColor = UIColor.black.cgColor
         
         //Search-Textfield Layouting
         searchTextField.layer.cornerRadius = searchTextField.frame.size.height / 2
@@ -238,7 +238,6 @@ extension NavigationViewController: UITableViewDataSource{
             cell.onlyOneProductCard = false
             cell.rightCardIsFlipped = false
             
-            
         }else{
             if let leftArticle = substringArticles.last {
                 cell.leftCellImage.image = leftArticle.getImage()
@@ -308,7 +307,7 @@ extension NavigationViewController: SearchTableViewCellDelegate{
 extension NavigationViewController {
 
 func setupCard() {
-        
+    
         self.addChild(cardViewController)
         self.view.addSubview(cardViewController.view)
         
@@ -373,9 +372,11 @@ func setupCard() {
             let frameAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 1) {
                 switch state {
                 case .expanded:
+                    self.cardViewController.dragBarLabel.text = "Zum Schließen tippen oder nach unten ziehen."
                     self.cardViewController.view.frame.origin.y = self.view.frame.height - self.cardHeight
                 case .collapsed:
                     self.cardViewController.view.frame.origin.y = self.view.frame.height - self.cardHandleAreaHeight
+                    self.cardViewController.dragBarLabel.text = "Für die Einfkaufsliate tippen oder nach oben ziehen."
                 }
             }
             

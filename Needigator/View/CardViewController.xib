@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CardViewController" customModule="Needigator" customModuleProvider="target">
             <connections>
                 <outlet property="dragBar" destination="zJO-XV-NL4" id="nTz-L9-emy"/>
+                <outlet property="dragBarLabel" destination="PDJ-re-Nj5" id="hvb-J6-B9s"/>
                 <outlet property="handleArea" destination="ckI-vR-0TA" id="sfe-fV-jdy"/>
                 <outlet property="headBar" destination="r6F-YW-eeF" id="1Y4-Bw-5yT"/>
                 <outlet property="selctedProductsTableView" destination="2tx-c4-CeN" id="EFT-eK-73O"/>
@@ -25,55 +26,36 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r6F-YW-eeF">
                     <rect key="frame" x="0.0" y="44" width="375" height="120"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zJO-XV-NL4">
-                            <rect key="frame" x="167.5" y="10" width="40" height="7"/>
-                            <color key="backgroundColor" systemColor="scrollViewTexturedBackgroundColor"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="7" id="5UW-sC-L8k"/>
-                                <constraint firstAttribute="width" constant="40" id="RBz-3m-ETi"/>
-                            </constraints>
-                        </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ckI-vR-0TA">
+                        <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ckI-vR-0TA">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
                             <subviews>
-                                <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="p8W-H0-ZRt">
-                                    <rect key="frame" x="20" y="20" width="335" height="30"/>
-                                    <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shopping-list_handleBar" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j9e-gG-qV4">
-                                            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
-                                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="30" id="R4h-B5-vsP"/>
-                                                <constraint firstAttribute="width" constant="30" id="ptv-6r-6Mq"/>
-                                            </constraints>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Für die Einfkaufsliate nach oben ziehen." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PDJ-re-Nj5">
-                                            <rect key="frame" x="40" y="0.0" width="295" height="30"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
-                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="PDJ-re-Nj5" firstAttribute="top" secondItem="p8W-H0-ZRt" secondAttribute="top" id="7Oc-kN-S9I"/>
-                                        <constraint firstAttribute="trailing" secondItem="PDJ-re-Nj5" secondAttribute="trailing" id="PAU-fb-Nkv"/>
-                                        <constraint firstItem="j9e-gG-qV4" firstAttribute="centerY" secondItem="PDJ-re-Nj5" secondAttribute="centerY" id="UAZ-UP-e80"/>
-                                        <constraint firstAttribute="bottom" secondItem="PDJ-re-Nj5" secondAttribute="bottom" id="Zcl-cf-eSS"/>
-                                    </constraints>
-                                </stackView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Für die Einfkaufsliate nach oben ziehen." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PDJ-re-Nj5">
+                                    <rect key="frame" x="10" y="35" width="365" height="14"/>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                    <color key="textColor" red="0.99215686270000003" green="0.60784313729999995" blue="0.46274509800000002" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Deine Produkte" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JGP-7Y-852">
                                     <rect key="frame" x="8" y="73" width="175" height="47"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
-                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="textColor" red="0.98776668310000004" green="0.97674101589999995" blue="0.96077162029999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstItem="p8W-H0-ZRt" firstAttribute="top" secondItem="ckI-vR-0TA" secondAttribute="top" constant="20" id="UqB-ro-xKU"/>
-                                <constraint firstItem="p8W-H0-ZRt" firstAttribute="leading" secondItem="ckI-vR-0TA" secondAttribute="leading" constant="20" symbolic="YES" id="p5m-Yx-DaZ"/>
-                                <constraint firstItem="p8W-H0-ZRt" firstAttribute="centerX" secondItem="ckI-vR-0TA" secondAttribute="centerX" id="ufW-o8-nf3"/>
+                                <constraint firstItem="PDJ-re-Nj5" firstAttribute="top" secondItem="ckI-vR-0TA" secondAttribute="top" constant="35" id="5vw-Ge-T5l"/>
+                                <constraint firstItem="PDJ-re-Nj5" firstAttribute="leading" secondItem="ckI-vR-0TA" secondAttribute="leading" constant="10" id="UTx-XK-fBo"/>
+                                <constraint firstAttribute="trailing" secondItem="PDJ-re-Nj5" secondAttribute="trailing" id="y4L-QH-dDw"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zJO-XV-NL4">
+                            <rect key="frame" x="167.5" y="10" width="40" height="7"/>
+                            <color key="backgroundColor" red="0.98776668310000004" green="0.97674101589999995" blue="0.96077162029999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="7" id="5UW-sC-L8k"/>
+                                <constraint firstAttribute="width" constant="40" id="RBz-3m-ETi"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -108,10 +90,4 @@
             <point key="canvasLocation" x="137" y="51"/>
         </view>
     </objects>
-    <resources>
-        <image name="shopping-list_handleBar" width="256" height="256"/>
-        <systemColor name="scrollViewTexturedBackgroundColor">
-            <color red="0.43529411764705878" green="0.44313725490196082" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-    </resources>
 </document>

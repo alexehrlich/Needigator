@@ -14,18 +14,24 @@ class CardViewController: UIViewController{
     @IBOutlet weak var headBar: UIView!
     @IBOutlet weak var dragBar: UIView!
     @IBOutlet weak var handleArea: UIView!
+    @IBOutlet weak var dragBarLabel: UILabel!
     
     var tapIsWithinTextField = false
     var amountOfArticle = 0
     
     
     override func viewDidLoad() {
-
+        
+        
         selctedProductsTableView.delegate = self
         selctedProductsTableView.dataSource = self
         selctedProductsTableView.tableFooterView = UIView()
         
         dragBar.layer.cornerRadius = dragBar.frame.size.height/2
+        
+        dragBar.layer.shadowColor = UIColor.black.cgColor
+        
+
         
         selctedProductsTableView.register(UINib(nibName: "SelectedProductsTableViewCell", bundle: nil), forCellReuseIdentifier: "ReusableSelectedProductCell")
     }
@@ -59,5 +65,6 @@ extension CardViewController: UITableViewDelegate, UITableViewDataSource{
         }
     }
 }
+
 
 

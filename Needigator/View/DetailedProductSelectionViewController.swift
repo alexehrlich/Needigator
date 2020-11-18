@@ -38,16 +38,15 @@ class DetailedProductSelectionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(self.scrollViewWillBeginDragging), name: Messages.notificationNameForSearchTableVC, object: nil)
         
         amountStackView.layer.cornerRadius = 10
         addButtonOutlet.layer.cornerRadius = addButtonOutlet.frame.size.height / 2
         
         cancelButtonOutlet.layer.cornerRadius = cancelButtonOutlet.frame.size.height / 2
-    
+        
         amountLabel.text = "\(amountCnt)"
     }
-
+    
     @IBAction func plusButtonTapped(_ sender: UIButton) {
         amountCnt += 1
     }
@@ -68,13 +67,4 @@ class DetailedProductSelectionViewController: UIViewController {
     @IBAction func cancelButtonTapped(_ sender: UIButton) {
         userInteractionDelegate?.passUserSelection(amount: 0, action: .cancleAdding, sender: self)
     }
-    
-    @objc func scrollViewWillBeginDragging() {
-       // self.removeFromParent()
-       // self.view.removeFromSuperview()
-    }
-    
-    
-    
-    
 }

@@ -84,37 +84,30 @@ class SearchTableViewCell: UITableViewCell, UIScrollViewDelegate {
         rightProductCardView.layer.shadowOffset = .zero
         rightProductCardView.layer.shadowRadius = 10
         rightDataBackgroundView.layer.cornerRadius = 10
-        
+    
     }
     
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-    }
     
     @IBAction func leftCardTouched(_ sender: UIButton) {
         
         NotificationCenter.default.post(Notification(name: Messages.notificationNameForTappedProductCard, object: nil, userInfo: nil))
         
         leftCardIsFlipped = true
-        self.leftDetailedProdSelectVC.view.bounds = leftProductCardView.bounds
-        self.leftDetailedProdSelectVC.view.layer.cornerRadius = 10
-        self.leftDetailedProdSelectVC.view.frame.origin = leftCardButton.frame.origin
-        self.leftProductCardView.addSubview(leftDetailedProdSelectVC.view)
-        self.leftDetailedProdSelectVC.productLabel.text = leftProductLabel.text
-        self.leftDetailedProdSelectVC.amountCnt = 1
+        leftDetailedProdSelectVC.view.frame = leftProductCardView.frame
+        leftDetailedProdSelectVC.view.layer.cornerRadius = 10
+        leftDetailedProdSelectVC.view.frame.origin = leftCardButton.frame.origin
+        leftProductCardView.addSubview(leftDetailedProdSelectVC.view)
+        leftDetailedProdSelectVC.productLabel.text = leftProductLabel.text
+        leftDetailedProdSelectVC.amountCnt = 1
         UIView.transition(with: leftProductCardView, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
     }
     
     @IBAction func rightCardTouched(_ sender: UIButton) {
         
-        
         NotificationCenter.default.post(Notification(name: Messages.notificationNameForTappedProductCard, object: nil, userInfo: nil))
         
         rightCardIsFlipped = true
-        rightDetailedProdSelectVC.view.bounds = rightProductCardView.bounds
+        rightDetailedProdSelectVC.view.frame = rightProductCardView.frame
         rightDetailedProdSelectVC.view.layer.cornerRadius = 10
         rightDetailedProdSelectVC.view.frame.origin = rightCardButton.frame.origin
         rightProductCardView.addSubview(rightDetailedProdSelectVC.view)
@@ -124,12 +117,15 @@ class SearchTableViewCell: UITableViewCell, UIScrollViewDelegate {
         
     }
     
+    
+    
     func hideLastCard(){
         rightProductCardView.alpha = 0
         rightCardButton.isUserInteractionEnabled = false
     }
     
     @objc func scrollViewWillBeginDragging() {
+        
         
         if leftCardIsFlipped {
             leftCardIsFlipped = false
@@ -145,8 +141,6 @@ class SearchTableViewCell: UITableViewCell, UIScrollViewDelegate {
             rightDetailedProdSelectVC.view.removeFromSuperview()
         }
     }
-    
-    
 }
 
 

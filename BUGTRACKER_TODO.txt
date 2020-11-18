@@ -1,15 +1,45 @@
 BUG Tracker:
 
-- View verschiebt sich nachdem Zelle umgedreht ist beim Scrollen. Reusable Cell verwendet die geflippte Karte.
+- View ist nciht richtig gelayoutet bei nach oben verschobener Zelle. Wenn dann der Knopf gedrückt wird, wird das Layout richtig gemacht...
 DONE - Einkaufsliste wird nicht zurückgesetzt (updateViewfromModel() implementieren)
 - Layout vom WelcomeScreen passt nicht ganz
 - AWS Datenbank implementieren + Angebote Screen
 - Filter einbauen
-- Wenn eine KArte umgedreht ist und eine andere KArte angetippt wird, soll die offene sich weider schließen
+DONE - Wenn eine KArte umgedreht ist und eine andere KArte angetippt wird, soll die offene sich weider schließen
 DONE - Wenn gescrollt wird, soll sich die umgedrehte Karte wieder schließen
 DONE - Produkte aus der Einkaufsliste löschen
 DONE - User Feedback, wenn die Berechnung läuft!
 DONE - Vorhandene Artikel nicht hinzufügen, sondern nur mit der Anzahl updaten
 
+TODO für EDEKA Oberboihingen:
+- Farben für Marktimage anders machen und Rahmen um Markt. Eventuell noch Bilder rein.
+- Legende unter den Marktplan, welche Farbe was bedeutet
+- Exit Button, der zrück zum Home geht
+- Screenshot in Einkaufslisten-Screen hinzufügen
+- Hilfe-Button sinnvoll befüllen
+- Layout für die Karten überarbeiten
 
+
+NEEDIGATOR TASKS:
+
+Backend-Technologien:
+    - Datenbank implementieren (1-3 Monate)
+    - Persistenten Speicher auf dem iPhone für User-Daten(CoreData oer UserDefaults) (2-4 Wochen): Favorisierte Einkaufslisten realisieren(+2 Wochen); Offline-Markt (2 Wochen)
+    - Angebote <-> Alle Produkte (hängt zusammen mit Datenbank) (1,5)
+    - Eventuelle Parameteranpassung Algorithmus mit zunehmender Anzahl der Produkte ?? (2 Wochen?)
+    
+Frontend:
+    - Auto-Layout für alle zulässigen IPhones (1 Monat)
+    - Layout Welcome Screen neu anordnen (zählt mit unter Auto Layout)
+    - Produktkarten richtig designen (zählt mit unter Auto Layout)
+    
+    - Darstellung Angebote (3 Wochen)
+    - Darstellung Navigation
+    
+--> AdobeXD File mit allen Screens und allen Funktionen benötigt.
+
+Code:
+    - Eventell UML ClassDiagramm für Dokumentation (Ich weiss was mein Code tut)
+    - Code Kommentierung (relativ guter Stand...)
+    
  
