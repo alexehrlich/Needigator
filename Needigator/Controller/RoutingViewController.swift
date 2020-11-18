@@ -13,6 +13,10 @@ class RoutingViewController: UIViewController {
 //MARK: IB-Outlets:
     @IBOutlet weak var routeImageView: UIImageView!
     @IBOutlet weak var firstNavigationImage: UIImageView!
+    @IBOutlet weak var colorLegendButtonView: UIView!
+    @IBOutlet weak var addToFavsButtonView: UIView!
+    @IBOutlet weak var finishShoppingButtonView: UIView!
+    
     
     //InformationView Stuff
     @IBOutlet weak var productViewOfMapMarker: UIView!
@@ -73,8 +77,29 @@ class RoutingViewController: UIViewController {
         productViewOfMapMarker.layer.cornerRadius = 10
         
         //Layout of firstNavigationImage
-        firstNavigationImage.tintColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+        firstNavigationImage.tintColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
         firstNavigationImage.alpha = 0
+        
+        //Layout Button Views
+        colorLegendButtonView.layer.cornerRadius = colorLegendButtonView.frame.size.height/2
+        colorLegendButtonView.layer.shadowColor = UIColor.lightGray.cgColor
+        colorLegendButtonView.layer.shadowOpacity = 0.5
+        colorLegendButtonView.layer.shadowOffset = .zero
+        colorLegendButtonView.layer.shadowRadius = 10
+        
+        addToFavsButtonView.layer.cornerRadius = colorLegendButtonView.frame.size.height/2
+        addToFavsButtonView.layer.shadowColor = UIColor.lightGray.cgColor
+        addToFavsButtonView.layer.shadowOpacity = 0.5
+        addToFavsButtonView.layer.shadowOffset = .zero
+        addToFavsButtonView.layer.shadowRadius = 10
+        
+        finishShoppingButtonView.layer.cornerRadius = colorLegendButtonView.frame.size.height/2
+        finishShoppingButtonView.layer.shadowColor = UIColor.lightGray.cgColor
+        finishShoppingButtonView.layer.shadowOpacity = 0.5
+        finishShoppingButtonView.layer.shadowOffset = .zero
+        finishShoppingButtonView.layer.shadowRadius = 10
+        
+        
         
         
         //Set-up and layout of second Navigation Image
@@ -92,6 +117,23 @@ class RoutingViewController: UIViewController {
         firstNavigationImage.isHidden = false
         moveFirstNavigationArrow()
     }
+    
+    //Funktionen für die Buttons:
+    @IBAction func showColorLegendButtonPressed(_ sender: UIButton) {
+        print("Show Color Legend")
+    }
+    
+    
+    @IBAction func addListToFavsButtonPressed(_ sender: UIButton) {
+        print("Add List du Favorites")
+    }
+    
+    @IBAction func finishShoppingButtonPressed(_ sender: UIButton) {
+        
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+    
+    
     
     
     //Wenn neben die Karte gedrückt wird, soll diese wieder verschwinden

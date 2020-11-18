@@ -12,7 +12,7 @@ import UIKit
 class Market {
     
     var end = 0
-    static var bitMapMarketPlan2D = UIImage(named: "NODES_1242x1065_colored")
+    static var bitMapMarketPlan2D = UIImage(named: "NODES_1242x1065_colored NEW")
     static var allNodesInMarket = [Node]()
     var pathsToRoutesFile: String = "AllRoutes.txt"
     static var finalRoutes = [Route]()
