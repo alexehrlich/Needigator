@@ -59,7 +59,7 @@
                                             <constraint firstAttribute="width" constant="100" id="KQ8-a4-Qzz"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>
-                                        <color key="textColor" red="0.99215686270000003" green="0.60784313729999995" blue="0.46274509800000002" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lGP-YB-cvM">
@@ -106,16 +106,16 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="bottomLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Produkt" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Rss-VA-f9Y">
-                                        <rect key="frame" x="15" y="135" width="184" height="50"/>
+                                        <rect key="frame" x="15" y="160" width="184" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="kn4-aG-LgT"/>
+                                            <constraint firstAttribute="height" constant="30" id="kn4-aG-LgT"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="500g" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eOO-83-snZ">
-                                        <rect key="frame" x="15" y="185" width="184" height="25"/>
+                                        <rect key="frame" x="15" y="190" width="184" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="9FI-9F-by2"/>
                                         </constraints>
@@ -130,7 +130,7 @@
                                             <constraint firstAttribute="height" constant="40" id="nGv-jp-ALB"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>
-                                        <color key="textColor" red="0.99215686270000003" green="0.60784313729999995" blue="0.46274509800000002" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mlx-vi-e6b">
@@ -145,7 +145,7 @@
                                     <constraint firstItem="Rss-VA-f9Y" firstAttribute="leading" secondItem="zjf-dp-koO" secondAttribute="leading" constant="15" id="28y-QV-zI8"/>
                                     <constraint firstItem="mlx-vi-e6b" firstAttribute="leading" secondItem="zjf-dp-koO" secondAttribute="leading" id="GUq-G5-zbm"/>
                                     <constraint firstItem="eOO-83-snZ" firstAttribute="top" secondItem="Rss-VA-f9Y" secondAttribute="bottom" id="Kd0-D4-L5L"/>
-                                    <constraint firstItem="Rss-VA-f9Y" firstAttribute="top" secondItem="9gi-ie-4kk" secondAttribute="bottom" id="LSn-DM-ccf"/>
+                                    <constraint firstItem="Rss-VA-f9Y" firstAttribute="top" secondItem="9gi-ie-4kk" secondAttribute="bottom" constant="25" id="LSn-DM-ccf"/>
                                     <constraint firstItem="mlx-vi-e6b" firstAttribute="top" secondItem="zjf-dp-koO" secondAttribute="top" id="Lbf-l8-UNf"/>
                                     <constraint firstItem="eOO-83-snZ" firstAttribute="leading" secondItem="zjf-dp-koO" secondAttribute="leading" constant="15" id="Q6g-0t-BVs"/>
                                     <constraint firstItem="Oe0-Tu-sQg" firstAttribute="leading" secondItem="zjf-dp-koO" secondAttribute="leading" constant="15" id="QfK-Ar-64l"/>
@@ -158,7 +158,7 @@
                                     <constraint firstItem="9gi-ie-4kk" firstAttribute="centerX" secondItem="zjf-dp-koO" secondAttribute="centerX" id="nmZ-Mv-RVs"/>
                                     <constraint firstAttribute="trailing" secondItem="mlx-vi-e6b" secondAttribute="trailing" id="sZS-Lh-nqH"/>
                                     <constraint firstAttribute="trailing" secondItem="Wfq-7B-EVF" secondAttribute="trailing" id="tCe-1b-hkz"/>
-                                    <constraint firstItem="Oe0-Tu-sQg" firstAttribute="top" secondItem="eOO-83-snZ" secondAttribute="bottom" constant="5" id="wcd-Zg-vPf"/>
+                                    <constraint firstItem="Oe0-Tu-sQg" firstAttribute="top" secondItem="eOO-83-snZ" secondAttribute="bottom" id="wcd-Zg-vPf"/>
                                     <constraint firstAttribute="trailing" secondItem="eOO-83-snZ" secondAttribute="trailing" constant="15" id="zTl-ra-wjR"/>
                                 </constraints>
                             </view>
