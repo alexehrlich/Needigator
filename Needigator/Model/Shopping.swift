@@ -15,5 +15,4 @@ struct  Shopping {
             NotificationCenter.default.post(Notification(name: Messages.updatedSelectedProductDB, object: nil, userInfo: nil))
         }
     }
-   
 }

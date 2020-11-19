@@ -12,12 +12,13 @@ DONE - User Feedback, wenn die Berechnung läuft!
 DONE - Vorhandene Artikel nicht hinzufügen, sondern nur mit der Anzahl updaten
 
 TODO für EDEKA Oberboihingen:
-- Farben für Marktimage anders machen und Rahmen um Markt. Eventuell noch Bilder rein.
+- DONE Farben für Marktimage anders machen und Rahmen um Markt. Eventuell noch Bilder rein.
 - Legende unter den Marktplan, welche Farbe was bedeutet
-- Exit Button, der zrück zum Home geht
+- DONE Exit Button, der zrück zum Home geht
 - Screenshot in Einkaufslisten-Screen hinzufügen
 - Hilfe-Button sinnvoll befüllen
-- Layout für die Karten überarbeiten
+- DONE Layout für die Karten überarbeiten
+- DONE Angebote hinzufügen 
 
 
 NEEDIGATOR TASKS:

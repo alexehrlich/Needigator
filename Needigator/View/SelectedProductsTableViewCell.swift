@@ -14,6 +14,12 @@ class SelectedProductsTableViewCell: UITableViewCell {
     
     var dataToDisplay : (Article, Int)? {
         set(newValue) {
+            
+            if newValue!.0.isOnOffer{
+                productLabel.textColor = UIColor.red
+            }else{
+                productLabel.textColor = UIColor.black
+            }
             productLabel.text = "\(newValue!.1) x \(newValue!.0.getName())"
         }
         

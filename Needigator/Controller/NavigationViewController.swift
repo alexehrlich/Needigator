@@ -21,6 +21,7 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
     
     //"Datenbank" der hard-coded Artikel
     let articleDataBase = ArticleDataBase()
+    lazy var listOfProducts = articleDataBase.items
     
     //Liste die mit den Artikeln gefüllt wird, die 3 im Textfeld eingegebenen Buchstaben enthalten
     var substringArticles = [Article]()
@@ -62,7 +63,7 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
         animateTransitionIfNeeded(state: nextState, duration: 0.1)
         
         Shopping.selectedProductsOfUser.removeAll()
-        substringArticles = articleDataBase.items
+        substringArticles = listOfProducts
         articleTableView.reloadData()
         
         
@@ -112,14 +113,34 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
         articleTableView.reloadData()
     }
     
-    
+    @IBAction func choseAllProductsOrOffers(_ sender: UISegmentedControl) {
+        
+        if sender.selectedSegmentIndex == 0 {
+            searchTextField.placeholder = "Durchsuche alle Produkte"
+            listOfProducts = articleDataBase.items
+            substringArticles = listOfProducts
+            articleTableView.reloadData()
+        }else {
+            searchTextField.placeholder = "Durchsuche alle Angebote"
+            listOfProducts.removeAll()
+            
+            for article in articleDataBase.items {
+                if article.isOnOffer{
+                    listOfProducts.append(article)
+                }
+            }
+            substringArticles = listOfProducts
+            articleTableView.reloadData()
+            
+        }
+    }
     
     
     //Diese Methode wird aufgerufen, wenn der Nutzer eine Änderung im TextField vorgenommen hat. (Ein weiterer Buchstaben getippt z.B.)
     @objc func textFieldDidChange(){
         
         if searchTextField.text == ""{
-            substringArticles = articleDataBase.items
+            substringArticles = listOfProducts
         }else{
             //Sucht in der Datenbank nach Artikeln mit den eingegeben Buchstaben
             substringArticles = checkSubstringInArticle(substring: searchTextField.text!)
@@ -161,7 +182,7 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
         
         //Es soll erst nach 3 Buchstaben geschaut werden, sonst zeigt er ja alles an.
         if substring.count >= 3 {
-            for article in articleDataBase.items {
+            for article in listOfProducts {
                 if article.getName().lowercased().contains(substring.lowercased()){
                     articleArray.append(article)
                 }
@@ -229,7 +250,18 @@ extension NavigationViewController: UITableViewDataSource{
             cell.leftCardArticle = leftArticle
             cell.onlyOneProductCard = false
             cell.leftCardIsFlipped = false
-
+            
+            if cell.leftCardArticle!.isOnOffer == true{
+                cell.leftOfferPriceLabel.text = cell.leftCardArticle?.offerPrice
+                cell.leftProductPrice.font = UIFont.systemFont(ofSize: 20.0)
+                cell.leftOfferView.isHidden = false
+            }else{
+                let font = UIFont(name: "HelveticaNeue-Bold", size: 30)
+                cell.leftProductPrice.font = font
+                cell.leftOfferView.isHidden = true
+            }
+            
+            
             cell.rightCellImage.image = rightArticle.getImage()
             cell.rightProductLabel.text = rightArticle.getName()
             cell.rightProductPrice.text = rightArticle.getPrice()
@@ -237,6 +269,16 @@ extension NavigationViewController: UITableViewDataSource{
             cell.rightCardArticle = rightArticle
             cell.onlyOneProductCard = false
             cell.rightCardIsFlipped = false
+            
+            if cell.rightCardArticle!.isOnOffer == true{
+                cell.rightOfferPriceLabel.text = cell.rightCardArticle?.offerPrice
+                cell.rightProductPrice.font = UIFont.systemFont(ofSize: 20.0)
+                cell.rightOfferView.isHidden = false
+            }else{
+                let font = UIFont(name: "HelveticaNeue-Bold", size: 30)
+                cell.rightProductPrice.font = font
+                cell.rightOfferView.isHidden = true
+            }
             
         }else{
             if let leftArticle = substringArticles.last {
@@ -248,6 +290,15 @@ extension NavigationViewController: UITableViewDataSource{
                 cell.onlyOneProductCard = true
                 cell.leftCardIsFlipped = false
                 
+                if cell.leftCardArticle!.isOnOffer == true{
+                    cell.leftOfferPriceLabel.text = cell.leftCardArticle?.offerPrice
+                    cell.leftProductPrice.font = UIFont.systemFont(ofSize: 20.0)
+                    cell.leftOfferView.isHidden = false
+                }else{
+                    let font = UIFont(name: "HelveticaNeue-Bold", size: 30)
+                    cell.leftProductPrice.font = font
+                    cell.leftOfferView.isHidden = true
+                }
             }
         }
         self.addChild(cell.leftDetailedProdSelectVC)

@@ -53,6 +53,9 @@ class SearchTableViewCell: UITableViewCell, UIScrollViewDelegate {
     @IBOutlet weak var leftProductPrice: UILabel!
     @IBOutlet weak var leftCardButton: UIButton!
     @IBOutlet weak var leftDataBackgroundView: UIView!
+    @IBOutlet weak var leftOfferView: UIView!
+    @IBOutlet weak var leftOfferPriceLabel: UILabel!
+    
     
     @IBOutlet weak var rightCellImage: UIImageView!
     @IBOutlet weak var rightProductLabel: UILabel!
@@ -60,11 +63,14 @@ class SearchTableViewCell: UITableViewCell, UIScrollViewDelegate {
     @IBOutlet weak var rightProductPrice: UILabel!
     @IBOutlet weak var rightCardButton: UIButton!
     @IBOutlet weak var rightDataBackgroundView: UIView!
+    @IBOutlet weak var rightOfferView: UIView!
+    @IBOutlet weak var rightOfferPriceLabel: UILabel!
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
+       
         NotificationCenter.default.addObserver(self, selector: #selector(self.scrollViewWillBeginDragging), name: Messages.notificationNameForSearchTableVC, object: nil)
         
         self.leftDetailedProdSelectVC.userInteractionDelegate = self
