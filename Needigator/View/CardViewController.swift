@@ -15,13 +15,15 @@ class CardViewController: UIViewController{
     @IBOutlet weak var dragBar: UIView!
     @IBOutlet weak var handleArea: UIView!
     @IBOutlet weak var dragBarLabel: UILabel!
+    @IBOutlet weak var productCntLabel: UILabel!
     
     var tapIsWithinTextField = false
     var amountOfArticle = 0
     
     
+    
+    
     override func viewDidLoad() {
-        
         
         selctedProductsTableView.delegate = self
         selctedProductsTableView.dataSource = self
@@ -31,9 +33,14 @@ class CardViewController: UIViewController{
         
         dragBar.layer.shadowColor = UIColor.black.cgColor
         
+        NotificationCenter.default.addObserver(self, selector: #selector(updateViewFromModel), name: Messages.updatedSelectedProductDB, object: nil)
 
         
         selctedProductsTableView.register(UINib(nibName: "SelectedProductsTableViewCell", bundle: nil), forCellReuseIdentifier: "ReusableSelectedProductCell")
+    }
+    
+    @objc func updateViewFromModel(){
+        productCntLabel.text = "\(Shopping.selectedProductsOfUser.count)"
     }
     
 }

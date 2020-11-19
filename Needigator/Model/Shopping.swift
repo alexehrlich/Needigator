@@ -10,6 +10,10 @@ import Foundation
 
 struct  Shopping {
     
-    static var selectedProductsOfUser = [(Article, Int)]()
+    static var selectedProductsOfUser = [(Article, Int)]() {
+        didSet{
+            NotificationCenter.default.post(Notification(name: Messages.updatedSelectedProductDB, object: nil, userInfo: nil))
+        }
+    }
    
 }

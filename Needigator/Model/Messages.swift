@@ -15,6 +15,10 @@ struct Messages {
     
     //Notofication wenn in der Produkttabelle getippt wird
     static let notificationNameForTappedProductCard = Notification.Name("gefehrlich.Needigator.productCardTapped")
+    
+    //Notification wenn das Model Shopping (Ausgewählte Produkte) verändert wird:
+    static let updatedSelectedProductDB = Notification.Name("gefehrlich.Needigator.SelectedArticlesUpdated")
+
 
     
 }

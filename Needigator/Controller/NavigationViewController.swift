@@ -132,7 +132,7 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
 
     @IBAction func searchButtonPressed(_ sender: UIButton) {
         if Shopping.selectedProductsOfUser.isEmpty{
-            let alertController = UIAlertController(title: "Ihre Einkaufsliste ist leer!", message:
+            let alertController = UIAlertController(title: "Deine Einkaufsliste ist leer!", message:
                 "Für die Routenberechnung muss sich mindestens 1 Artikel im Warenkorb befinden.", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "OK", style: .default))
             self.present(alertController, animated: true, completion: nil)
@@ -376,7 +376,7 @@ func setupCard() {
                     self.cardViewController.view.frame.origin.y = self.view.frame.height - self.cardHeight
                 case .collapsed:
                     self.cardViewController.view.frame.origin.y = self.view.frame.height - self.cardHandleAreaHeight
-                    self.cardViewController.dragBarLabel.text = "Für die Einfkaufsliate tippen oder nach oben ziehen."
+                    self.cardViewController.dragBarLabel.text = "Für deine Einfkaufsliste tippen oder nach oben ziehen."
                 }
             }
             
