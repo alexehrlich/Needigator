@@ -55,7 +55,7 @@
                                                 <constraint firstAttribute="height" constant="25" id="EON-Lq-qtP"/>
                                                 <constraint firstAttribute="width" constant="25" id="hTa-Ch-1PP"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
