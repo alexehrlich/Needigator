@@ -161,6 +161,10 @@ class RoutingViewController: UIViewController {
                 articleImageView.image = article.getImage()
                 articleNameInView.text = article.getName()
                 articlePriceInView.text = article.getPrice()
+                
+                if article.isOnOffer {
+                    articlePriceInView.textColor = .red
+                }
             }
         }
         productViewOfMapMarker.backgroundColor = .white

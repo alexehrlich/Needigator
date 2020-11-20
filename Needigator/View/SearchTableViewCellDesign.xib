@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -32,7 +34,7 @@
                                             <constraint firstAttribute="width" constant="130" id="X9p-8Y-XNJ"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Produkt" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KuK-T0-DO1">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Produkt" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="KuK-T0-DO1">
                                         <rect key="frame" x="15" y="160" width="184" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="8hz-kL-016"/>
@@ -60,12 +62,6 @@
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lGP-YB-cvM">
-                                        <rect key="frame" x="0.0" y="0.0" width="214" height="307"/>
-                                        <connections>
-                                            <action selector="leftCardTouched:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="gTv-Yc-xH5"/>
-                                        </connections>
-                                    </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iO8-7D-miG">
                                         <rect key="frame" x="0.0" y="216" width="214" height="38"/>
                                         <subviews>
@@ -93,6 +89,12 @@
                                             <constraint firstItem="VAA-D8-l1l" firstAttribute="top" secondItem="iO8-7D-miG" secondAttribute="top" id="ZVI-30-9M7"/>
                                         </constraints>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lGP-YB-cvM">
+                                        <rect key="frame" x="0.0" y="0.0" width="214" height="307"/>
+                                        <connections>
+                                            <action selector="leftCardTouched:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="gTv-Yc-xH5"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.98776668310000004" green="0.97674101589999995" blue="0.96077162029999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -163,12 +165,6 @@
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mlx-vi-e6b">
-                                        <rect key="frame" x="0.0" y="0.0" width="214" height="307"/>
-                                        <connections>
-                                            <action selector="rightCardTouched:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="tlX-7f-rty"/>
-                                        </connections>
-                                    </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YiO-qL-N48">
                                         <rect key="frame" x="0.0" y="217" width="214" height="36"/>
                                         <subviews>
@@ -196,6 +192,12 @@
                                             <constraint firstAttribute="trailing" secondItem="3NN-fo-rHT" secondAttribute="trailing" constant="15" id="oO5-Wa-xLK"/>
                                         </constraints>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mlx-vi-e6b">
+                                        <rect key="frame" x="0.0" y="0.0" width="214" height="307"/>
+                                        <connections>
+                                            <action selector="rightCardTouched:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="tlX-7f-rty"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.98776668310000004" green="0.97674101589999995" blue="0.96077162029999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>

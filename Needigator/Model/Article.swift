@@ -40,7 +40,7 @@ struct Article: Hashable {
     }
     
     func getPrice() -> String {
-        return price
+        return isOnOffer ? offerPrice! : price
     }
     
     func getImage() -> UIImage {

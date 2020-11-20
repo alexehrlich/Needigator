@@ -30,8 +30,11 @@
                         <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ckI-vR-0TA">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Für die Einfkaufsliate nach oben ziehen." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PDJ-re-Nj5">
-                                    <rect key="frame" x="10" y="25" width="365" height="14"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Für die Einfkaufsliate nach oben ziehen." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PDJ-re-Nj5">
+                                    <rect key="frame" x="10" y="15" width="265" height="40"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="A14-hg-Sp6"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -44,7 +47,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6bF-SY-ALA">
-                                    <rect key="frame" x="285" y="2" width="60" height="60"/>
+                                    <rect key="frame" x="285" y="5" width="60" height="60"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="einkaufskorb roter kreis" translatesAutoresizingMaskIntoConstraints="NO" id="QGd-8z-hf3">
                                             <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
@@ -75,11 +78,11 @@
                             </subviews>
                             <color key="backgroundColor" red="0.99204975370000004" green="0.64923185110000003" blue="0.50970673560000002" alpha="0.79971104452054798" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>
-                                <constraint firstItem="PDJ-re-Nj5" firstAttribute="top" secondItem="ckI-vR-0TA" secondAttribute="top" constant="25" id="5vw-Ge-T5l"/>
+                                <constraint firstItem="PDJ-re-Nj5" firstAttribute="top" secondItem="ckI-vR-0TA" secondAttribute="top" constant="15" id="5vw-Ge-T5l"/>
                                 <constraint firstItem="6bF-SY-ALA" firstAttribute="centerY" secondItem="PDJ-re-Nj5" secondAttribute="centerY" id="C2N-Xu-fZC"/>
                                 <constraint firstItem="PDJ-re-Nj5" firstAttribute="leading" secondItem="ckI-vR-0TA" secondAttribute="leading" constant="10" id="UTx-XK-fBo"/>
                                 <constraint firstAttribute="trailing" secondItem="6bF-SY-ALA" secondAttribute="trailing" constant="30" id="mf1-SZ-EVj"/>
-                                <constraint firstAttribute="trailing" secondItem="PDJ-re-Nj5" secondAttribute="trailing" id="y4L-QH-dDw"/>
+                                <constraint firstAttribute="trailing" secondItem="PDJ-re-Nj5" secondAttribute="trailing" constant="100" id="y4L-QH-dDw"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zJO-XV-NL4">
