@@ -49,7 +49,7 @@ class SearchTableViewCell: UITableViewCell, UIScrollViewDelegate {
     
     @IBOutlet weak var leftCellImage: UIImageView!
     @IBOutlet weak var leftProductLabel: UILabel!
-    @IBOutlet weak var leftProductInformation: UILabel!
+    @IBOutlet weak var leftProductAmount: UILabel!
     @IBOutlet weak var leftProductPrice: UILabel!
     @IBOutlet weak var leftCardButton: UIButton!
     @IBOutlet weak var leftDataBackgroundView: UIView!
@@ -59,7 +59,7 @@ class SearchTableViewCell: UITableViewCell, UIScrollViewDelegate {
     
     @IBOutlet weak var rightCellImage: UIImageView!
     @IBOutlet weak var rightProductLabel: UILabel!
-    @IBOutlet weak var rightProductInformation: UILabel!
+    @IBOutlet weak var rightProductAmount: UILabel!
     @IBOutlet weak var rightProductPrice: UILabel!
     @IBOutlet weak var rightCardButton: UIButton!
     @IBOutlet weak var rightDataBackgroundView: UIView!

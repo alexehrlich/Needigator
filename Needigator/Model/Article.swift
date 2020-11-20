@@ -11,7 +11,7 @@ import UIKit
 struct Article: Hashable {
     
     private var name: String
-    private var info: String
+    private var amount: String //kg, ml
     private var node: Int
     private var price: String
     private var image: UIImage
@@ -26,7 +26,7 @@ struct Article: Hashable {
         let splittedString = shortenedString.split(separator: "_")
         
         name = String(splittedString[0])
-        info = String(splittedString[1])
+        amount = String(splittedString[1])
         node = Int(String(splittedString[2])) ?? 74
         price = String(splittedString[3]) + "€"
         isOnOffer = splittedString[4] == "YES" ? true : false
@@ -47,8 +47,8 @@ struct Article: Hashable {
         return image
     }
     
-    func getInfo() -> String {
-        return info
+    func getAmount() -> String {
+        return amount
     }
     
     func getNode() -> Int {

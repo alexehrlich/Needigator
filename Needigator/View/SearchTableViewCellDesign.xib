@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -246,8 +244,8 @@
                 <outlet property="leftDataBackgroundView" destination="pVk-k3-GnI" id="BWK-uy-g7Y"/>
                 <outlet property="leftOfferPriceLabel" destination="VAA-D8-l1l" id="f37-Jt-jhu"/>
                 <outlet property="leftOfferView" destination="iO8-7D-miG" id="CmB-FH-9FR"/>
+                <outlet property="leftProductAmount" destination="rN7-da-QVH" id="625-7a-tsB"/>
                 <outlet property="leftProductCardView" destination="yDc-I4-x7B" id="bTx-91-b63"/>
-                <outlet property="leftProductInformation" destination="rN7-da-QVH" id="625-7a-tsB"/>
                 <outlet property="leftProductLabel" destination="KuK-T0-DO1" id="ew3-Yx-t4H"/>
                 <outlet property="leftProductPrice" destination="qjG-wX-wHM" id="LUk-p6-9sR"/>
                 <outlet property="rightCardButton" destination="mlx-vi-e6b" id="cvt-Oz-ebD"/>
@@ -255,8 +253,8 @@
                 <outlet property="rightDataBackgroundView" destination="Wfq-7B-EVF" id="0QY-u7-Bsh"/>
                 <outlet property="rightOfferPriceLabel" destination="3NN-fo-rHT" id="eAa-be-Gpa"/>
                 <outlet property="rightOfferView" destination="YiO-qL-N48" id="tyS-1H-y8y"/>
+                <outlet property="rightProductAmount" destination="eOO-83-snZ" id="ib3-x5-kDd"/>
                 <outlet property="rightProductCardView" destination="zjf-dp-koO" id="OiA-EW-rVK"/>
-                <outlet property="rightProductInformation" destination="eOO-83-snZ" id="ib3-x5-kDd"/>
                 <outlet property="rightProductLabel" destination="Rss-VA-f9Y" id="tOC-Ih-b75"/>
                 <outlet property="rightProductPrice" destination="Oe0-Tu-sQg" id="jj1-Wa-vj7"/>
                 <outlet property="tableCellView" destination="H2p-sc-9uM" id="KXR-eM-fFN"/>

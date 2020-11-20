@@ -246,6 +246,7 @@ extension NavigationViewController: UITableViewDataSource{
             cell.leftCellImage.image = leftArticle.getImage()
             cell.leftProductLabel.text = leftArticle.getName()
             cell.leftProductPrice.text = leftArticle.getPrice()
+            cell.leftProductAmount.text = "Menge: \(String(describing: leftArticle.getAmount()))"
             cell.leftCardProductNode = leftArticle.getNode()
             cell.leftCardArticle = leftArticle
             cell.onlyOneProductCard = false
@@ -265,6 +266,7 @@ extension NavigationViewController: UITableViewDataSource{
             cell.rightCellImage.image = rightArticle.getImage()
             cell.rightProductLabel.text = rightArticle.getName()
             cell.rightProductPrice.text = rightArticle.getPrice()
+            cell.rightProductAmount.text = "Menge: \(String(describing: rightArticle.getAmount()))"
             cell.rightCardProductNode = rightArticle.getNode()
             cell.rightCardArticle = rightArticle
             cell.onlyOneProductCard = false
@@ -285,6 +287,7 @@ extension NavigationViewController: UITableViewDataSource{
                 cell.leftCellImage.image = leftArticle.getImage()
                 cell.leftProductLabel.text = leftArticle.getName()
                 cell.leftProductPrice.text = leftArticle.getPrice()
+                cell.leftProductAmount.text = "Menge: \(String(describing: leftArticle.getAmount()))"
                 cell.leftCardProductNode = leftArticle.getNode()
                 cell.leftCardArticle = leftArticle
                 cell.onlyOneProductCard = true
