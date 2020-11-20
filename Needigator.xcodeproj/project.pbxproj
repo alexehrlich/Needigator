@@ -34,6 +34,7 @@
 		1D8D6E4024B5177A007E8059 /* CardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D8D6E3F24B5177A007E8059 /* CardViewController.xib */; };
 		1D8DAF2D242A994200B4DBA8 /* RoutingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8DAF2C242A994200B4DBA8 /* RoutingViewController.swift */; };
 		1DC109CD24201339007AA117 /* ArticleDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC109CC24201339007AA117 /* ArticleDataBase.swift */; };
+		1DEB1E06256787A20014D6E3 /* ColorLegendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB1E05256787A20014D6E3 /* ColorLegendViewController.swift */; };
 		1DF4FC1F241F34BF0058FF02 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF4FC1E241F34BF0058FF02 /* WelcomeViewController.swift */; };
 		1DF4FC21241F36390058FF02 /* ShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF4FC20241F36390058FF02 /* ShoppingListViewController.swift */; };
 		1DF4FC23241F3A730058FF02 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF4FC22241F3A730058FF02 /* NavigationViewController.swift */; };
@@ -69,6 +70,7 @@
 		1D8D6E3F24B5177A007E8059 /* CardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardViewController.xib; sourceTree = "<group>"; };
 		1D8DAF2C242A994200B4DBA8 /* RoutingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutingViewController.swift; sourceTree = "<group>"; };
 		1DC109CC24201339007AA117 /* ArticleDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDataBase.swift; sourceTree = "<group>"; };
+		1DEB1E05256787A20014D6E3 /* ColorLegendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ColorLegendViewController.swift; path = Needigator/Controller/ColorLegendViewController.swift; sourceTree = SOURCE_ROOT; };
 		1DF4FC1E241F34BF0058FF02 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		1DF4FC20241F36390058FF02 /* ShoppingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListViewController.swift; sourceTree = "<group>"; };
 		1DF4FC22241F3A730058FF02 /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				1DF4FC20241F36390058FF02 /* ShoppingListViewController.swift */,
 				1DF4FC22241F3A730058FF02 /* NavigationViewController.swift */,
 				1D8DAF2C242A994200B4DBA8 /* RoutingViewController.swift */,
+				1DEB1E05256787A20014D6E3 /* ColorLegendViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 				1D7997292425ED73007CE3A5 /* Route.swift in Sources */,
 				1DF4FC1F241F34BF0058FF02 /* WelcomeViewController.swift in Sources */,
 				1DC109CD24201339007AA117 /* ArticleDataBase.swift in Sources */,
+				1DEB1E06256787A20014D6E3 /* ColorLegendViewController.swift in Sources */,
 				1D7FAB502420B8F5001A5215 /* SearchTableViewCell.swift in Sources */,
 				1D7DBD9924274D53009E9D4E /* RouteCalculationManager.swift in Sources */,
 				1D2E583F241E31CE002D341D /* AppDelegate.swift in Sources */,
