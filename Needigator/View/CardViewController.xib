@@ -15,7 +15,7 @@
                 <outlet property="handleArea" destination="ckI-vR-0TA" id="sfe-fV-jdy"/>
                 <outlet property="headBar" destination="r6F-YW-eeF" id="1Y4-Bw-5yT"/>
                 <outlet property="productCntLabel" destination="xv2-YN-QYq" id="rRI-n4-NNs"/>
-                <outlet property="selctedProductsTableView" destination="2tx-c4-CeN" id="EFT-eK-73O"/>
+                <outlet property="selectedProductsTableView" destination="2tx-c4-CeN" id="EFT-eK-73O"/>
                 <outlet property="view" destination="iN0-l3-epB" id="DJP-sT-hnF"/>
             </connections>
         </placeholder>

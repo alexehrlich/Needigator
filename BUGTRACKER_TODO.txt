@@ -15,8 +15,9 @@ TODO für EDEKA Oberboihingen:
 - DONE Farben für Marktimage anders machen und Rahmen um Markt. Eventuell noch Bilder rein.
 - DONE Legende unter den Marktplan, welche Farbe was bedeutet
 - DONE Exit Button, der zrück zum Home geht
-- Screenshot in Einkaufslisten-Screen hinzufügen
+- Favorisierte Einkaufslisten oder Screenshot in Einkaufslisten-Screen hinzufügen
 - Hilfe-Button sinnvoll befüllen
+- Anzahl in der CartView bearbeiten
 - DONE Layout für die Karten überarbeiten
 - DONE Angebote hinzufügen 
 

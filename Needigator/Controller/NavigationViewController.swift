@@ -75,6 +75,10 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
         
         NotificationCenter.default.addObserver(self, selector: #selector(flipProductcardsIfNeeded), name: Messages.notificationNameForTappedProductCard, object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(updateProductAmountInModel(_ :)), name: Messages.changeProductAmountinCardViewCell, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateViewFromModel), name: Messages.updatedSelectedProductDB, object: nil)
+        
         //Tastatur soll verschwinden, wenn irgendwo getippt wird
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
         view.addGestureRecognizer(tap)
@@ -328,14 +332,26 @@ extension NavigationViewController: UIScrollViewDelegate {
 extension NavigationViewController: SearchTableViewCellDelegate{
     
     func getLeftProductCardArticle(article: Article, amount: Int) {
-        updateSelectedItemsInModel(for: article, with: amount)
+        updateModel(for: article, with: amount)
     }
     
     func getRightProductCardArticle(article: Article, amount: Int) {
-        updateSelectedItemsInModel(for: article, with: amount)
+        updateModel(for: article, with: amount)
     }
     
-    func updateSelectedItemsInModel(for article: Article, with amount: Int){
+    @objc func updateProductAmountInModel(_ notification: NSNotification){
+        
+        if let dataToUpdate = notification.userInfo as? [String: (Article, Int)]{
+            updateModel(for: dataToUpdate["data"]!.0, with: dataToUpdate["data"]!.1)
+        }
+    }
+    
+    @objc func updateViewFromModel(){
+        cardViewController.productCntLabel.text = "\(Shopping.selectedProductsOfUser.count)"
+        cardViewController.selectedProductsTableView.reloadData()   
+    }
+    
+    func updateModel(for article: Article, with amount: Int){
         if Shopping.selectedProductsOfUser.contains(where: { (arg0) -> Bool in
             let (thisArticle, _) = arg0
             if thisArticle == article {
@@ -382,7 +398,7 @@ func setupCard() {
     
     @objc func handleCardTap(recognzier:UITapGestureRecognizer) {
 
-        cardViewController.selctedProductsTableView.reloadData()
+        cardViewController.selectedProductsTableView.reloadData()
         
             switch recognzier.state {
             case .ended:
@@ -399,7 +415,7 @@ func setupCard() {
     @objc
     func handleCardPan (recognizer:UIPanGestureRecognizer) {
         
-        cardViewController.selctedProductsTableView.reloadData()
+        cardViewController.selectedProductsTableView.reloadData()
         
         switch recognizer.state {
         case .began:

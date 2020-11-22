@@ -18,6 +18,9 @@ struct Messages {
     
     //Notification wenn das Model Shopping (Ausgewählte Produkte) verändert wird:
     static let updatedSelectedProductDB = Notification.Name("gefehrlich.Needigator.SelectedArticlesUpdated")
+    
+    //Notfication, wenn in dem CardView die Anzahl geändert wird
+    static let changeProductAmountinCardViewCell = Notification.Name("gefehrlich.Needigator.ChangeProductAmountinCardViewCell")
 
 
     

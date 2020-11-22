@@ -17,25 +17,63 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d2U-0X-bJQ">
-                        <rect key="frame" x="20" y="0.0" width="300" height="44"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="bQe-uq-k0G">
+                        <rect key="frame" x="20" y="0.0" width="70" height="44"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ICb-WG-EI3">
+                                <rect key="frame" x="0.0" y="0.0" width="22" height="44"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="plus.circle" catalog="system"/>
+                                <connections>
+                                    <action selector="increaseProductAmountButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="9f3-Ua-5nI"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vTY-rq-WoH">
+                                <rect key="frame" x="24" y="0.0" width="22" height="44"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IeO-g6-ulc">
+                                <rect key="frame" x="48" y="0.0" width="22" height="44"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="minus.circle" catalog="system"/>
+                                <connections>
+                                    <action selector="decreasePriductAmountButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Sr2-kH-mJK"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="70" id="TCK-x8-WgP"/>
+                        </constraints>
+                    </stackView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZBg-4u-Fhe">
+                        <rect key="frame" x="100" y="0.0" width="220" height="44"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="19"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="d2U-0X-bJQ" secondAttribute="trailing" id="7iG-rM-fCB"/>
-                    <constraint firstItem="d2U-0X-bJQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="IGU-xb-7tw"/>
-                    <constraint firstAttribute="bottom" secondItem="d2U-0X-bJQ" secondAttribute="bottom" id="N7f-zi-oPM"/>
-                    <constraint firstItem="d2U-0X-bJQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="hLt-Y4-l6v"/>
+                    <constraint firstAttribute="bottom" secondItem="bQe-uq-k0G" secondAttribute="bottom" id="Awy-Oa-c41"/>
+                    <constraint firstItem="bQe-uq-k0G" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="E1d-tS-ubg"/>
+                    <constraint firstItem="ZBg-4u-Fhe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="UYt-st-mHe"/>
+                    <constraint firstAttribute="bottom" secondItem="ZBg-4u-Fhe" secondAttribute="bottom" id="hkv-gS-1J9"/>
+                    <constraint firstItem="ZBg-4u-Fhe" firstAttribute="leading" secondItem="bQe-uq-k0G" secondAttribute="trailing" constant="10" id="pVJ-ro-HkI"/>
+                    <constraint firstAttribute="trailing" secondItem="ZBg-4u-Fhe" secondAttribute="trailing" id="vHO-cN-MIW"/>
+                    <constraint firstItem="bQe-uq-k0G" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="vwP-rW-YMt"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="productLabel" destination="d2U-0X-bJQ" id="FR9-Ur-qml"/>
+                <outlet property="amountOfProduct" destination="vTY-rq-WoH" id="WCM-As-XOf"/>
+                <outlet property="productLabel" destination="ZBg-4u-Fhe" id="mcC-1P-H3J"/>
             </connections>
-            <point key="canvasLocation" x="-7" y="104"/>
+            <point key="canvasLocation" x="-78.260869565217391" y="36.160714285714285"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="minus.circle" catalog="system" width="128" height="121"/>
+        <image name="plus.circle" catalog="system" width="128" height="121"/>
+    </resources>
 </document>

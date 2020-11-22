@@ -10,7 +10,7 @@ import UIKit
 
 class CardViewController: UIViewController{
 
-    @IBOutlet weak var selctedProductsTableView: UITableView!
+    @IBOutlet weak var selectedProductsTableView: UITableView!
     @IBOutlet weak var headBar: UIView!
     @IBOutlet weak var dragBar: UIView!
     @IBOutlet weak var handleArea: UIView!
@@ -25,23 +25,21 @@ class CardViewController: UIViewController{
     
     override func viewDidLoad() {
         
-        selctedProductsTableView.delegate = self
-        selctedProductsTableView.dataSource = self
-        selctedProductsTableView.tableFooterView = UIView()
+        selectedProductsTableView.delegate = self
+        selectedProductsTableView.dataSource = self
+        selectedProductsTableView.tableFooterView = UIView()
         
         dragBar.layer.cornerRadius = dragBar.frame.size.height/2
         
         dragBar.layer.shadowColor = UIColor.black.cgColor
         
-        NotificationCenter.default.addObserver(self, selector: #selector(updateViewFromModel), name: Messages.updatedSelectedProductDB, object: nil)
+        
 
         
-        selctedProductsTableView.register(UINib(nibName: "SelectedProductsTableViewCell", bundle: nil), forCellReuseIdentifier: "ReusableSelectedProductCell")
+        selectedProductsTableView.register(UINib(nibName: "SelectedProductsTableViewCell", bundle: nil), forCellReuseIdentifier: "ReusableSelectedProductCell")
     }
     
-    @objc func updateViewFromModel(){
-        productCntLabel.text = "\(Shopping.selectedProductsOfUser.count)"
-    }
+
     
 }
 

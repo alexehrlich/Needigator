@@ -12,31 +12,32 @@ class SelectedProductsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var productLabel: UILabel!
     
+    @IBOutlet weak var amountOfProduct: UILabel!
+    
     var dataToDisplay : (Article, Int)? {
-        set(newValue) {
+        didSet {
             
-            if newValue!.0.isOnOffer{
+            if dataToDisplay!.0.isOnOffer{
                 productLabel.textColor = UIColor.red
             }else{
                 productLabel.textColor = UIColor.black
             }
-            productLabel.text = "\(newValue!.1) x \(newValue!.0.getName())"
+            productLabel.text = " \(dataToDisplay!.0.getName())"
+          
+            amountOfProduct.text = "\(dataToDisplay!.1)"
         }
+    }
+    
+    
+    @IBAction func increaseProductAmountButtonPressed(_ sender: UIButton) {
+
         
-        get {
-            return nil
-        }
+//        NotificationCenter.default.post(Notification(name: Messages.changeProductAmountinCardViewCell, object: nil, userInfo: ["data": dataToDisplay!]))
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
+    @IBAction func decreasePriductAmountButtonPressed(_ sender: UIButton) {
+        
+//        NotificationCenter.default.post(Notification(name: Messages.changeProductAmountinCardViewCell, object: nil, userInfo: ["data": dataToDisplay!]))
+    }
 }
