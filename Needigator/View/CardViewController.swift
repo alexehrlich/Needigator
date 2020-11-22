@@ -40,6 +40,7 @@ class CardViewController: UIViewController{
     
     @objc func updateViewFromModel(){
         productCntLabel.text = "\(Shopping.selectedProductsOfUser.count)"
+        selctedProductsTableView.reloadData()
     }
     
 }

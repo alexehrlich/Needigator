@@ -34,6 +34,8 @@ struct Article: Hashable {
         image = UIImage(named: imageFileName.replacingOccurrences(of: "_ _", with: "__"))!
     }
     
+
+    
     //MARK: Getter-Methoden 
     func getName() -> String {
         return name

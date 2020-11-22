@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -18,24 +19,71 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d2U-0X-bJQ">
-                        <rect key="frame" x="20" y="0.0" width="300" height="44"/>
+                        <rect key="frame" x="120" y="0.0" width="200" height="44"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="b2F-at-G28">
+                        <rect key="frame" x="20" y="0.0" width="80" height="44"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BjO-0k-ay6">
+                                <rect key="frame" x="0.0" y="0.0" width="20" height="44"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="plus.circle" catalog="system"/>
+                                <connections>
+                                    <action selector="increaseButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="qdX-5H-D3C"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NIP-GK-RSe">
+                                <rect key="frame" x="25" y="0.0" width="30" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="w4J-XT-nGh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jnC-FE-gXU">
+                                <rect key="frame" x="60" y="0.0" width="20" height="44"/>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <state key="normal" image="minus.circle" catalog="system"/>
+                                <connections>
+                                    <action selector="decreaseButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="eif-Ud-vSG"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="80" id="xB5-7k-eKD"/>
+                        </constraints>
+                    </stackView>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="d2U-0X-bJQ" secondAttribute="trailing" id="7iG-rM-fCB"/>
-                    <constraint firstItem="d2U-0X-bJQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="IGU-xb-7tw"/>
+                    <constraint firstItem="b2F-at-G28" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="BSy-y1-BiE"/>
+                    <constraint firstAttribute="bottom" secondItem="d2U-0X-bJQ" secondAttribute="bottom" id="Ewk-Jk-8WN"/>
                     <constraint firstAttribute="bottom" secondItem="d2U-0X-bJQ" secondAttribute="bottom" id="N7f-zi-oPM"/>
+                    <constraint firstAttribute="bottom" secondItem="b2F-at-G28" secondAttribute="bottom" id="Tr7-jb-NdG"/>
+                    <constraint firstItem="d2U-0X-bJQ" firstAttribute="leading" secondItem="b2F-at-G28" secondAttribute="trailing" constant="20" id="bfe-oF-yOw"/>
+                    <constraint firstItem="b2F-at-G28" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="d1H-Ao-Xq0"/>
+                    <constraint firstItem="d2U-0X-bJQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="eGj-QL-m2W"/>
                     <constraint firstItem="d2U-0X-bJQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="hLt-Y4-l6v"/>
+                    <constraint firstAttribute="trailing" secondItem="d2U-0X-bJQ" secondAttribute="trailing" id="nQL-TG-nrU"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="productAmountLabel" destination="NIP-GK-RSe" id="eIQ-LW-hPY"/>
                 <outlet property="productLabel" destination="d2U-0X-bJQ" id="FR9-Ur-qml"/>
             </connections>
             <point key="canvasLocation" x="-7" y="104"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="minus.circle" catalog="system" width="128" height="121"/>
+        <image name="plus.circle" catalog="system" width="128" height="121"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

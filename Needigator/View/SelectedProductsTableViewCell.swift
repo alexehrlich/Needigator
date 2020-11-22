@@ -11,28 +11,34 @@ import UIKit
 class SelectedProductsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var productLabel: UILabel!
-    
+    @IBOutlet weak var productAmountLabel: UILabel!
+
     var dataToDisplay : (Article, Int)? {
-        set(newValue) {
+        didSet{
             
-            if newValue!.0.isOnOffer{
+            if dataToDisplay!.0.isOnOffer{
                 productLabel.textColor = UIColor.red
             }else{
                 productLabel.textColor = UIColor.black
             }
-            productLabel.text = "\(newValue!.1) x \(newValue!.0.getName())"
-        }
-        
-        get {
-            return nil
+            productLabel.text = " \(dataToDisplay!.0.getName())"
+            
+            productAmountLabel.text = "\(dataToDisplay!.1)"
         }
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+    
+    
+    @IBAction func decreaseButtonPressed(_ sender: UIButton) {
 
+        Shopping.updateSelectedItemsInModel(for: dataToDisplay!.0, with: dataToDisplay!.1, with: Shopping.Modification.decrease)
+    }
+    
+    @IBAction func increaseButtonPressed(_ sender: UIButton) {
+        
+        Shopping.updateSelectedItemsInModel(for: dataToDisplay!.0, with: dataToDisplay!.1, with: Shopping.Modification.increase)
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
