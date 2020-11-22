@@ -40,6 +40,8 @@ class CardViewController: UIViewController{
     
     @objc func updateViewFromModel(){
         productCntLabel.text = "\(Shopping.selectedProductsOfUser.count)"
+        print("Updated Shopping Model")
+        
         selctedProductsTableView.reloadData()
     }
     
@@ -71,9 +73,8 @@ extension CardViewController: UITableViewDelegate, UITableViewDataSource{
         if editingStyle == .delete{
             let keys = Array(Shopping.selectedProductsOfUser.keys)
             let key = keys[indexPath.row] as Article
-            
             Shopping.selectedProductsOfUser.removeValue(forKey: key)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            
         }
     }
 }

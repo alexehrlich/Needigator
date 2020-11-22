@@ -29,7 +29,12 @@ struct  Shopping {
         }else if operation == Modification.increase{
             Shopping.selectedProductsOfUser[article] = Shopping.selectedProductsOfUser[article]! + 1
         }else if operation == Modification.decrease{
-            Shopping.selectedProductsOfUser[article] = Shopping.selectedProductsOfUser[article]! - 1
+            
+            if selectedProductsOfUser[article] == 1 {
+                Shopping.selectedProductsOfUser.removeValue(forKey: article)
+            }else{
+                Shopping.selectedProductsOfUser[article] = Shopping.selectedProductsOfUser[article]! - 1
+            }
         }
     }
 }
