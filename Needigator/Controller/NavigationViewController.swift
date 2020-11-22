@@ -328,32 +328,11 @@ extension NavigationViewController: UIScrollViewDelegate {
 extension NavigationViewController: SearchTableViewCellDelegate{
     
     func getLeftProductCardArticle(article: Article, amount: Int) {
-        updateSelectedItemsInModel(for: article, with: amount)
+        Shopping.updateSelectedItemsInModel(for: article, with: amount, with: nil)
     }
     
     func getRightProductCardArticle(article: Article, amount: Int) {
-        updateSelectedItemsInModel(for: article, with: amount)
-    }
-    
-    func updateSelectedItemsInModel(for article: Article, with amount: Int){
-        if Shopping.selectedProductsOfUser.contains(where: { (arg0) -> Bool in
-            let (thisArticle, _) = arg0
-            if thisArticle == article {
-                return true
-            }else{
-                return false
-            }
-        }){
-            var index = 0
-            for item in Shopping.selectedProductsOfUser {
-                if item.0 == article{
-                    Shopping.selectedProductsOfUser[index].1 = amount
-                }
-                index = index + 1
-            }
-        }else{
-            Shopping.selectedProductsOfUser.append((article, amount))
-        }
+        Shopping.updateSelectedItemsInModel(for: article, with: amount, with: nil)
     }
 }
 

@@ -9,7 +9,7 @@
 import UIKit
 
 class CardViewController: UIViewController{
-
+    
     @IBOutlet weak var selctedProductsTableView: UITableView!
     @IBOutlet weak var headBar: UIView!
     @IBOutlet weak var dragBar: UIView!
@@ -19,7 +19,6 @@ class CardViewController: UIViewController{
     
     var tapIsWithinTextField = false
     var amountOfArticle = 0
-    
     
     
     
@@ -34,7 +33,7 @@ class CardViewController: UIViewController{
         dragBar.layer.shadowColor = UIColor.black.cgColor
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateViewFromModel), name: Messages.updatedSelectedProductDB, object: nil)
-
+        
         
         selctedProductsTableView.register(UINib(nibName: "SelectedProductsTableViewCell", bundle: nil), forCellReuseIdentifier: "ReusableSelectedProductCell")
     }
@@ -58,7 +57,9 @@ extension CardViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableSelectedProductCell")! as! SelectedProductsTableViewCell
-        cell.dataToDisplay = Shopping.selectedProductsOfUser[indexPath.row]
+        let keys = Array(Shopping.selectedProductsOfUser.keys)
+        let key = keys[indexPath.row] as Article
+        cell.dataToDisplay = (key, Shopping.selectedProductsOfUser[key]) as? (Article, Int)
         return cell
     }
     
@@ -67,7 +68,10 @@ extension CardViewController: UITableViewDelegate, UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
-            Shopping.selectedProductsOfUser.remove(at: indexPath.row)
+            let keys = Array(Shopping.selectedProductsOfUser.keys)
+            let key = keys[indexPath.row] as Article
+            
+            Shopping.selectedProductsOfUser.removeValue(forKey: key)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
