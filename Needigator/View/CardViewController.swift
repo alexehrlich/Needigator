@@ -17,6 +17,11 @@ class CardViewController: UIViewController{
     @IBOutlet weak var dragBarLabel: UILabel!
     @IBOutlet weak var productCntLabel: UILabel!
     
+    @IBOutlet weak var totalPriceLabel: UILabel!
+    
+    @IBOutlet weak var totalPriceLabelView: UIView!
+    
+    
     var tapIsWithinTextField = false
     var amountOfArticle = 0
     
@@ -32,6 +37,9 @@ class CardViewController: UIViewController{
         
         dragBar.layer.shadowColor = UIColor.black.cgColor
         
+        totalPriceLabelView.layer.cornerRadius = totalPriceLabel.frame.size.height/2
+        
+        
         NotificationCenter.default.addObserver(self, selector: #selector(updateViewFromModel), name: Messages.updatedSelectedProductDB, object: nil)
         
         
@@ -40,7 +48,9 @@ class CardViewController: UIViewController{
     
     @objc func updateViewFromModel(){
         productCntLabel.text = "\(Shopping.selectedProductsOfUser.count)"
-        print("Updated Shopping Model")
+        
+        let priceString = String(format: "%.2f", Shopping.totalPrice)
+        totalPriceLabel.text = "Gesamtkosten: \(priceString) €"
         
         selctedProductsTableView.reloadData()
     }

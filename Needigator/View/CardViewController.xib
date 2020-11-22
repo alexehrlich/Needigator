@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,6 +17,8 @@
                 <outlet property="headBar" destination="r6F-YW-eeF" id="1Y4-Bw-5yT"/>
                 <outlet property="productCntLabel" destination="xv2-YN-QYq" id="rRI-n4-NNs"/>
                 <outlet property="selctedProductsTableView" destination="2tx-c4-CeN" id="EFT-eK-73O"/>
+                <outlet property="totalPriceLabel" destination="r2p-ed-CiR" id="OFa-SQ-v1M"/>
+                <outlet property="totalPriceLabelView" destination="X5L-iS-L7F" id="dv9-3T-i4F"/>
                 <outlet property="view" destination="iN0-l3-epB" id="DJP-sT-hnF"/>
             </connections>
         </placeholder>
@@ -106,18 +109,36 @@
                         <constraint firstAttribute="bottom" secondItem="ckI-vR-0TA" secondAttribute="bottom" id="uy9-wm-2fw"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X5L-iS-L7F">
+                    <rect key="frame" x="30" y="440" width="315" height="40"/>
+                    <color key="backgroundColor" systemColor="systemGray4Color"/>
+                </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2tx-c4-CeN">
-                    <rect key="frame" x="0.0" y="164" width="375" height="326"/>
+                    <rect key="frame" x="0.0" y="164" width="375" height="266"/>
                 </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gesamtkosten: 13,56€" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r2p-ed-CiR">
+                    <rect key="frame" x="30" y="440" width="315" height="40"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="r2p-ed-CiR" firstAttribute="top" secondItem="2tx-c4-CeN" secondAttribute="bottom" constant="10" id="2MN-Hg-rep"/>
                 <constraint firstAttribute="trailing" secondItem="r6F-YW-eeF" secondAttribute="trailing" id="801-46-Vpo"/>
+                <constraint firstItem="r2p-ed-CiR" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="9Sm-ez-Tdq"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="X5L-iS-L7F" secondAttribute="bottom" constant="10" id="9WH-YK-DDK"/>
+                <constraint firstItem="X5L-iS-L7F" firstAttribute="top" secondItem="2tx-c4-CeN" secondAttribute="bottom" constant="10" id="FQs-m0-617"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="X5L-iS-L7F" secondAttribute="trailing" constant="30" id="Ifm-at-MBC"/>
+                <constraint firstItem="X5L-iS-L7F" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="Ktt-Xh-PGB"/>
                 <constraint firstItem="2tx-c4-CeN" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="N3C-Pw-sHy"/>
                 <constraint firstItem="2tx-c4-CeN" firstAttribute="top" secondItem="r6F-YW-eeF" secondAttribute="bottom" id="Nm6-Nm-1xZ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="r2p-ed-CiR" secondAttribute="trailing" constant="30" id="P3W-fp-W3Q"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="top" secondItem="r6F-YW-eeF" secondAttribute="top" id="P4S-qR-LX1"/>
-                <constraint firstItem="2tx-c4-CeN" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="ki8-cp-poA"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="r2p-ed-CiR" secondAttribute="bottom" constant="10" id="kOI-BN-cgO"/>
+                <constraint firstItem="2tx-c4-CeN" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" constant="-60" id="ki8-cp-poA"/>
                 <constraint firstItem="r6F-YW-eeF" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="pZ1-IC-o7H"/>
                 <constraint firstItem="2tx-c4-CeN" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="uHn-PD-add"/>
             </constraints>
@@ -127,5 +148,8 @@
     </objects>
     <resources>
         <image name="einkaufskorb roter kreis" width="100" height="100"/>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

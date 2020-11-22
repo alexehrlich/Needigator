@@ -22,6 +22,18 @@ struct  Shopping {
         }
     }
     
+    static var totalPrice: Double {
+        
+        get{
+            var total: Double = 0.0
+            for (article, amount) in selectedProductsOfUser {
+                let convertedPrice = article.getPrice().replacingOccurrences(of: ",", with: ".").replacingOccurrences(of: "€", with: "")
+                total += Double(convertedPrice)! * Double(amount)
+            }
+            return total
+        }
+    }
+    
     static func updateSelectedItemsInModel(for article: Article, with amount: Int, with operation: Modification? = nil){
 
         if operation == nil {
