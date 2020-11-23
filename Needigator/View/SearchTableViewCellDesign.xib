@@ -27,7 +27,7 @@
                                         <rect key="frame" x="0.0" y="135" width="214" height="172"/>
                                         <color key="backgroundColor" red="0.98776668310000004" green="0.97674101589999995" blue="0.96077162029999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </view>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Vollkornbrot__70_1,19" translatesAutoresizingMaskIntoConstraints="NO" id="Uay-rX-eZx">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Brantweinessig_1000 ml_72_1,19_YES_0,79" translatesAutoresizingMaskIntoConstraints="NO" id="Uay-rX-eZx">
                                         <rect key="frame" x="42" y="5" width="130" height="130"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="130" id="MwS-bY-Jza"/>
@@ -130,7 +130,7 @@
                                         <rect key="frame" x="0.0" y="135" width="214" height="172"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Vollkornbrot__70_1,19" translatesAutoresizingMaskIntoConstraints="NO" id="9gi-ie-4kk">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Meerschweinchenfutter_2 kg_33_12,99_NO_12,99" translatesAutoresizingMaskIntoConstraints="NO" id="9gi-ie-4kk">
                                         <rect key="frame" x="42" y="5" width="130" height="130"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="130" id="dav-f8-v4t"/>
@@ -265,6 +265,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Vollkornbrot__70_1,19" width="200" height="200"/>
+        <image name="Brantweinessig_1000 ml_72_1,19_YES_0,79" width="200" height="200"/>
+        <image name="Meerschweinchenfutter_2 kg_33_12,99_NO_12,99" width="200" height="200"/>
     </resources>
 </document>

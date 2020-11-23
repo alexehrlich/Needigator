@@ -28,7 +28,7 @@ class RoutingViewController: UIViewController {
 //MARK: Class-Instances:
     let articleDataBase = ArticleDataBase()
     var navigation = RouteCalculationManager()
-    let blurEffectView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffect.Style.dark))
+    let blurEffectView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffect.Style.light))
     
 //MARK: Global variables
     var pixelsOfAllNodes = [Int: CGPoint]()
@@ -119,17 +119,29 @@ class RoutingViewController: UIViewController {
     }
     
     //Funktionen für die Buttons:
-    @IBAction func showColorLegendButtonPressed(_ sender: UIButton) {
-        print("Show Color Legend")
-    }
-    
     
     @IBAction func addListToFavsButtonPressed(_ sender: UIButton) {
-        print("Add List du Favorites")
+        
+        let addingViewController = AddListToFavoritesViewController()
+//        let blurEffectView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffect.Style.light))
+
+        addingViewController.view.frame = CGRect(x: 60, y: self.view.frame.height, width: self.view.frame.width * 0.7, height: self.view.frame.height * 0.4)
+        addingViewController.view.layer.cornerRadius = 12
+        
+//        blurEffectView.frame = self.view.bounds
+//        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//        self.view.addSubview(blurEffectView)
+        self.view.addSubview(addingViewController.view)
+        self.addChild(addingViewController)
+        UIView.animate(withDuration: 0.8, animations: {
+            addingViewController.view.frame.origin = CGPoint(x: 60, y: 300)
+        })
+
     }
     
+    
+    
     @IBAction func finishShoppingButtonPressed(_ sender: UIButton) {
-        
         self.navigationController?.popToRootViewController(animated: true)
     }
     

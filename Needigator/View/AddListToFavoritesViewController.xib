@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddListToFavoritesViewController" customModule="Needigator" customModuleProvider="target">
+            <connections>
+                <outlet property="addListButtonOutlet" destination="qhy-LY-S5C" id="xfv-sq-1HG"/>
+                <outlet property="cancleButtonOutlet" destination="n02-Ty-bPU" id="bMt-1V-XW3"/>
+                <outlet property="listNameEnterTextField" destination="f8t-L0-4HR" id="jCP-LF-JYh"/>
+                <outlet property="textFieldView" destination="jfl-Ed-IFc" id="dGV-rH-Q8S"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wie soll die Liste heißen?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bEj-hr-isY">
+                    <rect key="frame" x="20" y="20" width="374" height="80"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="80" id="pAd-G1-TWR"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="29"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jfl-Ed-IFc">
+                    <rect key="frame" x="20" y="130" width="374" height="50"/>
+                    <subviews>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name deiner Liste" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f8t-L0-4HR">
+                            <rect key="frame" x="15" y="0.0" width="344" height="50"/>
+                            <color key="tintColor" systemColor="labelColor"/>
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="f8t-L0-4HR" firstAttribute="leading" secondItem="jfl-Ed-IFc" secondAttribute="leading" constant="15" id="GQV-3R-6Gq"/>
+                        <constraint firstItem="f8t-L0-4HR" firstAttribute="top" secondItem="jfl-Ed-IFc" secondAttribute="top" id="NTk-ke-jDv"/>
+                        <constraint firstAttribute="trailing" secondItem="f8t-L0-4HR" secondAttribute="trailing" constant="15" id="Y4g-6N-rmN"/>
+                        <constraint firstAttribute="bottom" secondItem="f8t-L0-4HR" secondAttribute="bottom" id="gxG-pj-O1g"/>
+                        <constraint firstAttribute="height" constant="50" id="iqu-gT-9sS"/>
+                    </constraints>
+                </view>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="FR9-By-Agl">
+                    <rect key="frame" x="107" y="210" width="200" height="120"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qhy-LY-S5C">
+                            <rect key="frame" x="0.0" y="0.0" width="200" height="48"/>
+                            <color key="backgroundColor" red="0.59999999999999998" green="0.95294117649999999" blue="0.74117647060000003" alpha="0.79971104449999997" colorSpace="custom" customColorSpace="displayP3"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                            <state key="normal" title="Hinzufügen">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="addListButtonPressed:" destination="-1" eventType="touchUpInside" id="C75-e4-5Er"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n02-Ty-bPU">
+                            <rect key="frame" x="0.0" y="72" width="200" height="48"/>
+                            <color key="backgroundColor" red="1" green="0.2157066822" blue="0.16861279800000001" alpha="0.57932898119999998" colorSpace="custom" customColorSpace="displayP3"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                            <state key="normal" title="Abbrechen">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="cancleListButtonPressed:" destination="-1" eventType="touchUpInside" id="Asx-DP-TXg"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="120" id="d3Q-9h-UoN"/>
+                        <constraint firstAttribute="width" constant="200" id="xvD-am-9Ry"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" red="0.99148923160000002" green="0.60612964629999999" blue="0.46263474230000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="jfl-Ed-IFc" secondAttribute="trailing" constant="20" id="4oq-va-T5q"/>
+                <constraint firstItem="bEj-hr-isY" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="CT4-Be-CLc"/>
+                <constraint firstItem="jfl-Ed-IFc" firstAttribute="top" secondItem="bEj-hr-isY" secondAttribute="bottom" constant="30" id="JVu-DX-H3l"/>
+                <constraint firstItem="jfl-Ed-IFc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="Q9P-fY-RWC"/>
+                <constraint firstItem="FR9-By-Agl" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="UJJ-wT-n5A"/>
+                <constraint firstItem="bEj-hr-isY" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="Z1c-vK-JfR"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="bEj-hr-isY" secondAttribute="trailing" constant="20" id="hEB-9M-Vxt"/>
+                <constraint firstItem="FR9-By-Agl" firstAttribute="top" secondItem="jfl-Ed-IFc" secondAttribute="bottom" constant="30" id="i5X-xV-Wv8"/>
+            </constraints>
+            <point key="canvasLocation" x="60.869565217391312" y="69.293478260869577"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -22,6 +22,8 @@ struct  Shopping {
         }
     }
     
+    static var favoriteShoppingLists = [String : [Article : Int]]()
+    
     static var totalPrice: Double {
         
         get{

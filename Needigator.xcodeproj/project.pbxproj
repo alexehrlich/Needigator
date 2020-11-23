@@ -16,6 +16,8 @@
 		1D2BBD952545A4F200B49500 /* UserFeedBackWhileCalculationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2BBD932545A4F200B49500 /* UserFeedBackWhileCalculationViewController.swift */; };
 		1D2BBD962545A4F200B49500 /* UserFeedBackWhileCalculationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D2BBD942545A4F200B49500 /* UserFeedBackWhileCalculationViewController.xib */; };
 		1D2BBD992545BDFA00B49500 /* Shopping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2BBD982545BDFA00B49500 /* Shopping.swift */; };
+		1D2D381A256C23CE0008AAFC /* AddListToFavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2D3818256C23CE0008AAFC /* AddListToFavoritesViewController.swift */; };
+		1D2D381B256C23CE0008AAFC /* AddListToFavoritesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D2D3819256C23CE0008AAFC /* AddListToFavoritesViewController.xib */; };
 		1D2E583F241E31CE002D341D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2E583E241E31CE002D341D /* AppDelegate.swift */; };
 		1D2E5841241E31CE002D341D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2E5840241E31CE002D341D /* SceneDelegate.swift */; };
 		1D2E5846241E31CE002D341D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D2E5844241E31CE002D341D /* Main.storyboard */; };
@@ -33,6 +35,8 @@
 		1D8D6E3E24B5176C007E8059 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8D6E3D24B5176C007E8059 /* CardViewController.swift */; };
 		1D8D6E4024B5177A007E8059 /* CardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D8D6E3F24B5177A007E8059 /* CardViewController.xib */; };
 		1D8DAF2D242A994200B4DBA8 /* RoutingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8DAF2C242A994200B4DBA8 /* RoutingViewController.swift */; };
+		1D9E00E0256C3E2100E8197A /* FavoriteListsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9E00DE256C3E2100E8197A /* FavoriteListsTableViewCell.swift */; };
+		1D9E00E1256C3E2100E8197A /* FavoriteListsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D9E00DF256C3E2100E8197A /* FavoriteListsTableViewCell.xib */; };
 		1DC109CD24201339007AA117 /* ArticleDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC109CC24201339007AA117 /* ArticleDataBase.swift */; };
 		1DEB1E06256787A20014D6E3 /* ColorLegendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB1E05256787A20014D6E3 /* ColorLegendViewController.swift */; };
 		1DF4FC1F241F34BF0058FF02 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF4FC1E241F34BF0058FF02 /* WelcomeViewController.swift */; };
@@ -51,6 +55,8 @@
 		1D2BBD932545A4F200B49500 /* UserFeedBackWhileCalculationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedBackWhileCalculationViewController.swift; sourceTree = "<group>"; };
 		1D2BBD942545A4F200B49500 /* UserFeedBackWhileCalculationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserFeedBackWhileCalculationViewController.xib; sourceTree = "<group>"; };
 		1D2BBD982545BDFA00B49500 /* Shopping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shopping.swift; sourceTree = "<group>"; };
+		1D2D3818256C23CE0008AAFC /* AddListToFavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListToFavoritesViewController.swift; sourceTree = "<group>"; };
+		1D2D3819256C23CE0008AAFC /* AddListToFavoritesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddListToFavoritesViewController.xib; sourceTree = "<group>"; };
 		1D2E583E241E31CE002D341D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1D2E5840241E31CE002D341D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		1D2E5845241E31CE002D341D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -69,6 +75,8 @@
 		1D8D6E3D24B5176C007E8059 /* CardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
 		1D8D6E3F24B5177A007E8059 /* CardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardViewController.xib; sourceTree = "<group>"; };
 		1D8DAF2C242A994200B4DBA8 /* RoutingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutingViewController.swift; sourceTree = "<group>"; };
+		1D9E00DE256C3E2100E8197A /* FavoriteListsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListsTableViewCell.swift; sourceTree = "<group>"; };
+		1D9E00DF256C3E2100E8197A /* FavoriteListsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteListsTableViewCell.xib; sourceTree = "<group>"; };
 		1DC109CC24201339007AA117 /* ArticleDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDataBase.swift; sourceTree = "<group>"; };
 		1DEB1E05256787A20014D6E3 /* ColorLegendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ColorLegendViewController.swift; path = Needigator/Controller/ColorLegendViewController.swift; sourceTree = SOURCE_ROOT; };
 		1DF4FC1E241F34BF0058FF02 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -130,12 +138,16 @@
 			isa = PBXGroup;
 			children = (
 				1D2E5844241E31CE002D341D /* Main.storyboard */,
+				1D9E00DE256C3E2100E8197A /* FavoriteListsTableViewCell.swift */,
+				1D9E00DF256C3E2100E8197A /* FavoriteListsTableViewCell.xib */,
 				1D2E5849241E31D0002D341D /* LaunchScreen.storyboard */,
 				1D2E5847241E31D0002D341D /* Assets.xcassets */,
 				1D7FAB4E2420B8F5001A5215 /* SearchTableViewCell.swift */,
 				1D7FAB4F2420B8F5001A5215 /* SearchTableViewCellDesign.xib */,
 				1D8D6E3F24B5177A007E8059 /* CardViewController.xib */,
 				1D8D6E3D24B5176C007E8059 /* CardViewController.swift */,
+				1D2D3818256C23CE0008AAFC /* AddListToFavoritesViewController.swift */,
+				1D2D3819256C23CE0008AAFC /* AddListToFavoritesViewController.xib */,
 				1D2B10E22537792600D9119C /* SelectedProductsTableViewCell.swift */,
 				1D2B10E32537792600D9119C /* SelectedProductsTableViewCell.xib */,
 				1D3DEFB92539F15300D77B86 /* DetailedProductSelectionViewController.swift */,
@@ -222,8 +234,10 @@
 				1D2E5848241E31D0002D341D /* Assets.xcassets in Resources */,
 				1D7FAB512420B8F5001A5215 /* SearchTableViewCellDesign.xib in Resources */,
 				1D8D6E4024B5177A007E8059 /* CardViewController.xib in Resources */,
+				1D2D381B256C23CE0008AAFC /* AddListToFavoritesViewController.xib in Resources */,
 				1D3DEFBC2539F15300D77B86 /* DetailedProductSelectionViewController.xib in Resources */,
 				1D2E5846241E31CE002D341D /* Main.storyboard in Resources */,
+				1D9E00E1256C3E2100E8197A /* FavoriteListsTableViewCell.xib in Resources */,
 				1D2B10E52537792600D9119C /* SelectedProductsTableViewCell.xib in Resources */,
 				1D00D647242112D300DBBC41 /* BUGTRACKER_TODO.txt in Resources */,
 			);
@@ -247,11 +261,13 @@
 				1DEB1E06256787A20014D6E3 /* ColorLegendViewController.swift in Sources */,
 				1D7FAB502420B8F5001A5215 /* SearchTableViewCell.swift in Sources */,
 				1D7DBD9924274D53009E9D4E /* RouteCalculationManager.swift in Sources */,
+				1D2D381A256C23CE0008AAFC /* AddListToFavoritesViewController.swift in Sources */,
 				1D2E583F241E31CE002D341D /* AppDelegate.swift in Sources */,
 				1D2E5841241E31CE002D341D /* SceneDelegate.swift in Sources */,
 				1D79972F2425FA22007CE3A5 /* RGB32.swift in Sources */,
 				1DF4FC21241F36390058FF02 /* ShoppingListViewController.swift in Sources */,
 				1D8DAF2D242A994200B4DBA8 /* RoutingViewController.swift in Sources */,
+				1D9E00E0256C3E2100E8197A /* FavoriteListsTableViewCell.swift in Sources */,
 				1D2BBD952545A4F200B49500 /* UserFeedBackWhileCalculationViewController.swift in Sources */,
 				1D7997272425EAEB007CE3A5 /* Node.swift in Sources */,
 				1D15711B254877AE00B0847E /* Messages.swift in Sources */,
