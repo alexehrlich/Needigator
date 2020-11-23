@@ -115,6 +115,8 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
     
     @IBAction func choseAllProductsOrOffers(_ sender: UISegmentedControl) {
         
+        flipProductcardsIfNeeded()
+        
         if sender.selectedSegmentIndex == 0 {
             searchTextField.placeholder = "Durchsuche alle Produkte"
             listOfProducts = articleDataBase.items
@@ -363,8 +365,10 @@ func setupCard() {
     }
     
     @objc func handleCardTap(recognzier:UITapGestureRecognizer) {
-
+        //Ist die noch notwenidig?? Da Model driven
         cardViewController.selctedProductsTableView.reloadData()
+        
+        flipProductcardsIfNeeded()
         
             switch recognzier.state {
             case .ended:
@@ -381,7 +385,10 @@ func setupCard() {
     @objc
     func handleCardPan (recognizer:UIPanGestureRecognizer) {
         
+        //Ist die noch notwenidig?? Da Model driven
         cardViewController.selctedProductsTableView.reloadData()
+        
+        flipProductcardsIfNeeded()
         
         switch recognizer.state {
         case .began:
