@@ -53,10 +53,10 @@
                     </constraints>
                 </view>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="FR9-By-Agl">
-                    <rect key="frame" x="107" y="210" width="200" height="120"/>
+                    <rect key="frame" x="107" y="210" width="200" height="100"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qhy-LY-S5C">
-                            <rect key="frame" x="0.0" y="0.0" width="200" height="48"/>
+                            <rect key="frame" x="0.0" y="0.0" width="200" height="38"/>
                             <color key="backgroundColor" red="0.59999999999999998" green="0.95294117649999999" blue="0.74117647060000003" alpha="0.79971104449999997" colorSpace="custom" customColorSpace="displayP3"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                             <state key="normal" title="Hinzufügen">
@@ -67,7 +67,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n02-Ty-bPU">
-                            <rect key="frame" x="0.0" y="72" width="200" height="48"/>
+                            <rect key="frame" x="0.0" y="62" width="200" height="38"/>
                             <color key="backgroundColor" red="1" green="0.2157066822" blue="0.16861279800000001" alpha="0.57932898119999998" colorSpace="custom" customColorSpace="displayP3"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                             <state key="normal" title="Abbrechen">
@@ -79,7 +79,7 @@
                         </button>
                     </subviews>
                     <constraints>
-                        <constraint firstAttribute="height" constant="120" id="d3Q-9h-UoN"/>
+                        <constraint firstAttribute="height" constant="100" id="d3Q-9h-UoN"/>
                         <constraint firstAttribute="width" constant="200" id="xvD-am-9Ry"/>
                     </constraints>
                 </stackView>

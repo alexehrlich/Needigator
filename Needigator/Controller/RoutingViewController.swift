@@ -28,6 +28,7 @@ class RoutingViewController: UIViewController {
 //MARK: Class-Instances:
     let articleDataBase = ArticleDataBase()
     var navigation = RouteCalculationManager()
+    let addingViewController = AddListToFavoritesViewController()
     let blurEffectView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffect.Style.light))
     
 //MARK: Global variables
@@ -122,7 +123,7 @@ class RoutingViewController: UIViewController {
     
     @IBAction func addListToFavsButtonPressed(_ sender: UIButton) {
         
-        let addingViewController = AddListToFavoritesViewController()
+       
 
         addingViewController.view.frame = CGRect(x: 60, y: self.view.frame.height, width: self.view.frame.width * 0.7, height: self.view.frame.height * 0.4)
         addingViewController.view.layer.cornerRadius = 12
@@ -130,7 +131,7 @@ class RoutingViewController: UIViewController {
         self.view.addSubview(addingViewController.view)
         self.addChild(addingViewController)
         UIView.animate(withDuration: 0.8, animations: {
-            addingViewController.view.frame.origin = CGPoint(x: 60, y: 300)
+            self.addingViewController.view.frame.origin = CGPoint(x: 60, y: 300)
         })
 
     }
@@ -155,6 +156,8 @@ class RoutingViewController: UIViewController {
                 self.blurEffectView.removeFromSuperview()
             }
         }
+        
+        self.view.endEditing(true)
     }
     
     //Zeigt die Produktinformationen in dem Extra-View an
