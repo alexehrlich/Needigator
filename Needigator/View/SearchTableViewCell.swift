@@ -128,10 +128,10 @@ class SearchTableViewCell: UITableViewCell, UIScrollViewDelegate {
         rightProductCardView.addSubview(rightDetailedProdSelectVC.view)
         rightDetailedProdSelectVC.productLabel.text = rightProductLabel.text
         
-        if Shopping.selectedProductsOfUser[leftCardArticle!] == nil {
+        if Shopping.selectedProductsOfUser[rightCardArticle!] == nil {
             rightDetailedProdSelectVC.amountCnt = 1
         }else{
-            rightDetailedProdSelectVC.amountCnt = Shopping.selectedProductsOfUser[leftCardArticle!]!
+            rightDetailedProdSelectVC.amountCnt = Shopping.selectedProductsOfUser[rightCardArticle!]!
         }
         
         UIView.transition(with: rightProductCardView, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
