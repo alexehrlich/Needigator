@@ -70,7 +70,7 @@ class SearchTableViewCell: UITableViewCell, UIScrollViewDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-       
+        
         NotificationCenter.default.addObserver(self, selector: #selector(self.scrollViewWillBeginDragging), name: Messages.notificationNameForSearchTableVC, object: nil)
         
         self.leftDetailedProdSelectVC.userInteractionDelegate = self
@@ -90,7 +90,7 @@ class SearchTableViewCell: UITableViewCell, UIScrollViewDelegate {
         rightProductCardView.layer.shadowOffset = .zero
         rightProductCardView.layer.shadowRadius = 10
         rightDataBackgroundView.layer.cornerRadius = 10
-    
+        
     }
     
     
@@ -98,13 +98,22 @@ class SearchTableViewCell: UITableViewCell, UIScrollViewDelegate {
         
         NotificationCenter.default.post(Notification(name: Messages.notificationNameForTappedProductCard, object: nil, userInfo: nil))
         
+        
+        
+        
         leftCardIsFlipped = true
         leftDetailedProdSelectVC.view.frame = leftProductCardView.frame
         leftDetailedProdSelectVC.view.layer.cornerRadius = 10
         leftDetailedProdSelectVC.view.frame.origin = leftCardButton.frame.origin
         leftProductCardView.addSubview(leftDetailedProdSelectVC.view)
         leftDetailedProdSelectVC.productLabel.text = leftProductLabel.text
-        leftDetailedProdSelectVC.amountCnt = 1
+        
+        if Shopping.selectedProductsOfUser[leftCardArticle!] == nil {
+            leftDetailedProdSelectVC.amountCnt = 1
+        }else{
+            leftDetailedProdSelectVC.amountCnt = Shopping.selectedProductsOfUser[leftCardArticle!]!
+        }
+        
         UIView.transition(with: leftProductCardView, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
     }
     
@@ -118,9 +127,14 @@ class SearchTableViewCell: UITableViewCell, UIScrollViewDelegate {
         rightDetailedProdSelectVC.view.frame.origin = rightCardButton.frame.origin
         rightProductCardView.addSubview(rightDetailedProdSelectVC.view)
         rightDetailedProdSelectVC.productLabel.text = rightProductLabel.text
-        rightDetailedProdSelectVC.amountCnt = 1
-        UIView.transition(with: rightProductCardView, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
         
+        if Shopping.selectedProductsOfUser[leftCardArticle!] == nil {
+            rightDetailedProdSelectVC.amountCnt = 1
+        }else{
+            rightDetailedProdSelectVC.amountCnt = Shopping.selectedProductsOfUser[leftCardArticle!]!
+        }
+        
+        UIView.transition(with: rightProductCardView, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
     }
     
     

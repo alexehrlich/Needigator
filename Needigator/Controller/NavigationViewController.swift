@@ -243,6 +243,7 @@ extension NavigationViewController: UITableViewDataSource{
             let leftArticle = substringArticles[indexPath.row * 2]
             let rightArticle = substringArticles[indexPath.row * 2 + 1]
             
+            
             cell.leftCellImage.image = leftArticle.getImage()
             cell.leftProductLabel.text = leftArticle.getName()
             cell.leftProductPrice.text = leftArticle.getPrice()
@@ -261,6 +262,7 @@ extension NavigationViewController: UITableViewDataSource{
                 cell.leftProductPrice.font = font
                 cell.leftOfferView.isHidden = true
             }
+            
             
             
             cell.rightCellImage.image = rightArticle.getImage()
@@ -284,6 +286,7 @@ extension NavigationViewController: UITableViewDataSource{
             
         }else{
             if let leftArticle = substringArticles.last {
+              
                 cell.leftCellImage.image = leftArticle.getImage()
                 cell.leftProductLabel.text = leftArticle.getName()
                 cell.leftProductPrice.text = leftArticle.getPrice()

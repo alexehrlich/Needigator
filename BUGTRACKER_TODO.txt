@@ -18,7 +18,8 @@ TODO für EDEKA Oberboihingen:
 - Screenshot in Einkaufslisten-Screen hinzufügen
 - Hilfe-Button sinnvoll befüllen
 - DONE Layout für die Karten überarbeiten
-- DONE Angebote hinzufügen 
+- DONE Angebote hinzufügen
+- DONE Anzahl aus dem CardView bearbeiten
 
 
 NEEDIGATOR TASKS:

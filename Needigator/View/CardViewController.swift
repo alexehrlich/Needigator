@@ -39,7 +39,6 @@ class CardViewController: UIViewController{
         
         totalPriceLabelView.layer.cornerRadius = totalPriceLabel.frame.size.height/2
         
-        
         NotificationCenter.default.addObserver(self, selector: #selector(updateViewFromModel), name: Messages.updatedSelectedProductDB, object: nil)
         
         
@@ -77,7 +76,7 @@ extension CardViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return 60
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
