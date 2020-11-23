@@ -123,14 +123,10 @@ class RoutingViewController: UIViewController {
     @IBAction func addListToFavsButtonPressed(_ sender: UIButton) {
         
         let addingViewController = AddListToFavoritesViewController()
-//        let blurEffectView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffect.Style.light))
 
         addingViewController.view.frame = CGRect(x: 60, y: self.view.frame.height, width: self.view.frame.width * 0.7, height: self.view.frame.height * 0.4)
         addingViewController.view.layer.cornerRadius = 12
         
-//        blurEffectView.frame = self.view.bounds
-//        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-//        self.view.addSubview(blurEffectView)
         self.view.addSubview(addingViewController.view)
         self.addChild(addingViewController)
         UIView.animate(withDuration: 0.8, animations: {

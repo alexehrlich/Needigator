@@ -20,10 +20,16 @@ class ShoppingListViewController: UIViewController, UITableViewDataSource, UITab
 
         self.title = "Deine Einkaufslisten"
         print(Shopping.favoriteShoppingLists.count)
+        
+        
+        tableViewOfFavoriteShoppingLists.delegate = self
+        tableViewOfFavoriteShoppingLists.dataSource = self
+        tableViewOfFavoriteShoppingLists.register(UINib(nibName: "FavoriteShoppingListTableViewCell", bundle: nil), forCellReuseIdentifier: "ShoppingListCell")
         tableViewOfFavoriteShoppingLists.reloadData()
         
 
     }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Shopping.favoriteShoppingLists.count
@@ -31,11 +37,19 @@ class ShoppingListViewController: UIViewController, UITableViewDataSource, UITab
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableListCell") as! FavoriteListsTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ShoppingListCell") as! FavoriteShoppingListTableViewCell
         let keys = Array(Shopping.favoriteShoppingLists.keys)
         let key = keys[indexPath.row] as String
         
+        cell.amountOfProductsInListLabel.text = String(Shopping.favoriteShoppingLists[key]!.count)
+        cell.listNameLabel.text = String(key)
+        
+        cell.cellBackgroundView.center = cell.contentView.center
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 250
     }
     
 

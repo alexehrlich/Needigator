@@ -35,8 +35,8 @@
 		1D8D6E3E24B5176C007E8059 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8D6E3D24B5176C007E8059 /* CardViewController.swift */; };
 		1D8D6E4024B5177A007E8059 /* CardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D8D6E3F24B5177A007E8059 /* CardViewController.xib */; };
 		1D8DAF2D242A994200B4DBA8 /* RoutingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8DAF2C242A994200B4DBA8 /* RoutingViewController.swift */; };
-		1D9E00E0256C3E2100E8197A /* FavoriteListsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9E00DE256C3E2100E8197A /* FavoriteListsTableViewCell.swift */; };
-		1D9E00E1256C3E2100E8197A /* FavoriteListsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D9E00DF256C3E2100E8197A /* FavoriteListsTableViewCell.xib */; };
+		1D9E00E7256C47AC00E8197A /* FavoriteShoppingListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9E00E5256C47AC00E8197A /* FavoriteShoppingListTableViewCell.swift */; };
+		1D9E00E8256C47AC00E8197A /* FavoriteShoppingListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D9E00E6256C47AC00E8197A /* FavoriteShoppingListTableViewCell.xib */; };
 		1DC109CD24201339007AA117 /* ArticleDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC109CC24201339007AA117 /* ArticleDataBase.swift */; };
 		1DEB1E06256787A20014D6E3 /* ColorLegendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB1E05256787A20014D6E3 /* ColorLegendViewController.swift */; };
 		1DF4FC1F241F34BF0058FF02 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF4FC1E241F34BF0058FF02 /* WelcomeViewController.swift */; };
@@ -75,8 +75,8 @@
 		1D8D6E3D24B5176C007E8059 /* CardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
 		1D8D6E3F24B5177A007E8059 /* CardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardViewController.xib; sourceTree = "<group>"; };
 		1D8DAF2C242A994200B4DBA8 /* RoutingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutingViewController.swift; sourceTree = "<group>"; };
-		1D9E00DE256C3E2100E8197A /* FavoriteListsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListsTableViewCell.swift; sourceTree = "<group>"; };
-		1D9E00DF256C3E2100E8197A /* FavoriteListsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteListsTableViewCell.xib; sourceTree = "<group>"; };
+		1D9E00E5256C47AC00E8197A /* FavoriteShoppingListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteShoppingListTableViewCell.swift; sourceTree = "<group>"; };
+		1D9E00E6256C47AC00E8197A /* FavoriteShoppingListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteShoppingListTableViewCell.xib; sourceTree = "<group>"; };
 		1DC109CC24201339007AA117 /* ArticleDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDataBase.swift; sourceTree = "<group>"; };
 		1DEB1E05256787A20014D6E3 /* ColorLegendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ColorLegendViewController.swift; path = Needigator/Controller/ColorLegendViewController.swift; sourceTree = SOURCE_ROOT; };
 		1DF4FC1E241F34BF0058FF02 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -138,8 +138,6 @@
 			isa = PBXGroup;
 			children = (
 				1D2E5844241E31CE002D341D /* Main.storyboard */,
-				1D9E00DE256C3E2100E8197A /* FavoriteListsTableViewCell.swift */,
-				1D9E00DF256C3E2100E8197A /* FavoriteListsTableViewCell.xib */,
 				1D2E5849241E31D0002D341D /* LaunchScreen.storyboard */,
 				1D2E5847241E31D0002D341D /* Assets.xcassets */,
 				1D7FAB4E2420B8F5001A5215 /* SearchTableViewCell.swift */,
@@ -150,6 +148,8 @@
 				1D2D3819256C23CE0008AAFC /* AddListToFavoritesViewController.xib */,
 				1D2B10E22537792600D9119C /* SelectedProductsTableViewCell.swift */,
 				1D2B10E32537792600D9119C /* SelectedProductsTableViewCell.xib */,
+				1D9E00E5256C47AC00E8197A /* FavoriteShoppingListTableViewCell.swift */,
+				1D9E00E6256C47AC00E8197A /* FavoriteShoppingListTableViewCell.xib */,
 				1D3DEFB92539F15300D77B86 /* DetailedProductSelectionViewController.swift */,
 				1D3DEFBA2539F15300D77B86 /* DetailedProductSelectionViewController.xib */,
 				1D2BBD932545A4F200B49500 /* UserFeedBackWhileCalculationViewController.swift */,
@@ -237,7 +237,7 @@
 				1D2D381B256C23CE0008AAFC /* AddListToFavoritesViewController.xib in Resources */,
 				1D3DEFBC2539F15300D77B86 /* DetailedProductSelectionViewController.xib in Resources */,
 				1D2E5846241E31CE002D341D /* Main.storyboard in Resources */,
-				1D9E00E1256C3E2100E8197A /* FavoriteListsTableViewCell.xib in Resources */,
+				1D9E00E8256C47AC00E8197A /* FavoriteShoppingListTableViewCell.xib in Resources */,
 				1D2B10E52537792600D9119C /* SelectedProductsTableViewCell.xib in Resources */,
 				1D00D647242112D300DBBC41 /* BUGTRACKER_TODO.txt in Resources */,
 			);
@@ -251,6 +251,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DF4FC23241F3A730058FF02 /* NavigationViewController.swift in Sources */,
+				1D9E00E7256C47AC00E8197A /* FavoriteShoppingListTableViewCell.swift in Sources */,
 				1D2BBD992545BDFA00B49500 /* Shopping.swift in Sources */,
 				1D2E5857241E329A002D341D /* Article.swift in Sources */,
 				1D8D6E3E24B5176C007E8059 /* CardViewController.swift in Sources */,
@@ -267,7 +268,6 @@
 				1D79972F2425FA22007CE3A5 /* RGB32.swift in Sources */,
 				1DF4FC21241F36390058FF02 /* ShoppingListViewController.swift in Sources */,
 				1D8DAF2D242A994200B4DBA8 /* RoutingViewController.swift in Sources */,
-				1D9E00E0256C3E2100E8197A /* FavoriteListsTableViewCell.swift in Sources */,
 				1D2BBD952545A4F200B49500 /* UserFeedBackWhileCalculationViewController.swift in Sources */,
 				1D7997272425EAEB007CE3A5 /* Node.swift in Sources */,
 				1D15711B254877AE00B0847E /* Messages.swift in Sources */,

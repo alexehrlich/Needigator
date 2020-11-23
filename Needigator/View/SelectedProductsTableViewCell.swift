@@ -38,10 +38,4 @@ class SelectedProductsTableViewCell: UITableViewCell {
         
         Shopping.updateSelectedItemsInModel(for: dataToDisplay!.0, with: dataToDisplay!.1, with: Shopping.Modification.increase)
     }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-    }
-    
 }
