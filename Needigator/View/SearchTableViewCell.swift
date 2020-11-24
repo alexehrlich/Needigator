@@ -55,6 +55,8 @@ class SearchTableViewCell: UITableViewCell, UIScrollViewDelegate {
     @IBOutlet weak var leftDataBackgroundView: UIView!
     @IBOutlet weak var leftOfferView: UIView!
     @IBOutlet weak var leftOfferPriceLabel: UILabel!
+   
+    @IBOutlet weak var leftOfferPriceBackgroundView: UIView!
     
     
     @IBOutlet weak var rightCellImage: UIImageView!
@@ -65,6 +67,8 @@ class SearchTableViewCell: UITableViewCell, UIScrollViewDelegate {
     @IBOutlet weak var rightDataBackgroundView: UIView!
     @IBOutlet weak var rightOfferView: UIView!
     @IBOutlet weak var rightOfferPriceLabel: UILabel!
+    
+    @IBOutlet weak var rightOfferPriceBackgroundView: UIView!
     
     
     override func awakeFromNib() {
@@ -83,6 +87,7 @@ class SearchTableViewCell: UITableViewCell, UIScrollViewDelegate {
         leftProductCardView.layer.shadowRadius = 10
         
         leftDataBackgroundView.layer.cornerRadius = 10
+        leftOfferPriceBackgroundView.layer.cornerRadius = 10
         
         rightProductCardView.layer.cornerRadius = 10
         rightProductCardView.layer.shadowColor = UIColor.lightGray.cgColor
@@ -90,6 +95,7 @@ class SearchTableViewCell: UITableViewCell, UIScrollViewDelegate {
         rightProductCardView.layer.shadowOffset = .zero
         rightProductCardView.layer.shadowRadius = 10
         rightDataBackgroundView.layer.cornerRadius = 10
+        rightOfferPriceBackgroundView.layer.cornerRadius = 10
         
     }
     

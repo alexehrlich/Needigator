@@ -65,6 +65,10 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iO8-7D-miG">
                                         <rect key="frame" x="0.0" y="216" width="214" height="38"/>
                                         <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x19-5U-i0V">
+                                                <rect key="frame" x="118.5" y="0.0" width="85.5" height="38"/>
+                                                <color key="backgroundColor" red="0.89394336939999997" green="0.45034396650000003" blue="0.48622596260000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PgA-oO-vxQ">
                                                 <rect key="frame" x="10" y="18" width="55" height="2"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -76,17 +80,21 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2,99€" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VAA-D8-l1l">
                                                 <rect key="frame" x="123.5" y="0.0" width="75.5" height="38"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>
-                                                <color key="textColor" red="0.96862745098039216" green="0.2157066822" blue="0.16861279800000001" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="x19-5U-i0V" secondAttribute="bottom" id="0Df-2Q-E8e"/>
                                             <constraint firstAttribute="trailing" secondItem="VAA-D8-l1l" secondAttribute="trailing" constant="15" id="DNg-E6-5xx"/>
+                                            <constraint firstAttribute="trailing" secondItem="x19-5U-i0V" secondAttribute="trailing" constant="10" id="HE4-hK-v2R"/>
+                                            <constraint firstItem="x19-5U-i0V" firstAttribute="leading" secondItem="VAA-D8-l1l" secondAttribute="leading" constant="-5" id="Jhn-pj-MzO"/>
                                             <constraint firstAttribute="bottom" secondItem="VAA-D8-l1l" secondAttribute="bottom" id="N5b-aR-QFc"/>
                                             <constraint firstItem="PgA-oO-vxQ" firstAttribute="leading" secondItem="iO8-7D-miG" secondAttribute="leading" constant="10" id="TxW-3K-LBp"/>
                                             <constraint firstAttribute="trailing" secondItem="VAA-D8-l1l" secondAttribute="trailing" constant="15" id="Xg9-Dh-m11"/>
                                             <constraint firstItem="VAA-D8-l1l" firstAttribute="top" secondItem="iO8-7D-miG" secondAttribute="top" id="ZVI-30-9M7"/>
+                                            <constraint firstItem="x19-5U-i0V" firstAttribute="top" secondItem="iO8-7D-miG" secondAttribute="top" id="gjS-sY-xEJ"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lGP-YB-cvM">
@@ -168,6 +176,10 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YiO-qL-N48">
                                         <rect key="frame" x="0.0" y="217" width="214" height="36"/>
                                         <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I28-gW-lhf">
+                                                <rect key="frame" x="118.5" y="0.0" width="85.5" height="36"/>
+                                                <color key="backgroundColor" red="0.89394336939999997" green="0.45034396650000003" blue="0.48622596260000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Edr-Yr-n9V">
                                                 <rect key="frame" x="10" y="17" width="55" height="2"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -179,7 +191,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2,99€" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3NN-fo-rHT">
                                                 <rect key="frame" x="123.5" y="0.0" width="75.5" height="36"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>
-                                                <color key="textColor" red="0.93151807598039205" green="0.2157066822" blue="0.16861279800000001" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -188,7 +200,11 @@
                                             <constraint firstAttribute="bottom" secondItem="3NN-fo-rHT" secondAttribute="bottom" id="G0X-gp-yPx"/>
                                             <constraint firstItem="3NN-fo-rHT" firstAttribute="top" secondItem="YiO-qL-N48" secondAttribute="top" id="GG1-Il-LOH"/>
                                             <constraint firstAttribute="trailing" secondItem="3NN-fo-rHT" secondAttribute="trailing" constant="15" id="JSq-de-btG"/>
+                                            <constraint firstItem="I28-gW-lhf" firstAttribute="top" secondItem="YiO-qL-N48" secondAttribute="top" id="TSB-JN-g6z"/>
+                                            <constraint firstAttribute="bottom" secondItem="I28-gW-lhf" secondAttribute="bottom" id="ggX-Eo-mUG"/>
+                                            <constraint firstItem="I28-gW-lhf" firstAttribute="leading" secondItem="3NN-fo-rHT" secondAttribute="leading" constant="-5" id="hUx-S9-sQ9"/>
                                             <constraint firstItem="Edr-Yr-n9V" firstAttribute="leading" secondItem="YiO-qL-N48" secondAttribute="leading" constant="10" id="iWj-Zs-VUK"/>
+                                            <constraint firstAttribute="trailing" secondItem="I28-gW-lhf" secondAttribute="trailing" constant="10" id="j5i-WR-Wy0"/>
                                             <constraint firstAttribute="trailing" secondItem="3NN-fo-rHT" secondAttribute="trailing" constant="15" id="oO5-Wa-xLK"/>
                                         </constraints>
                                     </view>
@@ -244,6 +260,7 @@
                 <outlet property="leftCardButton" destination="lGP-YB-cvM" id="BZ1-oV-Liu"/>
                 <outlet property="leftCellImage" destination="Uay-rX-eZx" id="zTo-6G-XjL"/>
                 <outlet property="leftDataBackgroundView" destination="pVk-k3-GnI" id="BWK-uy-g7Y"/>
+                <outlet property="leftOfferPriceBackgroundView" destination="x19-5U-i0V" id="zKC-N5-yZB"/>
                 <outlet property="leftOfferPriceLabel" destination="VAA-D8-l1l" id="f37-Jt-jhu"/>
                 <outlet property="leftOfferView" destination="iO8-7D-miG" id="CmB-FH-9FR"/>
                 <outlet property="leftProductAmount" destination="rN7-da-QVH" id="625-7a-tsB"/>
@@ -253,6 +270,7 @@
                 <outlet property="rightCardButton" destination="mlx-vi-e6b" id="cvt-Oz-ebD"/>
                 <outlet property="rightCellImage" destination="9gi-ie-4kk" id="fMB-9k-eJu"/>
                 <outlet property="rightDataBackgroundView" destination="Wfq-7B-EVF" id="0QY-u7-Bsh"/>
+                <outlet property="rightOfferPriceBackgroundView" destination="I28-gW-lhf" id="3QX-5y-Jhk"/>
                 <outlet property="rightOfferPriceLabel" destination="3NN-fo-rHT" id="eAa-be-Gpa"/>
                 <outlet property="rightOfferView" destination="YiO-qL-N48" id="tyS-1H-y8y"/>
                 <outlet property="rightProductAmount" destination="eOO-83-snZ" id="ib3-x5-kDd"/>
