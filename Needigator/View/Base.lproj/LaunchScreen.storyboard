@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,18 +16,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Needigator" translatesAutoresizingMaskIntoConstraints="NO" id="HAK-8q-4oN">
-                                <rect key="frame" x="0.0" y="345" width="414" height="217"/>
-                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Needigator" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IN0-rL-XQe">
+                                <rect key="frame" x="0.0" y="398" width="414" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="bLn-9m-wSG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="43"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.94540506599999996" green="0.62166225909999995" blue="0.49010491369999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="HAK-8q-4oN" secondAttribute="trailing" id="16c-jD-JJE"/>
-                            <constraint firstItem="HAK-8q-4oN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="LFZ-zh-tyZ"/>
-                            <constraint firstItem="HAK-8q-4oN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="301" id="cCV-x7-pXE"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="HAK-8q-4oN" secondAttribute="bottom" constant="300" id="czb-Ud-Kn7"/>
-                            <constraint firstItem="HAK-8q-4oN" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="t1m-jT-eqm"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IN0-rL-XQe" secondAttribute="trailing" id="DB0-3l-IbR"/>
+                            <constraint firstItem="IN0-rL-XQe" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Lpk-3N-UAP"/>
+                            <constraint firstItem="IN0-rL-XQe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="nvE-Ps-bC6"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -36,7 +40,4 @@
             <point key="canvasLocation" x="52.173913043478265" y="375"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="Needigator" width="2500" height="2500"/>
-    </resources>
 </document>

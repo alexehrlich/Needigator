@@ -26,11 +26,6 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
     //Liste die mit den Artikeln gefüllt wird, die 3 im Textfeld eingegebenen Buchstaben enthalten
     var substringArticles = [Article]()
     
-    
-    //Zuständig für die Routenberechnung
-    var navigation = RouteCalculationManager()
-    
-
     //Globale Variablen um Card-View zu realisieren
     enum CardState {
         case expanded
@@ -62,11 +57,9 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
         cardVisible = true
         animateTransitionIfNeeded(state: nextState, duration: 0.1)
         
-        Shopping.selectedProductsOfUser.removeAll()
+        Shopping.selectedProductsOfUser = Shopping.selectedProductsOfUser
         substringArticles = listOfProducts
         articleTableView.reloadData()
-        
-        
     }
     
     

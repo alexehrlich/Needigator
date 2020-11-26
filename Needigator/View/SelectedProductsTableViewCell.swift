@@ -15,9 +15,8 @@ class SelectedProductsTableViewCell: UITableViewCell {
 
     var dataToDisplay : (Article, Int)? {
         didSet{
-            
             if dataToDisplay!.0.isOnOffer{
-                productLabel.textColor = UIColor.red
+                productLabel.textColor = #colorLiteral(red: 0.9599878192, green: 0.4176035821, blue: 0.476115346, alpha: 1)
             }else{
                 productLabel.textColor = UIColor.black
             }
@@ -35,7 +34,6 @@ class SelectedProductsTableViewCell: UITableViewCell {
     }
     
     @IBAction func increaseButtonPressed(_ sender: UIButton) {
-        
         Shopping.updateSelectedItemsInModel(for: dataToDisplay!.0, with: dataToDisplay!.1, with: Shopping.Modification.increase)
     }
 }

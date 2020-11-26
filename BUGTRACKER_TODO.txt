@@ -19,10 +19,10 @@ TODO für EDEKA Oberboihingen:
 - DONE Angebote hinzufügen
 - DONE Anzahl aus dem CardView bearbeiten
 - DONE WelcomeScreen Edeka Info hinzufügen
-- Favorisierte Einkaufslsiten hinzufügen
+- DONE Favorisierte Einkaufslsiten hinzufügen
 - DONE Bug beim Angebote-Preis fixen
 - Hilfe-Button: FAQ, kurzer Prosa, Websitelink
-- An der Route Edeka-Symbol
+- DONE An der Route Edeka-Symbol
 - DONE RouteVC: Anstatt "schnell" komfortabel etc
 - DONE Gesamtkosten schmäler
 - DONE Roter Hintergrund für Angebotspreis

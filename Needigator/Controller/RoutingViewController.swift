@@ -123,20 +123,18 @@ class RoutingViewController: UIViewController {
     
     @IBAction func addListToFavsButtonPressed(_ sender: UIButton) {
         
-       
-
+        
         addingViewController.view.frame = CGRect(x: 60, y: self.view.frame.height, width: self.view.frame.width * 0.7, height: self.view.frame.height * 0.4)
         addingViewController.view.layer.cornerRadius = 12
         
         self.view.addSubview(addingViewController.view)
         self.addChild(addingViewController)
+        addingViewController.listNameEnterTextField.text = ""
         UIView.animate(withDuration: 0.8, animations: {
             self.addingViewController.view.frame.origin = CGPoint(x: 60, y: 300)
         })
 
     }
-    
-    
     
     @IBAction func finishShoppingButtonPressed(_ sender: UIButton) {
         self.navigationController?.popToRootViewController(animated: true)
