@@ -8,8 +8,8 @@
 
 import UIKit
 
-class RoutingViewController: UIViewController {
-    
+class RoutingViewController: UIViewController, AddListToFavoritesViewControllerDelegate {
+   
 //MARK: IB-Outlets:
     @IBOutlet weak var routeImageView: UIImageView!
     @IBOutlet weak var firstNavigationImage: UIImageView!
@@ -46,6 +46,9 @@ class RoutingViewController: UIViewController {
     
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        addingViewController.addingDelegate = self
+        
         navigationController?.isNavigationBarHidden = false
         
         //Lade die Knoten vom MArktplan und die kürzesten Routen zwischen allen Knoten aus dem Textfile
@@ -115,6 +118,9 @@ class RoutingViewController: UIViewController {
     
     
     override func viewDidAppear(_ animated: Bool) {
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShowUp), name: UIResponder.keyboardWillShowNotification, object: nil)
+    
         firstNavigationImage.isHidden = false
         moveFirstNavigationArrow()
     }
@@ -122,7 +128,6 @@ class RoutingViewController: UIViewController {
     //Funktionen für die Buttons:
     
     @IBAction func addListToFavsButtonPressed(_ sender: UIButton) {
-        
         
         addingViewController.view.frame = CGRect(x: 60, y: self.view.frame.height, width: self.view.frame.width * 0.7, height: self.view.frame.height * 0.4)
         addingViewController.view.layer.cornerRadius = 12
@@ -136,11 +141,24 @@ class RoutingViewController: UIViewController {
 
     }
     
+    func userDidFinishAdding() {
+        self.view.endEditing(true)
+    }
+    
     @IBAction func finishShoppingButtonPressed(_ sender: UIButton) {
         self.navigationController?.popToRootViewController(animated: true)
     }
     
-    
+    @objc func keyboardWillShowUp(notification : NSNotification){
+        
+        if let keyBoardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue{
+            
+            let keyBoardFrameHeight = keyBoardFrame.cgRectValue.height
+            UIView.animate(withDuration: 0.8, animations: {
+                self.addingViewController.view.frame.origin = CGPoint(x: 60, y: self.view.frame.height - keyBoardFrameHeight - self.addingViewController.view.frame.height - 15)
+            })
+        }
+    }
     
     
     //Wenn neben die Karte gedrückt wird, soll diese wieder verschwinden

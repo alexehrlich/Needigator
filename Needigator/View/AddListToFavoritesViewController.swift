@@ -8,13 +8,18 @@
 
 import UIKit
 
+protocol AddListToFavoritesViewControllerDelegate {
+    func userDidFinishAdding()
+}
+
 class AddListToFavoritesViewController: UIViewController {
-    
     
     @IBOutlet weak var listNameEnterTextField: UITextField!
     @IBOutlet weak var textFieldView: UIView!
     @IBOutlet weak var addListButtonOutlet: UIButton!
     @IBOutlet weak var cancleButtonOutlet: UIButton!
+    
+    var addingDelegate: AddListToFavoritesViewControllerDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +36,8 @@ class AddListToFavoritesViewController: UIViewController {
         if listNameEnterTextField.text == ""{
             //User Feedback
         }else{
+            addingDelegate.userDidFinishAdding()
+
             //Add List to Model
             Shopping.favoriteShoppingLists[listNameEnterTextField.text!] = Shopping.selectedProductsOfUser
             
@@ -46,6 +53,8 @@ class AddListToFavoritesViewController: UIViewController {
     
     @IBAction func cancleListButtonPressed(_ sender: UIButton) {
         
+        addingDelegate.userDidFinishAdding()
+        
         UIView.animate(withDuration: 0.8) {
             self.view.frame.origin = CGPoint(x: 60, y: (self.view.superview?.frame.height)!)
         } completion: { (true) in
@@ -53,6 +62,5 @@ class AddListToFavoritesViewController: UIViewController {
             self.removeFromParent()
         }
     }
-    
     
 }
