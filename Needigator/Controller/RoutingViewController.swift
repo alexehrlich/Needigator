@@ -146,6 +146,7 @@ class RoutingViewController: UIViewController, AddListToFavoritesViewControllerD
     }
     
     @IBAction func finishShoppingButtonPressed(_ sender: UIButton) {
+        Shopping.selectedProductsOfUser.removeAll()
         self.navigationController?.popToRootViewController(animated: true)
     }
     
