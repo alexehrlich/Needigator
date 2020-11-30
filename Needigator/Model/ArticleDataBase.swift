@@ -25,5 +25,6 @@ struct ArticleDataBase {
         Article(imageFileName: "Vollkornbrot_700 g_70_1,19_NO_1,19.png"),
         Article(imageFileName: "Weihenstephan Vollmilch_1 l_10_0,89_NO_0,89.png"),
         Article(imageFileName: "Weißwein_700 ml_75_5,99_NO_5,99.png"),
+        Article(imageFileName: "Rosewein_700ml_75_6,99_YES_4,39.png")
     ]
 }

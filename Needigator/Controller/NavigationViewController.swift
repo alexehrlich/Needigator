@@ -233,6 +233,8 @@ extension NavigationViewController: UITableViewDataSource{
         let cell = articleTableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as! SearchTableViewCell
         
         cell.delegate = self
+        
+        
         if indexPath.row < tableView.numberOfRows(inSection: 0) - 1 || tableView.numberOfRows(inSection: 0) == 1 && substringArticles.count > 1{
             
             let leftArticle = substringArticles[indexPath.row * 2]

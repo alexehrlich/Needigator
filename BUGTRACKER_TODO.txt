@@ -26,6 +26,13 @@ TODO für EDEKA Oberboihingen:
 - DONE RouteVC: Anstatt "schnell" komfortabel etc
 - DONE Gesamtkosten schmäler
 - DONE Roter Hintergrund für Angebotspreis
+- Punkt statt Komma im Preis
+- Sigel Slogan auf Route VC
+- Regale mit Buttons
+- Plus nachj rechts
+- DARSTELLUNG VON PRODUKTEN IM TABLE VIEW PASST NCIHT!!! Weißwein wird erst angezeigt, wenn man danach sucht..
+- Angebote im Card View werden nicht geneommen sonder der normale PReis
+- Rosewein statt Glühwein wird auf der Route angezeigt.
 
 
 
