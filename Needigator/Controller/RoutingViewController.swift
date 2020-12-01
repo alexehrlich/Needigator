@@ -9,8 +9,8 @@
 import UIKit
 
 class RoutingViewController: UIViewController, AddListToFavoritesViewControllerDelegate {
-   
-//MARK: IB-Outlets:
+    
+    //MARK: IB-Outlets:
     @IBOutlet weak var routeImageView: UIImageView!
     @IBOutlet weak var firstNavigationImage: UIImageView!
     @IBOutlet weak var colorLegendButtonView: UIView!
@@ -25,19 +25,20 @@ class RoutingViewController: UIViewController, AddListToFavoritesViewControllerD
     @IBOutlet weak var articleImageView: UIImageView!
     
     
-//MARK: Class-Instances:
+    //MARK: Class-Instances:
     let articleDataBase = ArticleDataBase()
     var navigation = RouteCalculationManager()
+    let listOfProductsToDisplay = ListOfProductsInOneNodeViewController()
     let addingViewController = AddListToFavoritesViewController()
     let blurEffectView = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffect.Style.light))
     
-//MARK: Global variables
+    //MARK: Global variables
     var pixelsOfAllNodes = [Int: CGPoint]()
     var nodesInRoute = [Int]()
     var pixelCoordinatesInRoute = [CGPoint]()
     
     
-//MARK: Global variables navigation image movement
+    //MARK: Global variables navigation image movement
     var recursiveCounter = 0
     var secondRecursiveCounter = 0
     var secondNavigationImage = UIImage()
@@ -62,6 +63,7 @@ class RoutingViewController: UIViewController, AddListToFavoritesViewControllerD
         
         //Loop: Für jedes Produkt wird ein neuer Pin erstellt und an den Knoten platziert
         for (article, _) in Shopping.selectedProductsOfUser{
+            
             let startingPoint = CGPoint(x: routeImageView.center.x - routeImageView.frame.size.width/2, y: routeImageView.center.y - routeImageView.frame.size.height/2)
             let newProductPinButton = UIButton()
             newProductPinButton.frame = CGRect(origin: CGPoint(x: startingPoint.x + pixelsOfAllNodes[article.getNode()]!.x/3, y: startingPoint.y + pixelsOfAllNodes[article.getNode()]!.y/3), size: CGSize(width: 20, height: 20))
@@ -76,9 +78,6 @@ class RoutingViewController: UIViewController, AddListToFavoritesViewControllerD
         }
         
         
-        //Layout of productViewOfMapMarker
-        productViewOfMapMarker.alpha = 0
-        productViewOfMapMarker.layer.cornerRadius = 10
         
         //Layout of firstNavigationImage
         firstNavigationImage.tintColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
@@ -120,7 +119,7 @@ class RoutingViewController: UIViewController, AddListToFavoritesViewControllerD
     override func viewDidAppear(_ animated: Bool) {
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShowUp), name: UIResponder.keyboardWillShowNotification, object: nil)
-    
+        
         firstNavigationImage.isHidden = false
         moveFirstNavigationArrow()
     }
@@ -138,7 +137,7 @@ class RoutingViewController: UIViewController, AddListToFavoritesViewControllerD
         UIView.animate(withDuration: 0.8, animations: {
             self.addingViewController.view.frame.origin = CGPoint(x: 60, y: 300)
         })
-
+        
     }
     
     func userDidFinishAdding() {
@@ -167,9 +166,10 @@ class RoutingViewController: UIViewController, AddListToFavoritesViewControllerD
         
         let touch = touches.first
         
-        if touch?.view != productViewOfMapMarker {
+        if touch?.view != listOfProductsToDisplay.view {
             UIView.animate(withDuration: 0.5) {
-                self.productViewOfMapMarker.alpha = 0
+                self.listOfProductsToDisplay.removeFromParent()
+                self.listOfProductsToDisplay.view.removeFromSuperview()
                 self.blurEffectView.removeFromSuperview()
             }
         }
@@ -179,28 +179,20 @@ class RoutingViewController: UIViewController, AddListToFavoritesViewControllerD
     
     //Zeigt die Produktinformationen in dem Extra-View an
     @objc func productMapButtonPressed(button: UIButton){
+        
+        
+        listOfProductsToDisplay.nodeNumber = button.tag
+        
+        listOfProductsToDisplay.view.frame = CGRect(x: self.view.center.x, y: self.view.center.y, width: self.view.frame.width * 0.7, height: self.view.frame.height * 0.4)
+        
+        listOfProductsToDisplay.view.center = self.view.center
+        
         blurEffectView.frame = view.bounds
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(blurEffectView)
-        productViewOfMapMarker.frame.origin = CGPoint(x: button.center.x , y: button.center.y + button.frame.size.height/2)
+        self.addChild(listOfProductsToDisplay)
+        self.view.addSubview(listOfProductsToDisplay.view)
         
-        for article in articleDataBase.items {
-            if button.tag == article.getNode() {
-                articleImageView.image = article.getImage()
-                articleNameInView.text = article.getName()
-                articlePriceInView.text = article.getCurrentPrice()
-                
-                if article.isOnOffer {
-                    articlePriceInView.textColor = .red
-                }
-            }
-        }
-        productViewOfMapMarker.backgroundColor = .white
-        self.view.addSubview(productViewOfMapMarker)
-        productViewOfMapMarker.alpha = 0
-        UIView.animate(withDuration: 0.5) {
-            self.productViewOfMapMarker.alpha = 1
-        }
     }
 }
 
@@ -331,7 +323,7 @@ extension RoutingViewController {
         }
         return 0
     }
-
+    
     
     func drawRouteIntoMarketPlan(route: Route) -> UIImage?{
         

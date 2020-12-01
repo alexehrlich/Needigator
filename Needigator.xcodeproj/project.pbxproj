@@ -24,6 +24,10 @@
 		1D2E5848241E31D0002D341D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D2E5847241E31D0002D341D /* Assets.xcassets */; };
 		1D2E584B241E31D0002D341D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D2E5849241E31D0002D341D /* LaunchScreen.storyboard */; };
 		1D2E5857241E329A002D341D /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2E5856241E329A002D341D /* Article.swift */; };
+		1D32C574257611E4004754F7 /* ListOfProductsInOneNodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D32C572257611E4004754F7 /* ListOfProductsInOneNodeViewController.swift */; };
+		1D32C575257611E4004754F7 /* ListOfProductsInOneNodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D32C573257611E4004754F7 /* ListOfProductsInOneNodeViewController.xib */; };
+		1D32C57925761361004754F7 /* ListedProductsInNodeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D32C57725761361004754F7 /* ListedProductsInNodeTableViewCell.swift */; };
+		1D32C57A25761361004754F7 /* ListedProductsInNodeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D32C57825761361004754F7 /* ListedProductsInNodeTableViewCell.xib */; };
 		1D3DEFBB2539F15300D77B86 /* DetailedProductSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3DEFB92539F15300D77B86 /* DetailedProductSelectionViewController.swift */; };
 		1D3DEFBC2539F15300D77B86 /* DetailedProductSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D3DEFBA2539F15300D77B86 /* DetailedProductSelectionViewController.xib */; };
 		1D5BC694257022E0000F6695 /* FavoriteListsListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5BC693257022E0000F6695 /* FavoriteListsListingViewController.swift */; };
@@ -65,6 +69,10 @@
 		1D2E584A241E31D0002D341D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1D2E584C241E31D0002D341D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1D2E5856241E329A002D341D /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
+		1D32C572257611E4004754F7 /* ListOfProductsInOneNodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfProductsInOneNodeViewController.swift; sourceTree = "<group>"; };
+		1D32C573257611E4004754F7 /* ListOfProductsInOneNodeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListOfProductsInOneNodeViewController.xib; sourceTree = "<group>"; };
+		1D32C57725761361004754F7 /* ListedProductsInNodeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListedProductsInNodeTableViewCell.swift; sourceTree = "<group>"; };
+		1D32C57825761361004754F7 /* ListedProductsInNodeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListedProductsInNodeTableViewCell.xib; sourceTree = "<group>"; };
 		1D3DEFB92539F15300D77B86 /* DetailedProductSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedProductSelectionViewController.swift; sourceTree = "<group>"; };
 		1D3DEFBA2539F15300D77B86 /* DetailedProductSelectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailedProductSelectionViewController.xib; sourceTree = "<group>"; };
 		1D5BC693257022E0000F6695 /* FavoriteListsListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListsListingViewController.swift; sourceTree = "<group>"; };
@@ -156,6 +164,10 @@
 				1D2BBD942545A4F200B49500 /* UserFeedBackWhileCalculationViewController.xib */,
 				1D856C9825700B0D00A2510F /* ShoppingListTableViewCell.swift */,
 				1D856C9925700B0D00A2510F /* ShoppingListTableViewCell.xib */,
+				1D32C572257611E4004754F7 /* ListOfProductsInOneNodeViewController.swift */,
+				1D32C573257611E4004754F7 /* ListOfProductsInOneNodeViewController.xib */,
+				1D32C57725761361004754F7 /* ListedProductsInNodeTableViewCell.swift */,
+				1D32C57825761361004754F7 /* ListedProductsInNodeTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -236,7 +248,9 @@
 				1D2BBD962545A4F200B49500 /* UserFeedBackWhileCalculationViewController.xib in Resources */,
 				1D2E5848241E31D0002D341D /* Assets.xcassets in Resources */,
 				1D7FAB512420B8F5001A5215 /* SearchTableViewCellDesign.xib in Resources */,
+				1D32C57A25761361004754F7 /* ListedProductsInNodeTableViewCell.xib in Resources */,
 				1D856C9B25700B0D00A2510F /* ShoppingListTableViewCell.xib in Resources */,
+				1D32C575257611E4004754F7 /* ListOfProductsInOneNodeViewController.xib in Resources */,
 				1D8D6E4024B5177A007E8059 /* CardViewController.xib in Resources */,
 				1D2D381B256C23CE0008AAFC /* AddListToFavoritesViewController.xib in Resources */,
 				1D3DEFBC2539F15300D77B86 /* DetailedProductSelectionViewController.xib in Resources */,
@@ -255,6 +269,7 @@
 			files = (
 				1DF4FC23241F3A730058FF02 /* NavigationViewController.swift in Sources */,
 				1D2BBD992545BDFA00B49500 /* Shopping.swift in Sources */,
+				1D32C574257611E4004754F7 /* ListOfProductsInOneNodeViewController.swift in Sources */,
 				1D2E5857241E329A002D341D /* Article.swift in Sources */,
 				1D8D6E3E24B5176C007E8059 /* CardViewController.swift in Sources */,
 				1D3DEFBB2539F15300D77B86 /* DetailedProductSelectionViewController.swift in Sources */,
@@ -269,6 +284,7 @@
 				1D2E5841241E31CE002D341D /* SceneDelegate.swift in Sources */,
 				1D79972F2425FA22007CE3A5 /* RGB32.swift in Sources */,
 				1DF4FC21241F36390058FF02 /* ShoppingListViewController.swift in Sources */,
+				1D32C57925761361004754F7 /* ListedProductsInNodeTableViewCell.swift in Sources */,
 				1D8DAF2D242A994200B4DBA8 /* RoutingViewController.swift in Sources */,
 				1D856C9A25700B0D00A2510F /* ShoppingListTableViewCell.swift in Sources */,
 				1D2BBD952545A4F200B49500 /* UserFeedBackWhileCalculationViewController.swift in Sources */,
