@@ -48,7 +48,7 @@ class CardViewController: UIViewController{
     @objc func updateViewFromModel(){
         productCntLabel.text = "\(Shopping.selectedProductsOfUser.count)"
         
-        let priceString = String(format: "%.2f", Shopping.totalPrice)
+        let priceString = String(format: "%.2f", Shopping.totalPrice).replacingOccurrences(of: ".", with: ",")
         totalPriceLabel.text = "Gesamtkosten: \(priceString) €"
         
         selctedProductsTableView.reloadData()

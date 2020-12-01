@@ -30,11 +30,11 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BjO-0k-ay6">
                                 <rect key="frame" x="0.0" y="0.0" width="45" height="44"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="plus.circle" catalog="system">
+                                <state key="normal" image="minus.circle" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                 </state>
                                 <connections>
-                                    <action selector="increaseButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="qdX-5H-D3C"/>
+                                    <action selector="decreaseButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="yve-Ug-nkv"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NIP-GK-RSe">
@@ -49,11 +49,11 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jnC-FE-gXU">
                                 <rect key="frame" x="75" y="0.0" width="45" height="44"/>
                                 <color key="tintColor" systemColor="labelColor"/>
-                                <state key="normal" image="minus.circle" catalog="system">
+                                <state key="normal" image="plus.circle" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                 </state>
                                 <connections>
-                                    <action selector="decreaseButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="eif-Ud-vSG"/>
+                                    <action selector="increaseButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="UI1-tP-Fbz"/>
                                 </connections>
                             </button>
                         </subviews>

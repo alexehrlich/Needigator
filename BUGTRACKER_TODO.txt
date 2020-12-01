@@ -1,10 +1,7 @@
 BUG Tracker:
 
-- View ist nciht richtig gelayoutet bei nach oben verschobener Zelle. Wenn dann der Knopf gedrückt wird, wird das Layout richtig gemacht...
 DONE - Einkaufsliste wird nicht zurückgesetzt (updateViewfromModel() implementieren)
 DONE - Layout vom WelcomeScreen passt nicht ganz
-- AWS Datenbank implementieren + Angebote Screen
-- Filter einbauen
 DONE - Wenn eine KArte umgedreht ist und eine andere KArte angetippt wird, soll die offene sich weider schließen
 DONE - Wenn gescrollt wird, soll sich die umgedrehte Karte wieder schließen
 DONE - Produkte aus der Einkaufsliste löschen
@@ -21,18 +18,19 @@ TODO für EDEKA Oberboihingen:
 - DONE WelcomeScreen Edeka Info hinzufügen
 - DONE Favorisierte Einkaufslsiten hinzufügen
 - DONE Bug beim Angebote-Preis fixen
-- Hilfe-Button: FAQ, kurzer Prosa, Websitelink
 - DONE An der Route Edeka-Symbol
 - DONE RouteVC: Anstatt "schnell" komfortabel etc
 - DONE Gesamtkosten schmäler
 - DONE Roter Hintergrund für Angebotspreis
-- Punkt statt Komma im Preis
-- Sigel Slogan auf Route VC
+- DONE Sigel Slogan auf Route VC
+- DONE Plus nachj rechts
+- DONE DARSTELLUNG VON PRODUKTEN IM TABLE VIEW PASST NCIHT!!! Weißwein wird erst angezeigt, wenn man danach sucht..
+- DONE Angebote im Card View werden nicht geneommen sonder der normale Preis
+- DONE Punkt statt Komma im Preis
+- Rosewein statt Glühwein wird auf der Route angezeigt. --> Mehrere Produkte an einem Knoten ist das Problem
 - Regale mit Buttons
-- Plus nachj rechts
-- DARSTELLUNG VON PRODUKTEN IM TABLE VIEW PASST NCIHT!!! Weißwein wird erst angezeigt, wenn man danach sucht..
-- Angebote im Card View werden nicht geneommen sonder der normale PReis
-- Rosewein statt Glühwein wird auf der Route angezeigt.
+- Hilfe-Button: FAQ, kurzer Prosa, Websitelink
+
 
 
 
@@ -40,6 +38,8 @@ NEEDIGATOR Longtern TASKS:
 
 Backend-Technologien:
     - Datenbank implementieren (1-3 Monate)
+    - AWS Datenbank implementieren + Angebote Screen
+    - Filter einbauen
     - Persistenten Speicher auf dem iPhone für User-Daten(CoreData oer UserDefaults) (2-4 Wochen): Favorisierte Einkaufslisten realisieren(+2 Wochen); Offline-Markt (2 Wochen)
     - Angebote <-> Alle Produkte (hängt zusammen mit Datenbank) (1,5)
     - Eventuelle Parameteranpassung Algorithmus mit zunehmender Anzahl der Produkte ?? (2 Wochen?)
@@ -52,10 +52,14 @@ Frontend:
     - Darstellung Angebote (3 Wochen)
     - Darstellung Navigation
     
+    
+    - View ist nciht richtig gelayoutet bei nach oben verschobener Zelle. Wenn dann der Knopf gedrückt wird, wird das Layout richtig gemacht...
+    
 --> AdobeXD File mit allen Screens und allen Funktionen benötigt.
 
 Code:
     - Eventell UML ClassDiagramm für Dokumentation (Ich weiss was mein Code tut)
     - Code Kommentierung (relativ guter Stand...)
+    - unschöner Code bei der Erzeugung er product table view
     
  

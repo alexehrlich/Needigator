@@ -28,7 +28,7 @@ struct  Shopping {
         get{
             var total: Double = 0.0
             for (article, amount) in selectedProductsOfUser {
-                let convertedPrice = article.getPrice().replacingOccurrences(of: ",", with: ".").replacingOccurrences(of: "€", with: "")
+                let convertedPrice = article.getCurrentPrice().replacingOccurrences(of: ",", with: ".").replacingOccurrences(of: "€", with: "")
                 total += Double(convertedPrice)! * Double(amount)
             }
             return total

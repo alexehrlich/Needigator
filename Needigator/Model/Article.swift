@@ -41,8 +41,12 @@ struct Article: Hashable {
         return name
     }
     
-    func getPrice() -> String {
+    func getOfficialPrice() -> String {
         return price
+    }
+    
+    func getCurrentPrice() -> String{
+        return isOnOffer ? offerPrice! : price
     }
     
     func getImage() -> UIImage {

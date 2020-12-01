@@ -188,7 +188,7 @@ class RoutingViewController: UIViewController, AddListToFavoritesViewControllerD
             if button.tag == article.getNode() {
                 articleImageView.image = article.getImage()
                 articleNameInView.text = article.getName()
-                articlePriceInView.text = article.getPrice()
+                articlePriceInView.text = article.getCurrentPrice()
                 
                 if article.isOnOffer {
                     articlePriceInView.textColor = .red
