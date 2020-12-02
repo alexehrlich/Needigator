@@ -27,7 +27,8 @@ TODO für EDEKA Oberboihingen:
 - DONE DARSTELLUNG VON PRODUKTEN IM TABLE VIEW PASST NCIHT!!! Weißwein wird erst angezeigt, wenn man danach sucht..
 - DONE Angebote im Card View werden nicht geneommen sonder der normale Preis
 - DONE Punkt statt Komma im Preis
-- Rosewein statt Glühwein wird auf der Route angezeigt. --> Mehrere Produkte an einem Knoten ist das Problem
+- DONE Rosewein statt Glühwein wird auf der Route angezeigt. --> Mehrere Produkte an einem Knoten ist das Problem
+- Abhaken der einzelnen Produkte implementieren
 - Regale mit Buttons
 - Hilfe-Button: FAQ, kurzer Prosa, Websitelink
 

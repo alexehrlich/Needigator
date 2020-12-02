@@ -183,7 +183,7 @@ class RoutingViewController: UIViewController, AddListToFavoritesViewControllerD
         
         listOfProductsToDisplay.nodeNumber = button.tag
         
-        listOfProductsToDisplay.view.frame = CGRect(x: self.view.center.x, y: self.view.center.y, width: self.view.frame.width * 0.7, height: self.view.frame.height * 0.4)
+        listOfProductsToDisplay.view.frame = CGRect(x: self.view.center.x, y: self.view.center.y, width: self.view.frame.width * 0.7, height: self.view.frame.height * 0.3)
         
         listOfProductsToDisplay.view.center = self.view.center
         

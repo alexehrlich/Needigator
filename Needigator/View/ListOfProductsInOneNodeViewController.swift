@@ -22,9 +22,9 @@ class ListOfProductsInOneNodeViewController: UIViewController{
         for (article, amount) in Shopping.selectedProductsOfUser {
             if article.getNode() == nodeNumber {
                 productsAtCurrentNode.append((article, amount))
+                
             }
         }
-        
         productsAtNodeTV.reloadData()
     }
     
@@ -55,10 +55,12 @@ extension ListOfProductsInOneNodeViewController: UITableViewDelegate, UITableVie
         let cell = productsAtNodeTV.dequeueReusableCell(withIdentifier: "checkProductCell") as! ListedProductsInNodeTableViewCell
         
         cell.productLabel.text = "\(productsAtCurrentNode[indexPath.row].1)x \(productsAtCurrentNode[indexPath.row].0.getName())"
+        cell.productString = productsAtCurrentNode[indexPath.row].0.getName()
         
         return cell
     }
     
-    
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
 }

@@ -35,6 +35,8 @@ struct  Shopping {
         }
     }
     
+    static var checkedProducts = Set<String>()
+    
     static func updateSelectedItemsInModel(for article: Article, with amount: Int, with operation: Modification? = nil){
 
         if operation == nil {
