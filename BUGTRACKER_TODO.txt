@@ -28,11 +28,9 @@ TODO für EDEKA Oberboihingen:
 - DONE Angebote im Card View werden nicht geneommen sonder der normale Preis
 - DONE Punkt statt Komma im Preis
 - DONE Rosewein statt Glühwein wird auf der Route angezeigt. --> Mehrere Produkte an einem Knoten ist das Problem
-- Abhaken der einzelnen Produkte implementieren
+- DONE Abhaken der einzelnen Produkte implementieren
+- DONE Hilfe-Button: FAQ, kurzer Prosa, Websitelink
 - Regale mit Buttons
-- Hilfe-Button: FAQ, kurzer Prosa, Websitelink
-
-
 
 
 NEEDIGATOR Longtern TASKS:

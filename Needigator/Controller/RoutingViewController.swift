@@ -48,6 +48,8 @@ class RoutingViewController: UIViewController, AddListToFavoritesViewControllerD
     
     override func viewWillAppear(_ animated: Bool) {
         
+        Shopping.checkedProducts.removeAll()
+        
         addingViewController.addingDelegate = self
         
         navigationController?.isNavigationBarHidden = false
