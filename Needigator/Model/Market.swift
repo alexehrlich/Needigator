@@ -14,6 +14,7 @@ class Market {
     var end = 0
     static var bitMapMarketPlan2D = UIImage(named: "NODES_1242x1065_colored TEST")
     static var allNodesInMarket = [Node]()
+    static var coordinatesOfInformationButton = [Int : (CGPoint, RGBA32)]()
     var pathsToRoutesFile: String = "AllRoutes.txt"
     static var finalRoutes = [Route]()
     private var routesToItem: [Route] = [Route]()
@@ -21,6 +22,15 @@ class Market {
     
     
     init() {
+        //Hard coded Information-Button Position in Route VC
+        Market.coordinatesOfInformationButton[1] = (CGPoint(x: 286, y: 524), RGBA32(red: 0xfc, green: 0xdd, blue: 0x93, alpha: 0xff))
+        Market.coordinatesOfInformationButton[2] = (CGPoint(x: 286, y: 730), RGBA32(red: 0xbb, green: 0xbf, blue: 0xff, alpha: 0xff))
+        Market.coordinatesOfInformationButton[3] = (CGPoint(x: 293, y: 119), RGBA32(red: 0xb2, green: 0xde, blue: 0xec, alpha: 0xff))
+        Market.coordinatesOfInformationButton[4] = (CGPoint(x: 94, y: 250), RGBA32(red: 0xf5, green: 0x6a, blue: 0x78, alpha: 0xff))
+        Market.coordinatesOfInformationButton[5] = (CGPoint(x: 548, y: 100), RGBA32(red: 0xeb, green: 0xcf, blue: 0xc4, alpha: 0xff))
+        Market.coordinatesOfInformationButton[6] = (CGPoint(x: 895, y: 98), RGBA32(red: 0xa1, green: 0xe6, blue: 0xe3, alpha: 0xff))
+        Market.coordinatesOfInformationButton[7] = (CGPoint(x: 914, y: 639), RGBA32(red: 0xb8, green: 0xcb, blue: 0x8b, alpha: 0xff))
+        Market.coordinatesOfInformationButton[8] = (CGPoint(x: 537, y: 978), RGBA32(red: 0x55, green: 0x55, blue: 0x55, alpha: 0xff))
         
     }
     

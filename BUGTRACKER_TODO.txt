@@ -30,7 +30,10 @@ TODO für EDEKA Oberboihingen:
 - DONE Rosewein statt Glühwein wird auf der Route angezeigt. --> Mehrere Produkte an einem Knoten ist das Problem
 - DONE Abhaken der einzelnen Produkte implementieren
 - DONE Hilfe-Button: FAQ, kurzer Prosa, Websitelink
-- Regale mit Buttons
+- DONE Regale mit Buttons
+- Route VC erneuern
+- DONE Methode, um schneller zu werden
+- ACHTUNG nicht auf MASTER!!
 
 
 NEEDIGATOR Longtern TASKS:

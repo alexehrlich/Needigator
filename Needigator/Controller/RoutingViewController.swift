@@ -36,7 +36,7 @@ class RoutingViewController: UIViewController, AddListToFavoritesViewControllerD
     var pixelsOfAllNodes = [Int: CGPoint]()
     var nodesInRoute = [Int]()
     var pixelCoordinatesInRoute = [CGPoint]()
-    var coordinatesOfInformationButton = [Int : CGPoint]()
+    
     
     
     //MARK: Global variables navigation image movement
@@ -79,17 +79,17 @@ class RoutingViewController: UIViewController, AddListToFavoritesViewControllerD
             self.view.addSubview(newProductPinButton)
         }
         
-        for node in coordinatesOfInformationButton {
+        for infoPixel in Market.coordinatesOfInformationButton {
             let startingPoint = CGPoint(x: routeImageView.center.x - routeImageView.frame.size.width/2, y: routeImageView.center.y - routeImageView.frame.size.height/2)
             let newProductPinButton = UIButton()
-            newProductPinButton.frame = CGRect(origin: CGPoint(x: startingPoint.x + node.value.x/3, y: startingPoint.y + node.value.y/3), size: CGSize(width: 15, height: 15))
-            newProductPinButton.center = CGPoint(x: startingPoint.x + node.value.x/3, y: startingPoint.y + node.value.y/3)
+            newProductPinButton.frame = CGRect(origin: CGPoint(x: startingPoint.x + infoPixel.value.0.x/3, y: startingPoint.y + infoPixel.value.0.y/3), size: CGSize(width: 15, height: 15))
+            newProductPinButton.center = CGPoint(x: startingPoint.x + infoPixel.value.0.x/3, y: startingPoint.y + infoPixel.value.0.y/3)
             newProductPinButton.setImage(UIImage(systemName: "info.circle.fill"), for: .normal)
             newProductPinButton.imageView?.tintColor = .white
             newProductPinButton.addTarget(self, action: #selector(showShelfName), for: .touchUpInside)
             newProductPinButton.alpha = 1
             newProductPinButton.isHidden = false
-            newProductPinButton.tag = node.key
+            newProductPinButton.tag = infoPixel.key
             self.view.addSubview(newProductPinButton)
         }
         
@@ -137,19 +137,19 @@ class RoutingViewController: UIViewController, AddListToFavoritesViewControllerD
         case 1:
             showShelfNameOnScreen(for: "Snacks")
         case 2:
-            showShelfNameOnScreen(for: "Tiefkühlabteilung")
-        case 3:
-            showShelfNameOnScreen(for: "Fleischtheke")
-        case 4:
             showShelfNameOnScreen(for: "Haushaltsartikel")
+        case 3:
+            showShelfNameOnScreen(for: "Tiefkühlbereich")
+        case 4:
+            showShelfNameOnScreen(for: "Fleischtheke")
         case 5:
-            showShelfNameOnScreen(for: "Kasse")
+            showShelfNameOnScreen(for: "Back- und Teigwaren")
         case 6:
-            showShelfNameOnScreen(for: "Ost & Gemüse")
-        case 7:
             showShelfNameOnScreen(for: "Getränke")
+        case 7:
+            showShelfNameOnScreen(for: "Obst & Gemüse")
         case 8:
-            showShelfNameOnScreen(for: "Back & Teigwaren")
+            showShelfNameOnScreen(for: "Kasse")
 
         default:
             break
@@ -295,36 +295,10 @@ extension RoutingViewController {
         for column in 0..<Int(width) {
             for row in 0..<Int(height) {
                 
-                switch pixelBuffer[getCurrentPixelPosition(y: row, width: width, x: column)]{
-                
-                case .red:
+                if pixelBuffer[getCurrentPixelPosition(y: row, width: width, x: column)] == .red{
                     Market.allNodesInMarket.append(Node(name: nodesCounter, xPosition: column, yPosition: row))
                     pixelsOfAllNodes[nodesCounter] = CGPoint(x: column, y: row)
                     nodesCounter += 1
-                case RGBA32(red: 255, green: 222, blue: 144, alpha: 255):
-                    coordinatesOfInformationButton[1] = CGPoint(x: column, y: row)
-                
-                case RGBA32(red: 177, green: 222, blue: 234, alpha: 255):
-                    coordinatesOfInformationButton[2] = CGPoint(x: column, y: row)
-                case RGBA32(red: 0xf5, green: 0x69, blue: 0x70, alpha: 0xff):
-                    coordinatesOfInformationButton[3] = CGPoint(x: column, y: row)
-                
-                case RGBA32(red: 0xbc, green: 0xbf, blue: 0xc0, alpha: 0xff):
-                    coordinatesOfInformationButton[4] = CGPoint(x: column, y: row)
-                case RGBA32(red: 0x55, green: 0x55, blue: 0x50, alpha: 0xff):
-                    coordinatesOfInformationButton[5] = CGPoint(x: column, y: row)
-                    
-                case RGBA32(red: 0xb8, green: 0xcb, blue: 0x80, alpha: 0xff):
-                    coordinatesOfInformationButton[6] = CGPoint(x: column, y: row)
-                
-                case RGBA32(red: 0xa2, green: 0xe6, blue: 0xe0, alpha: 0xff):
-                    coordinatesOfInformationButton[7] = CGPoint(x: column, y: row)
-                    
-                case RGBA32(red: 0xeb, green: 0xce, blue: 0xc0, alpha: 0xff):
-                    coordinatesOfInformationButton[8] = CGPoint(x: column, y: row)
-                
-                default:
-                    break
                 }
             }
         }
