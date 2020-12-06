@@ -16,6 +16,8 @@ class RoutingViewController: UIViewController, AddListToFavoritesViewControllerD
     @IBOutlet weak var colorLegendButtonView: UIView!
     @IBOutlet weak var addToFavsButtonView: UIView!
     @IBOutlet weak var finishShoppingButtonView: UIView!
+    @IBOutlet weak var routeImageViewWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var routeImageViewHeightConstaint: NSLayoutConstraint!
     
     
     //InformationView Stuff
@@ -50,6 +52,10 @@ class RoutingViewController: UIViewController, AddListToFavoritesViewControllerD
     
     override func viewWillAppear(_ animated: Bool) {
         
+        routeImageViewWidthConstraint.constant = ((Market.bitMapMarketPlan2D?.size.width)!/3)
+        routeImageViewHeightConstaint.constant =
+            ((Market.bitMapMarketPlan2D?.size.height)!/3)
+        
         Shopping.checkedProducts.removeAll()
         
         addingViewController.addingDelegate = self
@@ -70,9 +76,10 @@ class RoutingViewController: UIViewController, AddListToFavoritesViewControllerD
             let startingPoint = CGPoint(x: routeImageView.center.x - routeImageView.frame.size.width/2, y: routeImageView.center.y - routeImageView.frame.size.height/2)
             let newProductPinButton = UIButton()
             newProductPinButton.frame = CGRect(origin: CGPoint(x: startingPoint.x + pixelsOfAllNodes[article.getNode()]!.x/3, y: startingPoint.y + pixelsOfAllNodes[article.getNode()]!.y/3), size: CGSize(width: 30, height: 30))
-            newProductPinButton.center = CGPoint(x: startingPoint.x + pixelsOfAllNodes[article.getNode()]!.x/3, y: startingPoint.y + pixelsOfAllNodes[article.getNode()]!.y/3 - newProductPinButton.frame.size.height/2)
+            newProductPinButton.center = CGPoint(x: startingPoint.x + pixelsOfAllNodes[article.getNode()]!.x/3, y: startingPoint.y + pixelsOfAllNodes[article.getNode()]!.y/3 - newProductPinButton.frame.size.height * 0.4)
             newProductPinButton.setImage(UIImage(named: "map marker orange"), for: .normal)
             newProductPinButton.imageView?.tintColor = .white
+            newProductPinButton.imageView?.contentMode = .scaleAspectFill
             newProductPinButton.addTarget(self, action: #selector(productMapButtonPressed), for: .touchUpInside)
             newProductPinButton.alpha = 1
             newProductPinButton.isHidden = false
