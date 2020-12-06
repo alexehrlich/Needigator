@@ -36,6 +36,7 @@ class RoutingViewController: UIViewController, AddListToFavoritesViewControllerD
     var pixelsOfAllNodes = [Int: CGPoint]()
     var nodesInRoute = [Int]()
     var pixelCoordinatesInRoute = [CGPoint]()
+    var listOfSortedArticleNodes = [Node]()
     
     
     
@@ -68,9 +69,9 @@ class RoutingViewController: UIViewController, AddListToFavoritesViewControllerD
         for (article, _) in Shopping.selectedProductsOfUser{
             let startingPoint = CGPoint(x: routeImageView.center.x - routeImageView.frame.size.width/2, y: routeImageView.center.y - routeImageView.frame.size.height/2)
             let newProductPinButton = UIButton()
-            newProductPinButton.frame = CGRect(origin: CGPoint(x: startingPoint.x + pixelsOfAllNodes[article.getNode()]!.x/3, y: startingPoint.y + pixelsOfAllNodes[article.getNode()]!.y/3), size: CGSize(width: 20, height: 20))
+            newProductPinButton.frame = CGRect(origin: CGPoint(x: startingPoint.x + pixelsOfAllNodes[article.getNode()]!.x/3, y: startingPoint.y + pixelsOfAllNodes[article.getNode()]!.y/3), size: CGSize(width: 30, height: 30))
             newProductPinButton.center = CGPoint(x: startingPoint.x + pixelsOfAllNodes[article.getNode()]!.x/3, y: startingPoint.y + pixelsOfAllNodes[article.getNode()]!.y/3 - newProductPinButton.frame.size.height/2)
-            newProductPinButton.setImage(UIImage(named: "product_map"), for: .normal)
+            newProductPinButton.setImage(UIImage(named: "map marker orange"), for: .normal)
             newProductPinButton.imageView?.tintColor = .white
             newProductPinButton.addTarget(self, action: #selector(productMapButtonPressed), for: .touchUpInside)
             newProductPinButton.alpha = 1
@@ -81,16 +82,16 @@ class RoutingViewController: UIViewController, AddListToFavoritesViewControllerD
         
         for infoPixel in Market.coordinatesOfInformationButton {
             let startingPoint = CGPoint(x: routeImageView.center.x - routeImageView.frame.size.width/2, y: routeImageView.center.y - routeImageView.frame.size.height/2)
-            let newProductPinButton = UIButton()
-            newProductPinButton.frame = CGRect(origin: CGPoint(x: startingPoint.x + infoPixel.value.0.x/3, y: startingPoint.y + infoPixel.value.0.y/3), size: CGSize(width: 15, height: 15))
-            newProductPinButton.center = CGPoint(x: startingPoint.x + infoPixel.value.0.x/3, y: startingPoint.y + infoPixel.value.0.y/3)
-            newProductPinButton.setImage(UIImage(systemName: "info.circle.fill"), for: .normal)
-            newProductPinButton.imageView?.tintColor = .white
-            newProductPinButton.addTarget(self, action: #selector(showShelfName), for: .touchUpInside)
-            newProductPinButton.alpha = 1
-            newProductPinButton.isHidden = false
-            newProductPinButton.tag = infoPixel.key
-            self.view.addSubview(newProductPinButton)
+            let newInformationPin = UIButton()
+            newInformationPin.frame = CGRect(origin: CGPoint(x: startingPoint.x + infoPixel.value.0.x/3, y: startingPoint.y + infoPixel.value.0.y/3), size: CGSize(width: 15, height: 15))
+            newInformationPin.center = CGPoint(x: startingPoint.x + infoPixel.value.0.x/3, y: startingPoint.y + infoPixel.value.0.y/3)
+            newInformationPin.setImage(UIImage(systemName: "info.circle.fill"), for: .normal)
+            newInformationPin.imageView?.tintColor = .white
+            newInformationPin.addTarget(self, action: #selector(showShelfName), for: .touchUpInside)
+            newInformationPin.alpha = 1
+            newInformationPin.isHidden = false
+            newInformationPin.tag = infoPixel.key
+            self.view.addSubview(newInformationPin)
         }
         
         
@@ -169,7 +170,7 @@ class RoutingViewController: UIViewController, AddListToFavoritesViewControllerD
         userPromptLabel.text = name
         self.view.addSubview(userPromptLabel)
         
-        UIView.animate(withDuration: 2) {
+        UIView.animate(withDuration: 3) {
             userPromptLabel.alpha = 0
         } completion: { (_) in
             userPromptLabel.removeFromSuperview()
@@ -219,6 +220,16 @@ class RoutingViewController: UIViewController, AddListToFavoritesViewControllerD
             UIView.animate(withDuration: 0.8, animations: {
                 self.addingViewController.view.frame.origin = CGPoint(x: 60, y: self.view.frame.height - keyBoardFrameHeight - self.addingViewController.view.frame.height - 15)
             })
+        }
+    }
+    
+    //Vorbereitung auf den Übergang zur ShoppingListVC
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "goToShoppingListVC"{
+            let destVC = segue.destination as! RouteVCShoppingListViewController
+            destVC.sortedNodeList = listOfSortedArticleNodes
         }
     }
     
@@ -549,7 +560,9 @@ extension RoutingViewController {
 
 //MARK: Message-Delegate from RouteCalculationManager
 extension RoutingViewController: RouteCalculationManagerDelegate{
-    func didFinishOptimizingRoute(result: Route) {
+    func didFinishOptimizingRoute(result: Route, sortedListOfProductNodes: [Node]) {
+
+        listOfSortedArticleNodes = sortedListOfProductNodes
         routeImageView.image = drawRouteIntoMarketPlan(route: result)
     }
 }

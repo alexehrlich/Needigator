@@ -23,7 +23,7 @@ TODO für EDEKA Oberboihingen:
 - DONE Gesamtkosten schmäler
 - DONE Roter Hintergrund für Angebotspreis
 - DONE Sigel Slogan auf Route VC
-- DONE Plus nachj rechts
+- DONE Plus nach rechts
 - DONE DARSTELLUNG VON PRODUKTEN IM TABLE VIEW PASST NCIHT!!! Weißwein wird erst angezeigt, wenn man danach sucht..
 - DONE Angebote im Card View werden nicht geneommen sonder der normale Preis
 - DONE Punkt statt Komma im Preis
@@ -31,12 +31,12 @@ TODO für EDEKA Oberboihingen:
 - DONE Abhaken der einzelnen Produkte implementieren
 - DONE Hilfe-Button: FAQ, kurzer Prosa, Websitelink
 - DONE Regale mit Buttons
-- Route VC erneuern
 - DONE Methode, um schneller zu werden
-- ACHTUNG nicht auf MASTER!!
+- DONE Einkaufsliste auf dem Route VC hinzufügen
 
 
-NEEDIGATOR Longtern TASKS:
+
+NEEDIGATOR Longterm TASKS:
 
 Backend-Technologien:
     - Datenbank implementieren (1-3 Monate)
@@ -50,14 +50,9 @@ Frontend:
     - Auto-Layout für alle zulässigen IPhones (1 Monat)
     - Layout Welcome Screen neu anordnen (zählt mit unter Auto Layout)
     - Produktkarten richtig designen (zählt mit unter Auto Layout)
-    
-    - Darstellung Angebote (3 Wochen)
     - Darstellung Navigation
-    
-    
     - View ist nciht richtig gelayoutet bei nach oben verschobener Zelle. Wenn dann der Knopf gedrückt wird, wird das Layout richtig gemacht...
-    
---> AdobeXD File mit allen Screens und allen Funktionen benötigt.
+
 
 Code:
     - Eventell UML ClassDiagramm für Dokumentation (Ich weiss was mein Code tut)

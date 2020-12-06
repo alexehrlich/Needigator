@@ -9,8 +9,8 @@
 import Foundation
 
 protocol RouteCalculationManagerDelegate {
-    func didFinishOptimizingRoute(result: Route)
-//    func receiveImagePixelData(points: [CGPoint])
+    func didFinishOptimizingRoute(result: Route, sortedListOfProductNodes: [Node])
+
 }
 
 
@@ -46,7 +46,10 @@ struct RouteCalculationManager {
         let finalAppendedRoute = createCompleteRoute(route: optimizedRoute)
         
         //Beauftragt den Delegate dieser Klasse das errechnete Zielbild zu laden.
-        delegate?.didFinishOptimizingRoute(result: finalAppendedRoute)
+        var preparedList = optimizedRoute.getListOfNodesInRoute()
+        preparedList.removeLast()
+        preparedList.removeFirst()
+        delegate?.didFinishOptimizingRoute(result: finalAppendedRoute, sortedListOfProductNodes: preparedList)
         
         //Sendet die Pixel in der Route an den Routing VC, damit die Route von den Einkaufswagen abgefahren werden kann.
         //delegate?.receiveImagePixelData(points: market.getDrawPixelCoordinates())
