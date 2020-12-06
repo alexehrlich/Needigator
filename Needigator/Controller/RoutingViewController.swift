@@ -130,9 +130,15 @@ class RoutingViewController: UIViewController, AddListToFavoritesViewControllerD
         
         
         //Set-up and layout of second Navigation Image
+        
+        firstNavigationImage.backgroundColor = #colorLiteral(red: 0.9767952561, green: 0.952170074, blue: 0.9178875685, alpha: 1)
+        firstNavigationImage.layer.cornerRadius = 5
+        
         secondNavigationImage = UIImage(systemName: "cart")!
         secondNavigationImageView = UIImageView(image: secondNavigationImage)
         secondNavigationImageView.tintColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
+        secondNavigationImageView.backgroundColor = #colorLiteral(red: 0.9767952561, green: 0.952170074, blue: 0.9178875685, alpha: 1)
+        secondNavigationImageView.layer.cornerRadius = 5
         secondNavigationImageView.contentMode = .scaleAspectFit
         secondNavigationImageView.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 20, height: 20))
         secondNavigationImageView.isHidden = true

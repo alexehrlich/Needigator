@@ -26,7 +26,6 @@ class RouteVCShoppingListViewController: UIViewController, UITableViewDelegate, 
                 }
             }
         }
-        shoppingListTableView.reloadData()
     }
     
     
