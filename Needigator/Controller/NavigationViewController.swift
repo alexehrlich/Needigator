@@ -66,6 +66,16 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let url = URL(string: "https://r0x77mivr9.execute-api.eu-central-1.amazonaws.com/prod/getdynamodata"){
+            do{
+                let downloadedString = try String(contentsOf: url)
+                print(downloadedString)
+            }catch{
+                print(error.localizedDescription)
+            }
+        }
+        
+      
         NotificationCenter.default.addObserver(self, selector: #selector(flipProductcardsIfNeeded), name: Messages.notificationNameForTappedProductCard, object: nil)
         
         //Tastatur soll verschwinden, wenn irgendwo getippt wird

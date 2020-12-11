@@ -65,6 +65,14 @@ class ShoppingListViewController: UIViewController, UITableViewDataSource, UITab
         cell.productAmountLabel.text = String(Shopping.favoriteShoppingLists[key]!.count)
         cell.listNameLabel.text = String(key)
         
+        //Datum schreiben:
+        let now = Date()
+        let formatter = DateFormatter ()
+        formatter.locale = Locale(identifier: "de_DE")
+        formatter.dateFormat = "d.MMMM.yyyy"
+        cell.dateOfShoppingLabel.text = formatter.string(from: now)
+        
+        
         cell.widthConstraintBackgroundView.constant = self.view.frame.size.width * 0.9
         
         cell.cellDelgate = self

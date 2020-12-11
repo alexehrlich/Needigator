@@ -90,10 +90,11 @@ class RoutingViewController: UIViewController, AddListToFavoritesViewControllerD
         for infoPixel in Market.coordinatesOfInformationButton {
             let startingPoint = CGPoint(x: routeImageView.center.x - routeImageView.frame.size.width/2, y: routeImageView.center.y - routeImageView.frame.size.height/2)
             let newInformationPin = UIButton()
-            newInformationPin.frame = CGRect(origin: CGPoint(x: startingPoint.x + infoPixel.value.0.x/3, y: startingPoint.y + infoPixel.value.0.y/3), size: CGSize(width: 15, height: 15))
+            newInformationPin.frame = CGRect(origin: CGPoint(x: startingPoint.x + infoPixel.value.0.x/3, y: startingPoint.y + infoPixel.value.0.y/3), size: CGSize(width: 30, height: 30))
             newInformationPin.center = CGPoint(x: startingPoint.x + infoPixel.value.0.x/3, y: startingPoint.y + infoPixel.value.0.y/3)
             newInformationPin.setImage(UIImage(systemName: "info.circle.fill"), for: .normal)
-            newInformationPin.imageView?.tintColor = .white
+            newInformationPin.imageView?.contentMode = .center
+            newInformationPin.imageView?.tintColor = #colorLiteral(red: 0.9901291728, green: 0.9763407111, blue: 0.9588440061, alpha: 1)
             newInformationPin.addTarget(self, action: #selector(showShelfName), for: .touchUpInside)
             newInformationPin.alpha = 1
             newInformationPin.isHidden = false

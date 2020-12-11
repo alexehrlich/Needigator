@@ -17,6 +17,8 @@ class ShoppingListTableViewCell: UITableViewCell {
     @IBOutlet weak var cellBackground: UIView!
     @IBOutlet weak var listNameLabel: UILabel!
     @IBOutlet weak var productAmountLabel: UILabel!
+    @IBOutlet weak var dateOfShoppingLabel: UILabel!
+    
     @IBOutlet weak var widthConstraintBackgroundView: NSLayoutConstraint!
     
     var cellDelgate: ShoppingListTableViewCellDelegate!
