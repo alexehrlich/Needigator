@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="K2u-on-cLe">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="K2u-on-cLe">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -70,7 +70,7 @@
                                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="chz-e3-CaO">
                                                                         <rect key="frame" x="0.0" y="0.0" width="334" height="56"/>
                                                                         <subviews>
-                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="suchen_in_liste" translatesAutoresizingMaskIntoConstraints="NO" id="Yse-lV-4vT">
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-suche-512" translatesAutoresizingMaskIntoConstraints="NO" id="Yse-lV-4vT">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="40" height="56"/>
                                                                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                                 <constraints>
@@ -116,7 +116,7 @@
                                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="KWU-CY-iKi">
                                                                         <rect key="frame" x="0.0" y="154" width="334" height="56"/>
                                                                         <subviews>
-                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="route:map_marker" translatesAutoresizingMaskIntoConstraints="NO" id="UDv-k6-IRJ">
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-navigation-97" translatesAutoresizingMaskIntoConstraints="NO" id="UDv-k6-IRJ">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="40" height="56"/>
                                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <constraints>
@@ -583,7 +583,7 @@
                                             <action selector="searchButtonPressed:" destination="inq-er-r7l" eventType="touchUpInside" id="ISj-EI-dLv"/>
                                         </connections>
                                     </button>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="navigation arrow" translatesAutoresizingMaskIntoConstraints="NO" id="NRS-WB-Loa">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-navigation-96-2" translatesAutoresizingMaskIntoConstraints="NO" id="NRS-WB-Loa">
                                         <rect key="frame" x="0.0" y="0.0" width="70" height="57"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
@@ -1038,11 +1038,11 @@
         <image name="hilfe" width="256" height="256"/>
         <image name="house" catalog="system" width="128" height="106"/>
         <image name="icons8-aufgabenliste-64" width="64" height="64"/>
+        <image name="icons8-navigation-96-2" width="96" height="96"/>
+        <image name="icons8-navigation-97" width="96" height="96"/>
+        <image name="icons8-suche-512" width="512" height="512"/>
         <image name="liste_neu" width="256" height="256"/>
         <image name="multiply.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="navigation arrow" width="512" height="512"/>
-        <image name="route:map_marker" width="50" height="50"/>
-        <image name="suchen_in_liste" width="50" height="50"/>
         <image name="trash.fill" catalog="system" width="121" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

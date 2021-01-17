@@ -12,7 +12,6 @@ struct ArticleDataBase {
   
     //Hart-coded Produktdatenbank aus Testzwecke. Das soll durch eine Cloud-DB ersetzt werden.
     var items : [Article] = [
-        Article(imageFileName: "Absolut Vodka_700 ml_78_12,99_NO_12,99.png"),
         Article(imageFileName: "Brantweinessig_1000 ml_72_1,19_YES_0,79.png"),
         Article(imageFileName: "Eier Freilandhaltung_6 Stk._38_1,59_NO_1,59.png"),
         Article(imageFileName: "Glühwein_700 ml_75_0,89_YES_0,55.png"),

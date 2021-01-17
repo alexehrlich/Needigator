@@ -69,7 +69,7 @@ class ShoppingListViewController: UIViewController, UITableViewDataSource, UITab
         let now = Date()
         let formatter = DateFormatter ()
         formatter.locale = Locale(identifier: "de_DE")
-        formatter.dateFormat = "d.MMMM.yyyy"
+        formatter.dateFormat = "d. MMMM yyyy"
         cell.dateOfShoppingLabel.text = formatter.string(from: now)
         
         
