@@ -42,7 +42,9 @@
 		1D8D6E3E24B5176C007E8059 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8D6E3D24B5176C007E8059 /* CardViewController.swift */; };
 		1D8D6E4024B5177A007E8059 /* CardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D8D6E3F24B5177A007E8059 /* CardViewController.xib */; };
 		1D8DAF2D242A994200B4DBA8 /* RoutingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D8DAF2C242A994200B4DBA8 /* RoutingViewController.swift */; };
-		1DC109CD24201339007AA117 /* ArticleDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC109CC24201339007AA117 /* ArticleDataBase.swift */; };
+		1DDCF28325BB645F00BDA6C2 /* DataBaseArticleQueryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDCF28225BB645F00BDA6C2 /* DataBaseArticleQueryManager.swift */; };
+		1DDCF28625BB701800BDA6C2 /* JsonArticles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDCF28525BB701800BDA6C2 /* JsonArticles.swift */; };
+		1DDCF29425BC04AE00BDA6C2 /* ArticleDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DDCF29325BC04AE00BDA6C2 /* ArticleDataBase.swift */; };
 		1DEB1E06256787A20014D6E3 /* RouteVCShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB1E05256787A20014D6E3 /* RouteVCShoppingListViewController.swift */; };
 		1DF4FC1F241F34BF0058FF02 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF4FC1E241F34BF0058FF02 /* WelcomeViewController.swift */; };
 		1DF4FC21241F36390058FF02 /* ShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF4FC20241F36390058FF02 /* ShoppingListViewController.swift */; };
@@ -87,7 +89,9 @@
 		1D8D6E3D24B5176C007E8059 /* CardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
 		1D8D6E3F24B5177A007E8059 /* CardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardViewController.xib; sourceTree = "<group>"; };
 		1D8DAF2C242A994200B4DBA8 /* RoutingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutingViewController.swift; sourceTree = "<group>"; };
-		1DC109CC24201339007AA117 /* ArticleDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDataBase.swift; sourceTree = "<group>"; };
+		1DDCF28225BB645F00BDA6C2 /* DataBaseArticleQueryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseArticleQueryManager.swift; sourceTree = "<group>"; };
+		1DDCF28525BB701800BDA6C2 /* JsonArticles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonArticles.swift; sourceTree = "<group>"; };
+		1DDCF29325BC04AE00BDA6C2 /* ArticleDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDataBase.swift; sourceTree = "<group>"; };
 		1DEB1E05256787A20014D6E3 /* RouteVCShoppingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RouteVCShoppingListViewController.swift; path = Needigator/Controller/RouteVCShoppingListViewController.swift; sourceTree = SOURCE_ROOT; };
 		1DF4FC1E241F34BF0058FF02 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		1DF4FC20241F36390058FF02 /* ShoppingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListViewController.swift; sourceTree = "<group>"; };
@@ -132,14 +136,16 @@
 			isa = PBXGroup;
 			children = (
 				1D2E5856241E329A002D341D /* Article.swift */,
-				1DC109CC24201339007AA117 /* ArticleDataBase.swift */,
 				1D7997262425EAEB007CE3A5 /* Node.swift */,
+				1DDCF28225BB645F00BDA6C2 /* DataBaseArticleQueryManager.swift */,
 				1D7997282425ED73007CE3A5 /* Route.swift */,
 				1D7DBD9824274D53009E9D4E /* RouteCalculationManager.swift */,
 				1D79972E2425FA22007CE3A5 /* RGB32.swift */,
 				1D2593C4243372C4008F5BAC /* Market.swift */,
 				1D2BBD982545BDFA00B49500 /* Shopping.swift */,
 				1D15711A254877AE00B0847E /* Messages.swift */,
+				1DDCF28525BB701800BDA6C2 /* JsonArticles.swift */,
+				1DDCF29325BC04AE00BDA6C2 /* ArticleDataBase.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -275,15 +281,17 @@
 				1D3DEFBB2539F15300D77B86 /* DetailedProductSelectionViewController.swift in Sources */,
 				1D7997292425ED73007CE3A5 /* Route.swift in Sources */,
 				1DF4FC1F241F34BF0058FF02 /* WelcomeViewController.swift in Sources */,
-				1DC109CD24201339007AA117 /* ArticleDataBase.swift in Sources */,
 				1DEB1E06256787A20014D6E3 /* RouteVCShoppingListViewController.swift in Sources */,
 				1D7FAB502420B8F5001A5215 /* SearchTableViewCell.swift in Sources */,
 				1D7DBD9924274D53009E9D4E /* RouteCalculationManager.swift in Sources */,
+				1DDCF28325BB645F00BDA6C2 /* DataBaseArticleQueryManager.swift in Sources */,
 				1D2D381A256C23CE0008AAFC /* AddListToFavoritesViewController.swift in Sources */,
+				1DDCF29425BC04AE00BDA6C2 /* ArticleDataBase.swift in Sources */,
 				1D2E583F241E31CE002D341D /* AppDelegate.swift in Sources */,
 				1D2E5841241E31CE002D341D /* SceneDelegate.swift in Sources */,
 				1D79972F2425FA22007CE3A5 /* RGB32.swift in Sources */,
 				1DF4FC21241F36390058FF02 /* ShoppingListViewController.swift in Sources */,
+				1DDCF28625BB701800BDA6C2 /* JsonArticles.swift in Sources */,
 				1D32C57925761361004754F7 /* ListedProductsInNodeTableViewCell.swift in Sources */,
 				1D8DAF2D242A994200B4DBA8 /* RoutingViewController.swift in Sources */,
 				1D856C9A25700B0D00A2510F /* ShoppingListTableViewCell.swift in Sources */,

@@ -9,7 +9,8 @@
 import UIKit
 
 
-class NavigationViewController: UIViewController, UITableViewDelegate{
+class NavigationViewController: UIViewController, UITableViewDelegate, DataBaseArticleQueryManagerDelegate{
+    
     
     //Verbindung zum Interface-Builder
     @IBOutlet weak var searchTextField: UITextField!
@@ -20,8 +21,8 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
     let userFeedBackVC = UserFeedBackWhileCalculationViewController(nibName: "UserFeedBackWhileCalculationViewController", bundle: nil)
     
     //"Datenbank" der hard-coded Artikel
-    let articleDataBase = ArticleDataBase()
-    lazy var listOfProducts = articleDataBase.items
+    lazy var listOfProducts = ArticleDataBase.items
+    var articleRequestManager = DataBaseArticleQueryManager()
     
     //Liste die mit den Artikeln gefüllt wird, die 3 im Textfeld eingegebenen Buchstaben enthalten
     var substringArticles = [Article]()
@@ -66,16 +67,10 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let url = URL(string: "https://r0x77mivr9.execute-api.eu-central-1.amazonaws.com/prod/getdynamodata"){
-            do{
-                let downloadedString = try String(contentsOf: url)
-                print(downloadedString)
-            }catch{
-                print(error.localizedDescription)
-            }
-        }
+        //Daten aus Amazon AWS laden
+        articleRequestManager.delegate = self
+        articleRequestManager.getProducts()
         
-      
         NotificationCenter.default.addObserver(self, selector: #selector(flipProductcardsIfNeeded), name: Messages.notificationNameForTappedProductCard, object: nil)
         
         //Tastatur soll verschwinden, wenn irgendwo getippt wird
@@ -116,20 +111,29 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
         articleTableView.reloadData()
     }
     
+    func didFinishWithDownloadFromDb() {
+        
+        DispatchQueue.main.async {
+            self.substringArticles = ArticleDataBase.items
+            self.articleTableView.reloadData()
+        }
+    }
+    
+
     @IBAction func choseAllProductsOrOffers(_ sender: UISegmentedControl) {
         
         flipProductcardsIfNeeded()
         
         if sender.selectedSegmentIndex == 0 {
             searchTextField.placeholder = "Durchsuche alle Produkte"
-            listOfProducts = articleDataBase.items
+            listOfProducts = ArticleDataBase.items
             substringArticles = listOfProducts
             articleTableView.reloadData()
         }else {
             searchTextField.placeholder = "Durchsuche alle Angebote"
             listOfProducts.removeAll()
             
-            for article in articleDataBase.items {
+            for article in ArticleDataBase.items {
                 if article.isOnOffer{
                     listOfProducts.append(article)
                 }

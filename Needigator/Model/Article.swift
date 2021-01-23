@@ -10,29 +10,34 @@ import UIKit
 
 struct Article: Hashable {
     
-    private var name: String
-    private var amount: String //kg, ml
-    private var node: Int
-    private var price: String
-    private var image: UIImage
+    var description: String = ""
+    var isVegan: Bool = false
     var isOnOffer: Bool
-    var offerPrice : String?
+    var image = UIImage(named: "no-image-available")
+    var shelfLevel: String = ""
+    var shelfArea: String = ""
+    var offerPrice : String? = nil
+    var productCategory: String = ""
+    var ean: String = ""
+    var name: String
+    var amount: String
+    var node: Int
+    var price: String
+    
+    init(name: String, price: String, amount: String, node: Int, isOnOffer: Bool, offerPrice: String?) {
+        self.name = name
+        self.price = price
+        self.amount = amount
+        self.node = node
+        self.isOnOffer = isOnOffer
+        self.offerPrice = offerPrice
+    }
+    
+  
 
     
     //Die Daten eines Artikels sind durch Unterstriche im Bildname enthalten. Hier wird der Bildname zerlegt und die Daten extrahiert.
-    init(imageFileName: String) {
-        
-        let shortenedString = imageFileName.replacingOccurrences(of: ".png", with: "")
-        let splittedString = shortenedString.split(separator: "_")
-        
-        name = String(splittedString[0])
-        amount = String(splittedString[1])
-        node = Int(String(splittedString[2])) ?? 74
-        price = String(splittedString[3]) + "€"
-        isOnOffer = splittedString[4] == "YES" ? true : false
-        offerPrice = String(splittedString[5]) + "€"
-        image = UIImage(named: imageFileName.replacingOccurrences(of: "_ _", with: "__"))!
-    }
+
     
 
     
@@ -50,7 +55,7 @@ struct Article: Hashable {
     }
     
     func getImage() -> UIImage {
-        return image
+        return image!
     }
     
     func getAmount() -> String {

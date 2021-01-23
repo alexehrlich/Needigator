@@ -20,6 +20,7 @@ class WelcomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         Shopping.selectedProductsOfUser.removeAll()
     
     title = "Needigator"
