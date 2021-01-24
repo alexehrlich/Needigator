@@ -64,21 +64,24 @@ class DetailedProductSelectionViewController: UIViewController {
     
     @IBAction func addButtonTapped(_ sender: UIButton) {
         
+        NotificationCenter.default.post(Notification(name: Messages.addProductToList, object: nil, userInfo: nil))
+        
         addProductFeedBackVC.view.frame = self.view.frame
         addProductFeedBackVC.view.alpha = 0
         self.addChild(addProductFeedBackVC)
         self.view.addSubview(addProductFeedBackVC.view)
         
-        UIView.animate(withDuration: 0.5) {
+        UIView.animate(withDuration: 0.2) {
             self.addProductFeedBackVC.view.alpha = 1
         }
         
-        let _ = Timer.scheduledTimer(withTimeInterval: 0.8, repeats: false) { (_) in
+        let _ = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (_) in
             self.userInteractionDelegate?.passUserSelection(amount: self.amountCnt, action: .addProduct, sender: self)
             
             self.addProductFeedBackVC.removeFromParent()
             self.addProductFeedBackVC.view.removeFromSuperview()
         }
+        
     }
     
     @IBAction func cancelButtonTapped(_ sender: UIButton) {

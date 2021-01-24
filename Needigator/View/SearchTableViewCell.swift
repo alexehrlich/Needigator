@@ -43,7 +43,7 @@ class SearchTableViewCell: UITableViewCell, UIScrollViewDelegate {
     
     let leftAlreadySelectedViewVC = AlreadySelectedViewController(nibName: "AlreadySelectedViewController", bundle: nil)
     let rightAlreadySelectedViewVC = AlreadySelectedViewController(nibName: "AlreadySelectedViewController", bundle: nil)
-
+    
     
     
     @IBOutlet weak var tableCellView: UIView!
@@ -60,7 +60,7 @@ class SearchTableViewCell: UITableViewCell, UIScrollViewDelegate {
     @IBOutlet weak var leftDataBackgroundView: UIView!
     @IBOutlet weak var leftOfferView: UIView!
     @IBOutlet weak var leftOfferPriceLabel: UILabel!
-   
+    
     @IBOutlet weak var leftOfferPriceBackgroundView: UIView!
     @IBOutlet weak var leftProductCheckmark: UIImageView!
     
@@ -114,6 +114,7 @@ class SearchTableViewCell: UITableViewCell, UIScrollViewDelegate {
     
     @IBAction func leftCardTouched(_ sender: UIButton) {
         
+        
         NotificationCenter.default.post(Notification(name: Messages.notificationNameForTappedProductCard, object: nil, userInfo: nil))
         
         //Produkt noch nciht ausgewählt, also zeige die Rückseite zum Auswählen
@@ -145,6 +146,7 @@ class SearchTableViewCell: UITableViewCell, UIScrollViewDelegate {
     }
     
     @IBAction func rightCardTouched(_ sender: UIButton) {
+        
         
         
         NotificationCenter.default.post(Notification(name: Messages.notificationNameForTappedProductCard, object: nil, userInfo: nil))
@@ -231,9 +233,12 @@ extension SearchTableViewCell: DetailedProductSelectionViewControllerDelegate{
                 delegate!.getLeftProductCardArticle(article: leftCardArticle!, amount: amount)
                 leftCardIsFlipped = false
             }
+            
+            
             UIView.transition(with: sender.view.superview!, duration: 0.3, options: .transitionFlipFromRight, animations: nil, completion: nil)
             sender.view.removeFromSuperview()
             sender.removeFromParent()
+            
         }
     }
 }
@@ -243,7 +248,6 @@ extension SearchTableViewCell: AlreradySelectedViewControllerDelegate{
         
         //Okay pressed
         if selection == true {
-            print("OKAY")
             if rightCardIsFlipped{
                 rightCardIsFlipped = !rightCardIsFlipped
             }
@@ -262,6 +266,7 @@ extension SearchTableViewCell: AlreradySelectedViewControllerDelegate{
                 Shopping.selectedProductsOfUser.removeValue(forKey: leftCardArticle!)
                 leftCardIsFlipped = false
             }
+            
             UIView.transition(with: sender.view.superview!, duration: 0.3, options: .transitionFlipFromRight, animations: nil, completion: nil)
             sender.view.removeFromSuperview()
             sender.removeFromParent()

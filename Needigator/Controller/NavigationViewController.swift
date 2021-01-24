@@ -52,8 +52,6 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
     //Wenn der Bildschirm auftaucht wenn man wieder zu diesem zurückkehrt, dann soll alles gelöscht sein.
     override func viewWillAppear(_ animated: Bool){
         
-        navigationImageOutlet.image = UIImage(named: "navigator")
-        
         userFeedBackVC.view.removeFromSuperview()
         
         //Für Card View
@@ -73,6 +71,9 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
         NotificationCenter.default.addObserver(self, selector: #selector(flipProductcardsIfNeeded), name: Messages.notificationNameForTappedProductCard, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateTableFromModel), name: Messages.updatedSelectedProductDB, object: nil)
+        
+        //UI kurz sperren, wenn produkt hinzugefügt werden soll und karte sich dreht, damit beim tippen auf andere Karte die App nciht crasht!
+        NotificationCenter.default.addObserver(self, selector: #selector(stopUserIntercation), name: Messages.addProductToList, object: nil)
         
         //Tastatur soll verschwinden, wenn irgendwo getippt wird
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
@@ -113,8 +114,15 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
     }
     
     @objc func updateTableFromModel(){
-        let _ = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (_) in
+        let _ = Timer.scheduledTimer(withTimeInterval: 0.25, repeats: false) { (_) in
             self.articleTableView.reloadData()
+        }
+    }
+    
+    @objc func stopUserIntercation(){
+        self.view.isUserInteractionEnabled = false
+        let _ = Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { (_) in
+            self.view.isUserInteractionEnabled = true
         }
     }
     
@@ -160,7 +168,6 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
     
     @IBAction func searchButtonPressed(_ sender: UIButton) {
         
-        navigationImageOutlet.image = UIImage(named: "navigator-2")
         if Shopping.selectedProductsOfUser.isEmpty{
             let alertController = UIAlertController(title: "Deine Einkaufsliste ist leer!", message:
                                                         "Für die Routenberechnung muss sich mindestens 1 Artikel im Warenkorb befinden.", preferredStyle: .alert)
@@ -197,12 +204,13 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
                 }
             }
         }
+        
         return articleArray
     }
     
     @objc func flipProductcardsIfNeeded(){
         
-        print("Method Call")
+        self.view.endEditing(true)
         
         for cell in articleTableView.visibleCells {
             
