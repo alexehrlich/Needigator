@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import Network
 
-
-class NavigationViewController: UIViewController, UITableViewDelegate, DataBaseArticleQueryManagerDelegate{
+class NavigationViewController: UIViewController, UITableViewDelegate{
+    
     
     
     //Verbindung zum Interface-Builder
@@ -19,6 +20,10 @@ class NavigationViewController: UIViewController, UITableViewDelegate, DataBaseA
     @IBOutlet weak var searchFieldBackgroundView: UIView!
     
     let userFeedBackVC = UserFeedBackWhileCalculationViewController(nibName: "UserFeedBackWhileCalculationViewController", bundle: nil)
+    
+    //Check Internet-connection
+    let monitor = NWPathMonitor()
+    
     
     //"Datenbank" der hard-coded Artikel
     lazy var listOfProducts = ArticleDataBase.items
@@ -111,14 +116,9 @@ class NavigationViewController: UIViewController, UITableViewDelegate, DataBaseA
         articleTableView.reloadData()
     }
     
-    func didFinishWithDownloadFromDb() {
-        
-        DispatchQueue.main.async {
-            self.substringArticles = ArticleDataBase.items
-            self.articleTableView.reloadData()
-        }
-    }
     
+    
+ 
 
     @IBAction func choseAllProductsOrOffers(_ sender: UISegmentedControl) {
         
@@ -517,4 +517,30 @@ extension NavigationViewController {
     }
 }
 
+
+extension NavigationViewController: DataBaseArticleQueryManagerDelegate{
+    //RequestManager Methods
+    func didFinishWithDownloadFromDb() {
+        DispatchQueue.main.async {
+            self.substringArticles = ArticleDataBase.items
+            self.articleTableView.reloadData()
+        }
+    }
+    
+    func didFailWithErrorFromRequest() {
+         
+        DispatchQueue.main.async {
+            let alertController = UIAlertController(title: "Oops :(", message:
+                                                        "Überprüfe deine Internetverbindung und versuche es erneut.", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
+                self.navigationController?.popToRootViewController(animated: true)
+            }))
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
+    
+    func didFailWithJsonDecoding() {
+        print("OOPS, some JSON issue")
+    }
+}
 

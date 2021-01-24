@@ -10,9 +10,11 @@ import Foundation
 
 protocol DataBaseArticleQueryManagerDelegate{
     func didFinishWithDownloadFromDb()
+    func didFailWithErrorFromRequest()
+    func didFailWithJsonDecoding()
 }
 
-struct DataBaseArticleQueryManager {
+class DataBaseArticleQueryManager {
     
     //Networking
     
@@ -26,25 +28,34 @@ struct DataBaseArticleQueryManager {
     
     var delegate: DataBaseArticleQueryManagerDelegate!
     
+    
+    
     func getProducts(){
         performRequest(urlString: accessURL)
     }
     
     func performRequest(urlString: String){
         
+        
         //Create URL, creates an optional
         if let url = URL(string: urlString){
-            
+
             //Create URLSession
             let urlSession = URLSession(configuration: .default)
             
+            
             //Give the session a task
-            let task = urlSession.dataTask(with: url) { (data, respone, error) in
-                guard error == nil else { return }
+            let task = urlSession.dataTask(with: url) { [self] (data, respone, error) in
+                guard error == nil else {
+                    delegate.didFailWithErrorFromRequest()
+                    return
+                }
                 
                 if let safeData = data {
                     self.parseJSON(for: safeData)
                 }
+                
+                print("Download fertig:")
                 
                 //Finished Downloading
                 delegate.didFinishWithDownloadFromDb()
@@ -69,8 +80,7 @@ struct DataBaseArticleQueryManager {
                 
             }
         }catch{
-            print("ERROR:\n")
-            print(error)
+            delegate.didFailWithJsonDecoding()
         }
     }
 }
