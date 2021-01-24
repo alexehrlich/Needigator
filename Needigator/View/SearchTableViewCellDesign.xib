@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -106,9 +107,18 @@
                                             <action selector="leftCardTouched:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="gTv-Yc-xH5"/>
                                         </connections>
                                     </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="rYf-Ii-Ghk">
+                                        <rect key="frame" x="164" y="10.5" width="40" height="39"/>
+                                        <color key="tintColor" systemColor="systemGreenColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="NVH-2i-gaP"/>
+                                            <constraint firstAttribute="width" constant="40" id="aba-9r-FKs"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.98776668310000004" green="0.97674101589999995" blue="0.96077162029999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
+                                    <constraint firstItem="rYf-Ii-Ghk" firstAttribute="top" secondItem="yDc-I4-x7B" secondAttribute="top" constant="10" id="4hb-CA-3Yc"/>
                                     <constraint firstAttribute="trailing" secondItem="lGP-YB-cvM" secondAttribute="trailing" id="4vb-Xq-ry5"/>
                                     <constraint firstItem="lGP-YB-cvM" firstAttribute="leading" secondItem="yDc-I4-x7B" secondAttribute="leading" id="55c-Ki-TIu"/>
                                     <constraint firstAttribute="trailing" secondItem="KuK-T0-DO1" secondAttribute="trailing" constant="15" id="6lz-8P-ZXx"/>
@@ -121,6 +131,7 @@
                                     <constraint firstItem="lGP-YB-cvM" firstAttribute="top" secondItem="yDc-I4-x7B" secondAttribute="top" id="FRi-ya-bWA"/>
                                     <constraint firstItem="rN7-da-QVH" firstAttribute="top" secondItem="KuK-T0-DO1" secondAttribute="bottom" id="ITa-oX-Gs1"/>
                                     <constraint firstItem="iO8-7D-miG" firstAttribute="height" secondItem="qjG-wX-wHM" secondAttribute="height" multiplier="0.95" id="L5S-f5-iaK"/>
+                                    <constraint firstAttribute="trailing" secondItem="rYf-Ii-Ghk" secondAttribute="trailing" constant="10" id="Tfe-Sy-QJH"/>
                                     <constraint firstAttribute="trailing" secondItem="pVk-k3-GnI" secondAttribute="trailing" id="To5-ID-4GS"/>
                                     <constraint firstItem="x19-5U-i0V" firstAttribute="width" secondItem="yDc-I4-x7B" secondAttribute="width" multiplier="0.5" id="Vn6-7A-LD9"/>
                                     <constraint firstItem="pVk-k3-GnI" firstAttribute="leading" secondItem="yDc-I4-x7B" secondAttribute="leading" id="fFA-Xn-8ME"/>
@@ -221,11 +232,20 @@
                                             <action selector="rightCardTouched:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="tlX-7f-rty"/>
                                         </connections>
                                     </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="27T-Yw-5qG">
+                                        <rect key="frame" x="164" y="10.5" width="40" height="39"/>
+                                        <color key="tintColor" systemColor="systemGreenColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="RKk-Pd-rHO"/>
+                                            <constraint firstAttribute="width" constant="40" id="xRt-11-Kmf"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.98776668310000004" green="0.97674101589999995" blue="0.96077162029999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstItem="Rss-VA-f9Y" firstAttribute="leading" secondItem="zjf-dp-koO" secondAttribute="leading" constant="15" id="28y-QV-zI8"/>
                                     <constraint firstItem="YiO-qL-N48" firstAttribute="height" secondItem="Oe0-Tu-sQg" secondAttribute="height" multiplier="0.9" id="Bwa-3b-IVA"/>
+                                    <constraint firstItem="27T-Yw-5qG" firstAttribute="top" secondItem="zjf-dp-koO" secondAttribute="top" constant="10" id="EDf-Ca-YEw"/>
                                     <constraint firstItem="mlx-vi-e6b" firstAttribute="leading" secondItem="zjf-dp-koO" secondAttribute="leading" id="GUq-G5-zbm"/>
                                     <constraint firstAttribute="trailing" secondItem="YiO-qL-N48" secondAttribute="trailing" id="HCc-fs-KWS"/>
                                     <constraint firstItem="eOO-83-snZ" firstAttribute="top" secondItem="Rss-VA-f9Y" secondAttribute="bottom" id="Kd0-D4-L5L"/>
@@ -238,6 +258,7 @@
                                     <constraint firstItem="Edr-Yr-n9V" firstAttribute="centerY" secondItem="Oe0-Tu-sQg" secondAttribute="centerY" id="VpZ-7N-9N9"/>
                                     <constraint firstAttribute="bottom" secondItem="Wfq-7B-EVF" secondAttribute="bottom" id="W64-dm-BCj"/>
                                     <constraint firstItem="Wfq-7B-EVF" firstAttribute="leading" secondItem="zjf-dp-koO" secondAttribute="leading" id="XcQ-EW-6IW"/>
+                                    <constraint firstAttribute="trailing" secondItem="27T-Yw-5qG" secondAttribute="trailing" constant="10" id="bay-96-hsi"/>
                                     <constraint firstItem="Wfq-7B-EVF" firstAttribute="top" secondItem="9gi-ie-4kk" secondAttribute="bottom" id="hSK-Qb-Czh"/>
                                     <constraint firstItem="9gi-ie-4kk" firstAttribute="top" secondItem="zjf-dp-koO" secondAttribute="top" constant="5" id="jDq-bi-ZP8"/>
                                     <constraint firstAttribute="trailing" secondItem="Rss-VA-f9Y" secondAttribute="trailing" constant="15" id="jLQ-BB-JeB"/>
@@ -273,6 +294,7 @@
                 <outlet property="leftOfferView" destination="iO8-7D-miG" id="CmB-FH-9FR"/>
                 <outlet property="leftProductAmount" destination="rN7-da-QVH" id="625-7a-tsB"/>
                 <outlet property="leftProductCardView" destination="yDc-I4-x7B" id="bTx-91-b63"/>
+                <outlet property="leftProductCheckmark" destination="rYf-Ii-Ghk" id="5sr-c9-iav"/>
                 <outlet property="leftProductLabel" destination="KuK-T0-DO1" id="ew3-Yx-t4H"/>
                 <outlet property="leftProductPrice" destination="qjG-wX-wHM" id="LUk-p6-9sR"/>
                 <outlet property="rightCardButton" destination="mlx-vi-e6b" id="cvt-Oz-ebD"/>
@@ -283,6 +305,7 @@
                 <outlet property="rightOfferView" destination="YiO-qL-N48" id="tyS-1H-y8y"/>
                 <outlet property="rightProductAmount" destination="eOO-83-snZ" id="ib3-x5-kDd"/>
                 <outlet property="rightProductCardView" destination="zjf-dp-koO" id="OiA-EW-rVK"/>
+                <outlet property="rightProductCheckmark" destination="27T-Yw-5qG" id="5HF-ZP-mrq"/>
                 <outlet property="rightProductLabel" destination="Rss-VA-f9Y" id="tOC-Ih-b75"/>
                 <outlet property="rightProductPrice" destination="Oe0-Tu-sQg" id="jj1-Wa-vj7"/>
                 <outlet property="tableCellView" destination="H2p-sc-9uM" id="KXR-eM-fFN"/>
@@ -293,5 +316,9 @@
     <resources>
         <image name="Brantweinessig_1000 ml_72_1,19_YES_0,79" width="200" height="200"/>
         <image name="Meerschweinchenfutter_2 kg_33_12,99_NO_12,99" width="200" height="200"/>
+        <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

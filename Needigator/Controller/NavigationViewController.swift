@@ -16,6 +16,7 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
     @IBOutlet weak var articleTableView: UITableView!
     @IBOutlet weak var productTypeSegmentedControl: UISegmentedControl!
     @IBOutlet weak var searchFieldBackgroundView: UIView!
+    @IBOutlet weak var navigationImageOutlet: UIImageView!
     
     let userFeedBackVC = UserFeedBackWhileCalculationViewController(nibName: "UserFeedBackWhileCalculationViewController", bundle: nil)
     
@@ -51,6 +52,8 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
     //Wenn der Bildschirm auftaucht wenn man wieder zu diesem zurückkehrt, dann soll alles gelöscht sein.
     override func viewWillAppear(_ animated: Bool){
         
+        navigationImageOutlet.image = UIImage(named: "navigator")
+        
         userFeedBackVC.view.removeFromSuperview()
         
         //Für Card View
@@ -66,17 +69,10 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let url = URL(string: "https://r0x77mivr9.execute-api.eu-central-1.amazonaws.com/prod/getdynamodata"){
-            do{
-                let downloadedString = try String(contentsOf: url)
-                print(downloadedString)
-            }catch{
-                print(error.localizedDescription)
-            }
-        }
-        
       
         NotificationCenter.default.addObserver(self, selector: #selector(flipProductcardsIfNeeded), name: Messages.notificationNameForTappedProductCard, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateTableFromModel), name: Messages.updatedSelectedProductDB, object: nil)
         
         //Tastatur soll verschwinden, wenn irgendwo getippt wird
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
@@ -114,6 +110,12 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
         // Live auf Änderungen im TextField reagiern
         searchTextField.addTarget(self, action: #selector(NavigationViewController.textFieldDidChange), for: UIControl.Event.editingChanged)
         articleTableView.reloadData()
+    }
+    
+    @objc func updateTableFromModel(){
+        let _ = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (_) in
+            self.articleTableView.reloadData()
+        }
     }
     
     @IBAction func choseAllProductsOrOffers(_ sender: UISegmentedControl) {
@@ -157,20 +159,22 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
     }
     
     @IBAction func searchButtonPressed(_ sender: UIButton) {
+        
+        navigationImageOutlet.image = UIImage(named: "navigator-2")
         if Shopping.selectedProductsOfUser.isEmpty{
             let alertController = UIAlertController(title: "Deine Einkaufsliste ist leer!", message:
                                                         "Für die Routenberechnung muss sich mindestens 1 Artikel im Warenkorb befinden.", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "OK", style: .default))
             self.present(alertController, animated: true, completion: nil)
             
+            navigationImageOutlet.image = UIImage(named: "navigator")
+            
         }else{
             
             userFeedBackVC.view.frame = self.view.frame
             userFeedBackVC.view.alpha = 0
             self.view.addSubview(userFeedBackVC.view)
-            UIView.animate(withDuration: 0.5) {
-                self.userFeedBackVC.view.alpha = 1
-            }
+            self.userFeedBackVC.view.alpha = 1
             
             navigationController?.isNavigationBarHidden = true
             
@@ -198,6 +202,8 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
     
     @objc func flipProductcardsIfNeeded(){
         
+        print("Method Call")
+        
         for cell in articleTableView.visibleCells {
             
             let searchTableViewCell = cell as! SearchTableViewCell
@@ -206,8 +212,11 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
                 
                 searchTableViewCell.rightCardIsFlipped = false
                 
+                searchTableViewCell.rightAlreadySelectedViewVC.view.removeFromSuperview()
+                searchTableViewCell.rightAlreadySelectedViewVC.removeFromParent()
                 searchTableViewCell.rightDetailedProdSelectVC.removeFromParent()
                 searchTableViewCell.rightDetailedProdSelectVC.view.removeFromSuperview()
+
                 UIView.transition(with: searchTableViewCell.rightProductCardView, duration: 0.3, options: .transitionFlipFromRight, animations: nil, completion: nil)
             }
             
@@ -215,8 +224,12 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
                 
                 searchTableViewCell.leftCardIsFlipped = false
                 
+                searchTableViewCell.leftAlreadySelectedViewVC.view.removeFromSuperview()
+                searchTableViewCell.leftAlreadySelectedViewVC.removeFromParent()
                 searchTableViewCell.leftDetailedProdSelectVC.removeFromParent()
                 searchTableViewCell.leftDetailedProdSelectVC.view.removeFromSuperview()
+                
+                
                 UIView.transition(with: searchTableViewCell.leftProductCardView, duration: 0.3, options: .transitionFlipFromRight, animations: nil, completion: nil)
             }
             
@@ -244,7 +257,7 @@ extension NavigationViewController: UITableViewDataSource{
         
         cell.delegate = self
         
-        
+        //Heir wird nur reingegangen, wenn die Anzahl er Produkte gerade ist
         if substringArticles.count % 2 == 0{
             
             let leftArticle = substringArticles[indexPath.row * 2]
@@ -260,6 +273,13 @@ extension NavigationViewController: UITableViewDataSource{
             cell.onlyOneProductCard = false
             cell.leftCardIsFlipped = false
             
+            if Shopping.selectedProductsOfUser[leftArticle] != nil {
+                cell.leftProductCheckmark.alpha = 1
+            }else{
+                cell.leftProductCheckmark.alpha = 0
+            }
+            
+            
             if cell.leftCardArticle!.isOnOffer == true{
                 cell.leftOfferPriceLabel.text = cell.leftCardArticle?.getCurrentPrice()
                 cell.leftProductPrice.font = UIFont.systemFont(ofSize: 20.0)
@@ -270,8 +290,6 @@ extension NavigationViewController: UITableViewDataSource{
                 cell.leftOfferView.isHidden = true
             }
             
-            
-            
             cell.rightCellImage.image = rightArticle.getImage()
             cell.rightProductLabel.text = rightArticle.getName()
             cell.rightProductPrice.text = rightArticle.getOfficialPrice()
@@ -280,6 +298,13 @@ extension NavigationViewController: UITableViewDataSource{
             cell.rightCardArticle = rightArticle
             cell.onlyOneProductCard = false
             cell.rightCardIsFlipped = false
+            
+            if Shopping.selectedProductsOfUser[rightArticle] != nil {
+                cell.rightProductCheckmark.alpha = 1
+            }else{
+                cell.rightProductCheckmark.alpha = 0
+            }
+            
             
             if cell.rightCardArticle!.isOnOffer == true{
                 cell.rightOfferPriceLabel.text = cell.rightCardArticle?.getCurrentPrice()
@@ -290,9 +315,11 @@ extension NavigationViewController: UITableViewDataSource{
                 cell.rightProductPrice.font = font
                 cell.rightOfferView.isHidden = true
             }
+            
         }else {
             
             if indexPath.row < articleTableView.numberOfRows(inSection: 0) - 1{
+                
                 let leftArticle = substringArticles[indexPath.row * 2]
                 let rightArticle = substringArticles[indexPath.row * 2 + 1]
                 
@@ -306,6 +333,14 @@ extension NavigationViewController: UITableViewDataSource{
                 cell.onlyOneProductCard = false
                 cell.leftCardIsFlipped = false
                 
+                //Wenn das Produkt ausgewählt ist, soll es einen grünen haken bekommen
+                if Shopping.selectedProductsOfUser[leftArticle] != nil {
+                    cell.leftProductCheckmark.alpha = 1
+                }else{
+                    cell.leftProductCheckmark.alpha = 0
+                }
+                
+                
                 if cell.leftCardArticle!.isOnOffer == true{
                     cell.leftOfferPriceLabel.text = cell.leftCardArticle?.offerPrice
                     cell.leftProductPrice.font = UIFont.systemFont(ofSize: 20.0)
@@ -316,8 +351,13 @@ extension NavigationViewController: UITableViewDataSource{
                     cell.leftOfferView.isHidden = true
                 }
                 
+                if Shopping.selectedProductsOfUser[rightArticle] != nil {
+                    cell.rightProductCheckmark.alpha = 1
+                }else{
+                    cell.rightProductCheckmark.alpha = 0
+                }
                 
-                
+        
                 cell.rightCellImage.image = rightArticle.getImage()
                 cell.rightProductLabel.text = rightArticle.getName()
                 cell.rightProductPrice.text = rightArticle.getOfficialPrice()
@@ -349,6 +389,12 @@ extension NavigationViewController: UITableViewDataSource{
                     cell.onlyOneProductCard = true
                     cell.leftCardIsFlipped = false
                     
+                    if Shopping.selectedProductsOfUser[leftArticle] != nil {
+                        cell.leftProductCheckmark.alpha = 1
+                    }else{
+                        cell.leftProductCheckmark.alpha = 0
+                    }
+                    
                     if cell.leftCardArticle!.isOnOffer == true{
                         cell.leftOfferPriceLabel.text = cell.leftCardArticle?.getCurrentPrice()
                         cell.leftProductPrice.font = UIFont.systemFont(ofSize: 20.0)
@@ -364,6 +410,8 @@ extension NavigationViewController: UITableViewDataSource{
     
     self.addChild(cell.leftDetailedProdSelectVC)
     self.addChild(cell.rightDetailedProdSelectVC)
+    self.addChild(cell.rightAlreadySelectedViewVC)
+    self.addChild(cell.leftAlreadySelectedViewVC)
     cell.selectionStyle = .default
     return cell
 }
@@ -378,6 +426,9 @@ extension NavigationViewController: UIScrollViewDelegate {
     
     //Wenn in der Tabelle gescrollt wird, soll die Tastatur verschwinden
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        
+        flipProductcardsIfNeeded()
+        
         NotificationCenter.default.post(name: Messages.notificationNameForSearchTableVC, object: nil)
         self.view.endEditing(true)
     }

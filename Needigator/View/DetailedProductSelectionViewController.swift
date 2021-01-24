@@ -28,6 +28,8 @@ class DetailedProductSelectionViewController: UIViewController {
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var productLabel: UILabel!
     
+    let addProductFeedBackVC = ProductAddedFeedbackViewController()
+    
     var amountCnt = 1 {
         didSet{
             amountLabel.text = "\(amountCnt)"
@@ -61,7 +63,22 @@ class DetailedProductSelectionViewController: UIViewController {
     
     
     @IBAction func addButtonTapped(_ sender: UIButton) {
-        userInteractionDelegate?.passUserSelection(amount: amountCnt, action: .addProduct, sender: self)
+        
+        addProductFeedBackVC.view.frame = self.view.frame
+        addProductFeedBackVC.view.alpha = 0
+        self.addChild(addProductFeedBackVC)
+        self.view.addSubview(addProductFeedBackVC.view)
+        
+        UIView.animate(withDuration: 0.5) {
+            self.addProductFeedBackVC.view.alpha = 1
+        }
+        
+        let _ = Timer.scheduledTimer(withTimeInterval: 0.8, repeats: false) { (_) in
+            self.userInteractionDelegate?.passUserSelection(amount: self.amountCnt, action: .addProduct, sender: self)
+            
+            self.addProductFeedBackVC.removeFromParent()
+            self.addProductFeedBackVC.view.removeFromSuperview()
+        }
     }
     
     @IBAction func cancelButtonTapped(_ sender: UIButton) {

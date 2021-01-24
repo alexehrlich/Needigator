@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina3_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AlreadySelectedViewController" customModule="Needigator" customModuleProvider="target">
+            <connections>
+                <outlet property="backButtonOutlet" destination="NIs-iS-KJQ" id="pum-7o-yAn"/>
+                <outlet property="deleteButtonOutlet" destination="FjV-IA-pYJ" id="dDW-ee-RHg"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="k10-Gf-Lq5">
+                    <rect key="frame" x="10" y="20" width="300" height="440"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dieser Artikel befindet sich bereits auf deiner Liste!" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="aAd-ke-zaK">
+                            <rect key="frame" x="8" y="0.0" width="284.5" height="100"/>
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="100" id="vyX-Io-q4W"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="OpJ-tG-gst">
+                            <rect key="frame" x="10" y="116" width="280" height="324"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NIs-iS-KJQ">
+                                    <rect key="frame" x="0.0" y="0.0" width="280" height="156.5"/>
+                                    <color key="backgroundColor" systemColor="systemGrayColor"/>
+                                    <state key="normal">
+                                        <attributedString key="attributedTitle">
+                                            <fragment content="Zurück">
+                                                <attributes>
+                                                    <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <font key="NSFont" size="17" name="HelveticaNeue-Bold"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                    </state>
+                                    <connections>
+                                        <action selector="AcceptButtonPressed:" destination="-1" eventType="touchUpInside" id="ddm-RR-AWZ"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FjV-IA-pYJ">
+                                    <rect key="frame" x="0.0" y="167.5" width="280" height="156.5"/>
+                                    <color key="backgroundColor" red="0.96862745100000003" green="0.2157066822" blue="0.16861279800000001" alpha="0.66000000000000003" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                    <state key="normal" title="Löschen">
+                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="deleteProductButtonPressed:" destination="-1" eventType="touchUpInside" id="d7y-4p-Qrp"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="NIs-iS-KJQ" firstAttribute="leading" secondItem="OpJ-tG-gst" secondAttribute="leading" id="1d7-cN-Npz"/>
+                                <constraint firstAttribute="trailing" secondItem="FjV-IA-pYJ" secondAttribute="trailing" id="Y4U-cl-XRV"/>
+                                <constraint firstItem="FjV-IA-pYJ" firstAttribute="leading" secondItem="OpJ-tG-gst" secondAttribute="leading" id="gNh-r4-cGN"/>
+                                <constraint firstAttribute="trailing" secondItem="NIs-iS-KJQ" secondAttribute="trailing" id="pg4-6X-6mO"/>
+                            </constraints>
+                        </stackView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="OpJ-tG-gst" firstAttribute="leading" secondItem="k10-Gf-Lq5" secondAttribute="leading" constant="10" id="HE9-B0-Cva"/>
+                        <constraint firstAttribute="trailing" secondItem="OpJ-tG-gst" secondAttribute="trailing" constant="10" id="ep3-1c-l2e"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="k10-Gf-Lq5" secondAttribute="trailing" constant="10" id="9Ly-Vq-uoU"/>
+                <constraint firstItem="k10-Gf-Lq5" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="DdR-Qd-vom"/>
+                <constraint firstItem="k10-Gf-Lq5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="Vzx-z4-rT8"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="k10-Gf-Lq5" secondAttribute="bottom" constant="20" id="j4Q-v0-nlW"/>
+            </constraints>
+            <point key="canvasLocation" x="-258.75" y="-6.25"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

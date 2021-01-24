@@ -41,6 +41,11 @@ class SearchTableViewCell: UITableViewCell, UIScrollViewDelegate {
     let leftDetailedProdSelectVC = DetailedProductSelectionViewController(nibName: "DetailedProductSelectionViewController", bundle: nil)
     let rightDetailedProdSelectVC = DetailedProductSelectionViewController(nibName: "DetailedProductSelectionViewController", bundle: nil)
     
+    let leftAlreadySelectedViewVC = AlreadySelectedViewController(nibName: "AlreadySelectedViewController", bundle: nil)
+    let rightAlreadySelectedViewVC = AlreadySelectedViewController(nibName: "AlreadySelectedViewController", bundle: nil)
+
+    
+    
     @IBOutlet weak var tableCellView: UIView!
     @IBOutlet weak var horizontalCardStackView: UIStackView!
     @IBOutlet weak var leftProductCardView: UIView!
@@ -57,6 +62,7 @@ class SearchTableViewCell: UITableViewCell, UIScrollViewDelegate {
     @IBOutlet weak var leftOfferPriceLabel: UILabel!
    
     @IBOutlet weak var leftOfferPriceBackgroundView: UIView!
+    @IBOutlet weak var leftProductCheckmark: UIImageView!
     
     
     @IBOutlet weak var rightCellImage: UIImageView!
@@ -69,16 +75,22 @@ class SearchTableViewCell: UITableViewCell, UIScrollViewDelegate {
     @IBOutlet weak var rightOfferPriceLabel: UILabel!
     
     @IBOutlet weak var rightOfferPriceBackgroundView: UIView!
+    @IBOutlet weak var rightProductCheckmark: UIImageView!
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        leftProductCheckmark.alpha = 0
+        rightProductCheckmark.alpha = 0
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.scrollViewWillBeginDragging), name: Messages.notificationNameForSearchTableVC, object: nil)
         
         self.leftDetailedProdSelectVC.userInteractionDelegate = self
         self.rightDetailedProdSelectVC.userInteractionDelegate = self
+        
+        self.leftAlreadySelectedViewVC.delegate = self
+        self.rightAlreadySelectedViewVC.delegate = self
         
         leftProductCardView.layer.cornerRadius = 10
         leftProductCardView.layer.shadowColor = UIColor.lightGray.cgColor
@@ -104,45 +116,67 @@ class SearchTableViewCell: UITableViewCell, UIScrollViewDelegate {
         
         NotificationCenter.default.post(Notification(name: Messages.notificationNameForTappedProductCard, object: nil, userInfo: nil))
         
-        
-        
-        
-        leftCardIsFlipped = true
-        leftDetailedProdSelectVC.view.frame = leftProductCardView.frame
-        leftDetailedProdSelectVC.view.layer.cornerRadius = 10
-        leftDetailedProdSelectVC.view.frame.origin = leftCardButton.frame.origin
-        leftProductCardView.addSubview(leftDetailedProdSelectVC.view)
-        leftDetailedProdSelectVC.productLabel.text = leftProductLabel.text
-        
+        //Produkt noch nciht ausgewählt, also zeige die Rückseite zum Auswählen
         if Shopping.selectedProductsOfUser[leftCardArticle!] == nil {
-            leftDetailedProdSelectVC.amountCnt = 1
+            leftCardIsFlipped = true
+            leftDetailedProdSelectVC.view.frame = leftProductCardView.frame
+            leftDetailedProdSelectVC.view.layer.cornerRadius = 10
+            leftDetailedProdSelectVC.view.frame.origin = leftCardButton.frame.origin
+            leftProductCardView.addSubview(leftDetailedProdSelectVC.view)
+            leftDetailedProdSelectVC.productLabel.text = leftProductLabel.text
+            
+            if Shopping.selectedProductsOfUser[leftCardArticle!] == nil {
+                leftDetailedProdSelectVC.amountCnt = 1
+            }else{
+                leftDetailedProdSelectVC.amountCnt = Shopping.selectedProductsOfUser[leftCardArticle!]!
+            }
+            
+            UIView.transition(with: leftProductCardView, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
         }else{
-            leftDetailedProdSelectVC.amountCnt = Shopping.selectedProductsOfUser[leftCardArticle!]!
+            //Produkt schon ausgewählt, also anderen Screen anzeigen
+            leftCardIsFlipped = true
+            leftAlreadySelectedViewVC.view.frame = leftProductCardView.frame
+            leftAlreadySelectedViewVC.view.layer.cornerRadius = 10
+            leftAlreadySelectedViewVC.view.frame.origin = leftCardButton.frame.origin
+            leftProductCardView.addSubview(leftAlreadySelectedViewVC.view)
+            
+            UIView.transition(with: leftProductCardView, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
         }
-        
-        UIView.transition(with: leftProductCardView, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
     }
     
     @IBAction func rightCardTouched(_ sender: UIButton) {
         
+        
         NotificationCenter.default.post(Notification(name: Messages.notificationNameForTappedProductCard, object: nil, userInfo: nil))
         
-        rightCardIsFlipped = true
-        rightDetailedProdSelectVC.view.frame = rightProductCardView.frame
-        rightDetailedProdSelectVC.view.layer.cornerRadius = 10
-        rightDetailedProdSelectVC.view.frame.origin = rightCardButton.frame.origin
-        rightProductCardView.addSubview(rightDetailedProdSelectVC.view)
-        rightDetailedProdSelectVC.productLabel.text = rightProductLabel.text
-        
         if Shopping.selectedProductsOfUser[rightCardArticle!] == nil {
-            rightDetailedProdSelectVC.amountCnt = 1
-        }else{
-            rightDetailedProdSelectVC.amountCnt = Shopping.selectedProductsOfUser[rightCardArticle!]!
+            rightCardIsFlipped = true
+            rightDetailedProdSelectVC.view.frame = rightProductCardView.frame
+            rightDetailedProdSelectVC.view.layer.cornerRadius = 10
+            rightDetailedProdSelectVC.view.frame.origin = rightCardButton.frame.origin
+            rightProductCardView.addSubview(rightDetailedProdSelectVC.view)
+            rightDetailedProdSelectVC.productLabel.text = rightProductLabel.text
+            
+            if Shopping.selectedProductsOfUser[rightCardArticle!] == nil {
+                rightDetailedProdSelectVC.amountCnt = 1
+            }else{
+                rightDetailedProdSelectVC.amountCnt = Shopping.selectedProductsOfUser[rightCardArticle!]!
+            }
+            
+            UIView.transition(with: rightProductCardView, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+        }else {
+            //Produkt schon ausgewählt, also anderen Screen anzeigen
+            
+            rightCardIsFlipped = true
+            rightAlreadySelectedViewVC.view.frame = rightProductCardView.frame
+            rightAlreadySelectedViewVC.view.layer.cornerRadius = 10
+            rightAlreadySelectedViewVC.view.frame.origin = rightCardButton.frame.origin
+            rightProductCardView.addSubview(rightAlreadySelectedViewVC.view)
+            
+            UIView.transition(with: rightProductCardView, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
         }
         
-        UIView.transition(with: rightProductCardView, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
     }
-    
     
     
     func hideLastCard(){
@@ -152,10 +186,11 @@ class SearchTableViewCell: UITableViewCell, UIScrollViewDelegate {
     
     @objc func scrollViewWillBeginDragging() {
         
-        
         if leftCardIsFlipped {
             leftCardIsFlipped = false
             UIView.transition(with: leftProductCardView, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+            leftAlreadySelectedViewVC.view.removeFromSuperview()
+            leftAlreadySelectedViewVC.removeFromParent()
             leftDetailedProdSelectVC.removeFromParent()
             leftDetailedProdSelectVC.view.removeFromSuperview()
         }
@@ -163,6 +198,8 @@ class SearchTableViewCell: UITableViewCell, UIScrollViewDelegate {
         if rightCardIsFlipped {
             rightCardIsFlipped = false
             UIView.transition(with: rightProductCardView, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+            rightAlreadySelectedViewVC.view.removeFromSuperview()
+            rightAlreadySelectedViewVC.removeFromParent()
             rightDetailedProdSelectVC.removeFromParent()
             rightDetailedProdSelectVC.view.removeFromSuperview()
         }
@@ -200,6 +237,38 @@ extension SearchTableViewCell: DetailedProductSelectionViewControllerDelegate{
         }
     }
 }
+
+extension SearchTableViewCell: AlreradySelectedViewControllerDelegate{
+    func passUserSelectionFromAlreaySelectedVC(selection: Bool, sender: AlreadySelectedViewController) {
+        
+        //Okay pressed
+        if selection == true {
+            print("OKAY")
+            if rightCardIsFlipped{
+                rightCardIsFlipped = !rightCardIsFlipped
+            }
+            
+            if leftCardIsFlipped{
+                leftCardIsFlipped = !leftCardIsFlipped
+            }
+            UIView.transition(with: sender.view.superview!, duration: 0.3, options: .transitionFlipFromRight, animations: nil, completion: nil)
+            sender.view.removeFromSuperview()
+            sender.removeFromParent()
+        }else{
+            if rightCardIsFlipped{
+                Shopping.selectedProductsOfUser.removeValue(forKey: rightCardArticle!)
+                rightCardIsFlipped = false
+            }else if leftCardIsFlipped{
+                Shopping.selectedProductsOfUser.removeValue(forKey: leftCardArticle!)
+                leftCardIsFlipped = false
+            }
+            UIView.transition(with: sender.view.superview!, duration: 0.3, options: .transitionFlipFromRight, animations: nil, completion: nil)
+            sender.view.removeFromSuperview()
+            sender.removeFromParent()
+        }
+    }
+}
+
 
 
 

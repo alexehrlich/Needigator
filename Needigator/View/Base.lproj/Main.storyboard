@@ -101,7 +101,7 @@
                                                                                 </constraints>
                                                                             </imageView>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Füge Produkte zu deinem Einkauf hinzu." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aDd-eT-9VW">
-                                                                                <rect key="frame" x="80" y="2.5" width="254" height="51"/>
+                                                                                <rect key="frame" x="80" y="6" width="254" height="44.5"/>
                                                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
                                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <nil key="highlightedColor"/>
@@ -116,7 +116,7 @@
                                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="KWU-CY-iKi">
                                                                         <rect key="frame" x="0.0" y="154" width="334" height="56"/>
                                                                         <subviews>
-                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-navigation-97" translatesAutoresizingMaskIntoConstraints="NO" id="UDv-k6-IRJ">
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-navigation-96" translatesAutoresizingMaskIntoConstraints="NO" id="UDv-k6-IRJ">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="40" height="56"/>
                                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <constraints>
@@ -320,38 +320,17 @@
                                 <viewLayoutGuide key="contentLayoutGuide" id="nVS-pY-VHu"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="XVn-BR-Hlb"/>
                             </scrollView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uvZ-k0-TCc">
-                                <rect key="frame" x="40" y="406" width="334" height="1"/>
-                                <color key="backgroundColor" white="1" alpha="0.51131742294520544" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="pMc-bB-w8o"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xil-kk-V7U">
-                                <rect key="frame" x="40" y="490.5" width="334" height="1"/>
-                                <color key="backgroundColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="urb-xc-scO"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.9882352941176471" green="0.97647058823529409" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="uvZ-k0-TCc" firstAttribute="top" secondItem="p6b-Ty-wzW" secondAttribute="bottom" constant="10" id="4lZ-na-rKr"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NzL-FY-VCH" secondAttribute="trailing" constant="20" id="DQC-Yl-tG7"/>
                             <constraint firstItem="NzL-FY-VCH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="E4y-MA-hXH"/>
                             <constraint firstItem="Plq-BO-BwN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="70" id="GK9-ct-0Yo"/>
-                            <constraint firstItem="uvZ-k0-TCc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="N4N-F1-E0s"/>
                             <constraint firstItem="Plq-BO-BwN" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="TAi-8K-02V"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Xil-kk-V7U" secondAttribute="trailing" constant="20" id="dZX-3z-00Z"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="uvZ-k0-TCc" secondAttribute="trailing" constant="20" id="fM7-FM-wdV"/>
-                            <constraint firstItem="Xil-kk-V7U" firstAttribute="top" secondItem="uvZ-k0-TCc" secondAttribute="bottom" constant="83.5" id="i89-Us-hle"/>
-                            <constraint firstItem="Xil-kk-V7U" firstAttribute="top" secondItem="aDd-eT-9VW" secondAttribute="bottom" constant="20" id="lMw-l8-4u2"/>
                             <constraint firstItem="NzL-FY-VCH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="la4-3F-nWf"/>
                             <constraint firstItem="Plq-BO-BwN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="vOP-JC-T22"/>
                             <constraint firstAttribute="bottom" secondItem="Plq-BO-BwN" secondAttribute="bottom" id="wZv-zJ-77Y"/>
-                            <constraint firstItem="Xil-kk-V7U" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="wcA-wm-uah"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Needigator" largeTitleDisplayMode="always" id="2tZ-r9-xPR">
@@ -583,7 +562,7 @@
                                             <action selector="searchButtonPressed:" destination="inq-er-r7l" eventType="touchUpInside" id="ISj-EI-dLv"/>
                                         </connections>
                                     </button>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-navigation-96-2" translatesAutoresizingMaskIntoConstraints="NO" id="NRS-WB-Loa">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="navigator-2" translatesAutoresizingMaskIntoConstraints="NO" id="NRS-WB-Loa">
                                         <rect key="frame" x="0.0" y="0.0" width="70" height="57"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
@@ -657,6 +636,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="articleTableView" destination="Ptp-5x-Eiv" id="8dh-Zl-JLN"/>
+                        <outlet property="navigationImageOutlet" destination="NRS-WB-Loa" id="FdN-jo-xbX"/>
                         <outlet property="productTypeSegmentedControl" destination="5CV-rn-WVR" id="wi7-0Y-b1d"/>
                         <outlet property="searchFieldBackgroundView" destination="lN6-q3-BJi" id="b4n-ik-FFP"/>
                         <outlet property="searchTextField" destination="vWE-mT-Yae" id="ymk-8f-9o8"/>
@@ -1038,11 +1018,11 @@
         <image name="hilfe" width="256" height="256"/>
         <image name="house" catalog="system" width="128" height="106"/>
         <image name="icons8-aufgabenliste-64" width="64" height="64"/>
-        <image name="icons8-navigation-96-2" width="96" height="96"/>
-        <image name="icons8-navigation-97" width="96" height="96"/>
+        <image name="icons8-navigation-96" width="96" height="96"/>
         <image name="icons8-suche-512" width="512" height="512"/>
         <image name="liste_neu" width="256" height="256"/>
         <image name="multiply.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="navigator-2" width="256" height="256"/>
         <image name="trash.fill" catalog="system" width="121" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
