@@ -132,19 +132,33 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
         
         if sender.selectedSegmentIndex == 0 {
             searchTextField.placeholder = "Durchsuche alle Produkte"
+            
             listOfProducts = articleDataBase.items
-            substringArticles = listOfProducts
+            
+            if searchTextField.text == "" {
+                substringArticles = listOfProducts
+            }else{
+                substringArticles = checkSubstringInArticle(substring: searchTextField.text!)
+            }
             articleTableView.reloadData()
         }else {
+            
             searchTextField.placeholder = "Durchsuche alle Angebote"
             listOfProducts.removeAll()
-            
             for article in articleDataBase.items {
                 if article.isOnOffer{
                     listOfProducts.append(article)
                 }
             }
-            substringArticles = listOfProducts
+            
+            if searchTextField.text == "" {
+                substringArticles = listOfProducts
+            }else{
+                
+                substringArticles = checkSubstringInArticle(substring: searchTextField.text!)
+                print(substringArticles)
+            }
+            
             articleTableView.reloadData()
             
         }
