@@ -13,6 +13,9 @@
 		1D194D9525BD9EC1006A1CC1 /* ProductAddedFeedbackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D194D9325BD9EC1006A1CC1 /* ProductAddedFeedbackViewController.xib */; };
 		1D194D9F25BDC38E006A1CC1 /* AlreadySelectedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D194D9D25BDC38E006A1CC1 /* AlreadySelectedViewController.swift */; };
 		1D194DA025BDC38E006A1CC1 /* AlreadySelectedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D194D9E25BDC38E006A1CC1 /* AlreadySelectedViewController.xib */; };
+		1D1E621025BF339200AD0CE9 /* ProducNotAvailableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1E620E25BF339200AD0CE9 /* ProducNotAvailableViewController.swift */; };
+		1D1E621125BF339200AD0CE9 /* ProducNotAvailableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D1E620F25BF339200AD0CE9 /* ProducNotAvailableViewController.xib */; };
+		1D1E621425BF43FB00AD0CE9 /* ProductRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1E621325BF43FB00AD0CE9 /* ProductRequestViewController.swift */; };
 		1D2593C5243372C4008F5BAC /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2593C4243372C4008F5BAC /* Market.swift */; };
 		1D2593C924337DC5008F5BAC /* AllRoutes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1D2593C824337DC4008F5BAC /* AllRoutes.txt */; };
 		1D2B10E42537792600D9119C /* SelectedProductsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2B10E22537792600D9119C /* SelectedProductsTableViewCell.swift */; };
@@ -60,6 +63,9 @@
 		1D194D9325BD9EC1006A1CC1 /* ProductAddedFeedbackViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductAddedFeedbackViewController.xib; sourceTree = "<group>"; };
 		1D194D9D25BDC38E006A1CC1 /* AlreadySelectedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlreadySelectedViewController.swift; sourceTree = "<group>"; };
 		1D194D9E25BDC38E006A1CC1 /* AlreadySelectedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlreadySelectedViewController.xib; sourceTree = "<group>"; };
+		1D1E620E25BF339200AD0CE9 /* ProducNotAvailableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProducNotAvailableViewController.swift; sourceTree = "<group>"; };
+		1D1E620F25BF339200AD0CE9 /* ProducNotAvailableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProducNotAvailableViewController.xib; sourceTree = "<group>"; };
+		1D1E621325BF43FB00AD0CE9 /* ProductRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRequestViewController.swift; sourceTree = "<group>"; };
 		1D2593C4243372C4008F5BAC /* Market.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
 		1D2593C824337DC4008F5BAC /* AllRoutes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AllRoutes.txt; sourceTree = "<group>"; };
 		1D2B10E0253763FA00D9119C /* Needigator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Needigator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -180,6 +186,8 @@
 				1D194D9325BD9EC1006A1CC1 /* ProductAddedFeedbackViewController.xib */,
 				1D194D9D25BDC38E006A1CC1 /* AlreadySelectedViewController.swift */,
 				1D194D9E25BDC38E006A1CC1 /* AlreadySelectedViewController.xib */,
+				1D1E620E25BF339200AD0CE9 /* ProducNotAvailableViewController.swift */,
+				1D1E620F25BF339200AD0CE9 /* ProducNotAvailableViewController.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -193,6 +201,7 @@
 				1DF4FC22241F3A730058FF02 /* NavigationViewController.swift */,
 				1D8DAF2C242A994200B4DBA8 /* RoutingViewController.swift */,
 				1DEB1E05256787A20014D6E3 /* RouteVCShoppingListViewController.swift */,
+				1D1E621325BF43FB00AD0CE9 /* ProductRequestViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -269,6 +278,7 @@
 				1D2D381B256C23CE0008AAFC /* AddListToFavoritesViewController.xib in Resources */,
 				1D3DEFBC2539F15300D77B86 /* DetailedProductSelectionViewController.xib in Resources */,
 				1D2E5846241E31CE002D341D /* Main.storyboard in Resources */,
+				1D1E621125BF339200AD0CE9 /* ProducNotAvailableViewController.xib in Resources */,
 				1D2B10E52537792600D9119C /* SelectedProductsTableViewCell.xib in Resources */,
 				1D00D647242112D300DBBC41 /* BUGTRACKER_TODO.txt in Resources */,
 			);
@@ -289,12 +299,14 @@
 				1D3DEFBB2539F15300D77B86 /* DetailedProductSelectionViewController.swift in Sources */,
 				1D7997292425ED73007CE3A5 /* Route.swift in Sources */,
 				1DF4FC1F241F34BF0058FF02 /* WelcomeViewController.swift in Sources */,
+				1D1E621425BF43FB00AD0CE9 /* ProductRequestViewController.swift in Sources */,
 				1DC109CD24201339007AA117 /* ArticleDataBase.swift in Sources */,
 				1DEB1E06256787A20014D6E3 /* RouteVCShoppingListViewController.swift in Sources */,
 				1D7FAB502420B8F5001A5215 /* SearchTableViewCell.swift in Sources */,
 				1D7DBD9924274D53009E9D4E /* RouteCalculationManager.swift in Sources */,
 				1D194D9F25BDC38E006A1CC1 /* AlreadySelectedViewController.swift in Sources */,
 				1D2D381A256C23CE0008AAFC /* AddListToFavoritesViewController.swift in Sources */,
+				1D1E621025BF339200AD0CE9 /* ProducNotAvailableViewController.swift in Sources */,
 				1D2E583F241E31CE002D341D /* AppDelegate.swift in Sources */,
 				1D2E5841241E31CE002D341D /* SceneDelegate.swift in Sources */,
 				1D79972F2425FA22007CE3A5 /* RGB32.swift in Sources */,

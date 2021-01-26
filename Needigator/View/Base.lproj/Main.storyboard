@@ -528,10 +528,10 @@
             </objects>
             <point key="canvasLocation" x="269.56521739130437" y="871.875"/>
         </scene>
-        <!--Suche und Finde-->
+        <!--Produktanfrage-->
         <scene sceneID="eAJ-Hb-FAu">
             <objects>
-                <viewController id="inq-er-r7l" customClass="NavigationViewController" customModule="Needigator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Produktanfrage" id="inq-er-r7l" customClass="NavigationViewController" customModule="Needigator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dpk-Tg-mHl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -641,11 +641,85 @@
                         <outlet property="searchFieldBackgroundView" destination="lN6-q3-BJi" id="b4n-ik-FFP"/>
                         <outlet property="searchTextField" destination="vWE-mT-Yae" id="ymk-8f-9o8"/>
                         <segue destination="Sxt-0W-CJe" kind="show" identifier="goToRouteVC" id="fKM-qw-xYe"/>
+                        <segue destination="mIo-7O-bYr" kind="show" identifier="goToRequestVC" id="1yM-eF-FyC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bav-uo-xSn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1157.9710144927537" y="871.875"/>
+        </scene>
+        <!--Frage Dein Produkt an-->
+        <scene sceneID="WBm-Rc-RZv">
+            <objects>
+                <viewController title="Frage Dein Produkt an" id="mIo-7O-bYr" customClass="ProductRequestViewController" customModule="Needigator" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fzh-ti-mfd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ubg-cV-wyo">
+                                <rect key="frame" x="20" y="320" width="374" height="50"/>
+                                <color key="backgroundColor" red="0.99148923160000002" green="0.60612964629999999" blue="0.46263474230000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="hEG-pC-acz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                <state key="normal" title="Absenden">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendRequestButtonPressed:" destination="mIo-7O-bYr" eventType="touchUpInside" id="Tcd-M8-nnJ"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="1jw-ZU-c9X">
+                                <rect key="frame" x="20" y="150" width="374" height="150"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Produktmarke" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gLK-zb-M9k">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Produktbezeichnung" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uWE-7E-6T0">
+                                        <rect key="frame" x="0.0" y="55" width="374" height="40"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-Mail Adresse (optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mbj-MW-lt6">
+                                        <rect key="frame" x="0.0" y="110" width="374" height="40"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="xCc-cp-FzJ"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Gr3-Kk-UdH"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Gr3-Kk-UdH" firstAttribute="trailing" secondItem="1jw-ZU-c9X" secondAttribute="trailing" constant="20" id="0du-54-Coe"/>
+                            <constraint firstItem="ubg-cV-wyo" firstAttribute="centerX" secondItem="fzh-ti-mfd" secondAttribute="centerX" id="5R4-9d-wmi"/>
+                            <constraint firstItem="ubg-cV-wyo" firstAttribute="leading" secondItem="Gr3-Kk-UdH" secondAttribute="leading" constant="20" id="6qQ-Lz-Fwh"/>
+                            <constraint firstItem="Gr3-Kk-UdH" firstAttribute="trailing" secondItem="ubg-cV-wyo" secondAttribute="trailing" constant="20" id="6v1-L7-sFS"/>
+                            <constraint firstItem="1jw-ZU-c9X" firstAttribute="leading" secondItem="Gr3-Kk-UdH" secondAttribute="leading" constant="20" id="beH-cr-qot"/>
+                            <constraint firstItem="1jw-ZU-c9X" firstAttribute="top" secondItem="Gr3-Kk-UdH" secondAttribute="top" constant="10" id="ocN-rG-h0A"/>
+                            <constraint firstItem="ubg-cV-wyo" firstAttribute="top" secondItem="1jw-ZU-c9X" secondAttribute="bottom" constant="20" id="uW5-7k-Q1W"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Produktanfrage" id="tuA-ca-25X"/>
+                    <connections>
+                        <outlet property="productBrandTextField" destination="gLK-zb-M9k" id="2uO-Kj-4HR"/>
+                        <outlet property="productTypeTextField" destination="uWE-7E-6T0" id="gyJ-zh-l8c"/>
+                        <outlet property="sendButtonOutlet" destination="ubg-cV-wyo" id="Tdo-Es-ihU"/>
+                        <outlet property="userMailTestField" destination="Mbj-MW-lt6" id="kYQ-80-H7T"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CP8-qf-WG5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1158" y="1575"/>
         </scene>
         <!--Deine Route-->
         <scene sceneID="H6C-NX-bJX">

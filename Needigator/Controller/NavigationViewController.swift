@@ -19,13 +19,42 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
     @IBOutlet weak var navigationImageOutlet: UIImageView!
     
     let userFeedBackVC = UserFeedBackWhileCalculationViewController(nibName: "UserFeedBackWhileCalculationViewController", bundle: nil)
+    let popUpController = ProducNotAvailableViewController(nibName: "ProducNotAvailableViewController", bundle: nil)
+    
     
     //"Datenbank" der hard-coded Artikel
     let articleDataBase = ArticleDataBase()
     lazy var listOfProducts = articleDataBase.items
     
     //Liste die mit den Artikeln gefüllt wird, die 3 im Textfeld eingegebenen Buchstaben enthalten
-    var substringArticles = [Article]()
+    var substringArticles = [Article]() {
+        didSet{
+            if substringArticles.isEmpty{
+                
+                print("empty")
+                
+                let newView = popUpController.view!
+                
+                self.addChild(popUpController)
+                self.view.addSubview(newView)
+                
+                newView.translatesAutoresizingMaskIntoConstraints = false
+                
+                   let horizontalConstraint = NSLayoutConstraint(item: newView, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)
+                let verticalConstraint = NSLayoutConstraint(item: newView, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: productTypeSegmentedControl, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: 10)
+                let leadingConstraint = NSLayoutConstraint(item: newView, attribute: NSLayoutConstraint.Attribute.trailing, relatedBy: NSLayoutConstraint.Relation.equal, toItem: productTypeSegmentedControl, attribute: NSLayoutConstraint.Attribute.trailing, multiplier: 1, constant: 0)
+                
+                let trailingContraint = NSLayoutConstraint(item: newView, attribute: NSLayoutConstraint.Attribute.leading, relatedBy: NSLayoutConstraint.Relation.equal, toItem: productTypeSegmentedControl, attribute: NSLayoutConstraint.Attribute.leading, multiplier: 1, constant: 0)
+                
+                let heightConstraint = NSLayoutConstraint(item: newView, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 130)
+                   view.addConstraints([horizontalConstraint, verticalConstraint, leadingConstraint,trailingContraint, heightConstraint])
+            }else{
+                print("Not empty")
+                popUpController.removeFromParent()
+                popUpController.view.removeFromSuperview()
+            }
+        }
+    }
     
     //Globale Variablen um Card-View zu realisieren
     enum CardState {
@@ -53,6 +82,8 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
     override func viewWillAppear(_ animated: Bool){
         
         userFeedBackVC.view.removeFromSuperview()
+        
+        searchTextField.text = ""
         
         //Für Card View
         cardVisible = true
@@ -108,6 +139,9 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
         //Registrieren NIB file (XIB file)
         articleTableView.register(UINib(nibName: "SearchTableViewCellDesign", bundle: nil), forCellReuseIdentifier: "ReusableCell")
         
+        //Nachricht, wenn der User ein Produkt anfragen will
+        popUpController.delegate = self
+        
         // Live auf Änderungen im TextField reagiern
         searchTextField.addTarget(self, action: #selector(NavigationViewController.textFieldDidChange), for: UIControl.Event.editingChanged)
         articleTableView.reloadData()
@@ -143,6 +177,9 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
             articleTableView.reloadData()
         }else {
             
+            popUpController.removeFromParent()
+            popUpController.view.removeFromSuperview()
+            
             searchTextField.placeholder = "Durchsuche alle Angebote"
             listOfProducts.removeAll()
             for article in articleDataBase.items {
@@ -154,13 +191,10 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
             if searchTextField.text == "" {
                 substringArticles = listOfProducts
             }else{
-                
                 substringArticles = checkSubstringInArticle(substring: searchTextField.text!)
-                print(substringArticles)
             }
             
             articleTableView.reloadData()
-            
         }
     }
     
@@ -211,14 +245,11 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
         var articleArray = [Article]()
         
         //Es soll erst nach 3 Buchstaben geschaut werden, sonst zeigt er ja alles an.
-        if substring.count >= 3 {
             for article in listOfProducts {
                 if article.getName().lowercased().contains(substring.lowercased()){
                     articleArray.append(article)
                 }
             }
-        }
-        
         return articleArray
     }
     
@@ -583,6 +614,13 @@ extension NavigationViewController {
         for animator in runningAnimations {
             animator.continueAnimation(withTimingParameters: nil, durationFactor: 0)
         }
+    }
+}
+
+//User will produkt anfragen und muss zum neuen Screen
+extension NavigationViewController: ProducNotAvailableViewControllerDelegate{
+    func hasToPErformSegue() {
+        performSegue(withIdentifier: "goToRequestVC", sender: self)
     }
 }
 
