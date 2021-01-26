@@ -17,6 +17,8 @@ class ProductRequestViewController: UIViewController {
     
     @IBOutlet weak var sendButtonOutlet: UIButton!
     
+    let httpManager = HttpRequestManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,6 +39,10 @@ class ProductRequestViewController: UIViewController {
             self.present(alert, animated: true, completion: nil)
         }else {
             //Send Data to Data Base - fehlt noch
+            
+            let productString = "\(productBrandTextField.text!)\(productTypeTextField.text!)".replacingOccurrences(of: " ", with: "")
+            
+            httpManager.postProductRequest(for: productString)
             navigationController?.popViewController(animated: true)
         }
     }

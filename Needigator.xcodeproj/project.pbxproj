@@ -16,6 +16,7 @@
 		1D1E621025BF339200AD0CE9 /* ProducNotAvailableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1E620E25BF339200AD0CE9 /* ProducNotAvailableViewController.swift */; };
 		1D1E621125BF339200AD0CE9 /* ProducNotAvailableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D1E620F25BF339200AD0CE9 /* ProducNotAvailableViewController.xib */; };
 		1D1E621425BF43FB00AD0CE9 /* ProductRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1E621325BF43FB00AD0CE9 /* ProductRequestViewController.swift */; };
+		1D24354025C0A51900FDF2B9 /* HttpRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D24353F25C0A51900FDF2B9 /* HttpRequestManager.swift */; };
 		1D2593C5243372C4008F5BAC /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2593C4243372C4008F5BAC /* Market.swift */; };
 		1D2593C924337DC5008F5BAC /* AllRoutes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1D2593C824337DC4008F5BAC /* AllRoutes.txt */; };
 		1D2B10E42537792600D9119C /* SelectedProductsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2B10E22537792600D9119C /* SelectedProductsTableViewCell.swift */; };
@@ -66,6 +67,7 @@
 		1D1E620E25BF339200AD0CE9 /* ProducNotAvailableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProducNotAvailableViewController.swift; sourceTree = "<group>"; };
 		1D1E620F25BF339200AD0CE9 /* ProducNotAvailableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProducNotAvailableViewController.xib; sourceTree = "<group>"; };
 		1D1E621325BF43FB00AD0CE9 /* ProductRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRequestViewController.swift; sourceTree = "<group>"; };
+		1D24353F25C0A51900FDF2B9 /* HttpRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequestManager.swift; sourceTree = "<group>"; };
 		1D2593C4243372C4008F5BAC /* Market.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
 		1D2593C824337DC4008F5BAC /* AllRoutes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AllRoutes.txt; sourceTree = "<group>"; };
 		1D2B10E0253763FA00D9119C /* Needigator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Needigator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,6 +156,7 @@
 				1D2593C4243372C4008F5BAC /* Market.swift */,
 				1D2BBD982545BDFA00B49500 /* Shopping.swift */,
 				1D15711A254877AE00B0847E /* Messages.swift */,
+				1D24353F25C0A51900FDF2B9 /* HttpRequestManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 				1D7997272425EAEB007CE3A5 /* Node.swift in Sources */,
 				1D15711B254877AE00B0847E /* Messages.swift in Sources */,
 				1D2B10E42537792600D9119C /* SelectedProductsTableViewCell.swift in Sources */,
+				1D24354025C0A51900FDF2B9 /* HttpRequestManager.swift in Sources */,
 				1D194D9425BD9EC1006A1CC1 /* ProductAddedFeedbackViewController.swift in Sources */,
 				1D2593C5243372C4008F5BAC /* Market.swift in Sources */,
 			);
