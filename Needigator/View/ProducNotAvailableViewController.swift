@@ -9,12 +9,14 @@
 import UIKit
 
 protocol ProducNotAvailableViewControllerDelegate{
-    func hasToPErformSegue()
+    func hasToPerformSegue()
 }
 
 class ProducNotAvailableViewController: UIViewController {
 
-    @IBOutlet weak var UserPromptLabel: UILabel!
+    @IBOutlet weak var promptHeading: UILabel!
+    @IBOutlet weak var userPromptLabel: UILabel!
+    @IBOutlet weak var promptButton: UIButton!
     
     var delegate: ProducNotAvailableViewControllerDelegate?
     
@@ -26,6 +28,6 @@ class ProducNotAvailableViewController: UIViewController {
     
     
     @IBAction func goToEnterViewController(_ sender: UIButton) {
-        delegate?.hasToPErformSegue()
+        delegate?.hasToPerformSegue()
     }
 }

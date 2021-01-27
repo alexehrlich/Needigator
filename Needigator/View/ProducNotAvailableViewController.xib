@@ -11,7 +11,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProducNotAvailableViewController" customModule="Needigator" customModuleProvider="target">
             <connections>
-                <outlet property="UserPromptLabel" destination="0cY-pb-kD8" id="vzA-HP-1k1"/>
+                <outlet property="promptButton" destination="gc5-lm-eH8" id="B3V-I7-Zv8"/>
+                <outlet property="promptHeading" destination="wAR-Hb-xxj" id="4PJ-Ue-cKY"/>
+                <outlet property="userPromptLabel" destination="0cY-pb-kD8" id="vzA-HP-1k1"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

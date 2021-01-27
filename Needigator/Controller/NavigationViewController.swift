@@ -20,7 +20,7 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
     
     let userFeedBackVC = UserFeedBackWhileCalculationViewController(nibName: "UserFeedBackWhileCalculationViewController", bundle: nil)
     let popUpController = ProducNotAvailableViewController(nibName: "ProducNotAvailableViewController", bundle: nil)
-    
+    lazy var newView = popUpController.view!
     
     //"Datenbank" der hard-coded Artikel
     let articleDataBase = ArticleDataBase()
@@ -31,10 +31,7 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
         didSet{
             if substringArticles.isEmpty{
                 
-                let newView = popUpController.view!
-                
-                self.addChild(popUpController)
-                self.view.addSubview(newView)
+                showPopUpController()
                 
                 newView.translatesAutoresizingMaskIntoConstraints = false
                 
@@ -47,8 +44,7 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
                 let heightConstraint = NSLayoutConstraint(item: newView, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 130)
                    view.addConstraints([horizontalConstraint, verticalConstraint, leadingConstraint,trailingContraint, heightConstraint])
             }else{
-                popUpController.removeFromParent()
-                popUpController.view.removeFromSuperview()
+                hidePopUpController()
             }
         }
     }
@@ -62,7 +58,18 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
     var cardViewController = CardViewController(nibName:"CardViewController", bundle:nil)
     var visualEffectView:UIVisualEffectView!
     
-    let cardHeight:CGFloat = 600
+    lazy var cardHeight: CGFloat = self.view.frame.height * 0.65
+    var cardToShow: CGFloat {
+        if Shopping.selectedProductsOfUser.isEmpty {
+            
+            cardViewController.cardViewHeadingLabel.text = "Noch keine Produkte"
+            return 120
+        }else{
+            cardViewController.cardViewHeadingLabel.text = "Deine Produkte"
+            return cardHeight
+        }
+    }
+    
     let cardHandleAreaHeight:CGFloat = 80
     
     
@@ -77,6 +84,11 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
     
     //Wenn der Bildschirm auftaucht wenn man wieder zu diesem zurückkehrt, dann soll alles gelöscht sein.
     override func viewWillAppear(_ animated: Bool){
+        
+        self.addChild(popUpController)
+        self.view.addSubview(newView)
+        
+        self.view.endEditing(true)
         
         userFeedBackVC.view.removeFromSuperview()
         
@@ -157,13 +169,32 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
         }
     }
     
+    func hidePopUpController(){
+        
+        UIView.animate(withDuration: 0.2)  {
+            self.popUpController.view.alpha = 0
+        }
+    }
+    
+    func showPopUpController(){
+        
+        guard substringArticles.isEmpty else { return }
+        
+        UIView.animate(withDuration: 0.2)  {
+            self.popUpController.view.alpha = 1
+        }
+    }
+    
     @IBAction func choseAllProductsOrOffers(_ sender: UISegmentedControl) {
         
+        animateTransitionIfNeeded(state: .collapsed, duration: 0.3)
+       
         flipProductcardsIfNeeded()
         
         if sender.selectedSegmentIndex == 0 {
             searchTextField.placeholder = "Durchsuche alle Produkte"
-            
+                 
+
             listOfProducts = articleDataBase.items
             
             if searchTextField.text == "" {
@@ -171,11 +202,13 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
             }else{
                 substringArticles = checkSubstringInArticle(substring: searchTextField.text!)
             }
+            
+            popUpController.promptHeading.text = "Dein Produkt ist nicht dabei?"
+            popUpController.userPromptLabel.text = "Kein Problem! Tippe hier, um das Produkt in deinem Markt anzufragen."
+            popUpController.promptButton.isUserInteractionEnabled = true
+            
             articleTableView.reloadData()
         }else {
-            
-            popUpController.removeFromParent()
-            popUpController.view.removeFromSuperview()
             
             searchTextField.placeholder = "Durchsuche alle Angebote"
             listOfProducts.removeAll()
@@ -191,8 +224,14 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
                 substringArticles = checkSubstringInArticle(substring: searchTextField.text!)
             }
             
+            popUpController.promptHeading.text = "Schade..."
+            popUpController.userPromptLabel.text = "Das gesuchte Produkt ist derzeit nicht im Angebot."
+            popUpController.promptButton.isUserInteractionEnabled = false 
+            
             articleTableView.reloadData()
         }
+        
+        
     }
     
     
@@ -316,7 +355,7 @@ extension NavigationViewController: UITableViewDataSource{
             cell.leftCellImage.image = leftArticle.getImage()
             cell.leftProductLabel.text = leftArticle.getName()
             cell.leftProductPrice.text = leftArticle.getOfficialPrice()
-            cell.leftProductAmount.text = "Menge: \(String(describing: leftArticle.getAmount()))"
+            cell.leftProductAmount.text = "\(String(describing: leftArticle.getAmount()))"
             cell.leftCardProductNode = leftArticle.getNode()
             cell.leftCardArticle = leftArticle
             cell.onlyOneProductCard = false
@@ -342,7 +381,7 @@ extension NavigationViewController: UITableViewDataSource{
             cell.rightCellImage.image = rightArticle.getImage()
             cell.rightProductLabel.text = rightArticle.getName()
             cell.rightProductPrice.text = rightArticle.getOfficialPrice()
-            cell.rightProductAmount.text = "Menge: \(String(describing: rightArticle.getAmount()))"
+            cell.rightProductAmount.text = "\(String(describing: rightArticle.getAmount()))"
             cell.rightCardProductNode = rightArticle.getNode()
             cell.rightCardArticle = rightArticle
             cell.onlyOneProductCard = false
@@ -376,7 +415,7 @@ extension NavigationViewController: UITableViewDataSource{
                 cell.leftCellImage.image = leftArticle.getImage()
                 cell.leftProductLabel.text = leftArticle.getName()
                 cell.leftProductPrice.text = leftArticle.getOfficialPrice()
-                cell.leftProductAmount.text = "Menge: \(String(describing: leftArticle.getAmount()))"
+                cell.leftProductAmount.text = "\(String(describing: leftArticle.getAmount()))"
                 cell.leftCardProductNode = leftArticle.getNode()
                 cell.leftCardArticle = leftArticle
                 cell.onlyOneProductCard = false
@@ -410,7 +449,7 @@ extension NavigationViewController: UITableViewDataSource{
                 cell.rightCellImage.image = rightArticle.getImage()
                 cell.rightProductLabel.text = rightArticle.getName()
                 cell.rightProductPrice.text = rightArticle.getOfficialPrice()
-                cell.rightProductAmount.text = "Menge: \(String(describing: rightArticle.getAmount()))"
+                cell.rightProductAmount.text = "\(String(describing: rightArticle.getAmount()))"
                 cell.rightCardProductNode = rightArticle.getNode()
                 cell.rightCardArticle = rightArticle
                 cell.onlyOneProductCard = false
@@ -432,7 +471,7 @@ extension NavigationViewController: UITableViewDataSource{
                     cell.leftCellImage.image = leftArticle.getImage()
                     cell.leftProductLabel.text = leftArticle.getName()
                     cell.leftProductPrice.text = leftArticle.getOfficialPrice()
-                    cell.leftProductAmount.text = "Menge: \(String(describing: leftArticle.getAmount()))"
+                    cell.leftProductAmount.text = "\(String(describing: leftArticle.getAmount()))"
                     cell.leftCardProductNode = leftArticle.getNode()
                     cell.leftCardArticle = leftArticle
                     cell.onlyOneProductCard = true
@@ -541,14 +580,19 @@ extension NavigationViewController {
         //Ist die noch notwenidig?? Da Model driven
         cardViewController.selctedProductsTableView.reloadData()
         
+        
         flipProductcardsIfNeeded()
         
         switch recognizer.state {
         case .began:
+            
+            hidePopUpController()
+            
             startInteractiveTransition(state: nextState, duration: 0.9)
         case .changed:
             let translation = recognizer.translation(in: self.cardViewController.headBar)
-            var fractionComplete = translation.y / cardHeight
+            var fractionComplete = translation.y / cardToShow
+            
             fractionComplete = cardVisible ? fractionComplete : -fractionComplete
             
             if fractionComplete > 0 {
@@ -556,6 +600,10 @@ extension NavigationViewController {
             }
             updateInteractiveTransition(fractionCompleted: fractionComplete)
         case .ended:
+          
+            if self.cardVisible{
+               showPopUpController()
+            }
             continueInteractiveTransition()
         default:
             break
@@ -568,9 +616,12 @@ extension NavigationViewController {
             let frameAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 1) {
                 switch state {
                 case .expanded:
+                    self.hidePopUpController()
                     self.cardViewController.dragBarLabel.text = "Zum Schließen tippen oder nach unten ziehen."
-                    self.cardViewController.view.frame.origin.y = self.view.frame.height - self.cardHeight
+                    self.cardViewController.view.frame.origin.y = self.view.frame.height - self.cardToShow
                 case .collapsed:
+                    
+                    self.showPopUpController()
                     self.cardViewController.view.frame.origin.y = self.view.frame.height - self.cardHandleAreaHeight
                     self.cardViewController.dragBarLabel.text = "Für deine Einfkaufsliste tippen oder nach oben ziehen."
                 }
@@ -579,7 +630,7 @@ extension NavigationViewController {
             frameAnimator.addCompletion { _ in
                 
                 self.cardVisible = !self.cardVisible
-                
+
                 self.runningAnimations.removeAll()
             }
             
@@ -615,7 +666,7 @@ extension NavigationViewController {
 
 //User will produkt anfragen und muss zum neuen Screen
 extension NavigationViewController: ProducNotAvailableViewControllerDelegate{
-    func hasToPErformSegue() {
+    func hasToPerformSegue() {
         performSegue(withIdentifier: "goToRequestVC", sender: self)
     }
 }

@@ -16,6 +16,7 @@ class CardViewController: UIViewController{
     @IBOutlet weak var handleArea: UIView!
     @IBOutlet weak var dragBarLabel: UILabel!
     @IBOutlet weak var productCntLabel: UILabel!
+    @IBOutlet weak var cardViewHeadingLabel: UILabel!
     
     @IBOutlet weak var totalPriceLabel: UILabel!
     

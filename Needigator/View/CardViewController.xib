@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CardViewController" customModule="Needigator" customModuleProvider="target">
             <connections>
+                <outlet property="cardViewHeadingLabel" destination="JGP-7Y-852" id="FCt-fd-wzC"/>
                 <outlet property="dragBar" destination="zJO-XV-NL4" id="nTz-L9-emy"/>
                 <outlet property="dragBarLabel" destination="PDJ-re-Nj5" id="hvb-J6-B9s"/>
                 <outlet property="handleArea" destination="ckI-vR-0TA" id="sfe-fV-jdy"/>
@@ -42,9 +43,11 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Deine Produkte" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JGP-7Y-852">
-                                    <rect key="frame" x="8" y="73" width="175" height="47"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deine Produkte" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="JGP-7Y-852">
+                                    <rect key="frame" x="10" y="65" width="345" height="50"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="IrC-Hf-atI"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
                                     <color key="textColor" red="0.98776668310000004" green="0.97674101589999995" blue="0.96077162029999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <nil key="highlightedColor"/>
@@ -79,11 +82,15 @@
                                     </constraints>
                                 </view>
                             </subviews>
-                            <color key="backgroundColor" red="0.95294117647058818" green="0.62352941176470589" blue="0.49019607843137253" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.96078431372549022" green="0.59215686274509804" blue="0.44705882352941173" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>
                                 <constraint firstItem="PDJ-re-Nj5" firstAttribute="top" secondItem="ckI-vR-0TA" secondAttribute="top" constant="15" id="5vw-Ge-T5l"/>
+                                <constraint firstAttribute="trailing" secondItem="JGP-7Y-852" secondAttribute="trailing" constant="20" id="8BJ-dW-lvJ"/>
                                 <constraint firstItem="6bF-SY-ALA" firstAttribute="centerY" secondItem="PDJ-re-Nj5" secondAttribute="centerY" id="C2N-Xu-fZC"/>
+                                <constraint firstItem="JGP-7Y-852" firstAttribute="top" secondItem="PDJ-re-Nj5" secondAttribute="bottom" constant="10" id="F39-a2-ggO"/>
+                                <constraint firstItem="JGP-7Y-852" firstAttribute="leading" secondItem="ckI-vR-0TA" secondAttribute="leading" constant="10" id="FSs-8v-Sj9"/>
                                 <constraint firstItem="PDJ-re-Nj5" firstAttribute="leading" secondItem="ckI-vR-0TA" secondAttribute="leading" constant="10" id="UTx-XK-fBo"/>
+                                <constraint firstAttribute="height" constant="120" id="ev5-Hq-3UJ"/>
                                 <constraint firstAttribute="trailing" secondItem="6bF-SY-ALA" secondAttribute="trailing" constant="30" id="mf1-SZ-EVj"/>
                                 <constraint firstAttribute="trailing" secondItem="PDJ-re-Nj5" secondAttribute="trailing" constant="100" id="y4L-QH-dDw"/>
                             </constraints>

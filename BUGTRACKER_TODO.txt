@@ -33,7 +33,7 @@ TODO für EDEKA Oberboihingen:
 - DONE Regale mit Buttons
 - DONE Methode, um schneller zu werden
 - DONE Einkaufsliste auf dem Route VC hinzufügen
-
+-BUG: Umgedrehte Karte dann im textFeld was eingeben !!!
 
 
 NEEDIGATOR Longterm TASKS:
