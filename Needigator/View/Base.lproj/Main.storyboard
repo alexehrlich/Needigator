@@ -657,7 +657,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ubg-cV-wyo">
-                                <rect key="frame" x="20" y="320" width="374" height="50"/>
+                                <rect key="frame" x="20" y="315" width="374" height="50"/>
                                 <color key="backgroundColor" red="0.99148923160000002" green="0.60612964629999999" blue="0.46263474230000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="hEG-pC-acz"/>
@@ -671,31 +671,29 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="1jw-ZU-c9X">
-                                <rect key="frame" x="20" y="150" width="374" height="150"/>
+                                <rect key="frame" x="20" y="245" width="374" height="50"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Produktmarke" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gLK-zb-M9k">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Produktbezeichnung" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uWE-7E-6T0">
-                                        <rect key="frame" x="0.0" y="55" width="374" height="40"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-Mail Adresse (optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mbj-MW-lt6">
-                                        <rect key="frame" x="0.0" y="110" width="374" height="40"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="z.B. Gut&amp;Günstig Apfelschorle 500ml" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gLK-zb-M9k">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="xCc-cp-FzJ"/>
+                                    <constraint firstAttribute="height" constant="50" id="xCc-cp-FzJ"/>
                                 </constraints>
                             </stackView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Geb die nötigen Informationen wie Marke, Produktname und Menge an, damit Dein Mart das Produkt besorgen kann." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8we-T9-Ww0">
+                                <rect key="frame" x="20" y="145" width="374" height="100"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="HyD-z6-avl"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Gr3-Kk-UdH"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -704,22 +702,23 @@
                             <constraint firstItem="ubg-cV-wyo" firstAttribute="centerX" secondItem="fzh-ti-mfd" secondAttribute="centerX" id="5R4-9d-wmi"/>
                             <constraint firstItem="ubg-cV-wyo" firstAttribute="leading" secondItem="Gr3-Kk-UdH" secondAttribute="leading" constant="20" id="6qQ-Lz-Fwh"/>
                             <constraint firstItem="Gr3-Kk-UdH" firstAttribute="trailing" secondItem="ubg-cV-wyo" secondAttribute="trailing" constant="20" id="6v1-L7-sFS"/>
+                            <constraint firstItem="Gr3-Kk-UdH" firstAttribute="trailing" secondItem="8we-T9-Ww0" secondAttribute="trailing" constant="20" id="7ka-LS-tTY"/>
+                            <constraint firstItem="8we-T9-Ww0" firstAttribute="top" secondItem="Gr3-Kk-UdH" secondAttribute="top" constant="5" id="Osz-V5-xU3"/>
                             <constraint firstItem="1jw-ZU-c9X" firstAttribute="leading" secondItem="Gr3-Kk-UdH" secondAttribute="leading" constant="20" id="beH-cr-qot"/>
-                            <constraint firstItem="1jw-ZU-c9X" firstAttribute="top" secondItem="Gr3-Kk-UdH" secondAttribute="top" constant="10" id="ocN-rG-h0A"/>
+                            <constraint firstItem="8we-T9-Ww0" firstAttribute="leading" secondItem="Gr3-Kk-UdH" secondAttribute="leading" constant="20" id="qbO-Ef-aEH"/>
+                            <constraint firstItem="1jw-ZU-c9X" firstAttribute="top" secondItem="8we-T9-Ww0" secondAttribute="bottom" id="r8l-Ut-B6i"/>
                             <constraint firstItem="ubg-cV-wyo" firstAttribute="top" secondItem="1jw-ZU-c9X" secondAttribute="bottom" constant="20" id="uW5-7k-Q1W"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Produktanfrage" id="tuA-ca-25X"/>
                     <connections>
-                        <outlet property="productBrandTextField" destination="gLK-zb-M9k" id="2uO-Kj-4HR"/>
-                        <outlet property="productTypeTextField" destination="uWE-7E-6T0" id="gyJ-zh-l8c"/>
                         <outlet property="sendButtonOutlet" destination="ubg-cV-wyo" id="Tdo-Es-ihU"/>
-                        <outlet property="userMailTestField" destination="Mbj-MW-lt6" id="kYQ-80-H7T"/>
+                        <outlet property="userInputTextField" destination="gLK-zb-M9k" id="2uO-Kj-4HR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CP8-qf-WG5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1158" y="1575"/>
+            <point key="canvasLocation" x="1157.9710144927537" y="1575"/>
         </scene>
         <!--Deine Route-->
         <scene sceneID="H6C-NX-bJX">
@@ -1098,6 +1097,9 @@
         <image name="multiply.circle.fill" catalog="system" width="128" height="121"/>
         <image name="navigator-2" width="256" height="256"/>
         <image name="trash.fill" catalog="system" width="121" height="128"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

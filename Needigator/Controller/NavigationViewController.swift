@@ -31,8 +31,6 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
         didSet{
             if substringArticles.isEmpty{
                 
-                print("empty")
-                
                 let newView = popUpController.view!
                 
                 self.addChild(popUpController)
@@ -49,7 +47,6 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
                 let heightConstraint = NSLayoutConstraint(item: newView, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 130)
                    view.addConstraints([horizontalConstraint, verticalConstraint, leadingConstraint,trailingContraint, heightConstraint])
             }else{
-                print("Not empty")
                 popUpController.removeFromParent()
                 popUpController.view.removeFromSuperview()
             }
@@ -83,7 +80,7 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
         
         userFeedBackVC.view.removeFromSuperview()
         
-        searchTextField.text = ""
+        searchTextField.text = nil
         
         //Für Card View
         cardVisible = true
@@ -208,8 +205,7 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
             //Sucht in der Datenbank nach Artikeln mit den eingegeben Buchstaben
             substringArticles = checkSubstringInArticle(substring: searchTextField.text!)
         }
-        
-        print(substringArticles.count)
+    
         //Erhält eine Liste zurück und lädt die Tabelle neu
         articleTableView.reloadData()
     }

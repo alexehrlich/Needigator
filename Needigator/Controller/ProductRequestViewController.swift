@@ -10,17 +10,19 @@ import UIKit
 
 class ProductRequestViewController: UIViewController {
     
-    @IBOutlet weak var productBrandTextField: UITextField!
-    @IBOutlet weak var productTypeTextField: UITextField!
-    @IBOutlet weak var userMailTestField: UITextField!
+    @IBOutlet weak var userInputTextField: UITextField!
     
     
     @IBOutlet weak var sendButtonOutlet: UIButton!
     
-    let httpManager = HttpRequestManager()
+    var httpManager = HttpRequestManager()
+    
+    let activityView = UIActivityIndicatorView(style: .large)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        httpManager.delegate = self
         
         sendButtonOutlet.layer.cornerRadius = 10
         
@@ -28,11 +30,10 @@ class ProductRequestViewController: UIViewController {
     
     @IBAction func sendRequestButtonPressed(_ sender: UIButton) {
         
-      
+
+        if userInputTextField.text == ""{
         
-        if productTypeTextField.text == "" || productBrandTextField.text == ""{
-        
-        let alert = UIAlertController(title: "Moment", message: "Du musst Angaben zur Produktmarke und zur Produktbezeichnung machen, bevor du die Anfrage absenden kannst.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Moment", message: "Du musst etwas eingeben, damit du es absenden kannst.", preferredStyle: .alert)
             
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             
@@ -40,10 +41,41 @@ class ProductRequestViewController: UIViewController {
         }else {
             //Send Data to Data Base - fehlt noch
             
-            let productString = "\(productBrandTextField.text!)\(productTypeTextField.text!)".replacingOccurrences(of: " ", with: "")
+            activityView.center = self.view.center
+            activityView.startAnimating()
+            self.view.addSubview(activityView)
+            
+            
+            let productString = "\(userInputTextField.text!)".replacingOccurrences(of: " ", with: "")
             
             httpManager.postProductRequest(for: productString)
-            navigationController?.popViewController(animated: true)
+
+        }
+    }
+}
+
+extension ProductRequestViewController: HttpRequestManagerDelegate{
+    
+    func didFinishWithRequest(result: Bool) {
+      
+        DispatchQueue.main.async {
+            if result == false{
+                
+                self.activityView.stopAnimating()
+                
+                let alertController = UIAlertController(title: "Oops", message: "Etwas ist schief gegangen. Versuche es später erneut", preferredStyle: .alert)
+                
+                let alertAction = UIAlertAction(title: "Okay", style: .default) { (action) in
+                    self.navigationController?.popViewController(animated: true)
+                }
+                
+                alertController.addAction(alertAction)
+                
+                self.present(alertController, animated: true, completion: nil)
+            }else{
+                
+                self.navigationController?.popViewController(animated: true)
+            }
         }
     }
 }
