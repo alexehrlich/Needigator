@@ -49,6 +49,8 @@ class RoutingViewController: UIViewController, AddListToFavoritesViewControllerD
     var secondNavigationImageView = UIImageView()
     var firstNavigationImageHasCoveredHalfRoute = false
     
+    let blackTransparentView = UIView()
+    
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -208,16 +210,28 @@ class RoutingViewController: UIViewController, AddListToFavoritesViewControllerD
         addingViewController.view.frame = CGRect(x: 60, y: self.view.frame.height, width: self.view.frame.width * 0.7, height: self.view.frame.height * 0.4)
         addingViewController.view.layer.cornerRadius = 12
         
+        blackTransparentView.frame = self.view.frame
+        blackTransparentView.backgroundColor = .darkGray
+        blackTransparentView.alpha = 0
+        self.view.addSubview(blackTransparentView)
+        
+        
         self.view.addSubview(addingViewController.view)
         self.addChild(addingViewController)
         addingViewController.listNameEnterTextField.text = ""
         UIView.animate(withDuration: 0.8, animations: {
+            self.blackTransparentView.alpha = 0.7
             self.addingViewController.view.frame.origin = CGPoint(x: 60, y: 300)
         })
         
     }
     
     func userDidFinishAdding() {
+        UIView.animate(withDuration: 0.6) {
+            self.blackTransparentView.alpha = 0
+        } completion: { (_) in
+            self.blackTransparentView.removeFromSuperview()
+        }
         self.view.endEditing(true)
     }
     

@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol CardViewControllerDelegate {
+    func goToRouteVC()
+}
+
 class CardViewController: UIViewController{
     
     @IBOutlet weak var selctedProductsTableView: UITableView!
@@ -26,6 +30,8 @@ class CardViewController: UIViewController{
     var tapIsWithinTextField = false
     var amountOfArticle = 0
     
+    var delegate: CardViewControllerDelegate?
+    
     
     
     override func viewDidLoad() {
@@ -38,7 +44,7 @@ class CardViewController: UIViewController{
         
         dragBar.layer.shadowColor = UIColor.black.cgColor
         
-        totalPriceLabelView.layer.cornerRadius = totalPriceLabel.frame.size.height/2
+        totalPriceLabelView.layer.cornerRadius = 10
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateViewFromModel), name: Messages.updatedSelectedProductDB, object: nil)
         
@@ -55,6 +61,9 @@ class CardViewController: UIViewController{
         selctedProductsTableView.reloadData()
     }
     
+    @IBAction func goToRoutingVCButton(_ sender: UIButton) {
+        delegate?.goToRouteVC()
+    }
 }
 
 //TableView Set-Up

@@ -58,7 +58,7 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
     var cardViewController = CardViewController(nibName:"CardViewController", bundle:nil)
     var visualEffectView:UIVisualEffectView!
     
-    lazy var cardHeight: CGFloat = self.view.frame.height * 0.65
+    lazy var cardHeight: CGFloat = self.view.frame.height * 0.75
     var cardToShow: CGFloat {
         if Shopping.selectedProductsOfUser.isEmpty {
             
@@ -66,7 +66,7 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
             return 120
         }else{
             cardViewController.cardViewHeadingLabel.text = "Deine Produkte"
-            return cardHeight
+            return cardHeight - 10
         }
     }
     
@@ -84,6 +84,7 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
     
     //Wenn der Bildschirm auftaucht wenn man wieder zu diesem zurückkehrt, dann soll alles gelöscht sein.
     override func viewWillAppear(_ animated: Bool){
+
         
         self.addChild(popUpController)
         self.view.addSubview(newView)
@@ -107,7 +108,7 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-      
+       
         NotificationCenter.default.addObserver(self, selector: #selector(flipProductcardsIfNeeded), name: Messages.notificationNameForTappedProductCard, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateTableFromModel), name: Messages.updatedSelectedProductDB, object: nil)
@@ -152,8 +153,16 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
         popUpController.delegate = self
         
         // Live auf Änderungen im TextField reagiern
+        searchTextField.delegate = self
         searchTextField.addTarget(self, action: #selector(NavigationViewController.textFieldDidChange), for: UIControl.Event.editingChanged)
         articleTableView.reloadData()
+        
+        //CardViewController Delegate
+        cardViewController.delegate = self
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.view.endEditing(true)
     }
     
     @objc func updateTableFromModel(){
@@ -250,14 +259,15 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
     }
     
     @IBAction func searchButtonPressed(_ sender: UIButton) {
-        
+        transitToRoutingVC()
+    }
+    
+    func transitToRoutingVC(){
         if Shopping.selectedProductsOfUser.isEmpty{
             let alertController = UIAlertController(title: "Deine Einkaufsliste ist leer!", message:
                                                         "Für die Routenberechnung muss sich mindestens 1 Artikel im Warenkorb befinden.", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "OK", style: .default))
             self.present(alertController, animated: true, completion: nil)
-            
-            navigationImageOutlet.image = UIImage(named: "navigator")
             
         }else{
             
@@ -668,6 +678,20 @@ extension NavigationViewController {
 extension NavigationViewController: ProducNotAvailableViewControllerDelegate{
     func hasToPerformSegue() {
         performSegue(withIdentifier: "goToRequestVC", sender: self)
+    }
+}
+
+//TextField Delegatemethoden
+extension NavigationViewController: UITextFieldDelegate{
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        animateTransitionIfNeeded(state: .collapsed, duration: 0.5)
+    }
+}
+
+extension NavigationViewController: CardViewControllerDelegate{
+    func goToRouteVC() {
+        transitToRoutingVC()
     }
 }
 
