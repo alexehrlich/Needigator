@@ -20,7 +20,7 @@ struct RouteCalculationManager {
     
     //SIMULATED ANNEALING CONSTANTS
     private var sigma: Double = 10000
-    private let sigmaReduktion = 0.001
+    private let sigmaReduktion = 0.0001
     
     //Damit das Bild mit der Route an den RouteVC gesendet werden und dort angezeigt werden kann
     var delegate: RouteCalculationManagerDelegate?

@@ -25,5 +25,10 @@ struct ArticleDataBase {
         Article(imageFileName: "Weihenstephan Vollmilch_1 l_10_0,89_NO_0,89.png"),
         Article(imageFileName: "Weißwein_700 ml_75_5,99_NO_5,99.png"),
         Article(imageFileName: "Rosewein_700ml_75_6,99_YES_4,39.png"),
+        Article(imageFileName: "Allzweckreiniger_1 L_31_1,79_NO_1,79"),
+        Article(imageFileName: "Badeschwamm_2 Stk_33_0,89_NO_0,89"),
+        Article(imageFileName: "Destiliertes Wasser_3 L_28_2,89_YES_2,22"),
+        Article(imageFileName: "Vollwaschmittel_5 L_30_3,89_NO_3,89"),
+        Article(imageFileName: "Walnüsse_500 Gr_74_2,89_2,49_NO_2,49")
     ]
 }
