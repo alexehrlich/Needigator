@@ -54,7 +54,7 @@
 		1DEB1E06256787A20014D6E3 /* RouteVCShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DEB1E05256787A20014D6E3 /* RouteVCShoppingListViewController.swift */; };
 		1DF4FC1F241F34BF0058FF02 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF4FC1E241F34BF0058FF02 /* WelcomeViewController.swift */; };
 		1DF4FC21241F36390058FF02 /* ShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF4FC20241F36390058FF02 /* ShoppingListViewController.swift */; };
-		1DF4FC23241F3A730058FF02 /* transitToRoutingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF4FC22241F3A730058FF02 /* transitToRoutingVC.swift */; };
+		1DF4FC23241F3A730058FF02 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF4FC22241F3A730058FF02 /* NavigationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -107,7 +107,7 @@
 		1DEB1E05256787A20014D6E3 /* RouteVCShoppingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RouteVCShoppingListViewController.swift; path = Needigator/Controller/RouteVCShoppingListViewController.swift; sourceTree = SOURCE_ROOT; };
 		1DF4FC1E241F34BF0058FF02 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		1DF4FC20241F36390058FF02 /* ShoppingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListViewController.swift; sourceTree = "<group>"; };
-		1DF4FC22241F3A730058FF02 /* transitToRoutingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = transitToRoutingVC.swift; sourceTree = "<group>"; };
+		1DF4FC22241F3A730058FF02 /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,7 +201,7 @@
 				1DF4FC1E241F34BF0058FF02 /* WelcomeViewController.swift */,
 				1DF4FC20241F36390058FF02 /* ShoppingListViewController.swift */,
 				1D5BC693257022E0000F6695 /* FavoriteListsListingViewController.swift */,
-				1DF4FC22241F3A730058FF02 /* transitToRoutingVC.swift */,
+				1DF4FC22241F3A730058FF02 /* NavigationViewController.swift */,
 				1D8DAF2C242A994200B4DBA8 /* RoutingViewController.swift */,
 				1DEB1E05256787A20014D6E3 /* RouteVCShoppingListViewController.swift */,
 				1D1E621325BF43FB00AD0CE9 /* ProductRequestViewController.swift */,
@@ -294,7 +294,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1DF4FC23241F3A730058FF02 /* transitToRoutingVC.swift in Sources */,
+				1DF4FC23241F3A730058FF02 /* NavigationViewController.swift in Sources */,
 				1D2BBD992545BDFA00B49500 /* Shopping.swift in Sources */,
 				1D32C574257611E4004754F7 /* ListOfProductsInOneNodeViewController.swift in Sources */,
 				1D2E5857241E329A002D341D /* Article.swift in Sources */,

@@ -116,7 +116,7 @@
                                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="KWU-CY-iKi">
                                                                         <rect key="frame" x="0.0" y="154" width="334" height="56"/>
                                                                         <subviews>
-                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-navigation-96" translatesAutoresizingMaskIntoConstraints="NO" id="UDv-k6-IRJ">
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="navigator-4" translatesAutoresizingMaskIntoConstraints="NO" id="UDv-k6-IRJ">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="40" height="56"/>
                                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <constraints>
@@ -562,7 +562,7 @@
                                             <action selector="searchButtonPressed:" destination="inq-er-r7l" eventType="touchUpInside" id="ISj-EI-dLv"/>
                                         </connections>
                                     </button>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="navigator-3" translatesAutoresizingMaskIntoConstraints="NO" id="NRS-WB-Loa">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="navigator-4" translatesAutoresizingMaskIntoConstraints="NO" id="NRS-WB-Loa">
                                         <rect key="frame" x="0.0" y="0.0" width="70" height="57"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
@@ -1091,11 +1091,10 @@
         <image name="hilfe" width="256" height="256"/>
         <image name="house" catalog="system" width="128" height="106"/>
         <image name="icons8-aufgabenliste-64" width="64" height="64"/>
-        <image name="icons8-navigation-96" width="96" height="96"/>
         <image name="icons8-suche-512" width="512" height="512"/>
         <image name="liste_neu" width="256" height="256"/>
         <image name="multiply.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="navigator-3" width="256" height="256"/>
+        <image name="navigator-4" width="128" height="128"/>
         <image name="trash.fill" catalog="system" width="121" height="128"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
