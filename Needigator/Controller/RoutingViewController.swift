@@ -50,9 +50,20 @@ class RoutingViewController: UIViewController, AddListToFavoritesViewControllerD
     var firstNavigationImageHasCoveredHalfRoute = false
     
     let blackTransparentView = UIView()
+    let userFeedBackVC = UserFeedBackWhileCalculationViewController(nibName: "UserFeedBackWhileCalculationViewController", bundle: nil)
+
     
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        self.title = ""
+        
+        userFeedBackVC.view.frame = self.view.frame.self
+        self.addChild(userFeedBackVC)
+        self.view.addSubview(userFeedBackVC.view)
+        
+        userFeedBackVC.startAnimation()
+        
         
         routeImageViewWidthConstraint.constant = ((Market.bitMapMarketPlan2D?.size.width)!/3)
         routeImageViewHeightConstaint.constant =
@@ -64,46 +75,9 @@ class RoutingViewController: UIViewController, AddListToFavoritesViewControllerD
         
         navigationController?.isNavigationBarHidden = false
         
-        //Lade die Knoten vom MArktplan und die kürzesten Routen zwischen allen Knoten aus dem Textfile
-        loadNodesFromMarketPlan()
-        loadRoutesFromTextFile()
         
         //Setze den RoutingVC als Delegate der Berechung veranlasse die Berechnung der Route mit prepareRoute() -->Die Antwort der Berechnugn kommt in der Protokollmethode didFinishOptimizingRoute(result: Route)
         navigation.delegate = self
-        navigation.prepareRoute()
-        
-        
-        //Loop: Für jedes Produkt wird ein neuer Pin erstellt und an den Knoten platziert
-        for (article, _) in Shopping.selectedProductsOfUser{
-            let startingPoint = CGPoint(x: routeImageView.center.x - routeImageView.frame.size.width/2, y: routeImageView.center.y - routeImageView.frame.size.height/2)
-            let newProductPinButton = UIButton()
-            newProductPinButton.frame = CGRect(origin: CGPoint(x: startingPoint.x + pixelsOfAllNodes[article.getNode()]!.x/3, y: startingPoint.y + pixelsOfAllNodes[article.getNode()]!.y/3), size: CGSize(width: 30, height: 30))
-            newProductPinButton.center = CGPoint(x: startingPoint.x + pixelsOfAllNodes[article.getNode()]!.x/3, y: startingPoint.y + pixelsOfAllNodes[article.getNode()]!.y/3 - newProductPinButton.frame.size.height * 0.4)
-            newProductPinButton.setImage(UIImage(named: "map marker orange"), for: .normal)
-            newProductPinButton.imageView?.tintColor = .white
-            newProductPinButton.imageView?.contentMode = .scaleAspectFill
-            newProductPinButton.addTarget(self, action: #selector(productMapButtonPressed), for: .touchUpInside)
-            newProductPinButton.alpha = 1
-            newProductPinButton.isHidden = false
-            newProductPinButton.tag = article.getNode()
-            self.view.addSubview(newProductPinButton)
-        }
-        
-        for infoPixel in Market.coordinatesOfInformationButton {
-            let startingPoint = CGPoint(x: routeImageView.center.x - routeImageView.frame.size.width/2, y: routeImageView.center.y - routeImageView.frame.size.height/2)
-            let newInformationPin = UIButton()
-            newInformationPin.frame = CGRect(origin: CGPoint(x: startingPoint.x + infoPixel.value.0.x/3, y: startingPoint.y + infoPixel.value.0.y/3), size: CGSize(width: 30, height: 30))
-            newInformationPin.center = CGPoint(x: startingPoint.x + infoPixel.value.0.x/3, y: startingPoint.y + infoPixel.value.0.y/3)
-            newInformationPin.setImage(UIImage(systemName: "info.circle.fill"), for: .normal)
-            newInformationPin.imageView?.contentMode = .center
-            newInformationPin.imageView?.tintColor = #colorLiteral(red: 0.9901291728, green: 0.9763407111, blue: 0.9588440061, alpha: 1)
-            newInformationPin.addTarget(self, action: #selector(showShelfName), for: .touchUpInside)
-            newInformationPin.alpha = 1
-            newInformationPin.isHidden = false
-            newInformationPin.tag = infoPixel.key
-            self.view.addSubview(newInformationPin)
-        }
-        
         
         
         //Layout of firstNavigationImage
@@ -198,6 +172,12 @@ class RoutingViewController: UIViewController, AddListToFavoritesViewControllerD
     override func viewDidAppear(_ animated: Bool) {
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShowUp), name: UIResponder.keyboardWillShowNotification, object: nil)
+       
+        //Lade die Knoten vom MArktplan und die kürzesten Routen zwischen allen Knoten aus dem Textfile
+        loadNodesFromMarketPlan()
+        loadRoutesFromTextFile()
+        
+        navigation.prepareRoute()
         
         firstNavigationImage.isHidden = false
         moveFirstNavigationArrow()
@@ -589,9 +569,49 @@ extension RoutingViewController {
 //MARK: Message-Delegate from RouteCalculationManager
 extension RoutingViewController: RouteCalculationManagerDelegate{
     func didFinishOptimizingRoute(result: Route, sortedListOfProductNodes: [Node]) {
-
+        
         listOfSortedArticleNodes = sortedListOfProductNodes
         routeImageView.image = drawRouteIntoMarketPlan(route: result)
+        
+        //Loop: Für jedes Produkt wird ein neuer Pin erstellt und an den Knoten platziert
+        for (article, _) in Shopping.selectedProductsOfUser{
+            let startingPoint = CGPoint(x: routeImageView.center.x - routeImageView.frame.size.width/2, y: routeImageView.center.y - routeImageView.frame.size.height/2)
+            let newProductPinButton = UIButton()
+            newProductPinButton.frame = CGRect(origin: CGPoint(x: startingPoint.x + pixelsOfAllNodes[article.getNode()]!.x/3, y: startingPoint.y + pixelsOfAllNodes[article.getNode()]!.y/3), size: CGSize(width: 30, height: 30))
+            newProductPinButton.center = CGPoint(x: startingPoint.x + pixelsOfAllNodes[article.getNode()]!.x/3, y: startingPoint.y + pixelsOfAllNodes[article.getNode()]!.y/3 - newProductPinButton.frame.size.height * 0.4)
+            newProductPinButton.setImage(UIImage(named: "map marker orange"), for: .normal)
+            newProductPinButton.imageView?.tintColor = .white
+            newProductPinButton.imageView?.contentMode = .scaleAspectFill
+            newProductPinButton.addTarget(self, action: #selector(productMapButtonPressed), for: .touchUpInside)
+            newProductPinButton.alpha = 1
+            newProductPinButton.isHidden = false
+            newProductPinButton.tag = article.getNode()
+            self.view.addSubview(newProductPinButton)
+        }
+        
+        for infoPixel in Market.coordinatesOfInformationButton {
+            let startingPoint = CGPoint(x: routeImageView.center.x - routeImageView.frame.size.width/2, y: routeImageView.center.y - routeImageView.frame.size.height/2)
+            let newInformationPin = UIButton()
+            newInformationPin.frame = CGRect(origin: CGPoint(x: startingPoint.x + infoPixel.value.0.x/3, y: startingPoint.y + infoPixel.value.0.y/3), size: CGSize(width: 30, height: 30))
+            newInformationPin.center = CGPoint(x: startingPoint.x + infoPixel.value.0.x/3, y: startingPoint.y + infoPixel.value.0.y/3)
+            newInformationPin.setImage(UIImage(systemName: "info.circle.fill"), for: .normal)
+            newInformationPin.imageView?.contentMode = .center
+            newInformationPin.imageView?.tintColor = #colorLiteral(red: 0.9901291728, green: 0.9763407111, blue: 0.9588440061, alpha: 1)
+            newInformationPin.addTarget(self, action: #selector(showShelfName), for: .touchUpInside)
+            newInformationPin.alpha = 1
+            newInformationPin.isHidden = false
+            newInformationPin.tag = infoPixel.key
+            self.view.addSubview(newInformationPin)
+        }
+        
+//        self.view.bringSubviewToFront(userFeedBackVC.view)
+        
+        UIView.animate(withDuration: 0.3) {
+            self.userFeedBackVC.view.alpha = 0
+        }
+        
+        self.title = "Deine Route"
+        
     }
 }
 

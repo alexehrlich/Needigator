@@ -84,6 +84,8 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
     
     //Wenn der Bildschirm auftaucht wenn man wieder zu diesem zurückkehrt, dann soll alles gelöscht sein.
     override func viewWillAppear(_ animated: Bool){
+        
+        self.title = "Suche und Finde"
 
         
         self.addChild(popUpController)
@@ -274,12 +276,16 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
             userFeedBackVC.view.frame = self.view.frame
             userFeedBackVC.view.alpha = 0
             self.view.addSubview(userFeedBackVC.view)
-            self.userFeedBackVC.view.alpha = 1
             
-            navigationController?.isNavigationBarHidden = true
-            
-            let _ = Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { (_) in
-                self.performSegue(withIdentifier: "goToRouteVC", sender: self)
+            UIView.animate(withDuration: 0.3) {
+                self.title = ""
+                self.userFeedBackVC.view.alpha = 1
+            } completion: { (_) in
+                
+                let _ = Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { (_) in
+                    UIView.setAnimationsEnabled(false)
+                    self.performSegue(withIdentifier: "goToRouteVC", sender: self)
+                }
             }
         }
     }

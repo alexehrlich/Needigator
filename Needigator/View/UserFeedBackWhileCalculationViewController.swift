@@ -16,17 +16,14 @@ class UserFeedBackWhileCalculationViewController: UIViewController {
     var degreeBigGearImageView = 0
     var degreeSmallGearImageView = 0
 
-    
-    override func viewDidAppear(_ animated: Bool) {
-      
-        for n in 1...10{
-            UIView.animate(withDuration: 4, animations: {
-                self.bigGearImageView.transform = CGAffineTransform(rotationAngle: CGFloat(n * 1))
-                
-                self.smallGearImageView.transform = CGAffineTransform(rotationAngle: CGFloat(-1 * n))
-            })
-        
-        }
+    func startAnimation(){
+          for n in 1...10{
+              UIView.animate(withDuration: 4, animations: {
+                  self.bigGearImageView.transform = CGAffineTransform(rotationAngle: CGFloat(n * 1))
+                  
+                  self.smallGearImageView.transform = CGAffineTransform(rotationAngle: CGFloat(-1 * n))
+              })
+          
+          }
     }
-
 }
