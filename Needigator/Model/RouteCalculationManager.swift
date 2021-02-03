@@ -31,7 +31,7 @@ struct RouteCalculationManager {
         var nodesInRoute = [Node]()
         
         
-        for (article,_) in Shopping.selectedProductsOfUser {
+        for (article,_) in Shopping.shared.selectedProductsOfUser {
             nodesInRoute.append(Market.allNodesInMarket[article.getNode()])
         }
         

@@ -30,10 +30,10 @@ class SelectedProductsTableViewCell: UITableViewCell {
     
     @IBAction func decreaseButtonPressed(_ sender: UIButton) {
 
-        Shopping.updateSelectedItemsInModel(for: dataToDisplay!.0, with: dataToDisplay!.1, with: Shopping.Modification.decrease)
+        Shopping.shared.updateSelectedItemsInModel(for: dataToDisplay!.0, with: dataToDisplay!.1, with: Shopping.Modification.decrease)
     }
     
     @IBAction func increaseButtonPressed(_ sender: UIButton) {
-        Shopping.updateSelectedItemsInModel(for: dataToDisplay!.0, with: dataToDisplay!.1, with: Shopping.Modification.increase)
+        Shopping.shared.updateSelectedItemsInModel(for: dataToDisplay!.0, with: dataToDisplay!.1, with: Shopping.Modification.increase)
     }
 }

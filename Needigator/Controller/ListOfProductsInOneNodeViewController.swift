@@ -19,7 +19,7 @@ class ListOfProductsInOneNodeViewController: UIViewController{
     override func viewWillAppear(_ animated: Bool) {
         productsAtCurrentNode.removeAll()
         
-        for (article, amount) in Shopping.selectedProductsOfUser {
+        for (article, amount) in Shopping.shared.selectedProductsOfUser {
             if article.getNode() == nodeNumber {
                 productsAtCurrentNode.append((article, amount))
                 

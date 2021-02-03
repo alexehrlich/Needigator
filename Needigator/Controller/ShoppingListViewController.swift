@@ -36,7 +36,7 @@ class ShoppingListViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func showUserPromptIfNeeded(){
-        if Shopping.favoriteShoppingLists.isEmpty{
+        if Shopping.shared.favoriteShoppingLists.isEmpty{
             
             let userPromptLabel = UILabel(frame: CGRect(origin: self.view.frame.origin, size: self.view.frame.size))
             
@@ -53,16 +53,16 @@ class ShoppingListViewController: UIViewController, UITableViewDataSource, UITab
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Shopping.favoriteShoppingLists.count
+        return Shopping.shared.favoriteShoppingLists.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ShoppingListCell") as! ShoppingListTableViewCell
-        let keys = Array(Shopping.favoriteShoppingLists.keys).sorted()
+        let keys = Array(Shopping.shared.favoriteShoppingLists.keys).sorted()
         let key = keys[indexPath.row] as String
         
-        cell.productAmountLabel.text = String(Shopping.favoriteShoppingLists[key]!.count)
+        cell.productAmountLabel.text = String(Shopping.shared.favoriteShoppingLists[key]!.count)
         cell.listNameLabel.text = String(key)
         
         //Datum schreiben:
@@ -86,11 +86,11 @@ class ShoppingListViewController: UIViewController, UITableViewDataSource, UITab
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
-            let keys = Array(Shopping.favoriteShoppingLists.keys).sorted()
+            let keys = Array(Shopping.shared.favoriteShoppingLists.keys).sorted()
             let key = keys[indexPath.row] as String
             print(indexPath.row)
             print(key)
-            Shopping.favoriteShoppingLists.removeValue(forKey: key)
+            Shopping.shared.favoriteShoppingLists.removeValue(forKey: key)
             tableViewOfFavoriteShoppingLists.reloadData()
             showUserPromptIfNeeded()
         }

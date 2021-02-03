@@ -39,7 +39,7 @@ class AddListToFavoritesViewController: UIViewController {
             addingDelegate.userDidFinishAdding()
 
             //Add List to Model
-            Shopping.favoriteShoppingLists[listNameEnterTextField.text!] = Shopping.selectedProductsOfUser
+            Shopping.shared.favoriteShoppingLists[listNameEnterTextField.text!] = Shopping.shared.selectedProductsOfUser
             
             UIView.animate(withDuration: 0.8) {
                 self.view.frame.origin = CGPoint(x: 60, y: (self.view.superview?.frame.height)!)

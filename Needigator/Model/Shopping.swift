@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct  Shopping {
+class  Shopping {
     
     enum Modification {
         
@@ -16,14 +16,16 @@ struct  Shopping {
         case decrease
     }
     
-    static var selectedProductsOfUser = [Article : Int]() {
+    static let shared = Shopping()
+    
+    var selectedProductsOfUser = [Article : Int]() {
         didSet{
             NotificationCenter.default.post(Notification(name: Messages.updatedSelectedProductDB, object: nil, userInfo: nil))
         }
     }
     
-    static var favoriteShoppingLists = [String : [Article : Int]]()
-    static var totalPrice: Double {
+    var favoriteShoppingLists = [String : [Article : Int]]()
+    var totalPrice: Double {
         
         get{
             var total: Double = 0.0
@@ -35,20 +37,20 @@ struct  Shopping {
         }
     }
     
-    static var checkedProducts = Set<String>()
+    var checkedProducts = Set<String>()
     
-    static func updateSelectedItemsInModel(for article: Article, with amount: Int, with operation: Modification? = nil){
+    func updateSelectedItemsInModel(for article: Article, with amount: Int, with operation: Modification? = nil){
 
         if operation == nil {
-            Shopping.selectedProductsOfUser[article] = amount
+            Shopping.shared.selectedProductsOfUser[article] = amount
         }else if operation == Modification.increase{
-            Shopping.selectedProductsOfUser[article] = Shopping.selectedProductsOfUser[article]! + 1
+            Shopping.shared.selectedProductsOfUser[article] = Shopping.shared.selectedProductsOfUser[article]! + 1
         }else if operation == Modification.decrease{
             
             if selectedProductsOfUser[article] == 1 {
-                Shopping.selectedProductsOfUser.removeValue(forKey: article)
+                Shopping.shared.selectedProductsOfUser.removeValue(forKey: article)
             }else{
-                Shopping.selectedProductsOfUser[article] = Shopping.selectedProductsOfUser[article]! - 1
+                Shopping.shared.selectedProductsOfUser[article] = Shopping.shared.selectedProductsOfUser[article]! - 1
             }
         }
     }

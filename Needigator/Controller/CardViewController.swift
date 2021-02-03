@@ -53,9 +53,9 @@ class CardViewController: UIViewController{
     }
     
     @objc func updateViewFromModel(){
-        productCntLabel.text = "\(Shopping.selectedProductsOfUser.count)"
+        productCntLabel.text = "\(Shopping.shared.selectedProductsOfUser.count)"
         
-        let priceString = String(format: "%.2f", Shopping.totalPrice).replacingOccurrences(of: ".", with: ",")
+        let priceString = String(format: "%.2f", Shopping.shared.totalPrice).replacingOccurrences(of: ".", with: ",")
         totalPriceLabel.text = "Gesamtkosten: \(priceString) €"
         
         selctedProductsTableView.reloadData()
@@ -73,15 +73,15 @@ extension CardViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Shopping.selectedProductsOfUser.count
+        return Shopping.shared.selectedProductsOfUser.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableSelectedProductCell")! as! SelectedProductsTableViewCell
-        let keys = Array(Shopping.selectedProductsOfUser.keys)
+        let keys = Array(Shopping.shared.selectedProductsOfUser.keys)
         let key = keys[indexPath.row] as Article
-        cell.dataToDisplay = (key, Shopping.selectedProductsOfUser[key]) as? (Article, Int)
+        cell.dataToDisplay = (key, Shopping.shared.selectedProductsOfUser[key]) as? (Article, Int)
         return cell
     }
     
@@ -90,9 +90,9 @@ extension CardViewController: UITableViewDelegate, UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
-            let keys = Array(Shopping.selectedProductsOfUser.keys)
+            let keys = Array(Shopping.shared.selectedProductsOfUser.keys)
             let key = keys[indexPath.row] as Article
-            Shopping.selectedProductsOfUser.removeValue(forKey: key)
+            Shopping.shared.selectedProductsOfUser.removeValue(forKey: key)
             
         }
     }

@@ -118,7 +118,7 @@ class SearchTableViewCell: UITableViewCell, UIScrollViewDelegate {
         NotificationCenter.default.post(Notification(name: Messages.notificationNameForTappedProductCard, object: nil, userInfo: nil))
         
         //Produkt noch nciht ausgewählt, also zeige die Rückseite zum Auswählen
-        if Shopping.selectedProductsOfUser[leftCardArticle!] == nil {
+        if Shopping.shared.selectedProductsOfUser[leftCardArticle!] == nil {
             leftCardIsFlipped = true
             leftDetailedProdSelectVC.view.frame = leftProductCardView.frame
             leftDetailedProdSelectVC.view.layer.cornerRadius = 10
@@ -126,10 +126,10 @@ class SearchTableViewCell: UITableViewCell, UIScrollViewDelegate {
             leftProductCardView.addSubview(leftDetailedProdSelectVC.view)
             leftDetailedProdSelectVC.productLabel.text = leftProductLabel.text
             
-            if Shopping.selectedProductsOfUser[leftCardArticle!] == nil {
+            if Shopping.shared.selectedProductsOfUser[leftCardArticle!] == nil {
                 leftDetailedProdSelectVC.amountCnt = 1
             }else{
-                leftDetailedProdSelectVC.amountCnt = Shopping.selectedProductsOfUser[leftCardArticle!]!
+                leftDetailedProdSelectVC.amountCnt = Shopping.shared.selectedProductsOfUser[leftCardArticle!]!
             }
             
             UIView.transition(with: leftProductCardView, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
@@ -151,7 +151,7 @@ class SearchTableViewCell: UITableViewCell, UIScrollViewDelegate {
         
         NotificationCenter.default.post(Notification(name: Messages.notificationNameForTappedProductCard, object: nil, userInfo: nil))
         
-        if Shopping.selectedProductsOfUser[rightCardArticle!] == nil {
+        if Shopping.shared.selectedProductsOfUser[rightCardArticle!] == nil {
             rightCardIsFlipped = true
             rightDetailedProdSelectVC.view.frame = rightProductCardView.frame
             rightDetailedProdSelectVC.view.layer.cornerRadius = 10
@@ -159,10 +159,10 @@ class SearchTableViewCell: UITableViewCell, UIScrollViewDelegate {
             rightProductCardView.addSubview(rightDetailedProdSelectVC.view)
             rightDetailedProdSelectVC.productLabel.text = rightProductLabel.text
             
-            if Shopping.selectedProductsOfUser[rightCardArticle!] == nil {
+            if Shopping.shared.selectedProductsOfUser[rightCardArticle!] == nil {
                 rightDetailedProdSelectVC.amountCnt = 1
             }else{
-                rightDetailedProdSelectVC.amountCnt = Shopping.selectedProductsOfUser[rightCardArticle!]!
+                rightDetailedProdSelectVC.amountCnt = Shopping.shared.selectedProductsOfUser[rightCardArticle!]!
             }
             
             UIView.transition(with: rightProductCardView, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
@@ -260,10 +260,10 @@ extension SearchTableViewCell: AlreradySelectedViewControllerDelegate{
             sender.removeFromParent()
         }else{
             if rightCardIsFlipped{
-                Shopping.selectedProductsOfUser.removeValue(forKey: rightCardArticle!)
+                Shopping.shared.selectedProductsOfUser.removeValue(forKey: rightCardArticle!)
                 rightCardIsFlipped = false
             }else if leftCardIsFlipped{
-                Shopping.selectedProductsOfUser.removeValue(forKey: leftCardArticle!)
+                Shopping.shared.selectedProductsOfUser.removeValue(forKey: leftCardArticle!)
                 leftCardIsFlipped = false
             }
             

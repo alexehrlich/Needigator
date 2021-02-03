@@ -98,7 +98,7 @@
 		1D7DBD9824274D53009E9D4E /* RouteCalculationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteCalculationManager.swift; sourceTree = "<group>"; };
 		1D7FAB4E2420B8F5001A5215 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		1D7FAB4F2420B8F5001A5215 /* SearchTableViewCellDesign.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCellDesign.xib; sourceTree = "<group>"; };
-		1D856C9825700B0D00A2510F /* ShoppingListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShoppingListTableViewCell.swift; path = Needigator/View/ShoppingListTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		1D856C9825700B0D00A2510F /* ShoppingListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShoppingListTableViewCell.swift; path = Needigator/Controller/ShoppingListTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		1D856C9925700B0D00A2510F /* ShoppingListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ShoppingListTableViewCell.xib; path = Needigator/View/ShoppingListTableViewCell.xib; sourceTree = SOURCE_ROOT; };
 		1D8D6E3D24B5176C007E8059 /* CardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
 		1D8D6E3F24B5177A007E8059 /* CardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardViewController.xib; sourceTree = "<group>"; };
@@ -125,7 +125,6 @@
 			isa = PBXGroup;
 			children = (
 				1D00D646242112D300DBBC41 /* BUGTRACKER_TODO.txt */,
-				1D2593C824337DC4008F5BAC /* AllRoutes.txt */,
 				1D2E583D241E31CE002D341D /* Needigator */,
 				1D2B10E0253763FA00D9119C /* Needigator.app */,
 			);
@@ -134,12 +133,10 @@
 		1D2E583D241E31CE002D341D /* Needigator */ = {
 			isa = PBXGroup;
 			children = (
-				1D2E583E241E31CE002D341D /* AppDelegate.swift */,
-				1D2E5840241E31CE002D341D /* SceneDelegate.swift */,
-				1D2E584C241E31D0002D341D /* Info.plist */,
 				1D2E5852241E31DA002D341D /* Model */,
 				1D2E5854241E3213002D341D /* View */,
 				1D2E5855241E3217002D341D /* Controller */,
+				1D7A074A25CB01360041685C /* Supporting Files */,
 			);
 			path = Needigator;
 			sourceTree = "<group>";
@@ -166,30 +163,17 @@
 			children = (
 				1D2E5844241E31CE002D341D /* Main.storyboard */,
 				1D2E5849241E31D0002D341D /* LaunchScreen.storyboard */,
-				1D2E5847241E31D0002D341D /* Assets.xcassets */,
-				1D7FAB4E2420B8F5001A5215 /* SearchTableViewCell.swift */,
 				1D7FAB4F2420B8F5001A5215 /* SearchTableViewCellDesign.xib */,
 				1D8D6E3F24B5177A007E8059 /* CardViewController.xib */,
-				1D8D6E3D24B5176C007E8059 /* CardViewController.swift */,
-				1D2D3818256C23CE0008AAFC /* AddListToFavoritesViewController.swift */,
 				1D2D3819256C23CE0008AAFC /* AddListToFavoritesViewController.xib */,
-				1D2B10E22537792600D9119C /* SelectedProductsTableViewCell.swift */,
 				1D2B10E32537792600D9119C /* SelectedProductsTableViewCell.xib */,
-				1D3DEFB92539F15300D77B86 /* DetailedProductSelectionViewController.swift */,
 				1D3DEFBA2539F15300D77B86 /* DetailedProductSelectionViewController.xib */,
-				1D2BBD932545A4F200B49500 /* UserFeedBackWhileCalculationViewController.swift */,
 				1D2BBD942545A4F200B49500 /* UserFeedBackWhileCalculationViewController.xib */,
-				1D856C9825700B0D00A2510F /* ShoppingListTableViewCell.swift */,
 				1D856C9925700B0D00A2510F /* ShoppingListTableViewCell.xib */,
-				1D32C572257611E4004754F7 /* ListOfProductsInOneNodeViewController.swift */,
 				1D32C573257611E4004754F7 /* ListOfProductsInOneNodeViewController.xib */,
-				1D32C57725761361004754F7 /* ListedProductsInNodeTableViewCell.swift */,
 				1D32C57825761361004754F7 /* ListedProductsInNodeTableViewCell.xib */,
-				1D194D9225BD9EC1006A1CC1 /* ProductAddedFeedbackViewController.swift */,
 				1D194D9325BD9EC1006A1CC1 /* ProductAddedFeedbackViewController.xib */,
-				1D194D9D25BDC38E006A1CC1 /* AlreadySelectedViewController.swift */,
 				1D194D9E25BDC38E006A1CC1 /* AlreadySelectedViewController.xib */,
-				1D1E620E25BF339200AD0CE9 /* ProducNotAvailableViewController.swift */,
 				1D1E620F25BF339200AD0CE9 /* ProducNotAvailableViewController.xib */,
 			);
 			path = View;
@@ -198,6 +182,18 @@
 		1D2E5855241E3217002D341D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				1D7FAB4E2420B8F5001A5215 /* SearchTableViewCell.swift */,
+				1D8D6E3D24B5176C007E8059 /* CardViewController.swift */,
+				1D2D3818256C23CE0008AAFC /* AddListToFavoritesViewController.swift */,
+				1D2B10E22537792600D9119C /* SelectedProductsTableViewCell.swift */,
+				1D3DEFB92539F15300D77B86 /* DetailedProductSelectionViewController.swift */,
+				1D2BBD932545A4F200B49500 /* UserFeedBackWhileCalculationViewController.swift */,
+				1D856C9825700B0D00A2510F /* ShoppingListTableViewCell.swift */,
+				1D32C572257611E4004754F7 /* ListOfProductsInOneNodeViewController.swift */,
+				1D32C57725761361004754F7 /* ListedProductsInNodeTableViewCell.swift */,
+				1D194D9225BD9EC1006A1CC1 /* ProductAddedFeedbackViewController.swift */,
+				1D194D9D25BDC38E006A1CC1 /* AlreadySelectedViewController.swift */,
+				1D1E620E25BF339200AD0CE9 /* ProducNotAvailableViewController.swift */,
 				1DF4FC1E241F34BF0058FF02 /* WelcomeViewController.swift */,
 				1DF4FC20241F36390058FF02 /* ShoppingListViewController.swift */,
 				1D5BC693257022E0000F6695 /* FavoriteListsListingViewController.swift */,
@@ -207,6 +203,18 @@
 				1D1E621325BF43FB00AD0CE9 /* ProductRequestViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		1D7A074A25CB01360041685C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1D2E583E241E31CE002D341D /* AppDelegate.swift */,
+				1D2E5840241E31CE002D341D /* SceneDelegate.swift */,
+				1D2E5847241E31D0002D341D /* Assets.xcassets */,
+				1D2593C824337DC4008F5BAC /* AllRoutes.txt */,
+				1D2E584C241E31D0002D341D /* Info.plist */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -472,7 +480,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A7AV2L6V3G;
-				INFOPLIST_FILE = Needigator/Info.plist;
+				INFOPLIST_FILE = "Needigator/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -490,7 +498,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A7AV2L6V3G;
-				INFOPLIST_FILE = Needigator/Info.plist;
+				INFOPLIST_FILE = "Needigator/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

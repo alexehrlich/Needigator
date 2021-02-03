@@ -58,7 +58,7 @@ class RoutingViewController: UIViewController, AddListToFavoritesViewControllerD
         routeImageViewHeightConstaint.constant =
             ((Market.bitMapMarketPlan2D?.size.height)!/3)
         
-        Shopping.checkedProducts.removeAll()
+        Shopping.shared.checkedProducts.removeAll()
         
         addingViewController.addingDelegate = self
         
@@ -74,7 +74,7 @@ class RoutingViewController: UIViewController, AddListToFavoritesViewControllerD
         
         
         //Loop: Für jedes Produkt wird ein neuer Pin erstellt und an den Knoten platziert
-        for (article, _) in Shopping.selectedProductsOfUser{
+        for (article, _) in Shopping.shared.selectedProductsOfUser{
             let startingPoint = CGPoint(x: routeImageView.center.x - routeImageView.frame.size.width/2, y: routeImageView.center.y - routeImageView.frame.size.height/2)
             let newProductPinButton = UIButton()
             newProductPinButton.frame = CGRect(origin: CGPoint(x: startingPoint.x + pixelsOfAllNodes[article.getNode()]!.x/3, y: startingPoint.y + pixelsOfAllNodes[article.getNode()]!.y/3), size: CGSize(width: 30, height: 30))
@@ -236,7 +236,7 @@ class RoutingViewController: UIViewController, AddListToFavoritesViewControllerD
     }
     
     @IBAction func finishShoppingButtonPressed(_ sender: UIButton) {
-        Shopping.selectedProductsOfUser.removeAll()
+        Shopping.shared.selectedProductsOfUser.removeAll()
         self.navigationController?.popToRootViewController(animated: true)
     }
     

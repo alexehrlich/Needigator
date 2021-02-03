@@ -20,7 +20,7 @@ class RouteVCShoppingListViewController: UIViewController, UITableViewDelegate, 
     override func viewWillAppear(_ animated: Bool) {
         
         for node in sortedNodeList{
-            for product in Shopping.selectedProductsOfUser{
+            for product in Shopping.shared.selectedProductsOfUser{
                 if product.key.getNode() == node.getNodeName(){
                     sortedSelectedProductList.append(product.key)
                 }
@@ -55,7 +55,7 @@ class RouteVCShoppingListViewController: UIViewController, UITableViewDelegate, 
         let cell = shoppingListTableView.dequeueReusableCell(withIdentifier: "checkProductCell") as! ListedProductsInNodeTableViewCell
 
         let key = sortedSelectedProductList[indexPath.row]
-        cell.productLabel.text = "\(Shopping.selectedProductsOfUser[key]!)x \(key.getName())"
+        cell.productLabel.text = "\(Shopping.shared.selectedProductsOfUser[key]!)x \(key.getName())"
         cell.productString = key.getName()
         
         return cell

@@ -60,7 +60,7 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
     
     lazy var cardHeight: CGFloat = self.view.frame.height * 0.75
     var cardToShow: CGFloat {
-        if Shopping.selectedProductsOfUser.isEmpty {
+        if Shopping.shared.selectedProductsOfUser.isEmpty {
             
             cardViewController.cardViewHeadingLabel.text = "Noch keine Produkte"
             return 120
@@ -99,7 +99,7 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
         cardVisible = true
         animateTransitionIfNeeded(state: nextState, duration: 0.1)
         
-        Shopping.selectedProductsOfUser = Shopping.selectedProductsOfUser
+        Shopping.shared.selectedProductsOfUser = Shopping.shared.selectedProductsOfUser
         substringArticles = listOfProducts
         articleTableView.reloadData()
     }
@@ -263,7 +263,7 @@ class NavigationViewController: UIViewController, UITableViewDelegate{
     }
     
     func transitToRoutingVC(){
-        if Shopping.selectedProductsOfUser.isEmpty{
+        if Shopping.shared.selectedProductsOfUser.isEmpty{
             let alertController = UIAlertController(title: "Deine Einkaufsliste ist leer!", message:
                                                         "Für die Routenberechnung muss sich mindestens 1 Artikel im Warenkorb befinden.", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "OK", style: .default))
@@ -371,7 +371,7 @@ extension NavigationViewController: UITableViewDataSource{
             cell.onlyOneProductCard = false
             cell.leftCardIsFlipped = false
             
-            if Shopping.selectedProductsOfUser[leftArticle] != nil {
+            if Shopping.shared.selectedProductsOfUser[leftArticle] != nil {
                 cell.leftProductCheckmark.alpha = 1
             }else{
                 cell.leftProductCheckmark.alpha = 0
@@ -397,7 +397,7 @@ extension NavigationViewController: UITableViewDataSource{
             cell.onlyOneProductCard = false
             cell.rightCardIsFlipped = false
             
-            if Shopping.selectedProductsOfUser[rightArticle] != nil {
+            if Shopping.shared.selectedProductsOfUser[rightArticle] != nil {
                 cell.rightProductCheckmark.alpha = 1
             }else{
                 cell.rightProductCheckmark.alpha = 0
@@ -432,7 +432,7 @@ extension NavigationViewController: UITableViewDataSource{
                 cell.leftCardIsFlipped = false
                 
                 //Wenn das Produkt ausgewählt ist, soll es einen grünen haken bekommen
-                if Shopping.selectedProductsOfUser[leftArticle] != nil {
+                if Shopping.shared.selectedProductsOfUser[leftArticle] != nil {
                     cell.leftProductCheckmark.alpha = 1
                 }else{
                     cell.leftProductCheckmark.alpha = 0
@@ -449,7 +449,7 @@ extension NavigationViewController: UITableViewDataSource{
                     cell.leftOfferView.isHidden = true
                 }
                 
-                if Shopping.selectedProductsOfUser[rightArticle] != nil {
+                if Shopping.shared.selectedProductsOfUser[rightArticle] != nil {
                     cell.rightProductCheckmark.alpha = 1
                 }else{
                     cell.rightProductCheckmark.alpha = 0
@@ -487,7 +487,7 @@ extension NavigationViewController: UITableViewDataSource{
                     cell.onlyOneProductCard = true
                     cell.leftCardIsFlipped = false
                     
-                    if Shopping.selectedProductsOfUser[leftArticle] != nil {
+                    if Shopping.shared.selectedProductsOfUser[leftArticle] != nil {
                         cell.leftProductCheckmark.alpha = 1
                     }else{
                         cell.leftProductCheckmark.alpha = 0
@@ -535,11 +535,11 @@ extension NavigationViewController: UIScrollViewDelegate {
 extension NavigationViewController: SearchTableViewCellDelegate{
     
     func getLeftProductCardArticle(article: Article, amount: Int) {
-        Shopping.updateSelectedItemsInModel(for: article, with: amount, with: nil)
+        Shopping.shared.updateSelectedItemsInModel(for: article, with: amount, with: nil)
     }
     
     func getRightProductCardArticle(article: Article, amount: Int) {
-        Shopping.updateSelectedItemsInModel(for: article, with: amount, with: nil)
+        Shopping.shared.updateSelectedItemsInModel(for: article, with: amount, with: nil)
     }
 }
 

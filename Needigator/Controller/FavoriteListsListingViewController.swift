@@ -22,7 +22,7 @@ class FavoriteListsListingViewController: UIViewController, UITableViewDelegate,
     let userFeedBackVC = UserFeedBackWhileCalculationViewController(nibName: "UserFeedBackWhileCalculationViewController", bundle: nil)
 
     override func viewWillAppear(_ animated: Bool) {
-        Shopping.selectedProductsOfUser = Shopping.favoriteShoppingLists[list]!
+        Shopping.shared.selectedProductsOfUser = Shopping.shared.favoriteShoppingLists[list]!
         
         navigationController?.isNavigationBarHidden = false
         userFeedBackVC.view.removeFromSuperview()
@@ -53,12 +53,12 @@ class FavoriteListsListingViewController: UIViewController, UITableViewDelegate,
     }
     
     @IBAction func deleteButtonItem(_ sender: UIBarButtonItem) {
-        Shopping.favoriteShoppingLists.removeValue(forKey: list)
+        Shopping.shared.favoriteShoppingLists.removeValue(forKey: list)
         navigationController?.popViewController(animated: true)
     }
     
     @IBAction func startNavigationDirectlyButtonPressed(_ sender: UIButton) {
-        if Shopping.selectedProductsOfUser.isEmpty{
+        if Shopping.shared.selectedProductsOfUser.isEmpty{
             let alertController = UIAlertController(title: "Deine Einkaufsliste ist leer!", message:
                 "Für die Routenberechnung muss sich mindestens 1 Artikel im Warenkorb befinden.", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "OK", style: .default))
@@ -83,16 +83,16 @@ class FavoriteListsListingViewController: UIViewController, UITableViewDelegate,
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Shopping.selectedProductsOfUser.count
+        return Shopping.shared.selectedProductsOfUser.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = productTableView.dequeueReusableCell(withIdentifier: "ReusableSelectedProductCell") as! SelectedProductsTableViewCell
-        let keys = Array(Shopping.selectedProductsOfUser.keys)
+        let keys = Array(Shopping.shared.selectedProductsOfUser.keys)
         let key = keys[indexPath.row] as Article
         
-        cell.dataToDisplay = ((key, Shopping.selectedProductsOfUser[key]) as! (Article, Int))
+        cell.dataToDisplay = ((key, Shopping.shared.selectedProductsOfUser[key]) as! (Article, Int))
         cell.productLabel.textColor = .black
         
         return cell
