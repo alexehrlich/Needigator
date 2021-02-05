@@ -42,6 +42,7 @@
 		1D7997272425EAEB007CE3A5 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7997262425EAEB007CE3A5 /* Node.swift */; };
 		1D7997292425ED73007CE3A5 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7997282425ED73007CE3A5 /* Route.swift */; };
 		1D79972F2425FA22007CE3A5 /* RGB32.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D79972E2425FA22007CE3A5 /* RGB32.swift */; };
+		1D7A075525CB07570041685C /* UserData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1D7A075325CB07570041685C /* UserData.xcdatamodeld */; };
 		1D7DBD9924274D53009E9D4E /* RouteCalculationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7DBD9824274D53009E9D4E /* RouteCalculationManager.swift */; };
 		1D7FAB502420B8F5001A5215 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7FAB4E2420B8F5001A5215 /* SearchTableViewCell.swift */; };
 		1D7FAB512420B8F5001A5215 /* SearchTableViewCellDesign.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D7FAB4F2420B8F5001A5215 /* SearchTableViewCellDesign.xib */; };
@@ -95,6 +96,7 @@
 		1D7997262425EAEB007CE3A5 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		1D7997282425ED73007CE3A5 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		1D79972E2425FA22007CE3A5 /* RGB32.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGB32.swift; sourceTree = "<group>"; };
+		1D7A075425CB07570041685C /* UserData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserData.xcdatamodel; sourceTree = "<group>"; };
 		1D7DBD9824274D53009E9D4E /* RouteCalculationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteCalculationManager.swift; sourceTree = "<group>"; };
 		1D7FAB4E2420B8F5001A5215 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		1D7FAB4F2420B8F5001A5215 /* SearchTableViewCellDesign.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCellDesign.xib; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				1D2BBD982545BDFA00B49500 /* Shopping.swift */,
 				1D15711A254877AE00B0847E /* Messages.swift */,
 				1D24353F25C0A51900FDF2B9 /* HttpRequestManager.swift */,
+				1D7A075325CB07570041685C /* UserData.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				1D2E5857241E329A002D341D /* Article.swift in Sources */,
 				1D8D6E3E24B5176C007E8059 /* CardViewController.swift in Sources */,
 				1D3DEFBB2539F15300D77B86 /* DetailedProductSelectionViewController.swift in Sources */,
+				1D7A075525CB07570041685C /* UserData.xcdatamodeld in Sources */,
 				1D7997292425ED73007CE3A5 /* Route.swift in Sources */,
 				1DF4FC1F241F34BF0058FF02 /* WelcomeViewController.swift in Sources */,
 				1D1E621425BF43FB00AD0CE9 /* ProductRequestViewController.swift in Sources */,
@@ -532,6 +536,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1D7A075325CB07570041685C /* UserData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1D7A075425CB07570041685C /* UserData.xcdatamodel */,
+			);
+			currentVersion = 1D7A075425CB07570041685C /* UserData.xcdatamodel */;
+			path = UserData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1D2E5833241E31CE002D341D /* Project object */;
 }

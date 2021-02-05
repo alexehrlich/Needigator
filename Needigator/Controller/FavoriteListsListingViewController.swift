@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class FavoriteListsListingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
    
@@ -16,6 +17,10 @@ class FavoriteListsListingViewController: UIViewController, UITableViewDelegate,
     @IBOutlet weak var addMoreProductsButtonOutlet: UIButton!
     @IBOutlet weak var deleteBarButtonOutlet: UIBarButtonItem!
     
+    
+    //MARK: - CoreData Code
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var favoritLists = [FavoriteList]()
     
     
     var list = String()

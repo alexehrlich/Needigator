@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 protocol AddListToFavoritesViewControllerDelegate {
     func userDidFinishAdding()
@@ -20,6 +21,9 @@ class AddListToFavoritesViewController: UIViewController {
     @IBOutlet weak var cancleButtonOutlet: UIButton!
     
     var addingDelegate: AddListToFavoritesViewControllerDelegate!
+    
+    //MARK: CoreData Code
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +43,31 @@ class AddListToFavoritesViewController: UIViewController {
             addingDelegate.userDidFinishAdding()
 
             //Add List to Model
-            Shopping.shared.favoriteShoppingLists[listNameEnterTextField.text!] = Shopping.shared.selectedProductsOfUser
+//            Shopping.shared.favoriteShoppingLists[listNameEnterTextField.text!] = Shopping.shared.selectedProductsOfUser
+            
+            let newList = FavoriteList(context: context)
+            newList.name = listNameEnterTextField.text!
+            
+            for (article, amount) in Shopping.shared.selectedProductsOfUser{
+                
+                let newArticle = Item(context: context)
+                newArticle.name = article.getName()
+                newArticle.amount = Int16(amount)
+                newArticle.image = article.getImage().pngData()
+                newArticle.isOnOffer = article.isOnOffer
+                newArticle.node = Int16(article.getNode())
+                newArticle.officialPrice = article.getOfficialPrice()
+                newArticle.offerPrice = article.offerPrice
+                
+                newArticle.addToLists(newList)
+                
+                do{
+                    try context.save()
+                }catch{
+                    print("Error while saving context: \(error)")
+                }
+            }
+            
             
             UIView.animate(withDuration: 0.8) {
                 self.view.frame.origin = CGPoint(x: 60, y: (self.view.superview?.frame.height)!)
