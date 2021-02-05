@@ -16,18 +16,45 @@ class FavoriteListsListingViewController: UIViewController, UITableViewDelegate,
     @IBOutlet weak var goDirectlyToNavigationButtonOutlet: UIButton!
     @IBOutlet weak var addMoreProductsButtonOutlet: UIButton!
     @IBOutlet weak var deleteBarButtonOutlet: UIBarButtonItem!
-    
+
     
     //MARK: - CoreData Code
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var favoritLists = [FavoriteList]()
+    var parentList: FavoriteList?
+    var favProducts = [Article : Int]()
+    var allFavorizedItemsFromDB = [Item]()
     
-    
-    var list = String()
     let userFeedBackVC = UserFeedBackWhileCalculationViewController(nibName: "UserFeedBackWhileCalculationViewController", bundle: nil)
+    
 
     override func viewWillAppear(_ animated: Bool) {
-        Shopping.shared.selectedProductsOfUser = Shopping.shared.favoriteShoppingLists[list]!
+        
+        //Hole alle Produkte aus der DB
+        let itemsRequest : NSFetchRequest<Item> = Item.fetchRequest()
+        
+        do{
+            allFavorizedItemsFromDB = try context.fetch(itemsRequest)
+        }catch{
+            print(error)
+        }
+        
+        for item in allFavorizedItemsFromDB{
+                //Sehr unschön: momentan muss immer zwischen der Item-Class (DB) und der Article-Class (App) konvertiert werden.
+            
+            for list in item.lists!{
+                
+                if let convertedList = list as? FavoriteList{
+                    
+                    if convertedList == parentList{
+                        let article = Article(imageFileName: item.imgFileName!)
+                        favProducts[article] = Int(item.amount)
+                    }
+                }
+            }
+        }
+        
+        Shopping.shared.selectedProductsOfUser = favProducts
+        
         
         navigationController?.isNavigationBarHidden = false
         userFeedBackVC.view.removeFromSuperview()
@@ -37,6 +64,7 @@ class FavoriteListsListingViewController: UIViewController, UITableViewDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         deleteBarButtonOutlet.tintColor = #colorLiteral(red: 0.9311223626, green: 0.4162247777, blue: 0.4690252542, alpha: 1)
         goDirectlyToNavigationButtonOutlet.layer.cornerRadius = goDirectlyToNavigationButtonOutlet.frame.size.height/2
@@ -48,7 +76,7 @@ class FavoriteListsListingViewController: UIViewController, UITableViewDelegate,
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateViewFromModel), name: Messages.updatedSelectedProductDB, object: nil)
         
-        title = list
+        title = parentList?.name
         
         productTableView.register(UINib(nibName: "SelectedProductsTableViewCell", bundle: nil), forCellReuseIdentifier: "ReusableSelectedProductCell")
     }
@@ -58,9 +86,13 @@ class FavoriteListsListingViewController: UIViewController, UITableViewDelegate,
     }
     
     @IBAction func deleteButtonItem(_ sender: UIBarButtonItem) {
-        Shopping.shared.favoriteShoppingLists.removeValue(forKey: list)
+        //Delete from DB
+        
+        NotificationCenter.default.post(name: Messages.deleteFavoriteList, object: nil)
         navigationController?.popViewController(animated: true)
     }
+    
+
     
     @IBAction func startNavigationDirectlyButtonPressed(_ sender: UIButton) {
         if Shopping.shared.selectedProductsOfUser.isEmpty{

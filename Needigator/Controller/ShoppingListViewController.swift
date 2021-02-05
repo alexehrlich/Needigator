@@ -7,23 +7,33 @@
 //
 
 import UIKit
+import CoreData
 
 class ShoppingListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ShoppingListTableViewCellDelegate {
     
-
+    
     @IBOutlet weak var tableViewOfFavoriteShoppingLists: UITableView!
     
+    //MARK: CoreData
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var favoriteLists = [FavoriteList]()
     
-    var lastCellTapped = String()
+    var chosenList : FavoriteList?
+    var lastTappedRow = 0
+    
     
     override func viewWillAppear(_ animated: Bool) {
-        tableViewOfFavoriteShoppingLists.reloadData()
         
+        
+        loadLists()
         showUserPromptIfNeeded()
         
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(deleteList), name: Messages.deleteFavoriteList, object: nil)
 
         self.title = "Deine Einkaufslisten"
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -35,14 +45,18 @@ class ShoppingListViewController: UIViewController, UITableViewDataSource, UITab
         tableViewOfFavoriteShoppingLists.register(UINib(nibName: "ShoppingListTableViewCell", bundle: nil), forCellReuseIdentifier: "ShoppingListCell")
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        Shopping.shared.selectedProductsOfUser.removeAll()
+    }
+    
     func showUserPromptIfNeeded(){
-        if Shopping.shared.favoriteShoppingLists.isEmpty{
+        if favoriteLists.isEmpty{
             
             let userPromptLabel = UILabel(frame: CGRect(origin: self.view.frame.origin, size: self.view.frame.size))
             
             userPromptLabel.textAlignment = .center
             
-            let font = UIFont(name: "Helvetica Neue", size: 30)
+            let font = UIFont(name: "Helvetica Neue", size: 20)
             userPromptLabel.textColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
             userPromptLabel.numberOfLines = 0
             userPromptLabel.font = font
@@ -53,28 +67,21 @@ class ShoppingListViewController: UIViewController, UITableViewDataSource, UITab
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Shopping.shared.favoriteShoppingLists.count
+        return favoriteLists.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ShoppingListCell") as! ShoppingListTableViewCell
-        let keys = Array(Shopping.shared.favoriteShoppingLists.keys).sorted()
-        let key = keys[indexPath.row] as String
         
-        cell.productAmountLabel.text = String(Shopping.shared.favoriteShoppingLists[key]!.count)
-        cell.listNameLabel.text = String(key)
+        let currentElement = favoriteLists[indexPath.row]
         
-        //Datum schreiben:
-        let now = Date()
-        let formatter = DateFormatter ()
-        formatter.locale = Locale(identifier: "de_DE")
-        formatter.dateFormat = "d. MMMM yyyy"
-        cell.dateOfShoppingLabel.text = formatter.string(from: now)
-        
-        
+        cell.productAmountLabel.text = String(currentElement.amount)
+        cell.listNameLabel.text = currentElement.name
+        cell.dateOfShoppingLabel.text = currentElement.date
+        cell.productAmountLabel.text = String(currentElement.amount)
         cell.widthConstraintBackgroundView.constant = self.view.frame.size.width * 0.9
-        
+        cell.list = currentElement
         cell.cellDelgate = self
 
         return cell
@@ -86,20 +93,32 @@ class ShoppingListViewController: UIViewController, UITableViewDataSource, UITab
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
-            let keys = Array(Shopping.shared.favoriteShoppingLists.keys).sorted()
-            let key = keys[indexPath.row] as String
-            print(indexPath.row)
-            print(key)
-            Shopping.shared.favoriteShoppingLists.removeValue(forKey: key)
+            
+            let cell = tableView.cellForRow(at: indexPath) as! ShoppingListTableViewCell
+            
+            let favoriteList = cell.list
+            
+            context.delete(favoriteList!)
+            loadLists()
+            
+            saveContext()
+           
             tableViewOfFavoriteShoppingLists.reloadData()
             showUserPromptIfNeeded()
         }
     }
     
-    func callSegueFromCell(date: String) {
-        
-        lastCellTapped = String(date)
-        
+    func saveContext(){
+        do{
+            try context.save()
+        }catch{
+            print("Error while saving context: \(error)")
+        }
+    }
+    
+    
+    func callSegueFromCell(for list: FavoriteList) {
+        chosenList = list
         performSegue(withIdentifier: "goToListingsVC", sender: self)
     }
     
@@ -108,7 +127,26 @@ class ShoppingListViewController: UIViewController, UITableViewDataSource, UITab
         if segue.identifier == "goToListingsVC" {
             
             let destVC = segue.destination as! FavoriteListsListingViewController
-            destVC.list = lastCellTapped
+            destVC.parentList = chosenList
         }
+    }
+    
+    @objc func deleteList(){
+        context.delete(chosenList!)
+        tableViewOfFavoriteShoppingLists.reloadData()
+    }
+    
+    func loadLists(){
+        //Hole alle Listen aus der SQLite-DB
+        
+        let listRequest: NSFetchRequest<FavoriteList> = FavoriteList.fetchRequest()
+        
+        do{
+            favoriteLists = try context.fetch(listRequest)
+        }catch{
+            print(error)
+        }
+        
+        tableViewOfFavoriteShoppingLists.reloadData()
     }
 }

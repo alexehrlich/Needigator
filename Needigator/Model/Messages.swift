@@ -22,4 +22,7 @@ struct Messages {
     //Notificartion wenn der Add-Button auf der Produktkarte getippt wird und dann kurz die User-Interaction gesperrt werden soll
     static let addProductToList = Notification.Name("gefehrlich.Needigator.addProductToList")
     
+    //DeleteListFromListingVC
+    static let deleteFavoriteList = Notification.Name("gefehrlich.Needigator.deleteFavoriteList")
+    
 }

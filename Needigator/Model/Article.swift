@@ -17,6 +17,7 @@ struct Article: Hashable {
     private var image: UIImage
     var isOnOffer: Bool
     var offerPrice : String?
+    var imageFileName : String
 
     
     //Die Daten eines Artikels sind durch Unterstriche im Bildname enthalten. Hier wird der Bildname zerlegt und die Daten extrahiert.
@@ -25,6 +26,7 @@ struct Article: Hashable {
         let shortenedString = imageFileName.replacingOccurrences(of: ".png", with: "")
         let splittedString = shortenedString.split(separator: "_")
         
+        self.imageFileName = imageFileName
         name = String(splittedString[0])
         amount = String(splittedString[1])
         node = Int(String(splittedString[2])) ?? 74

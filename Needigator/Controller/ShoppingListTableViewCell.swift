@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ShoppingListTableViewCellDelegate {
-    func callSegueFromCell(date: String)
+    func callSegueFromCell(for list: FavoriteList)
 }
 
 class ShoppingListTableViewCell: UITableViewCell {
@@ -23,6 +23,8 @@ class ShoppingListTableViewCell: UITableViewCell {
     
     var cellDelgate: ShoppingListTableViewCellDelegate!
     
+    var list: FavoriteList?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -31,7 +33,7 @@ class ShoppingListTableViewCell: UITableViewCell {
 
     
     @IBAction func goToListButtonPressed(_ sender: UIButton) {
-        cellDelgate.callSegueFromCell(date: listNameLabel.text!)
+        cellDelgate.callSegueFromCell(for: list!)
     }
     
 }

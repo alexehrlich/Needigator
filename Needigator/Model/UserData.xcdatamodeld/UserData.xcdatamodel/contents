@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20D64" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="FavoriteList" representedClassName="FavoriteList" syncable="YES" codeGenerationType="class">
+        <attribute name="amount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="date" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="articles" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Item"/>
+        <relationship name="articles" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Item" inverseName="lists" inverseEntity="Item"/>
     </entity>
     <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
         <attribute name="amount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="imgFileName" optional="YES" attributeType="String"/>
         <attribute name="isOnOffer" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="node" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="offerPrice" optional="YES" attributeType="String"/>
         <attribute name="officialPrice" optional="YES" attributeType="String"/>
-        <relationship name="lists" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FavoriteList"/>
+        <relationship name="lists" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FavoriteList" inverseName="articles" inverseEntity="FavoriteList"/>
     </entity>
     <elements>
-        <element name="FavoriteList" positionX="-352.4960327148438" positionY="-53.15118408203125" width="136.85400390625" height="88"/>
-        <element name="Item" positionX="-80.00778198242188" positionY="4.42431640625" width="128" height="163"/>
+        <element name="FavoriteList" positionX="-352.4960327148438" positionY="-53.15118408203125" width="136.85400390625" height="89"/>
+        <element name="Item" positionX="-80.00778198242188" positionY="4.42431640625" width="128" height="164"/>
     </elements>
 </model>
