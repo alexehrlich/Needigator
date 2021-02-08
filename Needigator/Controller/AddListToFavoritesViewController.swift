@@ -116,7 +116,7 @@ class AddListToFavoritesViewController: UIViewController {
             }
             
             UIView.animate(withDuration: 0.8) {
-                self.view.frame.origin = CGPoint(x: 60, y: (self.view.superview?.frame.height)!)
+                self.view.center = CGPoint(x: self.view.superview!.center.x, y: (self.view.superview?.frame.height)! + self.view.frame.height / 2)
             } completion: { (true) in
                 self.view.removeFromSuperview()
                 self.removeFromParent()
@@ -138,7 +138,7 @@ class AddListToFavoritesViewController: UIViewController {
         addingDelegate.userDidFinishAdding()
         
         UIView.animate(withDuration: 0.8) {
-            self.view.frame.origin = CGPoint(x: 60, y: (self.view.superview?.frame.height)!)
+            self.view.center = CGPoint(x: self.view.superview!.center.x, y: (self.view.superview?.frame.height)! + self.view.frame.height / 2)
         } completion: { (true) in
             self.view.removeFromSuperview()
             self.removeFromParent()

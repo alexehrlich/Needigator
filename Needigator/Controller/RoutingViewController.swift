@@ -210,8 +210,11 @@ class RoutingViewController: UIViewController, AddListToFavoritesViewControllerD
     
     @IBAction func addListToFavsButtonPressed(_ sender: UIButton) {
         
-        addingViewController.view.frame = CGRect(x: 60, y: self.view.frame.height, width: self.view.frame.width * 0.7, height: self.view.frame.height * 0.4)
-        addingViewController.view.layer.cornerRadius = 12
+        
+        addingViewController.view.frame = CGRect(x: 0, y: self.view.frame.height, width: self.view.frame.width * 0.95, height: self.view.frame.height * 0.4)
+        addingViewController.view.center.x = self.view.center.x
+        
+        addingViewController.view.layer.cornerRadius = 38
         
         blackTransparentView.frame = self.view.frame
         blackTransparentView.backgroundColor = .darkGray
@@ -224,7 +227,7 @@ class RoutingViewController: UIViewController, AddListToFavoritesViewControllerD
         addingViewController.listNameEnterTextField.text = ""
         UIView.animate(withDuration: 0.8, animations: {
             self.blackTransparentView.alpha = 0.7
-            self.addingViewController.view.frame.origin = CGPoint(x: 60, y: 300)
+            self.addingViewController.view.center = CGPoint(x: self.view.center.x, y: self.view.frame.height - self.addingViewController.view.frame.height / 2 - 8)
         })
         
     }
