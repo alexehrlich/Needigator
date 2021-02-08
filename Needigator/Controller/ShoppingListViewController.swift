@@ -131,9 +131,14 @@ class ShoppingListViewController: UIViewController, UITableViewDataSource, UITab
         }
     }
     
-    @objc func deleteList(){
-        context.delete(chosenList!)
-        tableViewOfFavoriteShoppingLists.reloadData()
+    @objc func deleteList(notification: Notification){
+        
+        //Get the list from
+        if let userInfo = notification.userInfo as? [String: FavoriteList] 
+        {
+            context.delete(userInfo["list"]!)
+            tableViewOfFavoriteShoppingLists.reloadData()
+        }
     }
     
     func loadLists(){

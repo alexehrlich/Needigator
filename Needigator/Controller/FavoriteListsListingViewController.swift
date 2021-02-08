@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 
+
 class FavoriteListsListingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
    
     @IBOutlet weak var productTableView: UITableView!
@@ -87,8 +88,7 @@ class FavoriteListsListingViewController: UIViewController, UITableViewDelegate,
     
     @IBAction func deleteButtonItem(_ sender: UIBarButtonItem) {
         //Delete from DB
-        
-        NotificationCenter.default.post(name: Messages.deleteFavoriteList, object: nil)
+        NotificationCenter.default.post(name: Messages.deleteFavoriteList, object: nil, userInfo: ["list" : parentList])
         navigationController?.popViewController(animated: true)
     }
     
