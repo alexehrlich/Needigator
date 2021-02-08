@@ -252,7 +252,7 @@ class RoutingViewController: UIViewController, AddListToFavoritesViewControllerD
             
             let keyBoardFrameHeight = keyBoardFrame.cgRectValue.height
             UIView.animate(withDuration: 0.8, animations: {
-                self.addingViewController.view.frame.origin = CGPoint(x: 60, y: self.view.frame.height - keyBoardFrameHeight - self.addingViewController.view.frame.height - 15)
+                self.addingViewController.view.frame.origin = CGPoint(x: self.view.center.x - self.addingViewController.view.frame.width / 2, y: self.view.frame.height - keyBoardFrameHeight - self.addingViewController.view.frame.height - 15)
             })
         }
     }
