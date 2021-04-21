@@ -35,7 +35,7 @@ The calculation bases on the simulated annelaing algorithm which solves the trav
 
 # Showroom
 
-Find alls Screenshot of the functionality in the ./Screens folder
+Find all screenshots of the functionality in the ./Screens folder
 ![](./Screens/welcome.png)
 ![](./Screens/selectedProducts.png)
 ![](./Screens/search.png)
