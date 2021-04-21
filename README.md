@@ -11,9 +11,14 @@ didn't want us to acces their product data base system - which of course is ness
 
 Nevertheless I put a bunch of work in this and learned so much. Therefore I want to share it in my portfolio.
 
+#Techniques
+- CoreData
+- Networking (Using API to AWS data base from team member)
+- Protocols and Delegates
+- TableView / ScrollView
+- ImageManipulation (The route is drawn pixle per pixle)
+
+
 # Algortihm
 The calculation bases on the simulated annelaing algorithm which solves the travelling salesman problem (k.a. TSP).
 
-# Showroom
-![GitHub Logo](/Screens/welcome.png)
-Format: ![Alt Text](url)
