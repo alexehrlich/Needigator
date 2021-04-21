@@ -1,9 +1,6 @@
 # Needigator
-Needigator is an acronym of "needs" and "navigator". This is an application for any kind of market with listed products.
-The user is able to search products and put them onto a shopping list. If a product is not available, the user is able to request it.
-After selecting all the desired products this application calculates the shortest route through the supermarket to collect all the goods.
-The user can watch the route on a 2D map (imaginary market) and follow the animated shopping baskets. When finsished the user is able to mark this list as a
-favorite shopping list. Next time he can choose this list and start right from here.
+Needigator is an acronym of "needs" and "navigator". The application allows the users to plan their shopping and find the shortest route with the selected products throug the market. The user is able to search all products and offers to build a shopping list. The routing is based on a 2D-map without live tracking.
+More details in Funtionality and Showroom sections below.
 
 # Purpose
 This was a serious app project, which was presented to a local market. The feedback was great, but we did not get the deal, because the cooperative of this market
