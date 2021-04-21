@@ -11,7 +11,18 @@ didn't want us to acces their product data base system - which of course is ness
 
 Nevertheless I put a bunch of work in this and learned so much. Therefore I want to share it in my portfolio.
 
-#Techniques
+# Functionality
+- Search prducts from market
+- Select products with amount and add them to the shopping list
+- Make product requests, when not available
+- Search offers in market
+- Calculate the route 
+- Get a 2D map with pins at the nodes with seleced productss 
+- Check the collected products at the node 
+- Save the List as a favorite List with date and name
+- Chose a favorite list as a starting point to plan a new shopping event
+
+# Techniques
 - CoreData
 - Networking (Using API to AWS data base from team member)
 - Protocols and Delegates
@@ -22,3 +33,12 @@ Nevertheless I put a bunch of work in this and learned so much. Therefore I want
 # Algortihm
 The calculation bases on the simulated annelaing algorithm which solves the travelling salesman problem (k.a. TSP).
 
+# Showroom
+
+Find alls Screenshot of the functionality in the ./Screens folder
+![](./Screens/welcome.png)
+![](./Screens/selectedProducts.png)
+![](./Screens/search.png)
+![](./Screens/list.png)
+![](./Screens/routing.png)
+![](./Screens/addingList.png)
